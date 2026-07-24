@@ -6,16 +6,16 @@
 
 ## `data/raw`와 `sources`의 역할
 
-- 실제 변환 입력으로 사용하는 원본 파일의 기준 보관 위치는 `data/raw/`다.
+- 실제 변환 입력으로 사용하는 원본 파일의 기준 보관 위치는 `data/raw/`이며 내용과 원래 파일명을 유지한다.
 - `sources/`에는 각 원본의 출처 메타데이터, 보관 위치, 권리 확인 상태와 참고 관계를 기록한다.
 - 공개 가능한 별도 참고 자료를 `sources/`에 둘 수 있지만, 같은 원본을 두 디렉터리에 중복 복사하지 않는다.
 - 저작권이나 공개 가능 여부가 불확실한 원본은 저장소 밖에 보관하고 메타데이터에 외부 보관 사실만 기록한다.
 
 기준 메타데이터 파일 형식은 아직 결정하지 않았다. 실제 자료를 확인한 뒤 Excel, CSV, JSON 중 기준 데이터 형식 결정과 함께 정한다.
 
-## 권장 파일 이름
+## 파생 파일 권장 이름
 
-새 이름이 필요한 파생본이나 공개 가능한 참고 파일에는 다음 형식을 권장한다.
+`working` 또는 `reviewed` 파생본에 새 이름이 필요할 때만 다음 형식을 권장한다. 이 형식은 `raw` 원본에는 적용하지 않는다.
 
 ```text
 <source_id>__<date-or-undated>__<short_english_title>.<extension>
@@ -27,7 +27,7 @@
 src-001__undated__expected_questions.xlsx
 ```
 
-이 예시는 이름 형식만 보여 주며 실제 출처가 존재한다는 뜻이 아니다. 원본 파일명은 변경하지 않고 메타데이터의 `original_file_name`에 반드시 남긴다.
+이 예시는 파생본 이름 형식만 보여 주며 실제 출처가 존재한다는 뜻이 아니다. raw 원본의 이름은 변경하지 않고, 파생본은 메타데이터의 `original_file_name`으로 원래 이름을 반드시 추적한다.
 
 ## 출처 메타데이터
 
@@ -38,7 +38,7 @@ src-001__undated__expected_questions.xlsx
 | `source_type` | 필수 | `course_analysis`, `excel`, `pdf`, `instructor_correction`, `self_created`, `other` |
 | `provenance_status` | 필수 | `verified_source`, `unverified_source`, `self_created` |
 | `creator_or_provider` | 선택 | 강사, 작성자, 제공처. 모르면 비워 둠 |
-| `original_file_name` | 선택 | 사용자가 제공한 원래 파일명 |
+| `original_file_name` | 조건부 | 실제 원본 파일이 있으면 필수인, 사용자가 제공한 원래 파일명 |
 | `file_ref` | 선택 | `data/raw` 또는 별도 보관 위치 |
 | `acquired_date` | 선택 | 확보 또는 제공 날짜 |
 | `rights_status` | 필수 | `review_needed`, `private_use`, `public_allowed` |

@@ -35,7 +35,7 @@
 | `source_type` | `Enum` | 필수 | `course_analysis`, `excel`, `pdf`, `instructor_correction`, `self_created`, `other` | `excel` |
 | `provenance_status` | `Enum` | 필수 | `verified_source`, `unverified_source`, `self_created` | `unverified_source` |
 | `creator_or_provider` | `Text` | 선택 | 강사, 작성자, 제공처. 모르면 비워 둠 | `사용자 제공` |
-| `original_file_name` | `Text` | 선택 | 변경 전 원본 파일명 | `expected_questions.xlsx` |
+| `original_file_name` | `Text` | 조건부 | 실제 원본 파일이 있으면 유지·기록하는 원래 파일명. 파생본 이름이 달라지면 필수 | `expected_questions.xlsx` |
 | `file_ref` | `Text` | 선택 | 저장소 또는 별도 보관 위치 | `data/raw/expected_questions.xlsx` |
 | `acquired_date` | `Date` | 선택 | 사용자가 자료를 확보하거나 제공한 날짜 | `2026-07-24` |
 | `rights_status` | `Enum` | 필수 | `review_needed`, `private_use`, `public_allowed` | `review_needed` |
@@ -80,7 +80,7 @@
 
 ## `Correction`
 
-강의의 대표 오류와 사용자 개인 오류를 같은 필드 구조로 기록하되 범위와 출처를 구분한다.
+강의의 대표 오류와 사용자 개인 오류를 같은 필드 구조로 기록하되 범위와 출처를 구분한다. 사용자별 학습 상태는 포함하지 않고 `ReviewState`에서만 관리한다.
 
 | 필드명 | 타입 | 필수 여부 | 설명 | 예시 |
 |---|---|---|---|---|
@@ -95,8 +95,7 @@
 | `source_id` | `Reference<Source>` | 조건부 | 강의 교정이면 필수 | `src-lecture-analysis-001` |
 | `user_answer_id` | `Reference<UserAnswer>` | 조건부 | 개인 답변 교정이면 필수 | `ua-0001` |
 | `data_scope` | `Enum` | 필수 | `shared`, `personal` | `personal` |
-| `correction_status` | `Enum` | 필수 | `draft`, `review_needed`, `reviewed` | `reviewed` |
-| `learning_status` | `Enum` | 필수 | `못 외움`, `헷갈림`, `외움` | `헷갈림` |
+| `correction_status` | `Enum` | 필수 | 교정 콘텐츠 검수 상태: `draft`, `review_needed`, `reviewed` | `reviewed` |
 
 ## `PartGuide`
 
@@ -137,7 +136,7 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 
 ## `ReviewState`
 
-문제, 사용자 답변, 오류 등 복습 대상에 대한 개인 학습 상태다. 공용 콘텐츠와 분리한다.
+문제, 사용자 답변, 오류 등 복습 대상에 대한 개인 학습 상태를 단독으로 관리한다. `못 외움`, `헷갈림`, `외움` 상태는 공용 콘텐츠나 `Correction`에 저장하지 않는다.
 
 | 필드명 | 타입 | 필수 여부 | 설명 | 예시 |
 |---|---|---|---|---|
@@ -167,6 +166,8 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 - `ModelAnswer.answer_status = missing`이면 답변 언어 필드가 비어 있어도 유효하다.
 - `reviewed` 또는 사이트 표시용 중국어 문제·표현·답변은 중국어, 병음, 한국어 뜻이 모두 있어야 한다.
 - `raw`와 `working` 단계의 누락 필드는 오류가 아니라 검수할 작업으로 다룬다.
+- `raw` 원본의 내용과 파일명은 유지하며, 파생본 이름이 달라지면 `original_file_name`으로 추적한다.
 - 출처 기반 데이터와 `self_created` 데이터를 같은 출처 상태로 표시하지 않는다.
+- `Correction`에는 `learning_status`를 두지 않고 사용자별 학습 상태를 `ReviewState`에서만 관리한다.
 - `UserAnswer`, 개인 `Correction`, `ReviewState`는 공용 문제·모범답안과 저장 범위를 분리한다.
 - 기준 파일 형식, 데이터베이스, 사용자 식별 방식은 `DECISIONS.md`에서 미결정으로 유지한다.
