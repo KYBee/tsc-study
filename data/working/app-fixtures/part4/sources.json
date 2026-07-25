@@ -1,0 +1,14 @@
+[
+  {
+    "source_id": "src-001",
+    "title": "TSC 파트별 문제은행 그림 포함",
+    "source_type": "excel",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_파트별_문제은행_그림포함.xlsx",
+    "file_ref": "data/raw/TSC_파트별_문제은행_그림포함.xlsx",
+    "acquired_date": "",
+    "rights_status": "review_needed",
+    "notes": "원본 링크의 정확성과 접근 범위, 내장 이미지 및 참고 자료의 공개 가능 여부는 별도 확인이 필요하다. 원본을 공개 저장소에서 계속 사용할 수 있는지 확인하기 전까지 rights_status: review_needed를 유지한다."
+  }
+]

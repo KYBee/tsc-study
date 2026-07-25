@@ -1,0 +1,45 @@
+{
+  "name": "tsc-study",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "fixture:part4": "python3 scripts/build_part4_app_fixture.py",
+    "validate:fixtures": "python3 scripts/build_part4_app_fixture.py --validate-only",
+    "check": "npm run fixture:part4 && npm run validate:fixtures && npm run typecheck && npm run lint && npm run test:run && npm run build"
+  },
+  "dependencies": {
+    "idb": "^8.0.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "7.18.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.13.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^10.8.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "fake-indexeddb": "^6.2.5",
+    "globals": "^17.7.0",
+    "jsdom": "^29.1.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.65.0",
+    "vite": "^8.1.1",
+    "vitest": "^4.1.10"
+  }
+}

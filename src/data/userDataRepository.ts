@@ -1,0 +1,406 @@
+import type {
+  Correction,
+  ReviewState,
+  UserAnswer,
+} from '../domain/entities'
+import type { IDBPObjectStore } from 'idb'
+import {
+  CORRECTIONS_STORE,
+  CORRECTION_USER_ANSWER_INDEX,
+  DEFAULT_USER_DATA_DB_NAME,
+  deleteTscStudyUserDatabase,
+  openTscStudyUserDatabase,
+  REVIEW_STATES_STORE,
+  REVIEW_STATE_TARGET_INDEX,
+  USER_ANSWERS_STORE,
+  USER_ANSWER_QUESTION_INDEX,
+  type TscStudyUserDataSchema,
+} from './indexedDb'
+
+export type UserAnswerInput = Omit<UserAnswer, 'created_at'> & {
+  created_at?: string
+}
+
+export type StoredUserAnswer = UserAnswer & {
+  updated_at: string
+}
+
+export type ReviewStateInput = Omit<
+  ReviewState,
+  'last_reviewed_at' | 'review_count'
+> & {
+  last_reviewed_at?: string
+}
+
+export type StoredReviewState = ReviewState
+
+export type PersonalCorrectionInput = Omit<
+  Correction,
+  'user_answer_id'
+> & {
+  user_answer_id?: string
+}
+
+export type StoredPersonalCorrection = Correction & {
+  user_answer_id: string
+  created_at: string
+}
+
+export interface UserDataRepositoryOptions {
+  databaseName?: string
+  now?: () => string
+}
+
+export interface UserDataRepository {
+  getUserAnswerByQuestionId(
+    questionId: string,
+  ): Promise<StoredUserAnswer | undefined>
+  listUserAnswers(): Promise<StoredUserAnswer[]>
+  upsertUserAnswer(answer: UserAnswerInput): Promise<StoredUserAnswer>
+  saveApprovedAnswer(
+    answer: UserAnswerInput,
+    corrections: PersonalCorrectionInput[],
+  ): Promise<StoredUserAnswer>
+  deleteUserAnswer(userAnswerId: string): Promise<void>
+  getReviewState(
+    targetType: ReviewState['target_type'],
+    targetId: string,
+  ): Promise<StoredReviewState | undefined>
+  listReviewStates(): Promise<StoredReviewState[]>
+  upsertReviewState(
+    reviewState: ReviewStateInput,
+  ): Promise<StoredReviewState>
+  listPersonalCorrections(): Promise<StoredPersonalCorrection[]>
+  deletePersonalCorrectionsForUserAnswer(
+    userAnswerId: string,
+  ): Promise<void>
+  close(): Promise<void>
+  destroy(): Promise<void>
+}
+
+const REVIEW_STATUSES: ReadonlySet<ReviewState['learning_status']> = new Set([
+  '못 외움',
+  '헷갈림',
+  '외움',
+])
+
+function compareIdentifiers(left: string, right: string): number {
+  return left.localeCompare(right, 'en')
+}
+
+function validateUserAnswer(answer: UserAnswerInput): void {
+  if (!answer.user_answer_id.trim()) {
+    throw new Error('user_answer_id is required')
+  }
+  if (!answer.question_id.trim()) {
+    throw new Error('question_id is required')
+  }
+  if (answer.save_status !== 'user_approved') {
+    throw new Error('Only user-approved answers can be stored')
+  }
+}
+
+function validateReviewState(reviewState: ReviewStateInput): void {
+  if (!reviewState.review_state_id.trim()) {
+    throw new Error('review_state_id is required')
+  }
+  if (!reviewState.target_id.trim()) {
+    throw new Error('Review target_id is required')
+  }
+  if (!REVIEW_STATUSES.has(reviewState.learning_status)) {
+    throw new Error('Unsupported learning_status')
+  }
+}
+
+function createStoredUserAnswer(
+  input: UserAnswerInput,
+  existing: StoredUserAnswer | undefined,
+  timestamp: string,
+): StoredUserAnswer {
+  return {
+    user_answer_id: existing?.user_answer_id ?? input.user_answer_id,
+    learner_ref: input.learner_ref,
+    question_id: input.question_id,
+    input_language: input.input_language,
+    original_input: input.original_input,
+    corrected_zh: input.corrected_zh,
+    corrected_pinyin: input.corrected_pinyin,
+    corrected_ko: input.corrected_ko,
+    correction_mode: input.correction_mode,
+    change_summary: structuredClone(input.change_summary),
+    structure_segments: structuredClone(input.structure_segments),
+    save_status: input.save_status,
+    created_at: existing?.created_at ?? input.created_at ?? timestamp,
+    updated_at: timestamp,
+  }
+}
+
+function createStoredCorrection(
+  input: PersonalCorrectionInput,
+  userAnswerId: string,
+  timestamp: string,
+): StoredPersonalCorrection {
+  if (input.source_kind !== 'user_answer' || input.data_scope !== 'personal') {
+    throw new Error('Only personal user-answer corrections can be stored')
+  }
+
+  return {
+    correction_id: input.correction_id,
+    wrong_zh: input.wrong_zh,
+    correct_zh: input.correct_zh,
+    correct_pinyin: input.correct_pinyin,
+    correct_ko: input.correct_ko,
+    error_type: input.error_type,
+    reason: input.reason,
+    source_kind: 'user_answer',
+    source_reference_ids: input.source_reference_ids
+      ? [...input.source_reference_ids]
+      : undefined,
+    user_answer_id: userAnswerId,
+    data_scope: 'personal',
+    correction_status: input.correction_status,
+    created_at: timestamp,
+  }
+}
+
+async function deleteCorrectionsInTransaction<
+  TransactionStores extends ArrayLike<
+    typeof USER_ANSWERS_STORE | typeof CORRECTIONS_STORE
+  >,
+>(
+  correctionStore: IDBPObjectStore<
+    TscStudyUserDataSchema,
+    TransactionStores,
+    typeof CORRECTIONS_STORE,
+    'readwrite'
+  >,
+  userAnswerId: string,
+): Promise<void> {
+  const correctionKeys = await correctionStore
+    .index(CORRECTION_USER_ANSWER_INDEX)
+    .getAllKeys(userAnswerId)
+
+  await Promise.all(correctionKeys.map((key) => correctionStore.delete(key)))
+}
+
+export function createUserDataRepository(
+  options: UserDataRepositoryOptions = {},
+): UserDataRepository {
+  const databaseName =
+    options.databaseName ?? DEFAULT_USER_DATA_DB_NAME
+  const now = options.now ?? (() => new Date().toISOString())
+  const databasePromise = openTscStudyUserDatabase(databaseName)
+
+  async function getExistingUserAnswer(
+    questionId: string,
+  ): Promise<StoredUserAnswer | undefined> {
+    const database = await databasePromise
+    return database.getFromIndex(
+      USER_ANSWERS_STORE,
+      USER_ANSWER_QUESTION_INDEX,
+      questionId,
+    )
+  }
+
+  async function getUserAnswerByQuestionId(
+    questionId: string,
+  ): Promise<StoredUserAnswer | undefined> {
+    return getExistingUserAnswer(questionId)
+  }
+
+  async function listUserAnswers(): Promise<StoredUserAnswer[]> {
+    const database = await databasePromise
+    const answers = await database.getAll(USER_ANSWERS_STORE)
+    return answers.sort((left, right) =>
+      compareIdentifiers(left.question_id, right.question_id),
+    )
+  }
+
+  async function upsertUserAnswer(
+    input: UserAnswerInput,
+  ): Promise<StoredUserAnswer> {
+    validateUserAnswer(input)
+    const database = await databasePromise
+    const transaction = database.transaction(
+      USER_ANSWERS_STORE,
+      'readwrite',
+    )
+    const store = transaction.objectStore(USER_ANSWERS_STORE)
+    const existing = await store
+      .index(USER_ANSWER_QUESTION_INDEX)
+      .get(input.question_id)
+    const stored = createStoredUserAnswer(input, existing, now())
+
+    await store.put(stored)
+    await transaction.done
+    return stored
+  }
+
+  async function saveApprovedAnswer(
+    input: UserAnswerInput,
+    corrections: PersonalCorrectionInput[],
+  ): Promise<StoredUserAnswer> {
+    validateUserAnswer(input)
+    const database = await databasePromise
+    const timestamp = now()
+    const transaction = database.transaction(
+      [USER_ANSWERS_STORE, CORRECTIONS_STORE],
+      'readwrite',
+    )
+    const answerStore = transaction.objectStore(USER_ANSWERS_STORE)
+    const existing = await answerStore
+      .index(USER_ANSWER_QUESTION_INDEX)
+      .get(input.question_id)
+    const storedAnswer = createStoredUserAnswer(
+      input,
+      existing,
+      timestamp,
+    )
+
+    const actualCorrections = corrections.filter(
+      ({ wrong_zh, correct_zh }) => wrong_zh !== correct_zh,
+    )
+    const storedCorrections = actualCorrections.map((correction) =>
+      createStoredCorrection(
+        correction,
+        storedAnswer.user_answer_id,
+        timestamp,
+      ),
+    )
+
+    await deleteCorrectionsInTransaction(
+      transaction.objectStore(CORRECTIONS_STORE),
+      storedAnswer.user_answer_id,
+    )
+    await answerStore.put(storedAnswer)
+    const correctionStore = transaction.objectStore(CORRECTIONS_STORE)
+    for (const correction of storedCorrections) {
+      await correctionStore.put(correction)
+    }
+    await transaction.done
+
+    return storedAnswer
+  }
+
+  async function deleteUserAnswer(userAnswerId: string): Promise<void> {
+    const database = await databasePromise
+    const transaction = database.transaction(
+      [USER_ANSWERS_STORE, CORRECTIONS_STORE],
+      'readwrite',
+    )
+
+    await deleteCorrectionsInTransaction(
+      transaction.objectStore(CORRECTIONS_STORE),
+      userAnswerId,
+    )
+    await transaction.objectStore(USER_ANSWERS_STORE).delete(userAnswerId)
+    await transaction.done
+  }
+
+  async function getReviewState(
+    targetType: ReviewState['target_type'],
+    targetId: string,
+  ): Promise<StoredReviewState | undefined> {
+    const database = await databasePromise
+    return database.getFromIndex(
+      REVIEW_STATES_STORE,
+      REVIEW_STATE_TARGET_INDEX,
+      [targetType, targetId],
+    )
+  }
+
+  async function listReviewStates(): Promise<StoredReviewState[]> {
+    const database = await databasePromise
+    const reviewStates = await database.getAll(REVIEW_STATES_STORE)
+    return reviewStates.sort((left, right) => {
+      const targetTypeOrder = compareIdentifiers(
+        left.target_type,
+        right.target_type,
+      )
+      return targetTypeOrder === 0
+        ? compareIdentifiers(left.target_id, right.target_id)
+        : targetTypeOrder
+    })
+  }
+
+  async function upsertReviewState(
+    input: ReviewStateInput,
+  ): Promise<StoredReviewState> {
+    validateReviewState(input)
+    const database = await databasePromise
+    const transaction = database.transaction(
+      REVIEW_STATES_STORE,
+      'readwrite',
+    )
+    const store = transaction.objectStore(REVIEW_STATES_STORE)
+    const existing = await store
+      .index(REVIEW_STATE_TARGET_INDEX)
+      .get([input.target_type, input.target_id])
+    const stored: StoredReviewState = {
+      review_state_id:
+        existing?.review_state_id ?? input.review_state_id,
+      learner_ref: input.learner_ref,
+      target_type: input.target_type,
+      target_id: input.target_id,
+      learning_status: input.learning_status,
+      last_reviewed_at: input.last_reviewed_at ?? now(),
+      review_count: (existing?.review_count ?? 0) + 1,
+    }
+
+    await store.put(stored)
+    await transaction.done
+    return stored
+  }
+
+  async function listPersonalCorrections(): Promise<
+    StoredPersonalCorrection[]
+  > {
+    const database = await databasePromise
+    const corrections = await database.getAll(CORRECTIONS_STORE)
+    return corrections.sort((left, right) =>
+      compareIdentifiers(left.correction_id, right.correction_id),
+    )
+  }
+
+  async function deletePersonalCorrectionsForUserAnswer(
+    userAnswerId: string,
+  ): Promise<void> {
+    const database = await databasePromise
+    const transaction = database.transaction(
+      CORRECTIONS_STORE,
+      'readwrite',
+    )
+    await deleteCorrectionsInTransaction(
+      transaction.objectStore(CORRECTIONS_STORE),
+      userAnswerId,
+    )
+    await transaction.done
+  }
+
+  async function close(): Promise<void> {
+    const database = await databasePromise
+    database.close()
+  }
+
+  async function destroy(): Promise<void> {
+    await close()
+    await deleteTscStudyUserDatabase(databaseName)
+  }
+
+  return {
+    getUserAnswerByQuestionId,
+    listUserAnswers,
+    upsertUserAnswer,
+    saveApprovedAnswer,
+    deleteUserAnswer,
+    getReviewState,
+    listReviewStates,
+    upsertReviewState,
+    listPersonalCorrections,
+    deletePersonalCorrectionsForUserAnswer,
+    close,
+    destroy,
+  }
+}
+
+export type { TscStudyUserDataSchema }

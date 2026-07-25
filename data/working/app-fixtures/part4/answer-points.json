@@ -1,0 +1,74 @@
+[
+  {
+    "answer_point_id": "ap-P4-001-001",
+    "question_id": "P4-001",
+    "point_type": "unclassified",
+    "content": "결론 → 이유 → 예시 → 정리",
+    "sequence": 1,
+    "point_status": "raw",
+    "source_reference_ids": [
+      "sr-answer-point-ap-P4-001-001-extracted"
+    ],
+    "notes": ""
+  },
+  {
+    "answer_point_id": "ap-P4-002-001",
+    "question_id": "P4-002",
+    "point_type": "unclassified",
+    "content": "결론 → 이유 → 예시 → 정리",
+    "sequence": 1,
+    "point_status": "raw",
+    "source_reference_ids": [
+      "sr-answer-point-ap-P4-002-001-extracted"
+    ],
+    "notes": ""
+  },
+  {
+    "answer_point_id": "ap-P4-003-001",
+    "question_id": "P4-003",
+    "point_type": "unclassified",
+    "content": "결론 → 이유 → 예시 → 정리",
+    "sequence": 1,
+    "point_status": "raw",
+    "source_reference_ids": [
+      "sr-answer-point-ap-P4-003-001-extracted"
+    ],
+    "notes": ""
+  },
+  {
+    "answer_point_id": "ap-P4-006-001",
+    "question_id": "P4-006",
+    "point_type": "unclassified",
+    "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+    "sequence": 1,
+    "point_status": "raw",
+    "source_reference_ids": [
+      "sr-answer-point-ap-P4-006-001-extracted"
+    ],
+    "notes": ""
+  },
+  {
+    "answer_point_id": "ap-P4-036-001",
+    "question_id": "P4-036",
+    "point_type": "unclassified",
+    "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+    "sequence": 1,
+    "point_status": "raw",
+    "source_reference_ids": [
+      "sr-answer-point-ap-P4-036-001-extracted"
+    ],
+    "notes": ""
+  },
+  {
+    "answer_point_id": "ap-P4-039-001",
+    "question_id": "P4-039",
+    "point_type": "unclassified",
+    "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+    "sequence": 1,
+    "point_status": "raw",
+    "source_reference_ids": [
+      "sr-answer-point-ap-P4-039-001-extracted"
+    ],
+    "notes": ""
+  }
+]

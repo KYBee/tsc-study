@@ -4,7 +4,7 @@
 
 Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1의 두 차례 대표 표본 검증을 바탕으로 구현 기술 독립적인 데이터 스키마 v1을 확정했다. 첫 수직 기능을 시작하기 위한 MVP 구현 기준과 데이터 저장 경계도 [IMPLEMENTATION_BASELINE.md](IMPLEMENTATION_BASELINE.md)와 [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md)에서 결정했다.
 
-`MVP 결정`은 현재 MVP의 구현 기준이며 영구적인 기술 고정을 뜻하지 않는다. 재검토 조건이 생기기 전까지 이 기준을 따르고, 실제 AI·백엔드·인증·배포, 추가 패키지와 구체적인 버전은 미결정 상태를 유지한다.
+`MVP 결정`은 현재 MVP의 구현 기준이며 영구적인 기술 고정을 뜻하지 않는다. 재검토 조건이 생기기 전까지 이 기준을 따른다. 첫 Part 4 수직 기능에서 사용한 패키지 버전은 `package-lock.json`으로 고정했지만, 이후 기능의 추가 패키지와 장기 버전 정책을 모두 확정한 것은 아니다.
 
 ## 확정된 스키마 v1 결정
 
@@ -28,7 +28,7 @@ Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1�
 
 | ID | 항목 | 상태 | MVP 결정 또는 남은 확인 사항 |
 |---|---|---|---|
-| `D-001` | 프론트엔드 기술 스택 | MVP 결정 | React + TypeScript + Vite의 모바일 우선 SPA. React Router Declarative, 일반 CSS와 CSS 변수, 초기 UI 라이브러리 없음. 구체적인 버전은 초기화 때 결정 |
+| `D-001` | 프론트엔드 기술 스택 | MVP 구현 | React 19.2.8 + TypeScript 6.0.3 + Vite 8.1.5의 모바일 우선 SPA. React Router DOM 7.18.1 Declarative, 일반 CSS와 CSS 변수, 초기 UI 라이브러리 없음 |
 | `D-002` | 백엔드 유무와 기술 스택 | MVP 경계 결정 | 첫 수직 기능에는 백엔드가 없다. 실제 AI, 서버 동기화 또는 인증 도입 전에 필요성과 기술을 다시 결정 |
 | `D-003` | AI API 제공자 및 모델 | 미결정 | 중국어 교정 품질, 구조화 결과, 비용, 개인정보 처리, 모델 변경 가능성 |
 | `D-004` | 데이터베이스 | MVP 결정 | 초기 MVP에는 서버 데이터베이스가 없다. 공용 데이터는 정적 reviewed JSON, 개인 데이터는 브라우저 IndexedDB. 다중 사용자 도입 시 재결정 |
@@ -36,10 +36,53 @@ Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1�
 | `D-006` | 배포 환경 | 미결정 | 공개 범위, 운영 비용, 비밀키 관리, 데이터 보호 |
 | `D-007` | 기준 데이터 형식 | MVP 결정 | raw는 Excel, working은 CSV, reviewed 공용 canonical은 엔터티별 JSON, 개인 기록은 IndexedDB |
 | `D-008` | 병음 생성 및 검수 방식 | 미결정 | 자동 생성 정확도, 경성·다음자 처리, 사람 검수 기준 |
-| `D-009` | 사용자 개인 데이터 저장 방식 | MVP 결정 | 현재 browser origin의 IndexedDB. 인증·서버 동기화 없음, 내보내기·가져오기는 후속. 직접 API와 래퍼 선택은 미결정 |
+| `D-009` | 사용자 개인 데이터 저장 방식 | MVP 구현 | 현재 browser origin의 IndexedDB와 `idb` 8.0.3을 사용. 인증·서버 동기화 없음, 내보내기·가져오기는 후속 |
 | `D-011` | 이미지 공개 가능 여부 | 미결정 | `VisualAsset`별 권리 근거, 원본 링크와 이미지의 공개·배포 허용 범위 |
 
-계속 미결정인 항목은 실제 AI 공급자·모델, 실제 백엔드 기술, 인증, 배포, 이미지 공개 가능 여부, 병음 자동 생성·검수 방식, IndexedDB 래퍼와 구체적인 패키지 버전이다.
+계속 미결정인 항목은 실제 AI 공급자·모델, 실제 백엔드 기술, 인증, 배포, 이미지 공개 가능 여부, 병음 자동 생성·검수 방식과 장기 패키지 업그레이드 정책이다.
+
+## 첫 Part 4 수직 기능 구현 결정
+
+2026-07-26에 첫 수직 기능을 초기화하며 다음을 구현 기준으로 선택했다.
+
+| ID | 결정 | 내용 | 재검토 조건 |
+|---|---|---|---|
+| `D-012` | 패키지 관리 | npm 11.12.1과 `package-lock.json`을 사용한다. | 조직 공통 도구나 배포 환경이 다른 관리자를 요구할 때 |
+| `D-013` | 런타임 데이터 검증 | 개발 fixture와 향후 공용 JSON의 런타임 경계에서 `zod` 4.4.3을 사용한다. 검증 실패를 정상 빈 데이터로 숨기지 않는다. | reviewed 데이터 빌드 파이프라인이 별도 검증 계층을 제공할 때 |
+| `D-014` | IndexedDB 접근 | 개인 데이터 저장에 `idb` 8.0.3을 사용한다. 서버 데이터베이스 선택은 아니다. | 로그인·서버 동기화 또는 복잡한 migration이 필요할 때 |
+| `D-015` | 임시 교정 세션 | 승인 전 입력과 provider 결과는 질문별 `sessionStorage`에 저장한다. 승인된 `UserAnswer`와 분리하며 민감 정보나 API 키는 저장하지 않는다. | 서버 교정·다중 기기 복원·개인정보 정책을 설계할 때 |
+| `D-016` | 교정 공급자 경계 | `CorrectionProvider` 인터페이스와 deterministic mock을 사용한다. 실제 외부 AI 호출과 클라이언트 API 키는 허용하지 않는다. | 공급자 비교와 비밀키를 보호할 서버 경계를 승인할 때 |
+| `D-017` | 테스트 도구 | Vitest, React Testing Library, jest-dom, user-event, jsdom, fake-indexeddb로 타입·도메인·저장소·사용자 흐름을 검증한다. | 브라우저 E2E 또는 다른 실행 환경을 정식 도입할 때 |
+
+설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
+
+| 구분 | 패키지 | 버전 |
+|---|---|---:|
+| 런타임 | `react` | 19.2.8 |
+| 런타임 | `react-dom` | 19.2.8 |
+| 런타임 | `react-router-dom` | 7.18.1 |
+| 런타임 | `idb` | 8.0.3 |
+| 런타임 | `zod` | 4.4.3 |
+| 빌드·타입 | `typescript` | 6.0.3 |
+| 빌드·타입 | `vite` | 8.1.5 |
+| 빌드·타입 | `@vitejs/plugin-react` | 6.0.4 |
+| 테스트 | `vitest` | 4.1.10 |
+| 테스트 | `@testing-library/react` | 16.3.2 |
+| 테스트 | `@testing-library/jest-dom` | 7.0.0 |
+| 테스트 | `@testing-library/user-event` | 14.6.1 |
+| 테스트 | `jsdom` | 29.1.1 |
+| 테스트 | `fake-indexeddb` | 6.2.5 |
+| 정적 검사 | `eslint` | 10.8.0 |
+| 정적 검사 | `typescript-eslint` | 8.65.0 |
+| 정적 검사 | `@eslint/js` | 10.0.1 |
+| 정적 검사 | `eslint-plugin-react-hooks` | 7.1.1 |
+| 정적 검사 | `eslint-plugin-react-refresh` | 0.5.3 |
+| 타입 | `@types/react` | 19.2.17 |
+| 타입 | `@types/react-dom` | 19.2.3 |
+| 타입 | `@types/node` | 24.13.3 |
+| 보조 | `globals` | 17.7.0 |
+
+React Router DOM 7.18.1에는 npm audit가 RSC 모드 관련 high 경고를 보고한다. 현재 앱은 서버·RSC·action을 사용하지 않는 브라우저 Declarative SPA라 해당 실행 경로를 사용하지 않지만, 패치 릴리스가 제공되면 우선 재검토한다. 경고를 숨기기 위해 강제 downgrade하지 않는다.
 
 ## 이미 확정된 제품·데이터 원칙
 
