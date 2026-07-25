@@ -11,8 +11,9 @@
 5. [원본 Excel 구조 조사](WORKBOOK_INVENTORY.md), [원본 Excel 향후 매핑](WORKBOOK_MAPPING.md)
 6. [Question 대표 표본 보고서](SAMPLE_IMPORT_REPORT.md), [Part 5~7·시각 자료 확장 표본 보고서](EXTENDED_SAMPLE_REPORT.md)
 7. [데이터 스키마 v1 요약](SCHEMA_V1_SUMMARY.md), [데이터 스키마 v1](DATA_SCHEMA.md)
-8. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
-9. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
+8. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
+9. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
+10. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
 
 ## 문서별 역할
 
@@ -21,6 +22,9 @@
 | [PROJECT_BRIEF.md](PROJECT_BRIEF.md) | 사용자 배경, 문제, 제품 목표와 비목표 | 제품 방향, 기능 제안 |
 | [MVP_SCOPE.md](MVP_SCOPE.md) | MVP 포함·제외 범위와 완료 조건 | 범위 판단, 우선순위 |
 | [USER_FLOWS.md](USER_FLOWS.md) | 핵심 네 기능의 텍스트 흐름 | 화면·상호작용 기획 |
+| [UI_SPEC.md](UI_SPEC.md) | 모바일 MVP 화면, Part별 차이, 상태·접근성 명세 | UI 구조 검토, 구현 준비 |
+| [SCREEN_DATA_CONTRACT.md](SCREEN_DATA_CONTRACT.md) | 화면별 스키마 엔터티, 필수·선택 데이터와 사용자 변경 데이터 | API·상태 설계 전 계약 확인 |
+| [NAVIGATION_FLOW.md](NAVIGATION_FLOW.md) | 목업을 참고한 화면 이동, 뒤로가기와 실패·빈 상태 흐름 | 내비게이션·사용자 흐름 검토 |
 | [DATA_WORKFLOW.md](DATA_WORKFLOW.md) | `raw`에서 `reviewed`까지의 데이터 운영 절차 | 자료 반입, 변환, 검수 |
 | [WORKBOOK_INVENTORY.md](WORKBOOK_INVENTORY.md) | 첫 원본 Excel의 파일 정보, 시트 구조와 품질 조사 결과 | 원본 확인, 표본 범위 선택 |
 | [WORKBOOK_MAPPING.md](WORKBOOK_MAPPING.md) | 원본 시트·컬럼의 공용·개인 데이터 분리 및 향후 매핑 | 표본 추출, 데이터 모델 검토 |
@@ -40,3 +44,7 @@
 - [`sources/src-001__tsc-question-bank-workbook.md`](../sources/src-001__tsc-question-bank-workbook.md): 첫 원본 Excel의 출처·파일·권리 확인 메타데이터
 - [`data/working/question-sample/README.md`](../data/working/question-sample/README.md): Question 대표 표본의 실행·선정·컬럼·상태 설명
 - [`data/working/extended-sample/README.md`](../data/working/extended-sample/README.md): Part 5~7·시각 자료 확장 표본의 실행·선정·상태 설명
+
+## UI 참고 자료
+
+- [`docs/mockups/tsc-mock-v2.html`](mockups/tsc-mock-v2.html): `TSC 학습 · 목업 v2` 모바일 화면 참고 목업. 실제 서비스 코드나 canonical 데이터가 아니다.
