@@ -4,6 +4,8 @@
 
 이 문서는 두 차례의 대표 표본 검증 결과를 반영한 구현 기술 독립적인 개념 스키마다. 특정 데이터베이스, ORM, Excel, CSV 또는 JSON 문법을 정하지 않는다. 현재 `data/working`의 CSV는 원본 반입과 구조 검증을 위한 작업 형식이며, 이 문서의 canonical 스키마와 동일한 물리 구조일 필요는 없다.
 
+MVP의 물리 데이터 단계와 저장 경계는 [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md)를 따른다.
+
 - `Identifier`: 엔터티를 구분하는 안정적인 값
 - `Text`: 문자열
 - `Integer`: 정수
@@ -142,7 +144,7 @@
 | `visual_asset_id` | `Identifier` | 필수 | 시각 파일 식별자 | `va-P2-V01-01` |
 | `source_id` | `Reference<Source>` | 필수 | 이미지 바이트를 추출한 실제 자료 | `src-001` |
 | `source_locator` | `Text` | 필수 | 원본 파일 안의 media 경로와 worksheet anchor 등 실제 위치 | `Part2 그림 연습!anchor-1` |
-| `repository_path` | `Text` | 필수 | 저장소 안의 파일 경로 | `data/working/extended-sample/assets/part2__P2-V01.png` |
+| `repository_path` | `Text` | 필수 | 검수 상태에 맞는 저장소 안의 파일 경로. reviewed 데이터에서는 working 추출 경로를 그대로 사용하지 않음 | `data/reviewed/assets/part2__P2-V01.png` |
 | `media_type` | `Text` | 필수 | 원본 미디어 형식 | `image/png` |
 | `file_size` | `Integer` | 필수 | 바이트 단위 파일 크기 | `123456` |
 | `sha256` | `Text` | 필수 | 이미지 바이트의 SHA-256 | `64자리 16진수` |
@@ -328,7 +330,7 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 
 ### `UserAnswer`
 
-사용자가 저장을 승인한 원래 입력과 교정 결과를 보관하는 개인 데이터다. 편집 중 초안은 canonical `UserAnswer`로 보지 않는다. 저장 위치와 사용자 식별 방식은 아직 미결정이다.
+사용자가 저장을 승인한 원래 입력과 교정 결과를 보관하는 개인 데이터다. 편집 중 초안은 canonical `UserAnswer`로 보지 않는다. 초기 MVP의 물리 저장은 IndexedDB이며 사용자 식별 방식은 아직 미결정이다.
 
 | 필드명 | 타입 | 필수 여부 | 설명 | 예시 |
 |---|---|---|---|---|
@@ -366,7 +368,7 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 - `ReviewState`만 사용자별 `못 외움`, `헷갈림`, `외움`을 관리한다.
 - 공용 `Correction`과 개인 `Correction` 모두 콘텐츠 자체에는 학습 상태를 저장하지 않는다.
 - `UserAnswer`, 개인 `Correction`, `ReviewState`는 공용 콘텐츠와 저장 범위를 분리한다.
-- 사용자 인증 방식과 개인 데이터의 실제 저장 방식은 아직 결정하지 않는다.
+- 초기 MVP의 개인 데이터는 공용 JSON과 분리해 IndexedDB에 저장한다. 사용자 인증, 서버 동기화와 IndexedDB 래퍼는 아직 결정하지 않는다.
 
 ## 현재 작업용 CSV에서 canonical 스키마로의 매핑
 
@@ -430,4 +432,4 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 - 원본 내부의 이름과 URL은 검증 전까지 주장으로만 보존한다.
 - `Correction`에는 `learning_status`를 두지 않고 사용자별 학습 상태를 `ReviewState`에서만 관리한다.
 - `UserAnswer`, 개인 `Correction`, `ReviewState`는 공용 문제·답변·가이드와 저장 범위를 분리한다.
-- 기준 파일 형식, 데이터베이스, 사용자 식별 방식과 이미지 공개 가능 여부는 `DECISIONS.md`에서 미결정으로 유지한다.
+- MVP 물리 형식과 저장 경계는 `DATA_FORMAT_DECISION.md`와 `DECISIONS.md`를 따른다. 사용자 식별, 실제 백엔드·서버 데이터베이스, IndexedDB 래퍼와 이미지 공개 가능 여부는 계속 미결정이다.

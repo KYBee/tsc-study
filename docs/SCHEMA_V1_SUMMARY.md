@@ -42,7 +42,7 @@ Part 1~4 Question 20개 표본과 Part 5~7 Question 14개·시각 자료 표본�
 | 범위 | 포함 데이터 | 원칙 |
 |---|---|---|
 | 공용 콘텐츠 | `Source`, `SourceReference`, `Question`, `AnswerPoint`, `ModelAnswer`, 시각 자료 엔터티, `StoryGuide`, `PartGuide`, 공용 `Correction` | 출처·검수 상태를 보존하고 개인 학습 상태를 넣지 않는다. |
-| 개인 기록 | `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하며 인증·물리 저장 방식은 아직 정하지 않는다. |
+| 개인 기록 | `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하고 초기 MVP에서는 IndexedDB에 저장한다. 인증과 서버 동기화는 포함하지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.
 
@@ -129,16 +129,19 @@ Question / UserAnswer / Correction
 - 질문과 그림의 연결은 `QuestionVisualSet`에서 명시적 ID나 검증 가능한 근거로만 만든다.
 - 권리 상태는 `VisualAsset.rights_status`에서 관리한다. 현재 추출 이미지의 값은 `review_needed`이며 공개 허용을 뜻하지 않는다.
 
-## 아직 결정하지 않은 기술 사항
+## MVP 구현 기준과 아직 결정하지 않은 사항
 
-- Excel, CSV, JSON 또는 데이터베이스 중 기준 데이터 형식
-- 실제 데이터베이스 제품
-- 프론트엔드와 백엔드 기술 스택
-- 인증 방식과 개인 데이터 저장 방식
+MVP 프론트엔드는 React + TypeScript + Vite, 공용 reviewed 데이터는 엔터티별 JSON, 개인 데이터는 브라우저 IndexedDB를 기준으로 한다. 세부 내용은 [IMPLEMENTATION_BASELINE.md](IMPLEMENTATION_BASELINE.md)와 [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md)를 따른다.
+
+계속 미결정인 사항:
+
+- 실제 백엔드 기술과 서버 데이터베이스
+- 인증과 서버 동기화
 - 배포 환경
 - AI API 제공자와 모델
 - 이미지별 실제 공개 가능 여부
 - 자동 병음 생성과 검수 방식
+- IndexedDB 래퍼와 구체적인 패키지 버전
 
 세부 상태는 [DECISIONS.md](DECISIONS.md)를 따른다.
 
@@ -155,4 +158,4 @@ Question / UserAnswer / Correction
 9. `StoryGuide`를 중국어 답변으로 변환하지 않는다.
 10. 공용 콘텐츠에 개인 연습 상태, 최근 연습일이나 개인 메모를 넣지 않는다.
 11. `verified` 또는 사이트 표시용 중국어 콘텐츠는 중국어, 병음, 한국어 뜻을 함께 검수한다.
-12. 기준 데이터 형식과 구현 기술은 별도 결정 전까지 확정하지 않는다.
+12. reviewed 공용 데이터는 엔터티별 JSON으로 만들고 관계를 안정적인 ID로 연결한다. working CSV와 개인 IndexedDB 데이터를 공용 canonical JSON에 섞지 않는다.

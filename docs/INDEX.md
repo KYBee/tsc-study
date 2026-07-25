@@ -11,9 +11,11 @@
 5. [원본 Excel 구조 조사](WORKBOOK_INVENTORY.md), [원본 Excel 향후 매핑](WORKBOOK_MAPPING.md)
 6. [Question 대표 표본 보고서](SAMPLE_IMPORT_REPORT.md), [Part 5~7·시각 자료 확장 표본 보고서](EXTENDED_SAMPLE_REPORT.md)
 7. [데이터 스키마 v1 요약](SCHEMA_V1_SUMMARY.md), [데이터 스키마 v1](DATA_SCHEMA.md)
-8. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
-9. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
-10. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
+8. [MVP 데이터 형식 결정](DATA_FORMAT_DECISION.md)
+9. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
+10. [MVP 구현 기준](IMPLEMENTATION_BASELINE.md), [Part 4 첫 수직 기능 계획](VERTICAL_SLICE_PLAN.md)
+11. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
+12. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
 
 ## 문서별 역할
 
@@ -32,7 +34,10 @@
 | [EXTENDED_SAMPLE_REPORT.md](EXTENDED_SAMPLE_REPORT.md) | Part 5~7 Question과 Part 2·7 시각 자료 표본 결과 | 스키마 v1 결정 근거, 전체 추출 범위 검토 |
 | [SCHEMA_V1_SUMMARY.md](SCHEMA_V1_SUMMARY.md) | 두 차례 표본 검증을 반영한 스키마 v1의 배경·흐름·운영 규칙 요약 | 전체 데이터 반입 전 구조 검토 |
 | [DATA_SCHEMA.md](DATA_SCHEMA.md) | 구현 기술에 독립적인 canonical 엔터티, 필드, 관계와 검증 규칙 | 데이터 모델, 가져오기 |
+| [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md) | raw Excel, working CSV, reviewed JSON, 런타임과 개인 IndexedDB의 책임 | 데이터 변환·저장 경계 |
 | [AI_CORRECTION_RULES.md](AI_CORRECTION_RULES.md) | 한국어·중국어·혼합 입력의 최소 교정 원칙 | AI 프롬프트, 교정 결과 |
+| [IMPLEMENTATION_BASELINE.md](IMPLEMENTATION_BASELINE.md) | MVP 프론트엔드, 공용·개인 데이터, AI 경계와 테스트 기준 | 실제 앱 초기화 전 확인 |
+| [VERTICAL_SLICE_PLAN.md](VERTICAL_SLICE_PLAN.md) | Part 4 첫 수직 기능의 17단계 작업·완료 계약 | 첫 앱 구현 |
 | [ROADMAP.md](ROADMAP.md) | Phase 0~7의 진행 순서 | 단계 계획 |
 | [BACKLOG.md](BACKLOG.md) | 우선순위가 있는 상위 사용자 스토리 | 기능 선택, 완료 판단 |
 | [DECISIONS.md](DECISIONS.md) | 확정된 스키마 결정과 아직 결정하지 않은 기술·운영 사항 | 설계 결정 전 확인 |

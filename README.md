@@ -30,7 +30,9 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 **Phase 0: 프로젝트 지침과 문서**는 완료했고, **Phase 1: 원본 자료 적재 및 대표 표본 검수**가 진행 중이다.
 
-첫 원본 Excel을 원래 내용과 파일명 그대로 `data/raw`에 적재하고 시트 구조를 조사한 뒤, Part 1~4의 대표 Question 20개와 Part 5~7의 대표 Question 14개를 작업용 CSV로 추출했다. Part 2·7의 그림 세트, 원본 추천 답변과 StoryGuide도 각각 2세트씩 표본 검증했으며, 그 결과를 바탕으로 구현 기술 독립적인 [데이터 스키마 v1](docs/SCHEMA_V1_SUMMARY.md)을 문서화했다. 참고 목업을 기준으로 [모바일 UI 명세](docs/UI_SPEC.md), [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](docs/NAVIGATION_FLOW.md)도 작성했다. 아직 전체 253개 문제와 전체 시각 자료의 변환·정규화·검수, 새 모범답안 작성과 실제 웹 앱 구현은 시작하지 않았으며 패키지, 데이터베이스, API 연결도 없다. 프론트엔드·백엔드 기술 스택, 기준 데이터 형식과 이미지 공개 가능 여부는 여전히 미결정이다.
+첫 원본 Excel을 원래 내용과 파일명 그대로 `data/raw`에 적재하고 시트 구조를 조사한 뒤, Part 1~4의 대표 Question 20개와 Part 5~7의 대표 Question 14개를 작업용 CSV로 추출했다. Part 2·7의 그림 세트, 원본 추천 답변과 StoryGuide도 각각 2세트씩 표본 검증했으며, 그 결과를 바탕으로 구현 기술 독립적인 [데이터 스키마 v1](docs/SCHEMA_V1_SUMMARY.md)을 문서화했다. 참고 목업 기준의 [모바일 UI 명세](docs/UI_SPEC.md), [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](docs/NAVIGATION_FLOW.md)도 완료했다.
+
+[MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)에서는 React + TypeScript + Vite, reviewed 공용 JSON과 개인 IndexedDB를 첫 구현 기준으로 결정했고, [Part 4 수직 기능 계획](docs/VERTICAL_SLICE_PLAN.md)을 다음 실제 구현 대상으로 정했다. 아직 React/Vite 프로젝트 초기화, package.json과 앱 코드는 없으며 전체 253개 문제와 전체 시각 자료의 변환·정규화·검수도 시작하지 않았다. 실제 AI 공급자·모델, 백엔드 기술, 인증, 배포, 이미지 공개 가능 여부, 병음 생성·검수 방식, IndexedDB 래퍼와 구체적인 패키지 버전은 계속 미결정이다.
 
 이 저장소는 완성된 문제와 답변만 보관하는 곳이 아니다. 원본 문제를 검수하고, 답변이 없는 예상 문제의 모범답안을 점진적으로 작성하는 작업 공간이다. 답변이 없는 상태는 정상이다.
 
@@ -51,7 +53,8 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 ## 다음 작업 순서
 
-1. [데이터 스키마 v1](docs/DATA_SCHEMA.md)과 [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md)의 미해결 계약을 검토한다.
-2. 스키마 v1에 맞춘 전체 반입 규칙과 검수 범위를 정한다.
-3. 원본 내부의 출처 주장과 링크·이미지 공개 가능 여부를 별도로 확인한다.
-4. 전체 추출과 앱 구현 전에 기준 데이터 형식과 구현 기술을 별도로 결정한다.
+1. [MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)과 [Part 4 수직 기능 계획](docs/VERTICAL_SLICE_PLAN.md)을 확인한다.
+2. React + TypeScript + Vite 프로젝트를 초기화하며 호환 패키지 버전과 테스트 도구를 결정한다.
+3. 스키마 v1 타입과 공용 JSON·개인 IndexedDB 저장소 경계를 정의한다.
+4. Part 4 raw 표본 6개를 개발 전용 임시 JSON으로 변환하고 mock 교정 흐름을 구현한다.
+5. 첫 수직 기능 검증 후 전체 데이터 추출·검수와 다음 Part 범위를 별도로 결정한다.
