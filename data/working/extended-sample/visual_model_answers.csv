@@ -1,0 +1,9 @@
+answer_id,visual_question_id,linked_question_id,answer_variant,target_level,answer_zh,answer_pinyin,answer_ko,answer_status,provenance_kind,source_id,source_locator,review_notes
+ma-p2-v01-q1-basic,vq-p2-v01-q1,P2-006,basic,,男的正在跑步。,nán de zhèng zài pǎo bù 。,남자는 달리고 있습니다.,review_needed,unverified_source,src-001,'Part2 정답'!A2:H2,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v01-q2-basic,vq-p2-v01-q2,,basic,,女的坐在长椅上。,nǚ de zuò zài zhǎng yǐ shàng 。,여자가 벤치에 앉아 있습니다.,review_needed,unverified_source,src-001,'Part2 정답'!A3:H3,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v01-q3-basic,vq-p2-v01-q3,P2-009,basic,,猫在长椅下面。,māo zài zhǎng yǐ xià miàn 。,고양이는 벤치 아래에 있습니다.,review_needed,unverified_source,src-001,'Part2 정답'!A4:H4,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v01-q4-basic,vq-p2-v01-q4,P2-027,basic,,现在七点半。,xiàn zài qī diǎn bàn 。,지금 7시 30분입니다.,review_needed,unverified_source,src-001,'Part2 정답'!A5:H5,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v02-q1-basic,vq-p2-v02-q1,P2-036,basic,,今天阴天，还下雨。,jīn tiān yīn tiān ， hái xià yǔ 。,오늘은 흐리고 비가 옵니다.,review_needed,unverified_source,src-001,'Part2 정답'!A6:H6,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v02-q2-basic,vq-p2-v02-q2,P2-035,basic,,是的，今天比昨天冷。,shì de ， jīn tiān bǐ zuó tiān lěng 。,"네, 오늘이 어제보다 춥습니다.",review_needed,unverified_source,src-001,'Part2 정답'!A7:H7,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v02-q3-basic,vq-p2-v02-q3,,basic,,今天八度。,jīn tiān bā dù 。,오늘은 8도입니다.,review_needed,unverified_source,src-001,'Part2 정답'!A8:H8,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.
+ma-p2-v02-q4-basic,vq-p2-v02-q4,,basic,,昨天是晴天。,zuó tiān shì qíng tiān 。,어제는 맑았습니다.,review_needed,unverified_source,src-001,'Part2 정답'!A9:H9,Excel 원본 추천 답변이며 언어·내용 검수가 필요함.

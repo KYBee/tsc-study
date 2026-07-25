@@ -1,0 +1,3 @@
+story_guide_id,visual_set_id,original_figure_id,linked_question_id,situation_ko,recommended_flow,recommended_connectors_zh,material_nature,source_id,source_locator,guide_status,notes
+sg-p7-v01,vs-p7-v01,P7-V01,,새 원피스를 산 뒤 친구에게 보여주다가 음료를 쏟고 집에서 세탁한다.,구매 → 자랑 → 음료를 쏟음 → 얼룩을 지움,一开始 → 后来 → 没想到 → 于是 → 最后,공식 샘플 소재 재구성,src-001,'Part7 정답 포인트'!A2:E2,raw,그림 ID로 VisualSet과 연결함; 문제은행에는 명시적 그림 ID 연결이 없고 공통 지시문이 12개 Question과 일치하여 linked_question_id를 비움.
+sg-p7-v02,vs-p7-v02,P7-V02,,운전면허를 딴 여성이 운전하다 사고를 내고 비싼 수리비를 낸다.,면허 취득 → 운전 → 사고 → 수리비,一开始 → 后来 → 没想到 → 于是 → 最后,응시후기 소재 재구성,src-001,'Part7 정답 포인트'!A3:E3,raw,그림 ID로 VisualSet과 연결함; 문제은행에는 명시적 그림 ID 연결이 없고 공통 지시문이 12개 Question과 일치하여 linked_question_id를 비움.

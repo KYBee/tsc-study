@@ -1,0 +1,9 @@
+visual_question_id,visual_set_id,item_number,linked_question_id,question_zh,question_pinyin,question_ko,source_id,source_locator,mapping_status,notes
+vq-p2-v01-q1,vs-p2-v01,1,P2-006,男的在做什么？,nán de zài zuò shén me ？,남자는 무엇을 하고 있습니까?,src-001,'Part2 그림 연습'!H3:K5,matched_exact_zh,원본 문항 표기 Q1; 문제은행 중국어 원문 완전 일치(단일)
+vq-p2-v01-q2,vs-p2-v01,2,,谁坐在长椅上？,shuí zuò zài zhǎng yǐ shàng ？,누가 벤치에 앉아 있습니까?,src-001,'Part2 그림 연습'!H7:K9,unmatched,원본 문항 표기 Q2; 문제은행 중국어 원문 완전 일치 없음
+vq-p2-v01-q3,vs-p2-v01,3,P2-009,猫在哪儿？,māo zài nǎ ér ？,고양이는 어디에 있습니까?,src-001,'Part2 그림 연습'!H11:K13,matched_exact_zh,원본 문항 표기 Q3; 문제은행 중국어 원문 완전 일치(단일)
+vq-p2-v01-q4,vs-p2-v01,4,P2-027,现在几点？,xiàn zài jǐ diǎn ？,지금 몇 시입니까?,src-001,'Part2 그림 연습'!H15:K17,matched_exact_zh,원본 문항 표기 Q4; 문제은행 중국어 원문 완전 일치(단일)
+vq-p2-v02-q1,vs-p2-v02,1,P2-036,今天天气怎么样？,jīn tiān tiān qì zěn me yàng ？,오늘 날씨는 어떻습니까?,src-001,'Part2 그림 연습'!H22:K24,matched_exact_zh,원본 문항 표기 Q1; 문제은행 중국어 원문 완전 일치(단일)
+vq-p2-v02-q2,vs-p2-v02,2,P2-035,今天比昨天冷吗？,jīn tiān bǐ zuó tiān lěng ma ？,오늘이 어제보다 춥습니까?,src-001,'Part2 그림 연습'!H26:K28,matched_exact_zh,원본 문항 표기 Q2; 문제은행 중국어 원문 완전 일치(단일)
+vq-p2-v02-q3,vs-p2-v02,3,,今天多少度？,jīn tiān duō shǎo dù ？,오늘은 몇 도입니까?,src-001,'Part2 그림 연습'!H30:K32,unmatched,원본 문항 표기 Q3; 문제은행 중국어 원문 완전 일치 없음
+vq-p2-v02-q4,vs-p2-v02,4,,昨天的天气怎么样？,zuó tiān de tiān qì zěn me yàng ？,어제 날씨는 어땠습니까?,src-001,'Part2 그림 연습'!H34:K36,unmatched,원본 문항 표기 Q4; 문제은행 중국어 원문 완전 일치 없음
