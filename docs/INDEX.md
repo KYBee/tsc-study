@@ -9,9 +9,10 @@
 3. [사용자 흐름](USER_FLOWS.md)
 4. [데이터 작업 흐름](DATA_WORKFLOW.md)
 5. [원본 Excel 구조 조사](WORKBOOK_INVENTORY.md), [원본 Excel 향후 매핑](WORKBOOK_MAPPING.md)
-6. [데이터 스키마 초안](DATA_SCHEMA.md)
-7. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
-8. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
+6. [Question 대표 표본 보고서](SAMPLE_IMPORT_REPORT.md)
+7. [데이터 스키마 초안](DATA_SCHEMA.md)
+8. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
+9. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
 
 ## 문서별 역할
 
@@ -23,6 +24,7 @@
 | [DATA_WORKFLOW.md](DATA_WORKFLOW.md) | `raw`에서 `reviewed`까지의 데이터 운영 절차 | 자료 반입, 변환, 검수 |
 | [WORKBOOK_INVENTORY.md](WORKBOOK_INVENTORY.md) | 첫 원본 Excel의 파일 정보, 시트 구조와 품질 조사 결과 | 원본 확인, 표본 범위 선택 |
 | [WORKBOOK_MAPPING.md](WORKBOOK_MAPPING.md) | 원본 시트·컬럼의 공용·개인 데이터 분리 및 향후 매핑 | 표본 추출, 데이터 모델 검토 |
+| [SAMPLE_IMPORT_REPORT.md](SAMPLE_IMPORT_REPORT.md) | Part 1~4 Question 20개 표본 결과와 스키마 검토 사항 | 추가 표본, 스키마 결정 |
 | [DATA_SCHEMA.md](DATA_SCHEMA.md) | 구현 기술에 독립적인 엔터티와 필드 초안 | 데이터 모델, 가져오기 |
 | [AI_CORRECTION_RULES.md](AI_CORRECTION_RULES.md) | 한국어·중국어·혼합 입력의 최소 교정 원칙 | AI 프롬프트, 교정 결과 |
 | [ROADMAP.md](ROADMAP.md) | Phase 0~7의 진행 순서 | 단계 계획 |
@@ -34,3 +36,4 @@
 - [`data/README.md`](../data/README.md): `raw`, `working`, `reviewed` 디렉터리의 수정·이동 규칙
 - [`sources/README.md`](../sources/README.md): 출처 자료의 이름, 메타데이터, 저작권 주의사항
 - [`sources/src-001__tsc-question-bank-workbook.md`](../sources/src-001__tsc-question-bank-workbook.md): 첫 원본 Excel의 출처·파일·권리 확인 메타데이터
+- [`data/working/question-sample/README.md`](../data/working/question-sample/README.md): Question 대표 표본의 실행·선정·컬럼·상태 설명
