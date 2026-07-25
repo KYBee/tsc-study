@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="B">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TSC 학습 · 목업 v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+/* ───── 테마 토큰 ───── */
+html[data-theme="A"]{
+  --bg:#FFFFFF; --card:#FFFFFF; --card2:#F7F7F7;
+  --ink:#141414; --soft:#787878; --faint:#B3B3B3; --line:#EBEBEB;
+  --acc:#141414; --acc-bg:#F2F2F2; --acc-on:#FFFFFF;
+  --red:#C9372C; --red-bg:#FBF0EF; --green:#2F6B46; --green-bg:#EEF4F0;
+  --r:6px; --shadow:none; --card-border:1px solid var(--line);
+  --zh-font:'Noto Serif SC',serif;
+}
+html[data-theme="B"]{
+  --bg:#F3F4F9; --card:#FFFFFF; --card2:#F0F1F7;
+  --ink:#1E2130; --soft:#6E7385; --faint:#A5AABB; --line:#E7E9F1;
+  --acc:#4A55C7; --acc-bg:#EDEFFB; --acc-on:#FFFFFF;
+  --red:#E4644B; --red-bg:#FCEEEB; --green:#2E8560; --green-bg:#E9F5F0;
+  --r:16px; --shadow:0 1px 3px rgba(30,33,48,.05); --card-border:none;
+  --zh-font:'Noto Sans SC',sans-serif;
+}
+html[data-theme="C"]{
+  --bg:#16181D; --card:#1E2128; --card2:#262A33;
+  --ink:#EAE8E2; --soft:#9BA0AB; --faint:#5E636E; --line:#2C303A;
+  --acc:#D2A24C; --acc-bg:rgba(210,162,76,.14); --acc-on:#16181D;
+  --red:#E07A66; --red-bg:rgba(224,122,102,.13); --green:#6FBF97; --green-bg:rgba(111,191,151,.13);
+  --r:14px; --shadow:none; --card-border:1px solid var(--line);
+  --zh-font:'Noto Serif SC',serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:'Pretendard Variable',Pretendard,-apple-system,sans-serif;
+  background:var(--bg); color:var(--ink);
+  max-width:480px; margin:0 auto; min-height:100dvh; padding-bottom:86px;
+  letter-spacing:-0.01em; transition:background .2s,color .2s;
+}
+.zh{font-family:var(--zh-font);font-weight:700;line-height:1.55}
+.py{color:var(--faint);font-size:.82rem;margin-top:2px;line-height:1.5}
+.ko{color:var(--soft);font-size:.85rem;line-height:1.5;margin-top:4px}
+.screen{display:none}.screen.on{display:block;animation:fade .15s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ───── 헤더 + 테마 전환 ───── */
+header{position:sticky;top:0;z-index:20;background:var(--bg);padding:14px 20px 10px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line)}
+header .back{border:none;background:none;font-size:1.15rem;color:var(--ink);cursor:pointer;display:none;padding-right:2px}
+header h1{font-size:1rem;font-weight:800;flex:1}
+.theme-sw{display:flex;background:var(--card2);border-radius:99px;padding:3px}
+.theme-sw button{border:none;background:none;font-family:inherit;font-size:.7rem;font-weight:700;color:var(--faint);padding:4px 9px;border-radius:99px;cursor:pointer}
+.theme-sw button.on{background:var(--ink);color:var(--bg)}
+
+/* ───── 공통 컴포넌트 ───── */
+.card{background:var(--card);border:var(--card-border);border-radius:var(--r);box-shadow:var(--shadow);margin:10px 20px;padding:16px}
+.tap{cursor:pointer}.tap:active{opacity:.65}
+.label{font-size:.72rem;font-weight:700;color:var(--faint);letter-spacing:.07em;margin:20px 22px 2px;display:flex;justify-content:space-between;align-items:center}
+.label .more{font-size:.72rem;color:var(--acc);cursor:pointer;font-weight:700}
+.pills{display:flex;gap:6px;overflow-x:auto;padding:10px 20px 2px;scrollbar-width:none}
+.pills::-webkit-scrollbar{display:none}
+.pill{flex-shrink:0;border:1px solid var(--line);background:var(--card);color:var(--soft);border-radius:99px;padding:6px 13px;font-family:inherit;font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap}
+.pill.on{background:var(--acc);border-color:var(--acc);color:var(--acc-on)}
+.btn{display:block;width:calc(100% - 40px);margin:14px 20px;padding:15px;border:none;border-radius:var(--r);font-family:inherit;font-size:.93rem;font-weight:700;background:var(--acc);color:var(--acc-on);cursor:pointer}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--soft)}
+.btn-sm{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 14px;font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.d-g{background:var(--green)}.d-y{background:var(--acc)}.d-n{background:var(--line)}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;border-radius:99px;padding:3px 9px}
+.tag.acc{color:var(--acc);background:var(--acc-bg)}
+.tag.red{color:var(--red);background:var(--red-bg)}
+.tag.grn{color:var(--green);background:var(--green-bg)}
+
+/* ───── 홈: 복습 대시보드 ───── */
+.dash{margin-top:14px}
+.dash-top{display:flex;align-items:center;gap:20px;cursor:pointer}
+.dash-top:active{opacity:.7}
+.ring-wrap{position:relative;width:96px;height:96px;flex-shrink:0}
+.ring{width:96px;height:96px;transform:rotate(-90deg)}
+.rb{fill:none;stroke:var(--card2);stroke-width:9}
+.rf{fill:none;stroke:var(--acc);stroke-width:9;stroke-linecap:round}
+.ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.ring-txt b{font-size:1.3rem;font-weight:800;line-height:1}
+.ring-txt b span{font-size:.78rem;color:var(--faint);font-weight:700}
+.ring-txt em{font-style:normal;font-size:.62rem;color:var(--soft);font-weight:700}
+.dash-brk{flex:1;display:flex;flex-direction:column;gap:10px}
+.dash-brk>div{display:flex;align-items:center;gap:9px;font-size:.83rem;color:var(--soft);font-weight:600}
+.dash-brk b{margin-left:auto;color:var(--ink);font-weight:800;font-size:.95rem}
+.btn-dash{width:100%;margin-top:16px;padding:13px;border:none;border-radius:calc(var(--r) - 4px);background:var(--acc);color:var(--acc-on);font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-dash:active{opacity:.8}
+.continue{display:flex;align-items:center;gap:13px}
+.continue .zh-ic{font-family:var(--zh-font);font-weight:700;font-size:1.05rem;width:42px;height:42px;border-radius:calc(var(--r) - 3px);background:var(--acc-bg);color:var(--acc);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.continue .t{flex:1;min-width:0}
+.continue .t b{font-size:.9rem;display:block}
+.continue .t span{font-size:.76rem;color:var(--soft)}
+.pbar{height:4px;background:var(--card2);border-radius:99px;margin-top:7px;overflow:hidden}
+.pbar i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.part-row{display:flex;align-items:center;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.part-row:last-child{border-bottom:none;padding-bottom:2px}
+.part-row:first-child{padding-top:2px}
+.part-row:active{opacity:.6}
+.part-row .n{font-family:var(--zh-font);font-weight:700;color:var(--faint);width:22px;text-align:center}
+.part-row .t{flex:1;min-width:0}
+.part-row .t b{font-size:.88rem;font-weight:700}
+.part-row .t span{display:block;font-size:.74rem;color:var(--soft);margin-top:1px}
+.part-row .st{font-size:.72rem;font-weight:700;color:var(--soft);text-align:right}
+.part-row .st .pct{color:var(--acc)}
+
+/* ───── 문제 리스트 (파트 상세) ───── */
+.q-row{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.q-row:last-child{border-bottom:none}
+.q-row:active{opacity:.6}
+.q-row .t{flex:1;min-width:0}
+.q-row .t .zh{font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.q-row .t .ko{margin-top:1px;font-size:.76rem}
+.structure{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:11px;font-size:.75rem;font-weight:700;color:var(--acc)}
+.structure i{font-style:normal;color:var(--faint);font-weight:400}
+
+/* ───── 문제 상세 ───── */
+textarea{width:100%;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:13px;font-family:inherit;font-size:.94rem;line-height:1.65;min-height:104px;resize:vertical;color:var(--ink)}
+textarea:focus{outline:none;border-color:var(--acc)}
+textarea::placeholder{color:var(--faint)}
+.opt-row{display:flex;gap:6px;margin:10px 20px 0}
+.opt-row .pill{font-size:.74rem;padding:6px 11px}
+details.model{margin-top:12px}
+details.model summary{list-style:none;cursor:pointer;font-size:.8rem;font-weight:700;color:var(--acc)}
+details.model summary::before{content:'▸ '}
+details[open].model summary::before{content:'▾ '}
+details.model>div{margin-top:10px;background:var(--card2);border-radius:calc(var(--r) - 4px);padding:12px}
+
+/* ───── 교정 결과 ───── */
+.diff{background:var(--red-bg);border-left:3px solid var(--red);border-radius:0 calc(var(--r) - 4px) calc(var(--r) - 4px) 0;padding:12px 13px;margin-top:10px}
+.diff .zh2{font-family:var(--zh-font);font-size:.95rem;line-height:1.6}
+.diff .b{color:var(--faint);text-decoration:line-through}
+.diff .a{color:var(--red);font-weight:700}
+.diff .why{font-size:.79rem;color:var(--soft);margin-top:5px;line-height:1.5}
+.loading{padding:56px 0;text-align:center;color:var(--soft);font-size:.85rem}
+.loading .c{font-family:var(--zh-font);font-size:1.7rem;font-weight:700;color:var(--acc);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+.sim{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.sim:last-child{border-bottom:none}
+.sim .t{flex:1;min-width:0}
+.sim .zh{font-size:.9rem}
+.toggle-row{display:flex;gap:6px;margin-top:12px}
+
+/* ───── 복습 ───── */
+.rev-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.reveal-blur{filter:blur(6px);user-select:none}
+.rev-actions{display:flex;gap:8px;margin:12px 20px}
+.rev-actions button{flex:1;padding:13px 2px;border-radius:var(--r);border:1px solid var(--line);background:var(--card);font-family:inherit;font-size:.83rem;font-weight:700;cursor:pointer;color:var(--soft)}
+.rev-actions .no{color:var(--red)}
+.rev-actions .yes{color:var(--green)}
+
+/* ───── 나의 답변 / 실수 노트 ───── */
+.search{margin:12px 20px 0;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:10px 16px;color:var(--faint);font-size:.85rem}
+.mine-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.mine-meta .id{font-size:.7rem;font-weight:700;color:var(--faint)}
+.err-head{display:flex;justify-content:space-between;align-items:baseline}
+.err-line{font-family:var(--zh-font);font-size:1rem;margin-top:8px}
+.err-line .b{color:var(--faint);text-decoration:line-through}
+.err-line .a{color:var(--red);font-weight:700}
+.streak{display:flex;gap:5px;margin-top:12px}
+.streak span{flex:1;height:26px;border-radius:6px;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700;color:var(--faint)}
+.streak span.hit{background:var(--acc-bg);color:var(--acc)}
+
+/* ───── 하단 탭 ───── */
+nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--card);border-top:1px solid var(--line);display:flex;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:30}
+nav button{flex:1;border:none;background:none;font-family:inherit;font-size:.66rem;font-weight:700;color:var(--faint);cursor:pointer;display:flex;flex-direction:column;gap:2px;align-items:center;padding:4px 0}
+nav button .i{font-family:var(--zh-font);font-size:1.08rem;font-weight:700}
+nav button.on{color:var(--ink)}
+nav button.on .i{color:var(--acc)}
+nav button .cnt{position:absolute;margin-left:26px;margin-top:-3px;background:var(--red);color:#fff;font-size:.58rem;border-radius:99px;padding:1px 5px;font-weight:700}
+.toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);font-size:.8rem;font-weight:700;padding:10px 18px;border-radius:99px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:40}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <button class="back" id="backBtn">←</button>
+  <h1 id="hTitle">학습</h1>
+  <div class="theme-sw">
+    <button data-t="A">A</button><button data-t="B" class="on">B</button><button data-t="C">C</button>
+  </div>
+</header>
+
+<!-- ═════ 홈 ═════ -->
+<div class="screen on" id="s-home">
+  <div class="label" style="margin-top:14px">파트별 학습</div>
+  <div class="card" id="partList"></div>
+</div>
+
+<!-- ═════ 파트 상세 ═════ -->
+<div class="screen" id="s-part">
+  <div class="card">
+    <span class="tag acc" id="pd-no"></span>
+    <div style="font-size:1.1rem;font-weight:800;margin-top:8px" id="pd-title"></div>
+    <div class="ko" id="pd-goal"></div>
+    <div class="structure" id="pd-struct"></div>
+  </div>
+
+  <div class="label">문제</div>
+  <div class="card" id="pd-questions" style="padding-top:6px;padding-bottom:6px"></div>
+</div>
+
+<!-- ═════ 문제 상세 ═════ -->
+<div class="screen" id="s-q">
+  <div class="card">
+    <div style="display:flex;justify-content:space-between">
+      <span class="tag acc" id="q-id"></span>
+      <span class="tag" style="background:var(--card2);color:var(--soft)" id="q-topic"></span>
+    </div>
+    <div class="zh" style="font-size:1.28rem;margin-top:10px" id="q-zh"></div>
+    <div class="py" id="q-py"></div>
+    <div class="ko" id="q-ko"></div>
+    <div class="structure" id="q-struct"></div>
+    <details class="model">
+      <summary>모범답안</summary>
+      <div>
+        <div class="zh" id="q-m-zh"></div>
+        <div class="py" id="q-m-py"></div>
+        <div class="ko" id="q-m-ko"></div>
+      </div>
+    </details>
+  </div>
+
+  <div id="q-mine-wrap" style="display:none">
+    <div class="label">나의 답변</div>
+    <div class="card" style="border-color:var(--acc)">
+      <div class="zh" id="q-mine-zh"></div>
+      <div class="py" id="q-mine-py"></div>
+      <div class="ko" id="q-mine-ko"></div>
+    </div>
+  </div>
+
+  <div class="label" id="ta-label">내 답변 쓰기</div>
+  <div style="margin:8px 20px 0">
+    <textarea id="ta" placeholder="한국어·중국어 모두 괜찮아요. 틀려도 그대로 적으세요."></textarea>
+  </div>
+  <div class="opt-row">
+    <button class="pill on" onclick="optSel(this)">최소 교정</button>
+    <button class="pill" onclick="optSel(this)">더 자연스럽게</button>
+    <button class="pill" onclick="optSel(this)">고급 표현 확장</button>
+  </div>
+  <button class="btn" onclick="correct()">교정해서 답변 만들기</button>
+</div>
+
+<!-- ═════ 결과 ═════ -->
+<div class="screen" id="s-r">
+  <div id="loading" class="loading"><div class="c">改</div><p style="margin-top:12px">내 표현을 살려서 교정하는 중…</p></div>
+  <div id="rbody" style="display:none">
+    <div class="card" style="border-color:var(--acc)">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="tag grn">교정 완료 · 수정 2곳</span>
+        <button class="btn-sm" id="pyToggle" onclick="togglePy()">병음 숨기기</button>
+      </div>
+      <div class="zh" style="font-size:1.04rem;margin-top:10px">我喜欢在家运动。因为工作很忙，没有时间去健身房，所以在家一边看视频一边运动很方便。</div>
+      <div class="py py-t">Wǒ xǐhuan zài jiā yùndòng. Yīnwèi gōngzuò hěn máng, méiyǒu shíjiān qù jiànshēnfáng, suǒyǐ zài jiā yìbiān kàn shìpín yìbiān yùndòng hěn fāngbiàn.</div>
+      <div class="ko">저는 집에서 운동하는 것을 좋아합니다. 일이 바빠 헬스장에 갈 시간이 없어서, 집에서 영상을 보면서 운동하는 것이 편리합니다.</div>
+    </div>
+
+    <div class="label">수정 전 → 후</div>
+    <div class="card" style="padding-top:6px">
+      <div class="diff">
+        <div class="zh2"><span class="b">在家看视频运动</span> <span class="a">→ 一边看视频一边运动</span></div>
+        <div class="why">동시에 하는 두 행동은 一边……一边…… 구조가 자연스러워요.</div>
+      </div>
+      <div class="diff">
+        <div class="zh2"><span class="b">工作很忙，没有时间</span> <span class="a">→ 因为……所以……</span></div>
+        <div class="why">이유→결과를 연결하면 Part 4 답변 구조가 분명해져요.</div>
+      </div>
+    </div>
+
+    <button class="btn" onclick="save()">나의 답변으로 저장</button>
+
+    <div class="label">이 답변을 쓸 수 있는 비슷한 문제</div>
+    <div class="card" style="padding-top:5px;padding-bottom:5px">
+      <div class="sim"><div class="t"><div class="zh">你多长时间运动一次？</div><div class="ko">얼마나 자주 운동합니까?</div></div><span class="tag acc">재사용</span></div>
+      <div class="sim"><div class="t"><div class="zh">你为什么喜欢运动？</div><div class="ko">왜 운동을 좋아합니까?</div></div><span class="tag acc">재사용</span></div>
+    </div>
+    <button class="btn ghost" onclick="go('s-q')">다시 써보기</button>
+  </div>
+</div>
+
+<!-- ═════ 복습 ═════ -->
+<div class="screen" id="s-review">
+  <div class="card" style="margin-top:14px">
+    <div class="rev-meta">
+      <span style="font-size:.72rem;font-weight:700;color:var(--faint)" id="rev-n">6 / 12</span>
+      <span class="tag acc">Part 4</span>
+    </div>
+    <div class="zh" style="font-size:1.25rem" id="rev-qz">你喜欢在哪儿运动？</div>
+    <div class="py">Nǐ xǐhuan zài nǎr yùndòng?</div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <span style="font-size:.74rem;font-weight:700;color:var(--soft)">나의 답변</span>
+      <button class="btn-sm" id="revealBtn" onclick="reveal()">답변 보기</button>
+    </div>
+    <div id="rev-a" class="reveal-blur">
+      <div class="zh">我喜欢在家运动。因为工作很忙，没有时间去健身房，所以在家一边看视频一边运动很方便。</div>
+      <div class="py">Wǒ xǐhuan zài jiā yùndòng...</div>
+    </div>
+  </div>
+  <div class="rev-actions" id="revActs" style="visibility:hidden">
+    <button class="no" onclick="mark('못 외움 — 내일 다시 나와요')">못 외움</button>
+    <button onclick="mark('헷갈림으로 기록')">헷갈림</button>
+    <button class="yes" onclick="mark('외움 ✓ 3일 뒤 복습')">외움</button>
+  </div>
+</div>
+
+<!-- ═════ 나의 답변 ═════ -->
+<div class="screen" id="s-mine">
+  <div class="label" style="margin-top:14px">저장한 답변 · 탭하면 문제로 이동</div>
+  <div class="card tap" onclick="openQById('P4-SPORT-001')">
+    <div class="mine-meta"><span class="id">P4-SPORT-001 · 운동</span><span style="color:var(--faint)">›</span></div>
+    <div class="zh">我喜欢在家运动。因为工作很忙，没有时间去健身房，所以在家一边看视频一边运动很方便。</div>
+    <div class="ko">저는 집에서 운동하는 것을 좋아합니다. 일이 바빠 헬스장에 갈 시간이 없어서…</div>
+  </div>
+  <div class="card tap" onclick="openQById('P4-FOOD-003')">
+    <div class="mine-meta"><span class="id">P4-FOOD-003 · 음식</span><span style="color:var(--faint)">›</span></div>
+    <div class="zh">我最喜欢吃妈妈做的菜，因为有家的味道。</div>
+    <div class="ko">엄마가 해주신 음식을 가장 좋아합니다. 집의 맛이 나기 때문입니다.</div>
+  </div>
+</div>
+
+<!-- ═════ 실수 노트 ═════ -->
+<div class="screen" id="s-err">
+  <div class="label" style="margin-top:14px">자주 틀리는 표현</div>
+  <div class="card">
+    <div class="err-head"><span class="tag" style="background:var(--card2);color:var(--soft)">어순</span><span style="font-size:.7rem;color:var(--faint)">6강</span></div>
+    <div class="err-line"><span class="b">一个小时半</span> <span class="a">→ 一个半小时</span></div>
+    <div class="ko">半은 양사 앞에 위치합니다.</div>
+  </div>
+  <div class="card">
+    <div class="err-head"><span class="tag" style="background:var(--card2);color:var(--soft)">정도부사</span><span style="font-size:.7rem;color:var(--faint)">4강</span></div>
+    <div class="err-line"><span class="b">更很高</span> <span class="a">→ 更高</span></div>
+    <div class="ko">更 뒤에는 很을 함께 쓰지 않습니다.</div>
+  </div>
+  <div class="card">
+    <div class="err-head"><span class="tag" style="background:var(--card2);color:var(--soft)">수사</span><span style="font-size:.7rem;color:var(--faint)">2강</span></div>
+    <div class="err-line"><span class="b">二条裤子</span> <span class="a">→ 两条裤子</span></div>
+    <div class="ko">양사 앞의 2는 两을 사용합니다.</div>
+  </div>
+  <div class="card">
+    <div class="err-head"><span class="tag" style="background:var(--card2);color:var(--soft)">관용</span><span style="font-size:.7rem;color:var(--faint)">6강</span></div>
+    <div class="err-line"><span class="b">对我很重要</span> <span class="a">→ 对我来说很重要</span></div>
+    <div class="ko">의견을 말할 때는 对……来说가 자연스럽습니다.</div>
+  </div>
+</div>
+
+<nav>
+  <button class="on" data-s="s-home"><span class="i">学</span>학습</button>
+  <button data-s="s-review"><span class="i">复</span>복습</button>
+  <button data-s="s-mine"><span class="i">我</span>나의 답변</button>
+  <button data-s="s-err"><span class="i">错</span>실수 노트</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const PARTS=[
+  {n:1,t:"자기소개",g:"기본 정보를 막힘없이 말한다.",p:100},
+  {n:2,t:"그림 보고 답하기",g:"보이는 것을 정확한 양사로 묘사한다.",p:100},
+  {n:3,t:"빠르게 반응하기",g:"모든 문제에 2~3마디로 답한다.",s:["즉각 반응","이유","대안"],p:45},
+  {n:4,t:"일상 화제 설명하기",g:"이유와 구체적 설명까지 4문장으로 말한다.",s:["직접 답변","이유","설명","결론"],p:60},
+  {n:5,t:"의견 제시하기",g:"찬반과 근거를 논리적으로 말한다.",s:["입장","근거","예시"],p:10},
+  {n:6,t:"상황 대응하기",g:"부탁·거절·제안을 자연스럽게 한다.",p:0},
+  {n:7,t:"스토리 구성하기",g:"4컷 그림을 시간 순서로 연결한다.",p:0},
+];
+const HANZI=["一","二","三","四","五","六","七"];
+const QS=[
+  {id:"P4-SPORT-001",topic:"운동",st:"g",zh:"你喜欢在哪儿运动？",py:"Nǐ xǐhuan zài nǎr yùndòng?",ko:"어디에서 운동하는 것을 좋아합니까?",
+   m:{zh:"我喜欢在家运动，因为很方便，而且不受时间的限制。",py:"Wǒ xǐhuan zài jiā yùndòng, yīnwèi hěn fāngbiàn, érqiě bù shòu shíjiān de xiànzhì.",ko:"저는 집에서 운동하는 것을 좋아합니다. 편리하고 시간의 제약을 받지 않기 때문입니다."}},
+  {id:"P4-SPORT-002",topic:"운동",st:"y",zh:"你一个星期运动几次？",py:"Nǐ yí ge xīngqī yùndòng jǐ cì?",ko:"일주일에 몇 번 운동합니까?",
+   m:{zh:"我一个星期运动两次，虽然不多，但是我每次都很认真。",py:"Wǒ yí ge xīngqī yùndòng liǎng cì, suīrán bù duō, dànshì wǒ měi cì dōu hěn rènzhēn.",ko:"일주일에 두 번 운동합니다. 많지는 않지만 매번 열심히 합니다."}},
+  {id:"P4-FOOD-003",topic:"음식",st:"n",zh:"你最喜欢吃什么菜？",py:"Nǐ zuì xǐhuan chī shénme cài?",ko:"어떤 음식을 가장 좋아합니까?",
+   m:{zh:"我最喜欢吃妈妈做的菜，因为有家的味道。",py:"Wǒ zuì xǐhuan chī māma zuò de cài, yīnwèi yǒu jiā de wèidào.",ko:"엄마가 해주신 음식을 가장 좋아합니다. 집의 맛이 나기 때문입니다."}},
+  {id:"P4-WEEKEND-004",topic:"주말",st:"n",zh:"周末你一般做什么？",py:"Zhōumò nǐ yìbān zuò shénme?",ko:"주말에 보통 무엇을 합니까?",
+   m:{zh:"周末我一般在家休息，有时候跟朋友一起看电影。",py:"Zhōumò wǒ yìbān zài jiā xiūxi, yǒu shíhou gēn péngyou yìqǐ kàn diànyǐng.",ko:"주말에는 보통 집에서 쉬고, 가끔 친구와 영화를 봅니다."}},
+];
+const MY={
+  "P4-SPORT-001":{zh:"我喜欢在家运动。因为工作很忙，没有时间去健身房，所以在家一边看视频一边运动很方便。",
+    py:"Wǒ xǐhuan zài jiā yùndòng. Yīnwèi gōngzuò hěn máng, méiyǒu shíjiān qù jiànshēnfáng, suǒyǐ zài jiā yìbiān kàn shìpín yìbiān yùndòng hěn fāngbiàn.",
+    ko:"저는 집에서 운동하는 것을 좋아합니다. 일이 바빠 헬스장에 갈 시간이 없어서, 집에서 영상을 보면서 운동하는 것이 편리합니다."},
+  "P4-FOOD-003":{zh:"我最喜欢吃妈妈做的菜，因为有家的味道。",
+    py:"Wǒ zuì xǐhuan chī māma zuò de cài, yīnwèi yǒu jiā de wèidào.",
+    ko:"엄마가 해주신 음식을 가장 좋아합니다. 집의 맛이 나기 때문입니다."}
+};
+
+/* 홈 파트 리스트 */
+$('partList').innerHTML=PARTS.map(p=>`
+  <div class="part-row" onclick="openPart(${p.n})">
+    <span class="n">${HANZI[p.n-1]}</span>
+    <div class="t"><b>${p.t}</b><span>${p.g}</span></div>
+    <span style="color:var(--faint)">›</span>
+  </div>`).join('');
+
+let curPart=null,curQ=null;
+function openPart(n){
+  curPart=PARTS.find(p=>p.n===n);
+  $('pd-no').textContent=`Part ${n}`;
+  $('pd-title').textContent=curPart.t;
+  $('pd-goal').textContent=curPart.g;
+  $('pd-struct').innerHTML=(curPart.s||[]).map((x,i)=>`${i?'<i>→</i>':''}<span>${x}</span>`).join('');
+  $('pd-questions').innerHTML=QS.map(q=>`
+    <div class="q-row" onclick="openQ('${q.id}')">
+      <div class="t"><div class="zh">${q.zh}</div><div class="ko">${q.ko}</div></div>
+      ${MY[q.id]?'<span class="tag acc">내 답변</span>':''}
+      <span style="color:var(--faint)">›</span>
+    </div>`).join('');
+  go('s-part');
+}
+function openQ(id){
+  curQ=QS.find(q=>q.id===id);
+  $('q-id').textContent=curQ.id;
+  $('q-topic').textContent=curQ.topic;
+  $('q-zh').textContent=curQ.zh;$('q-py').textContent=curQ.py;$('q-ko').textContent=curQ.ko;
+  $('q-struct').innerHTML=(curPart?.s||["직접 답변","이유","설명","결론"]).map((x,i)=>`${i?'<i>→</i>':''}<span>${x}</span>`).join('');
+  $('q-m-zh').textContent=curQ.m.zh;$('q-m-py').textContent=curQ.m.py;$('q-m-ko').textContent=curQ.m.ko;
+  const mine=MY[id];
+  $('q-mine-wrap').style.display=mine?'block':'none';
+  $('ta-label').textContent=mine?'다시 써보기':'내 답변 쓰기';
+  if(mine){$('q-mine-zh').textContent=mine.zh;$('q-mine-py').textContent=mine.py;$('q-mine-ko').textContent=mine.ko}
+  $('ta').value='';
+  go('s-q');
+}
+function openQById(id){
+  curPart=PARTS.find(p=>p.n===4);
+  openQ(id);
+}
+
+/* 화면 전환 */
+const TITLES={"s-home":"학습","s-part":"파트 학습","s-q":"문제","s-r":"교정 결과","s-review":"복습","s-mine":"나의 답변","s-err":"실수 노트"};
+const TAB={"s-home":"s-home","s-part":"s-home","s-q":"s-home","s-r":"s-home","s-review":"s-review","s-mine":"s-mine","s-err":"s-err"};
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  $(id).classList.add('on');
+  $('hTitle').textContent=TITLES[id];
+  $('backBtn').style.display=['s-part','s-q','s-r'].includes(id)?'block':'none';
+  document.querySelectorAll('nav>button').forEach(b=>b.classList.toggle('on',b.dataset.s===TAB[id]));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('nav>button').forEach(b=>b.onclick=()=>go(b.dataset.s));
+$('backBtn').onclick=()=>{
+  const c=document.querySelector('.screen.on').id;
+  go(c==='s-r'?'s-q':c==='s-q'?'s-part':'s-home');
+};
+
+/* 테마 전환 */
+document.querySelectorAll('.theme-sw button').forEach(b=>b.onclick=()=>{
+  document.documentElement.dataset.theme=b.dataset.t;
+  document.querySelectorAll('.theme-sw button').forEach(x=>x.classList.toggle('on',x===b));
+});
+
+/* 더미 동작 */
+function optSel(b){b.parentElement.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+function correct(){
+  if(!$('ta').value.trim()){toast('먼저 답변을 입력하세요');return}
+  go('s-r');
+  $('loading').style.display='block';$('rbody').style.display='none';
+  setTimeout(()=>{$('loading').style.display='none';$('rbody').style.display='block'},1100);
+}
+function togglePy(){
+  const p=document.querySelector('#s-r .py-t');
+  const hid=p.style.display==='none';
+  p.style.display=hid?'block':'none';
+  $('pyToggle').textContent=hid?'병음 숨기기':'병음 보기';
+}
+function save(){toast('나의 답변에 저장했습니다');go('s-mine')}
+function reveal(){$('rev-a').classList.remove('reveal-blur');$('revealBtn').style.display='none';$('revActs').style.visibility='visible'}
+function mark(m){
+  toast(m);
+  $('rev-a').classList.add('reveal-blur');$('revealBtn').style.display='inline-block';$('revActs').style.visibility='hidden';
+  const [a,b]=$('rev-n').textContent.split(' / ');$('rev-n').textContent=`${Math.min(+a+1,12)} / 12`;
+}
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500)}
+
+/* 필터 pill 더미 토글 */
+document.querySelectorAll('.pills').forEach(g=>g.querySelectorAll('.pill').forEach(p=>p.onclick=p.onclick||(()=>{g.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));p.classList.add('on')})));
+</script>
+</body>
+</html>
