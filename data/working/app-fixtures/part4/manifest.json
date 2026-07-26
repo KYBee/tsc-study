@@ -1,0 +1,69 @@
+{
+  "dataset_id": "part4-raw-development-fixture-v1",
+  "dataset_status": "development_fixture",
+  "source_file": {
+    "path": "data/working/question-sample/questions.csv",
+    "sha256": "2be914e6d99397d41d254d4062258d7d3da95fadb59f8a8b57367d891cf4cfab"
+  },
+  "model_answer_source_file": {
+    "path": "data/working/question-sample/model_answers.csv",
+    "sha256": "201a7a694b69b270c71b0fef9e2bb0ece4d17e3a6516f3ddd41715aa0c0bd8b6",
+    "record_count": 0
+  },
+  "source_metadata_file": {
+    "path": "sources/src-001__tsc-question-bank-workbook.md",
+    "sha256": "12644388906d3cd368f422449f104df5a766914548b1d9bc49dd799192b0b624"
+  },
+  "generated_files": {
+    "questions.json": "0aa80d50f0cab508595b2b7aeb7f8f71bdf71a3fab87bb433d85c7f093f763fa",
+    "answer-points.json": "1c60d326f909a5593d912f3c0ac0731fcb1beef4cd0159196496c114d3abb074",
+    "sources.json": "84a6cf853e1d5c2adf376c63df731a2be449faca8dda7b74d49f6e1de69454a0",
+    "source-references.json": "f1e8521ffb1c0ba96271f3967586c1dea2879affb227157b277ff4b0766590bb",
+    "model-answers.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "README.md": "a07255030af788a4fe0a73d2530cb78546594c624a7cc226f33a2482155f5fb1"
+  },
+  "manifest_hash_policy": "manifest.json is excluded because an embedded self-hash would change the manifest and cannot be stable.",
+  "counts": {
+    "question": 6,
+    "answer_point": 6,
+    "source": 1,
+    "source_reference": 12,
+    "model_answer": 0
+  },
+  "ids": {
+    "question": [
+      "P4-001",
+      "P4-002",
+      "P4-003",
+      "P4-006",
+      "P4-036",
+      "P4-039"
+    ],
+    "answer_point": [
+      "ap-P4-001-001",
+      "ap-P4-002-001",
+      "ap-P4-003-001",
+      "ap-P4-006-001",
+      "ap-P4-036-001",
+      "ap-P4-039-001"
+    ],
+    "source": [
+      "src-001"
+    ],
+    "source_reference": [
+      "sr-answer-point-ap-P4-001-001-extracted",
+      "sr-answer-point-ap-P4-002-001-extracted",
+      "sr-answer-point-ap-P4-003-001-extracted",
+      "sr-answer-point-ap-P4-006-001-extracted",
+      "sr-answer-point-ap-P4-036-001-extracted",
+      "sr-answer-point-ap-P4-039-001-extracted",
+      "sr-question-P4-001-extracted",
+      "sr-question-P4-002-extracted",
+      "sr-question-P4-003-extracted",
+      "sr-question-P4-006-extracted",
+      "sr-question-P4-036-extracted",
+      "sr-question-P4-039-extracted"
+    ],
+    "model_answer": []
+  }
+}

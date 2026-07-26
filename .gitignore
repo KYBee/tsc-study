@@ -20,3 +20,13 @@ Thumbs.db
 .cache/
 .tmp/
 tmp/
+
+# Node.js and Vite
+node_modules/
+dist/
+coverage/
+.vite/
+*.local
+
+# Test caches
+.vitest/

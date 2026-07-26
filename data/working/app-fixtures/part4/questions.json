@@ -1,0 +1,68 @@
+[
+  {
+    "question_id": "P4-001",
+    "part": 4,
+    "question_type": "친구",
+    "question_zh": "你有没有跟你兴趣爱好非常相似的朋友？请简单说一说。",
+    "question_pinyin": "nǐ yǒu méi yǒu gēn nǐ xìng qù ài hào fēi cháng xiāng sì de péng yǒu ？ qǐng jiǎn dān shuō yī shuō 。",
+    "question_ko": "취미가 매우 비슷한 친구가 있습니까? 간단히 말해 주세요.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P4-002",
+    "part": 4,
+    "question_type": "생활습관",
+    "question_zh": "你一般会在早上洗澡还是在晚上洗澡？请简单谈谈。",
+    "question_pinyin": "nǐ yì bān huì zài zǎo shàng xǐ zǎo hái shì zài wǎn shàng xǐ zǎo ？ qǐng jiǎn dān tán tán 。",
+    "question_ko": "보통 아침과 저녁 중 언제 샤워합니까?",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P4-003",
+    "part": 4,
+    "question_type": "성장지역",
+    "question_zh": "从小到大，你一直在同一个地区生活吗？请简单说说。",
+    "question_pinyin": "cóng xiǎo dào dà ， nǐ yì zhí zài tóng yī gè dì qū shēng huó ma ？ qǐng jiǎn dān shuō shuō 。",
+    "question_ko": "어릴 때부터 계속 같은 지역에서 살았습니까?",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P4-006",
+    "part": 4,
+    "question_type": "운동",
+    "question_zh": "你喜欢在哪儿运动？",
+    "question_pinyin": "nǐ xǐ huān zài nǎ ér yùn dòng ？",
+    "question_ko": "어디에서 운동하는 것을 좋아합니까?",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P4-036",
+    "part": 4,
+    "question_type": "여행",
+    "question_zh": "你喜欢一个人去旅行吗？",
+    "question_pinyin": "nǐ xǐ huān yí gè rén qù lǚ xíng ma ？",
+    "question_ko": "혼자 여행하는 것을 좋아합니까?",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P4-039",
+    "part": 4,
+    "question_type": "명절",
+    "question_zh": "你最喜欢的节日是什么？",
+    "question_pinyin": "nǐ zuì xǐ huān de jié rì shì shén me ？",
+    "question_ko": "가장 좋아하는 명절은 무엇입니까?",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  }
+]

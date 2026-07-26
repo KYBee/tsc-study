@@ -14,8 +14,9 @@
 8. [MVP 데이터 형식 결정](DATA_FORMAT_DECISION.md)
 9. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
 10. [MVP 구현 기준](IMPLEMENTATION_BASELINE.md), [Part 4 첫 수직 기능 계획](VERTICAL_SLICE_PLAN.md)
-11. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
-12. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
+11. [현재 구현 상태](IMPLEMENTATION_STATUS.md)
+12. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
+13. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
 
 ## 문서별 역할
 
@@ -38,6 +39,7 @@
 | [AI_CORRECTION_RULES.md](AI_CORRECTION_RULES.md) | 한국어·중국어·혼합 입력의 최소 교정 원칙 | AI 프롬프트, 교정 결과 |
 | [IMPLEMENTATION_BASELINE.md](IMPLEMENTATION_BASELINE.md) | MVP 프론트엔드, 공용·개인 데이터, AI 경계와 테스트 기준 | 실제 앱 초기화 전 확인 |
 | [VERTICAL_SLICE_PLAN.md](VERTICAL_SLICE_PLAN.md) | Part 4 첫 수직 기능의 17단계 작업·완료 계약 | 첫 앱 구현 |
+| [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) | Part 4 첫 수직 기능의 화면·fixture·저장소·검증 결과와 제한 | 현재 앱 실행·검증·후속 구현 |
 | [ROADMAP.md](ROADMAP.md) | Phase 0~7의 진행 순서 | 단계 계획 |
 | [BACKLOG.md](BACKLOG.md) | 우선순위가 있는 상위 사용자 스토리 | 기능 선택, 완료 판단 |
 | [DECISIONS.md](DECISIONS.md) | 확정된 스키마 결정과 아직 결정하지 않은 기술·운영 사항 | 설계 결정 전 확인 |
@@ -49,6 +51,7 @@
 - [`sources/src-001__tsc-question-bank-workbook.md`](../sources/src-001__tsc-question-bank-workbook.md): 첫 원본 Excel의 출처·파일·권리 확인 메타데이터
 - [`data/working/question-sample/README.md`](../data/working/question-sample/README.md): Question 대표 표본의 실행·선정·컬럼·상태 설명
 - [`data/working/extended-sample/README.md`](../data/working/extended-sample/README.md): Part 5~7·시각 자료 확장 표본의 실행·선정·상태 설명
+- [`data/working/app-fixtures/part4/README.md`](../data/working/app-fixtures/part4/README.md): Part 4 raw 개발 fixture의 생성·검증·사용 제한
 
 ## UI 참고 자료
 

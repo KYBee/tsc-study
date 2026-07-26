@@ -1,0 +1,19 @@
+:root {
+  color-scheme: light;
+  --background: #f3f4f9;
+  --card: #ffffff;
+  --secondary-background: #f0f1f7;
+  --primary-text: #1e2130;
+  --secondary-text: #626779;
+  --faint-text: #626779;
+  --border: #e7e9f1;
+  --accent: #4a55c7;
+  --accent-background: #edeffb;
+  --error: #b33d2a;
+  --error-background: #fceeeb;
+  --success: #1f6b4a;
+  --success-background: #e9f5f0;
+  --radius: 16px;
+  --shadow: 0 1px 3px rgba(30, 33, 48, 0.05);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
