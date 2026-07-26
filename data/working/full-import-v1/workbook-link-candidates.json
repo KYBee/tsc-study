@@ -1,0 +1,218 @@
+[
+  {
+    "candidate_id": "wlc-part7-P7-V01-P7-001",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V01",
+    "candidate_question_id": "P7-001",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V02-P7-002",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V02",
+    "candidate_question_id": "P7-002",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V03-P7-003",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V03",
+    "candidate_question_id": "P7-003",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V04-P7-004",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V04",
+    "candidate_question_id": "P7-004",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V05-P7-005",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V05",
+    "candidate_question_id": "P7-005",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V06-P7-006",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V06",
+    "candidate_question_id": "P7-006",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V07-P7-007",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V07",
+    "candidate_question_id": "P7-007",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V08-P7-008",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V08",
+    "candidate_question_id": "P7-008",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V09-P7-009",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V09",
+    "candidate_question_id": "P7-009",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V10-P7-010",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V10",
+    "candidate_question_id": "P7-010",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V11-P7-011",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V11",
+    "candidate_question_id": "P7-011",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  },
+  {
+    "candidate_id": "wlc-part7-P7-V12-P7-012",
+    "candidate_kind": "part7_suffix",
+    "source_entity_type": "visual_set",
+    "source_entity_id": "vs-P7-V12",
+    "candidate_question_id": "P7-012",
+    "match_basis": "numeric_suffix_only",
+    "matched_fields": [
+      "numeric_suffix"
+    ],
+    "conflicting_fields": [
+      "explicit_foreign_key_missing",
+      "question_zh_common_to_12_questions"
+    ],
+    "confidence": "low",
+    "review_status": "review_needed",
+    "notes": "접미사 대응은 실제 관계가 아니며 사람 검수 전 QuestionVisualSet을 만들지 않는다."
+  }
+]

@@ -53,6 +53,12 @@ dataset ID는 `part4-raw-development-fixture-v1`이다. 다음 canonical `questi
 
 fixture는 `data/working`의 raw 표본을 앱 경계와 스키마를 검증하기 위해 변환한 개발 자료다. reviewed 또는 production 데이터가 아니며 전체 문제 추출도 아니다. zod 검증이 실패하면 앱은 빈 데이터처럼 계속하지 않고 개발 데이터 오류를 표시한다.
 
+## 전체 workbook working 데이터
+
+앱과 분리된 `data/working/full-import-v1/`에는 Question·AnswerPoint 253개, VisualAsset·VisualSet·VisualSetAsset 25개, Part 2 VisualQuestion·출처 ModelAnswer 48개와 Part 7 StoryGuide 12개가 있다. Part 2의 엄격 일치 18건만 `QuestionVisualSet`으로 구조화했고, Part 7 접미사 12건은 후보로만 남겼다.
+
+이 데이터셋은 사람 검수 전 working 산출물이다. 현재 React 앱의 Repository와 라우트는 변경하지 않았으며 계속 Part 4 개발 fixture 6개만 읽는다.
+
 ## 데이터 흐름
 
 공용 데이터:
@@ -137,7 +143,7 @@ npm run check
 
 ## 알려진 제한
 
-- 공용 데이터는 raw 개발 fixture 6개이며 검수 완료 데이터가 아니다.
+- 앱의 공용 데이터는 여전히 raw 개발 fixture 6개이며 검수 완료 데이터가 아니다. 전체 workbook working 데이터는 앱에 연결하지 않았다.
 - `ModelAnswer`는 0개다. 화면은 이를 정상적인 `아직 모범답안 없음` 상태로 처리한다.
 - 실제 AI, 백엔드, 인증, 서버 동기화와 배포가 없다.
 - Part 1·2·3·5·6·7의 실제 문제 화면과 Part 2·7 시각 화면은 구현하지 않았다.
@@ -149,7 +155,8 @@ npm run check
 ## 다음 추천 작업
 
 1. 현재 수직 기능을 여러 실제 모바일 브라우저에서 확인한다.
-2. reviewed JSON 전체 변환 전에 스키마 v1 변환기와 검수 기준을 확정한다.
-3. 실제 AI 후보를 비교하고 비밀키를 보호하는 서버 경계를 별도 결정한다.
-4. Part 4 흐름의 사용성 피드백을 반영한 뒤 다음 Part 구현 순서를 정한다.
-5. 로그인이나 동기화 전에 개인 데이터 내보내기·복구 요구를 검토한다.
+2. `full-import-v1`의 Question 언어·출처, 시각 연결과 이미지 권리 검수 큐를 처리한다.
+3. 승인된 항목만 reviewed canonical JSON으로 승격하고 앱 연결 계약을 별도 검증한다.
+4. 실제 AI 후보를 비교하고 비밀키를 보호하는 서버 경계를 별도 결정한다.
+5. Part 4 흐름의 사용성 피드백을 반영한 뒤 다음 Part 구현 순서를 정한다.
+6. 로그인이나 동기화 전에 개인 데이터 내보내기·복구 요구를 검토한다.

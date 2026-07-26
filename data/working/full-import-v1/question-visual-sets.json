@@ -1,0 +1,200 @@
+[
+  {
+    "question_visual_set_id": "qvs-P2-V01-P2-006",
+    "question_id": "P2-006",
+    "visual_set_id": "vs-P2-V01",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V01-P2-006-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V01-P2-009",
+    "question_id": "P2-009",
+    "visual_set_id": "vs-P2-V01",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V01-P2-009-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V01-P2-027",
+    "question_id": "P2-027",
+    "visual_set_id": "vs-P2-V01",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V01-P2-027-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V02-P2-036",
+    "question_id": "P2-036",
+    "visual_set_id": "vs-P2-V02",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V02-P2-036-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V02-P2-035",
+    "question_id": "P2-035",
+    "visual_set_id": "vs-P2-V02",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V02-P2-035-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V04-P2-020",
+    "question_id": "P2-020",
+    "visual_set_id": "vs-P2-V04",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V04-P2-020-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V05-P2-014",
+    "question_id": "P2-014",
+    "visual_set_id": "vs-P2-V05",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V05-P2-014-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V05-P2-030",
+    "question_id": "P2-030",
+    "visual_set_id": "vs-P2-V05",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V05-P2-030-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V05-P2-031",
+    "question_id": "P2-031",
+    "visual_set_id": "vs-P2-V05",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V05-P2-031-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V06-P2-010",
+    "question_id": "P2-010",
+    "visual_set_id": "vs-P2-V06",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V06-P2-010-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V06-P2-009",
+    "question_id": "P2-009",
+    "visual_set_id": "vs-P2-V06",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V06-P2-009-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V07-P2-006",
+    "question_id": "P2-006",
+    "visual_set_id": "vs-P2-V07",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V07-P2-006-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V07-P2-040",
+    "question_id": "P2-040",
+    "visual_set_id": "vs-P2-V07",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V07-P2-040-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V09-P2-029",
+    "question_id": "P2-029",
+    "visual_set_id": "vs-P2-V09",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V09-P2-029-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V09-P2-027",
+    "question_id": "P2-027",
+    "visual_set_id": "vs-P2-V09",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V09-P2-027-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V10-P2-023",
+    "question_id": "P2-023",
+    "visual_set_id": "vs-P2-V10",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V10-P2-023-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V11-P2-040",
+    "question_id": "P2-040",
+    "visual_set_id": "vs-P2-V11",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V11-P2-040-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  },
+  {
+    "question_visual_set_id": "qvs-P2-V12-P2-045",
+    "question_id": "P2-045",
+    "visual_set_id": "vs-P2-V12",
+    "relationship_kind": "primary",
+    "mapping_status": "review_needed",
+    "source_reference_ids": [
+      "sr-question-visual-set-qvs-P2-V12-P2-045-supports"
+    ],
+    "notes": "중국어·병음·한국어 완전 일치 단일 후보"
+  }
+]

@@ -1,0 +1,1182 @@
+[
+  {
+    "unmapped_id": "um-links-a1",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A1",
+    "original_value": "구분",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a10",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A10",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a11",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A11",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a12",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A12",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a13",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A13",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a14",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A14",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a15",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A15",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a16",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A16",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a17",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A17",
+    "original_value": "공개 기출형 6부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a18",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A18",
+    "original_value": "응시 후기",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a2",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A2",
+    "original_value": "YBM 공식 샘플",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a3",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A3",
+    "original_value": "YBM 공식 실제기출",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a4",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A4",
+    "original_value": "공개 기출형 2·3부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a5",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A5",
+    "original_value": "공개 기출형 4부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a6",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A6",
+    "original_value": "공개 기출형 4부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a7",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A7",
+    "original_value": "공개 기출형 4부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a8",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A8",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-a9",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "A9",
+    "original_value": "공개 기출형 5부",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b1",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B1",
+    "original_value": "설명",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b10",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B10",
+    "original_value": "독서",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b11",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B11",
+    "original_value": "학원·입시",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b12",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B12",
+    "original_value": "조기유학",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b13",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B13",
+    "original_value": "인터넷·휴대전화",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b14",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B14",
+    "original_value": "유치원 CCTV",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b15",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B15",
+    "original_value": "비정규직",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b16",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B16",
+    "original_value": "부모 동거",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b17",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B17",
+    "original_value": "휴대전화 분실·낙방 위로·약속 거절·룸메이트·상품 항의",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b18",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B18",
+    "original_value": "Part 2~7 기억 문제",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b2",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B2",
+    "original_value": "시험 구조 및 Part 1~7 샘플",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b3",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B3",
+    "original_value": "7회차 분량의 실제 기출 공개영상 링크 모음. 문항 복제 대신 이 페이지에서 직접 시청.",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b4",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B4",
+    "original_value": "2015 기출 유형과 변형 문제",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b5",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B5",
+    "original_value": "명절·인터넷·취미",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b6",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B6",
+    "original_value": "혼자 여행",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b7",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B7",
+    "original_value": "비행기 경험·좋아하는 장소",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b8",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B8",
+    "original_value": "환경오염",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-b9",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "B9",
+    "original_value": "교통",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c1",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C1",
+    "original_value": "URL",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c10",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C10",
+    "original_value": "https://qingone.tistory.com/1432",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c11",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C11",
+    "original_value": "https://qingone.tistory.com/1434",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c12",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C12",
+    "original_value": "https://qingone.tistory.com/1435",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c13",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C13",
+    "original_value": "https://qingone.tistory.com/1436",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c14",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C14",
+    "original_value": "https://qingone.tistory.com/1437",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c15",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C15",
+    "original_value": "https://qingone.tistory.com/1447",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c16",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C16",
+    "original_value": "https://qingone.tistory.com/1451",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c17",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C17",
+    "original_value": "https://qingone.tistory.com/1433",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c18",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C18",
+    "original_value": "https://blumay.tistory.com/entry/TSC-%EC%8B%9C%ED%97%98-%ED%9B%84%EA%B8%B0-%EC%98%88%EC%83%81-%EB%8B%B5%EB%B3%80-%EC%A0%95%EB%A6%AC",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c2",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C2",
+    "original_value": "https://www.ybmtsc.co.kr/content/TSC/sample/testSpeDirection.php",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c3",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C3",
+    "original_value": "https://www.ybmtsc.co.kr/content/common/realQuestion.php",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c4",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C4",
+    "original_value": "https://qingone.tistory.com/1419",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c5",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C5",
+    "original_value": "https://qingone.tistory.com/1440",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c6",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C6",
+    "original_value": "https://qingone.tistory.com/1438",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c7",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C7",
+    "original_value": "https://qingone.tistory.com/1439",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c8",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C8",
+    "original_value": "https://qingone.tistory.com/1430",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-links-c9",
+    "sheet_name": "공식·참고 링크",
+    "cell_or_range": "C9",
+    "original_value": "https://qingone.tistory.com/1431",
+    "content_kind": "claimed_reference_link",
+    "reason_not_mapped": "URL을 방문하거나 검증된 Source로 승격하지 않음",
+    "possible_target_entity": "Source 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-official-sample-a1",
+    "sheet_name": "공식 샘플 이미지",
+    "cell_or_range": "A1",
+    "original_value": "YBM 공식 공개 Part 7 샘플 이미지",
+    "content_kind": "official_sample_context",
+    "reason_not_mapped": "표시 문구와 URL이 공개 권리나 Question 연결을 확정하지 않음",
+    "possible_target_entity": "SourceReference 또는 VisualSet",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-official-sample-a40",
+    "sheet_name": "공식 샘플 이미지",
+    "cell_or_range": "A40",
+    "original_value": "출처: https://www.ybmtsc.co.kr/content/TSC/sample/sample7.php  |  개인 학습용 참고",
+    "content_kind": "official_sample_context",
+    "reason_not_mapped": "표시 문구와 URL이 공개 권리나 Question 연결을 확정하지 않음",
+    "possible_target_entity": "SourceReference 또는 VisualSet",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v01-a15",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A15",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v01-a16",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A16",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v02-a33",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A33",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v02-a34",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A34",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v03-a51",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A51",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v03-a52",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A52",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v04-a69",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A69",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v04-a70",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A70",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v05-a87",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A87",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v05-a88",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A88",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v06-a105",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A105",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v06-a106",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A106",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v07-a123",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A123",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v07-a124",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A124",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v08-a141",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A141",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v08-a142",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A142",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v09-a159",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A159",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v09-a160",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A160",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v10-a177",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A177",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v10-a178",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A178",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v11-a195",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A195",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v11-a196",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A196",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v12-a213",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A213",
+    "original_value": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-p7-v12-a214",
+    "sheet_name": "Part7 스토리 그림",
+    "cell_or_range": "A214",
+    "original_value": "그림만 보고 말한 뒤 ‘Part7 정답 포인트’ 시트에서 이야기 흐름을 확인하세요.",
+    "content_kind": "visual_prompt_or_instruction",
+    "reason_not_mapped": "공통 지시문 또는 안내만으로 canonical Question과 VisualSet을 연결할 수 없음",
+    "possible_target_entity": "QuestionVisualSet 또는 PartGuide",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-personal-column-12",
+    "sheet_name": "문제은행",
+    "cell_or_range": "L1:L254",
+    "original_value": "연습 상태: 253행 모두 미연습",
+    "content_kind": "excluded_personal_column_metadata",
+    "reason_not_mapped": "공용 Question import에서 개인 학습 컬럼을 제외함",
+    "possible_target_entity": "ReviewState 또는 UserAnswer",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-personal-column-13",
+    "sheet_name": "문제은행",
+    "cell_or_range": "M1:M254",
+    "original_value": "최근 연습일: 253행 모두 빈 값",
+    "content_kind": "excluded_personal_column_metadata",
+    "reason_not_mapped": "공용 Question import에서 개인 학습 컬럼을 제외함",
+    "possible_target_entity": "ReviewState 또는 UserAnswer",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-personal-column-14",
+    "sheet_name": "문제은행",
+    "cell_or_range": "N1:N254",
+    "original_value": "내 답변 메모: 253행 모두 빈 값",
+    "content_kind": "excluded_personal_column_metadata",
+    "reason_not_mapped": "공용 Question import에서 개인 학습 컬럼을 제외함",
+    "possible_target_entity": "ReviewState 또는 UserAnswer",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a1",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A1",
+    "original_value": "TSC 문제은행 사용 안내",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a10",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A10",
+    "original_value": "B 강의 기출·복원",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a11",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A11",
+    "original_value": "C 공개 기출형·후기",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a12",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A12",
+    "original_value": "D 빈출 유형 변형",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a13",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A13",
+    "original_value": "E 연습 변형",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a15",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A15",
+    "original_value": "저작권 안내",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a16",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A16",
+    "original_value": "공식 실제기출",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a17",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A17",
+    "original_value": "생성일",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a2",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A2",
+    "original_value": "핵심 답변",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a3",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A3",
+    "original_value": "Part 1 Q1",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a4",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A4",
+    "original_value": "Part 1 Q2",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a5",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A5",
+    "original_value": "Part 1 Q3",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a6",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A6",
+    "original_value": "Part 1 Q4",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a8",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A8",
+    "original_value": "자료 등급",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-a9",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "A9",
+    "original_value": "A 공식 고정·샘플",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b10",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B10",
+    "original_value": "사용자가 제공한 TSC 강의 분석에서 실제로 확인된 문제",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b11",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B11",
+    "original_value": "인터넷 기출형 자료 또는 응시자 기억에 기반한 문제",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b12",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B12",
+    "original_value": "출제 주제를 연습하기 위해 문장을 정규화·변형한 문제",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b13",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B13",
+    "original_value": "실전 형식에 맞춰 추가한 연습 소재이며 실제 출제를 보장하지 않음",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b15",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B15",
+    "original_value": "YBM 공식 실제기출 공개영상은 공식 페이지에서 직접 시청하세요. 공식 사이트가 문항 복제·발췌를 제한하므로 영상 내용을 통째로 전사하지 않았습니다.",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b16",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B16",
+    "original_value": "https://www.ybmtsc.co.kr/content/common/realQuestion.php",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b17",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B17",
+    "original_value": "2026-07-18",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b3",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B3",
+    "original_value": "이름 — 10초",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b4",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B4",
+    "original_value": "생년월일 — 10초",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b5",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B5",
+    "original_value": "가족 수 — 10초",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b6",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B6",
+    "original_value": "직장 또는 학교 — 10초",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b8",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B8",
+    "original_value": "의미",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-structure-b9",
+    "sheet_name": "시험 구조",
+    "cell_or_range": "B9",
+    "original_value": "YBM 공식 사이트에 공개된 고정 문항 또는 샘플",
+    "content_kind": "global_instruction",
+    "reason_not_mapped": "PartGuide의 특정 Part 필드로 확정하기 어려운 전역 설명",
+    "possible_target_entity": "PartGuide 또는 SourceReference",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-a1",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "A1",
+    "original_value": "TSC 그림형 문제 활용 안내",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-a2",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "A2",
+    "original_value": "추가된 자료",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-a3",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "A3",
+    "original_value": "그림 출처",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-a4",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "A4",
+    "original_value": "중요",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-b2",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "B2",
+    "original_value": "Part 2 연습 그림 12장(각 4문항, 총 48문항) + Part 7 4컷 스토리 12세트",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-b3",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "B3",
+    "original_value": "공식 공개 샘플의 형식과 강의·응시후기에서 확인된 소재를 바탕으로 새로 제작한 개인 연습용 그림입니다.",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  },
+  {
+    "unmapped_id": "um-visual-guidance-b4",
+    "sheet_name": "그림 활용 안내",
+    "cell_or_range": "B4",
+    "original_value": "실제 시험에 사용된 비공개 원본 그림을 복제한 자료는 아닙니다. 공식 공개 샘플은 별도 시트에 출처와 함께 수록했습니다.",
+    "content_kind": "visual_global_guidance",
+    "reason_not_mapped": "특정 PartGuide 필드 하나로 확정하지 않은 안내·권리 문구",
+    "possible_target_entity": "PartGuide 또는 VisualAsset",
+    "review_status": "review_needed"
+  }
+]

@@ -20,6 +20,7 @@
 - 중복, 오탈자, 중국어 정규화, 병음, 번역, 유형, 출처를 검토하는 단계
 - 불확실한 값은 추측으로 채우지 않고 확인 필요 상태와 근거를 남긴다.
 - 문제와 모범답안을 별도 데이터로 관리한다.
+- 표 형태의 중간 작업에는 CSV를, 여러 엔터티의 관계·근거를 검증하는 반입 bundle에는 JSON을 사용할 수 있다. 둘 다 reviewed canonical 데이터가 아니다.
 
 ### `reviewed`
 
@@ -39,6 +40,25 @@
 7. **출처 검수:** 원본 위치, 실제 강의 자료 여부, 자체 생성 여부를 확인한다.
 8. **`reviewed` JSON 생성:** 필수 항목과 출처 검수 조건을 충족한 엔터티만 검증한 뒤 결정적으로 `data/reviewed` JSON에 반영한다.
 9. **필요 시 모범답안 작성:** 문제 검수와 별개로 답변 작업 항목을 만들고 초안·검수 상태를 관리한다.
+
+## 현재 전체 workbook working 반입
+
+`scripts/build_full_workbook_import.py`는 원본 Excel을 읽기 전용으로 처리해 `data/working/full-import-v1/`을 결정적으로 생성한다.
+
+- Question과 AnswerPoint 253개를 분리한다.
+- 실제 workbook Source와 workbook 내부의 출처 주장을 SourceReference로 구분한다.
+- Part 2 시각 질문과 출처 추천 답변, Part 7 StoryGuide를 서로 다른 엔터티로 보존한다.
+- 명시적 근거가 없는 질문·그림·강의 콘텐츠 관계는 후보 또는 검수 큐에만 둔다.
+- Excel 개인 컬럼으로 개인 학습 레코드를 만들지 않는다.
+- 생성 이미지 바이트는 working JSON과 별도 경계에 두고 권리 검수 전 공개하지 않는다.
+
+```sh
+python3 scripts/build_full_workbook_import.py
+python3 scripts/build_full_workbook_import.py --validate-only
+npm run check:data
+```
+
+현재 bundle은 전체 원문을 구조적으로 반입한 결과이지 언어·출처·권리를 검수한 결과가 아니다. `reviewed` 승격과 앱 런타임 연결은 별도 작업이다.
 
 ## 상태 관리
 
@@ -87,4 +107,4 @@
 - 출처를 확인할 수 없는 내용을 확정 사실이나 강의 내용으로 표시하지 않는다.
 - 공용 질문·모범답안과 사용자 답변·복습 상태·개인 오류를 분리한다.
 - `Correction`에는 오류 콘텐츠와 출처를 기록하고, 사용자별 학습 상태는 `ReviewState`에서만 관리한다.
-- raw는 원본 Excel, working은 CSV 등 중간 형식, reviewed 공용 canonical은 엔터티별 JSON을 사용한다. 세부 생성·검증 규칙은 `DATA_FORMAT_DECISION.md`를 따른다.
+- raw는 원본 Excel, working은 CSV와 관계 검증용 JSON 등 중간 형식, reviewed 공용 canonical은 엔터티별 JSON을 사용한다. 세부 생성·검증 규칙은 `DATA_FORMAT_DECISION.md`를 따른다.

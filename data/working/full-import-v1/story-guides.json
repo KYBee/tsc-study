@@ -1,0 +1,170 @@
+[
+  {
+    "story_guide_id": "sg-P7-V01-01",
+    "visual_set_id": "vs-P7-V01",
+    "question_id": "",
+    "situation_ko": "새 원피스를 산 뒤 친구에게 보여주다가 음료를 쏟고 집에서 세탁한다.",
+    "recommended_flow": "구매 → 자랑 → 음료를 쏟음 → 얼룩을 지움",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "공식 샘플 소재 재구성",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V01-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V02-01",
+    "visual_set_id": "vs-P7-V02",
+    "question_id": "",
+    "situation_ko": "운전면허를 딴 여성이 운전하다 사고를 내고 비싼 수리비를 낸다.",
+    "recommended_flow": "면허 취득 → 운전 → 사고 → 수리비",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "응시후기 소재 재구성",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V02-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V03-01",
+    "visual_set_id": "vs-P7-V03",
+    "question_id": "",
+    "situation_ko": "수박이 사라져 아이를 의심했지만 실제로는 강아지가 먹었다.",
+    "recommended_flow": "이웃 방문 → 수박 실종 → 아이를 혼냄 → 강아지가 범인",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "응시후기 소재 재구성",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V03-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V04-01",
+    "visual_set_id": "vs-P7-V04",
+    "question_id": "",
+    "situation_ko": "아이가 사과 심부름을 하다가 게임에 빠져 사과를 두고 온다.",
+    "recommended_flow": "심부름 → 구매 → 게임 → 사과 분실",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "응시후기 소재 재구성",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V04-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V05-01",
+    "visual_set_id": "vs-P7-V05",
+    "question_id": "",
+    "situation_ko": "택시에서 휴대전화를 잃어버렸다가 기사에게 연락해 되찾는다.",
+    "recommended_flow": "택시 → 분실 발견 → 연락 → 회수",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 재구성",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V05-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V06-01",
+    "visual_set_id": "vs-P7-V06",
+    "question_id": "",
+    "situation_ko": "비가 오는데 우산이 없는 사람에게 친구가 우산을 함께 쓰자고 한다.",
+    "recommended_flow": "맑음 → 비 → 우산 없음 → 함께 귀가",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 재구성",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V06-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V07-01",
+    "visual_set_id": "vs-P7-V07",
+    "question_id": "",
+    "situation_ko": "친구들이 몰래 생일 케이크를 준비해 주인공을 놀라게 한다.",
+    "recommended_flow": "준비 → 등장 → 깜짝 축하 → 파티",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 변형",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V07-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V08-01",
+    "visual_set_id": "vs-P7-V08",
+    "question_id": "",
+    "situation_ko": "학생이 늦잠을 자고 버스를 놓쳐 학교에 지각한다.",
+    "recommended_flow": "늦잠 → 뛰어감 → 버스 놓침 → 지각",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 변형",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V08-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V09-01",
+    "visual_set_id": "vs-P7-V09",
+    "question_id": "",
+    "situation_ko": "길에서 지갑을 주워 경찰서에 맡기고 주인이 되찾는다.",
+    "recommended_flow": "발견 → 줍기 → 경찰서 → 주인에게 반환",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 변형",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V09-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V10-01",
+    "visual_set_id": "vs-P7-V10",
+    "question_id": "",
+    "situation_ko": "식당에서 주문과 다른 음식이 나와 항의하고 새 음식으로 교환받는다.",
+    "recommended_flow": "주문 → 잘못된 음식 → 항의 → 교환",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 변형",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V10-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V11-01",
+    "visual_set_id": "vs-P7-V11",
+    "question_id": "",
+    "situation_ko": "가족이 공항에 도착한 뒤 여권을 두고 온 사실을 알고 집으로 돌아간다.",
+    "recommended_flow": "여행 준비 → 공항 → 여권 없음 → 귀가",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 변형",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V11-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  },
+  {
+    "story_guide_id": "sg-P7-V12-01",
+    "visual_set_id": "vs-P7-V12",
+    "question_id": "",
+    "situation_ko": "길에서 다친 강아지를 발견해 병원에 데려가고 주인과 재회시킨다.",
+    "recommended_flow": "발견 → 병원 → 주인 찾기 → 재회",
+    "recommended_connectors_zh": "一开始 → 后来 → 没想到 → 于是 → 最后",
+    "material_nature": "연습 변형",
+    "guide_status": "raw",
+    "source_reference_ids": [
+      "sr-story-guide-sg-P7-V12-01-extracted"
+    ],
+    "notes": "그림 ID로 VisualSet에만 연결함. canonical Question은 명시적 원본 외래키가 없어 비움."
+  }
+]

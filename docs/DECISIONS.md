@@ -44,6 +44,18 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 
 `data/working/course-import-v1`의 JSON은 스키마와 근거 구조를 검증하는 working 산출물이다. 이는 `D-007`의 reviewed canonical JSON으로 자동 승격된 데이터가 아니며 앱 런타임 데이터에 직접 합치지 않는다.
 
+## 전체 workbook working 반입 운영 결정
+
+| ID | 결정 | 내용 |
+|---|---|---|
+| `W-001` | 전체 구조 반입과 reviewed 승격 분리 | `full-import-v1`은 253개 Question과 전체 시각 자료의 검수 전 working JSON이며 reviewed canonical이나 앱 런타임 데이터가 아니다. |
+| `W-002` | 엄격한 시각 연결 | Part 2는 유일한 원문 완전 일치처럼 검증 가능한 근거가 있는 관계만 만들고, 미연결 항목은 검수 큐에 둔다. Part 7 숫자 접미사는 후보일 뿐 실제 관계가 아니다. |
+| `W-003` | 출처 답변 상태 보존 | workbook의 Part 2 추천 답변은 `VisualQuestion` 대상 `unverified_source`, `review_needed` ModelAnswer로 반입하며 승인된 공식 답변으로 표시하지 않는다. |
+| `W-004` | 생성 이미지와 권리 경계 | workbook 이미지 바이트와 메타데이터를 변경하지 않고, 모든 VisualAsset의 권리를 `review_needed`로 유지한다. 생성 이미지 경로는 공개·배포 자산 경계가 아니다. |
+| `W-005` | cross-dataset 후보와 관계 분리 | course 콘텐츠의 literal 근거 후보는 사람 검수 큐이며 SourceReference나 canonical Question 관계로 자동 승격하지 않는다. |
+
+현재 manifest 기준 수와 후속 검수 범위는 [전체 workbook working 반입 보고서](FULL_WORKBOOK_IMPORT_REPORT.md)와 [강의 콘텐츠 연결 후보 보고서](COURSE_QUESTION_LINK_REPORT.md)에 기록한다.
+
 ## 기술·운영 결정 상태
 
 | ID | 항목 | 상태 | MVP 결정 또는 남은 확인 사항 |

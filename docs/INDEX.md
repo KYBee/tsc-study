@@ -10,14 +10,15 @@
 4. [데이터 작업 흐름](DATA_WORKFLOW.md)
 5. [원본 Excel 구조 조사](WORKBOOK_INVENTORY.md), [원본 Excel 향후 매핑](WORKBOOK_MAPPING.md)
 6. [Question 대표 표본 보고서](SAMPLE_IMPORT_REPORT.md), [Part 5~7·시각 자료 확장 표본 보고서](EXTENDED_SAMPLE_REPORT.md)
-7. [데이터 스키마 v1.1 요약](SCHEMA_V1_SUMMARY.md), [데이터 스키마 v1.1](DATA_SCHEMA.md)
-8. [MVP 데이터 형식 결정](DATA_FORMAT_DECISION.md)
-9. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
-10. [MVP 구현 기준](IMPLEMENTATION_BASELINE.md), [Part 4 첫 수직 기능 계획](VERTICAL_SLICE_PLAN.md)
-11. [현재 구현 상태](IMPLEMENTATION_STATUS.md)
-12. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
-13. [Level 8 공백 분석](LEVEL8_GAP_ANALYSIS.md), [고득점 목표 데이터 계획](HIGH_SCORE_DATA_PLAN.md)
-14. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
+7. [전체 workbook working 반입 보고서](FULL_WORKBOOK_IMPORT_REPORT.md), [강의 콘텐츠와 Question 연결 후보 보고서](COURSE_QUESTION_LINK_REPORT.md)
+8. [데이터 스키마 v1.1 요약](SCHEMA_V1_SUMMARY.md), [데이터 스키마 v1.1](DATA_SCHEMA.md)
+9. [MVP 데이터 형식 결정](DATA_FORMAT_DECISION.md)
+10. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
+11. [MVP 구현 기준](IMPLEMENTATION_BASELINE.md), [Part 4 첫 수직 기능 계획](VERTICAL_SLICE_PLAN.md)
+12. [현재 구현 상태](IMPLEMENTATION_STATUS.md)
+13. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
+14. [Level 8 공백 분석](LEVEL8_GAP_ANALYSIS.md), [고득점 목표 데이터 계획](HIGH_SCORE_DATA_PLAN.md)
+15. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
 
 ## 문서별 역할
 
@@ -34,6 +35,8 @@
 | [WORKBOOK_MAPPING.md](WORKBOOK_MAPPING.md) | 원본 시트·컬럼의 공용·개인 데이터 분리 및 향후 매핑 | 표본 추출, 데이터 모델 검토 |
 | [SAMPLE_IMPORT_REPORT.md](SAMPLE_IMPORT_REPORT.md) | Part 1~4 Question 20개 표본 결과와 스키마 검토 사항 | 추가 표본, 스키마 결정 |
 | [EXTENDED_SAMPLE_REPORT.md](EXTENDED_SAMPLE_REPORT.md) | Part 5~7 Question과 Part 2·7 시각 자료 표본 결과 | 스키마 v1 결정 근거, 전체 추출 범위 검토 |
+| [FULL_WORKBOOK_IMPORT_REPORT.md](FULL_WORKBOOK_IMPORT_REPORT.md) | Question 253개, 전체 시각 자료와 working 검수 큐 반입 결과 | 사람 검수, reviewed 승격 준비 |
+| [COURSE_QUESTION_LINK_REPORT.md](COURSE_QUESTION_LINK_REPORT.md) | course-import와 canonical Question의 엄격 연결·사용 후보 결과 | 후보 승인·거절과 출처 근거 확인 |
 | [SCHEMA_V1_SUMMARY.md](SCHEMA_V1_SUMMARY.md) | 표본 검증과 강의 자료 근거 구분을 반영한 스키마 v1.1의 배경·흐름·운영 규칙 요약 | 전체 데이터 반입 전 구조 검토 |
 | [DATA_SCHEMA.md](DATA_SCHEMA.md) | 구현 기술에 독립적인 canonical 엔터티, 필드, 관계와 검증 규칙 | 데이터 모델, 가져오기 |
 | [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md) | raw Excel, working CSV, reviewed JSON, 런타임과 개인 IndexedDB의 책임 | 데이터 변환·저장 경계 |
@@ -56,6 +59,7 @@
 - [`data/working/extended-sample/README.md`](../data/working/extended-sample/README.md): Part 5~7·시각 자료 확장 표본의 실행·선정·상태 설명
 - [`data/working/app-fixtures/part4/README.md`](../data/working/app-fixtures/part4/README.md): Part 4 raw 개발 fixture의 생성·검증·사용 제한
 - [`data/working/course-import-v1/README.md`](../data/working/course-import-v1/README.md): 강의 분석 Markdown을 근거 종류별로 구조화한 검수 전 working import
+- [`data/working/full-import-v1/README.md`](../data/working/full-import-v1/README.md): 전체 workbook을 스키마 v1.1 형태로 구조화한 검수 전 working import
 
 ## UI 참고 자료
 
