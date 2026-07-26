@@ -1,0 +1,148 @@
+[
+  {
+    "part_guide_id": "part-guide-workbook-01",
+    "part": 1,
+    "goal": "고정 4문항을 막힘없이",
+    "preparation_tips": [
+      "Part 1 자기소개는 한 문제 안에서 네 가지를 말하는 것이 아니라, 네 문항이 각각 따로 출제됩니다."
+    ],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-01-summary-extracted",
+      "sr-part-guide-workbook-01-structure-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음.",
+    "response_seconds": 10
+  },
+  {
+    "part_guide_id": "part-guide-workbook-02",
+    "part": 2,
+    "goal": "6초 안에 그림 정보 1문장",
+    "preparation_tips": [
+      "그림만 3초 관찰 → 중국어 질문 확인/듣기 → 6초 안에 한 문장으로 답변 → 정답 시트 확인"
+    ],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-02-summary-extracted",
+      "sr-part-guide-workbook-02-visual-guidance-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음.",
+    "preparation_seconds": 3,
+    "response_seconds": 6
+  },
+  {
+    "part_guide_id": "part-guide-workbook-03",
+    "part": 3,
+    "goal": "반응+이유+후속표현",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-03-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-04",
+    "part": 4,
+    "goal": "결론+이유+예시+정리",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-04-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-05",
+    "part": 5,
+    "goal": "입장+근거+반론+결론",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-05-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-06",
+    "part": 6,
+    "goal": "상황 설명+요청/설득",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-06-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-07",
+    "part": 7,
+    "goal": "4장 연결, 사건과 결말",
+    "preparation_tips": [
+      "4컷을 30초 동안 정리 → 인물·배경 → 사건 → 문제 → 해결·결말 순서로 90초 말하기"
+    ],
+    "response_structure": [],
+    "key_expressions": [
+      {
+        "zh": "一开始 / 后来 / 没想到 / 于是 / 最后",
+        "pinyin": "",
+        "ko": ""
+      }
+    ],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-07-summary-extracted",
+      "sr-part-guide-workbook-07-visual-guidance-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음.",
+    "preparation_seconds": 30,
+    "response_seconds": 90
+  }
+]

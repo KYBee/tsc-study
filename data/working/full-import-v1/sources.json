@@ -1,0 +1,17 @@
+[
+  {
+    "source_id": "src-001",
+    "title": "TSC 파트별 문제은행 그림 포함",
+    "source_type": "excel",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_파트별_문제은행_그림포함.xlsx",
+    "file_ref": "data/raw/TSC_파트별_문제은행_그림포함.xlsx",
+    "claimed_original_names": [],
+    "sha256": "a150fd8a732d6ce2a309a6d5a41feb3788bb5b7b03142472d0d9fdf1fae1f37f",
+    "acquired_date": "",
+    "rights_status": "review_needed",
+    "source_status": "raw",
+    "notes": "공식·강의·응시후기·자체 연습 자료가 혼합된 원본 workbook. 내부 출처 이름·URL과 이미지 공개 가능 여부는 검수되지 않았다."
+  }
+]

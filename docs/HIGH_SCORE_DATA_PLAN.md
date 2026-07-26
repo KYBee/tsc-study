@@ -22,8 +22,8 @@
 | 항목 | 내용 |
 |---|---|
 | 필요한 데이터 | canonical `Question`, `SourceReference`, `AnswerPoint`, 시각 문제 연결 후보 |
-| 기존에 있는 데이터 | raw Excel 253개, Part 1~7 대표 표본과 workbook 매핑 |
-| 부족한 데이터 | 전체 추출·정규화·중복 검수, 강의 콘텐츠와 Question의 엄격한 연결 |
+| 기존에 있는 데이터 | `full-import-v1`의 raw Question·AnswerPoint 253개, Part 2 VisualQuestion 48개와 엄격 자동 연결 18건, Part 7 후보 12건, 강의 콘텐츠 사용 후보 4건 |
+| 부족한 데이터 | 253개 언어·유형·출처 사람 검수, Part 2 미연결 30건, Part 7 명시적 질문-그림 근거, 강의 후보 승인 |
 | 앱에서 사용할 화면 | Part 목록, 파트 상세, 일반 문제, Part 2·7 시각 문제 |
 | 구현 우선순위 | `P0` — 학습 범위를 확장하는 기준 데이터 |
 | 검수 조건 | canonical ID 또는 엄격한 언어 완전 일치만 연결, `question_zh`를 키로 사용하지 않음, Part 7 공통 지시문을 중복 오류로 제거하지 않음 |
@@ -44,8 +44,8 @@
 | 항목 | 내용 |
 |---|---|
 | 필요한 데이터 | Question 또는 VisualQuestion별 `ModelAnswer` 기본 변형, 전체 중국어·병음·한국어, 구조 세그먼트 |
-| 기존에 있는 데이터 | workbook의 일부 출처 답변, Part 2 표본 추천 답변, 일부 강의 문서의 답변 후보 |
-| 부족한 데이터 | 253개 전체 답변, 대상 ID 연결, 출처·권리·언어 검수 |
+| 기존에 있는 데이터 | `full-import-v1`의 VisualQuestion 대상 Part 2 출처 추천 답변 48개, 일부 강의 문서의 답변 후보 |
+| 부족한 데이터 | Part 2 답변 48개의 언어·내용 검수, 나머지 Question의 기본 답변, 대상 ID와 출처·권리 검수 |
 | 앱에서 사용할 화면 | 문제 상세, 답변 작성 후 비교, 복습 |
 | 구현 우선순위 | `P1` — Question 검수와 병행하되 빈 답변을 자동 작성하지 않음 |
 | 검수 조건 | 답변 대상이 명확하고 세 언어 전체가 일치, 출처 답변은 `unverified_source`에서 시작, 답변 없는 문제를 정상 상태로 유지 |
@@ -66,8 +66,8 @@
 | 항목 | 내용 |
 |---|---|
 | 필요한 데이터 | Part 6 상황·역할·대안 구조와 교정 사례, Part 7 VisualSet·VisualAsset·StoryGuide·별도 ModelAnswer |
-| 기존에 있는 데이터 | Part 6 시간·구성 언급, Part 7 마지막 반전 예고, workbook 시각 표본 |
-| 부족한 데이터 | 상세 강의와 충분한 문제·답변, 시각 자산 권리, 명시적인 질문-그림 연결 |
+| 기존에 있는 데이터 | Part 6 시간·구성 언급, `full-import-v1`의 Part 7 VisualSet·VisualAsset·StoryGuide 각 12개와 접미사 검토 후보 12개 |
+| 부족한 데이터 | 상세 강의와 충분한 문제·답변, 시각 자산 25개의 권리, 명시적인 Part 7 Question-VisualSet 연결 |
 | 앱에서 사용할 화면 | Part 6 상황 대응 화면, Part 7 스토리 전용 화면 |
 | 구현 우선순위 | `P1` — 현재 강의의 가장 큰 내용 공백 |
 | 검수 조건 | Part 7 StoryGuide를 ModelAnswer로 변환하지 않음, 행 순서로 연결하지 않음, 권리를 VisualAsset 단위로 확인 |
@@ -123,3 +123,4 @@
 3. 기본 답변이 없는 Question은 오류가 아니며 학습·개인 답변 작성은 계속 가능해야 한다.
 4. Level 8 확장 데이터는 강의 기반 콘텐츠와 출처·변형·검수 상태를 분리한 뒤에만 노출한다.
 5. 개인 데이터는 reviewed 공용 JSON에 포함하지 않고 현재 브라우저 IndexedDB 경계를 유지한다.
+6. `full-import-v1`의 자동 연결과 후보는 별개다. Part 2 엄격 일치 18건 외의 관계는 사람 승인 전 canonical 연결로 승격하지 않는다.

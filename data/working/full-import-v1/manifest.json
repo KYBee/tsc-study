@@ -1,0 +1,102 @@
+{
+  "dataset_id": "full-workbook-working-import-v1",
+  "dataset_status": "working",
+  "schema_version": "data-schema-v1.1-working",
+  "workbook": {
+    "path": "data/raw/TSC_파트별_문제은행_그림포함.xlsx",
+    "sha256": "a150fd8a732d6ce2a309a6d5a41feb3788bb5b7b03142472d0d9fdf1fae1f37f",
+    "size": 623070
+  },
+  "script_sha256": "8e67617d2da0f62e83d46ce8f12b9b0bb602894f872af77ff693e60fb38bf62f",
+  "sheets": [
+    "시험 구조",
+    "문제은행",
+    "요약",
+    "공식·참고 링크",
+    "그림 활용 안내",
+    "Part2 그림 연습",
+    "Part2 정답",
+    "Part7 스토리 그림",
+    "Part7 정답 포인트",
+    "공식 샘플 이미지"
+  ],
+  "course_import_manifest": {
+    "path": "data/working/course-import-v1/manifest.json",
+    "sha256": "f734d624d35525ad0aafe687b80d919a3bc335364d01d05f8b93818f1e6167eb"
+  },
+  "generated_files": {
+    "sources.json": "91bb40f6e126b8f7640b2f1bebcb3ffe9c70367fa51348e47d2561950285b7b7",
+    "source-references.json": "f8f855f967802fae023f2b5c3d6238c8334f3685251815730a2dae0631b7ca42",
+    "questions.json": "c2fa432bd8ed506a0e3d7cca36e0542c51217823a9a7273e4c45d07b6f514702",
+    "answer-points.json": "2ccef0f999cb30f864a79332bfd3d9eb602f6f2c8afbe92cde8304811058549d",
+    "part-guides.json": "0649d2138334d614564c69cc2456743d60680ceabef705d90374320323a395f2",
+    "visual-assets.json": "5f919cba1b674c595bf570f0de3b2b30094eeede223413baa8c8f1db856de155",
+    "visual-sets.json": "e870c15c0c320282811231943faadb7f4db6eb2cf64ee888d09e113168a1fca7",
+    "visual-set-assets.json": "2b3aeb293e4d3636a258b3821f30c8154224a2fb524ab1fa7a38364165596b2c",
+    "visual-questions.json": "0034b6143948c466b84340556379a99701a29d43ea31f7e5317579768c6ea908",
+    "question-visual-sets.json": "d0d536d5363170eaf8bc92aaea593768925a700642c7ba9fd869294b99738b9e",
+    "model-answers.json": "99c6c59cb4a5eb897865282de79535c38d09bbba6ed11b691cca27f7d85b9c9d",
+    "story-guides.json": "32abfa39a76897862ff08ce2fc82363484450ff450fb7e38532f5b3fd93ec7f8",
+    "course-question-link-candidates.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "course-content-usage-candidates.json": "77602a5dd474060a4e1e07dd2c7f8a28c30216e464b32a847394f05bee64dd3d",
+    "workbook-link-candidates.json": "4cc2efd1b1935746e79fd2fb0a3b6747f8f326d60d5a32de94e179b3d226c02c",
+    "unmapped-content.json": "1924977728d1367f43eaef9e3e780a22a337ff4f5d000b6285cd3dd662433ede",
+    "review-queue.json": "3eaa1b6bdd139c420c0b5267664545c3e92ff40ae73a04400a4f5f9cfd9b27b3",
+    "README.md": "e6220712285f3967db80c1224f341c78a11dae5afa655b6284b2a3aa0cf0dbb4"
+  },
+  "manifest_hash_policy": "manifest.json은 자기참조 해시를 만들 수 없어 generated_files에서 제외하며 외부 검증에서 별도로 SHA-256을 계산한다.",
+  "counts": {
+    "sources": 1,
+    "source_references": 667,
+    "questions": 253,
+    "answer_points": 253,
+    "part_guides": 7,
+    "visual_assets": 25,
+    "visual_sets": 25,
+    "visual_set_assets": 25,
+    "visual_questions": 48,
+    "question_visual_sets": 18,
+    "model_answers": 48,
+    "story_guides": 12,
+    "course_question_link_candidates": 0,
+    "course_content_usage_candidates": 4,
+    "workbook_link_candidates": 12,
+    "unmapped_content": 118,
+    "review_queue": 9
+  },
+  "part_question_counts": {
+    "1": 4,
+    "2": 48,
+    "3": 84,
+    "4": 50,
+    "5": 36,
+    "6": 19,
+    "7": 12
+  },
+  "visual_question_links": {
+    "linked": 18,
+    "unlinked": 30
+  },
+  "rights_review_needed_assets": 25,
+  "duplicate_visual_asset_sha_groups": 0,
+  "excluded_personal_columns": [
+    "연습 상태",
+    "최근 연습일",
+    "내 답변 메모"
+  ],
+  "validation": {
+    "status": "passed",
+    "checks": [
+      "workbook_sha256_and_size",
+      "sheet_structure",
+      "entity_counts",
+      "canonical_id_uniqueness",
+      "source_reference_integrity",
+      "visual_reference_integrity",
+      "strict_question_links",
+      "image_media_sha256",
+      "working_status_boundaries",
+      "personal_columns_excluded"
+    ]
+  }
+}

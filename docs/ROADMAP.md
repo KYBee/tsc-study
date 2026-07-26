@@ -26,6 +26,9 @@
 - Part 1~7과 시각 자료 대표 표본 검증 완료
 - 구현 기술 독립적인 데이터 스키마 v1과 강의 근거용 additive v1.1 문서화 완료
 - TSC 1~7강 분석 Markdown의 근거 종류·충돌을 보존한 `course-import-v1` working 구조화 완료
+- 전체 workbook의 Question·AnswerPoint 253개와 시각 자료 메타데이터를 `full-import-v1` working으로 구조 반입 완료
+- Part 2 출처 추천 답변 48개와 Part 7 StoryGuide 12개 반입 완료
+- 강의 데이터와 Question의 엄격한 연결·사용 후보 및 사람 검수 큐 생성 완료
 - Level 8 목표 대비 데이터 공백 분석과 고득점 데이터 보강 계획 완료
 - 모바일 UI 명세, 화면 데이터 계약과 화면 이동 흐름 문서화 완료
 - React + TypeScript + Vite, reviewed JSON과 개인 IndexedDB의 MVP 구현 기준 결정 완료
@@ -36,7 +39,9 @@
 - deterministic mock 교정과 승인 후 IndexedDB `UserAnswer` 저장 완료
 - 사용자 선택 기반 `ReviewState`와 개인 `Correction` 최소 흐름 완료
 - 타입 검사, lint, 단위·컴포넌트 테스트와 production build 기준 마련 완료
-- 전체 253개 문제와 전체 시각 자료 추출·정규화·검수 미완료
+- 전체 253개 문제의 중국어·병음·한국어·출처 사람 검수와 `reviewed` 승격 미완료
+- 시각 자료 권리, 미연결 VisualQuestion과 Part 7 후보 관계 승인 미완료
+- `full-import-v1`의 앱 런타임 연결 미완료
 - 실제 AI 연결, 개인 데이터 서버 동기화, 전체 Part 구현과 배포 미완료
 - 새 모범답안 작성, 공용 실수 노트 전체와 Part 1·2·3·5·6·7 구현 미완료
 

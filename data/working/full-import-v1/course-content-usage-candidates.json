@@ -1,0 +1,62 @@
+[
+  {
+    "candidate_id": "cuc-le-course-016-P3-047",
+    "course_content_type": "learning_expression",
+    "course_content_id": "le-course-016",
+    "candidate_question_id": "P3-047",
+    "match_basis": "part_match_and_literal_zh_inclusion",
+    "matched_fields": [
+      "part",
+      "question_zh_contains_language.zh"
+    ],
+    "conflicting_fields": [],
+    "confidence": "literal_match_only",
+    "review_status": "review_needed",
+    "notes": "추천 검수 큐이며 SourceReference나 canonical Question 관계가 아님."
+  },
+  {
+    "candidate_id": "cuc-le-course-016-P3-048",
+    "course_content_type": "learning_expression",
+    "course_content_id": "le-course-016",
+    "candidate_question_id": "P3-048",
+    "match_basis": "part_match_and_literal_zh_inclusion",
+    "matched_fields": [
+      "part",
+      "question_zh_contains_language.zh"
+    ],
+    "conflicting_fields": [],
+    "confidence": "literal_match_only",
+    "review_status": "review_needed",
+    "notes": "추천 검수 큐이며 SourceReference나 canonical Question 관계가 아님."
+  },
+  {
+    "candidate_id": "cuc-le-course-016-P3-049",
+    "course_content_type": "learning_expression",
+    "course_content_id": "le-course-016",
+    "candidate_question_id": "P3-049",
+    "match_basis": "part_match_and_literal_zh_inclusion",
+    "matched_fields": [
+      "part",
+      "question_zh_contains_language.zh"
+    ],
+    "conflicting_fields": [],
+    "confidence": "literal_match_only",
+    "review_status": "review_needed",
+    "notes": "추천 검수 큐이며 SourceReference나 canonical Question 관계가 아님."
+  },
+  {
+    "candidate_id": "cuc-pi-course-pangbian-erhua-P2-011",
+    "course_content_type": "pronunciation_item",
+    "course_content_id": "pi-course-pangbian-erhua",
+    "candidate_question_id": "P2-011",
+    "match_basis": "part_match_and_literal_target_text_inclusion",
+    "matched_fields": [
+      "part",
+      "question_zh_contains_target_text"
+    ],
+    "conflicting_fields": [],
+    "confidence": "literal_match_only",
+    "review_status": "review_needed",
+    "notes": "발음 항목 사용 추천 검수 큐이며 canonical Question 관계가 아님."
+  }
+]

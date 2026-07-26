@@ -1,0 +1,252 @@
+[
+  {
+    "visual_set_id": "vs-P2-V01",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V01-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V01"
+  },
+  {
+    "visual_set_id": "vs-P2-V02",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V02-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V02"
+  },
+  {
+    "visual_set_id": "vs-P2-V03",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V03-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V03"
+  },
+  {
+    "visual_set_id": "vs-P2-V04",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V04-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V04"
+  },
+  {
+    "visual_set_id": "vs-P2-V05",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V05-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V05"
+  },
+  {
+    "visual_set_id": "vs-P2-V06",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V06-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V06"
+  },
+  {
+    "visual_set_id": "vs-P2-V07",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V07-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V07"
+  },
+  {
+    "visual_set_id": "vs-P2-V08",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V08-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V08"
+  },
+  {
+    "visual_set_id": "vs-P2-V09",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V09-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V09"
+  },
+  {
+    "visual_set_id": "vs-P2-V10",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V10-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V10"
+  },
+  {
+    "visual_set_id": "vs-P2-V11",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V11-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V11"
+  },
+  {
+    "visual_set_id": "vs-P2-V12",
+    "part": 2,
+    "set_type": "four_question_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P2-V12-extracted"
+    ],
+    "notes": "원본 그림 ID P2-V12"
+  },
+  {
+    "visual_set_id": "vs-P7-V01",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V01-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V01"
+  },
+  {
+    "visual_set_id": "vs-P7-V02",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V02-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V02"
+  },
+  {
+    "visual_set_id": "vs-P7-V03",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V03-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V03"
+  },
+  {
+    "visual_set_id": "vs-P7-V04",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V04-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V04"
+  },
+  {
+    "visual_set_id": "vs-P7-V05",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V05-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V05"
+  },
+  {
+    "visual_set_id": "vs-P7-V06",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V06-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V06"
+  },
+  {
+    "visual_set_id": "vs-P7-V07",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V07-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V07"
+  },
+  {
+    "visual_set_id": "vs-P7-V08",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V08-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V08"
+  },
+  {
+    "visual_set_id": "vs-P7-V09",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V09-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V09"
+  },
+  {
+    "visual_set_id": "vs-P7-V10",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V10-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V10"
+  },
+  {
+    "visual_set_id": "vs-P7-V11",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V11-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V11"
+  },
+  {
+    "visual_set_id": "vs-P7-V12",
+    "part": 7,
+    "set_type": "story_image",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-P7-V12-extracted"
+    ],
+    "notes": "원본 그림 ID P7-V12"
+  },
+  {
+    "visual_set_id": "vs-official-sample-workbook-01",
+    "part": 7,
+    "set_type": "official_sample",
+    "set_status": "raw",
+    "source_reference_ids": [
+      "sr-visual-set-vs-official-sample-workbook-01-extracted"
+    ],
+    "notes": "공식 샘플 이미지 시트의 단일 이미지; Question 미연결."
+  }
+]

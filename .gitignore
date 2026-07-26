@@ -31,3 +31,6 @@ coverage/
 
 # Test caches
 .vitest/
+
+# Deterministically regenerated workbook image bytes (local working output)
+/data/working/generated-assets/full-import-v1/

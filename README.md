@@ -30,11 +30,11 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 **Phase 0: 프로젝트 지침과 문서**는 완료했고, **Phase 1: 원본 자료 적재 및 대표 표본 검수**가 진행 중이다.
 
-첫 원본 Excel을 원래 내용과 파일명 그대로 `data/raw`에 적재하고 시트 구조를 조사한 뒤, Part 1~4의 대표 Question 20개와 Part 5~7의 대표 Question 14개를 작업용 CSV로 추출했다. Part 2·7의 그림 세트, 원본 추천 답변과 StoryGuide도 각각 2세트씩 표본 검증했으며, 그 결과를 바탕으로 구현 기술 독립적인 데이터 스키마 v1을 문서화했다. 이어 3급 목표 강의 분석의 근거 종류와 재사용 학습 콘텐츠를 반영한 [데이터 스키마 v1.1](docs/SCHEMA_V1_SUMMARY.md)과 검수 전 `course-import-v1` working 데이터를 추가했다. 참고 목업 기준의 [모바일 UI 명세](docs/UI_SPEC.md), [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](docs/NAVIGATION_FLOW.md)도 완료했다.
+첫 원본 Excel을 원래 내용과 파일명 그대로 `data/raw`에 적재하고 시트 구조와 두 차례 대표 표본을 검증했다. 그 결과를 바탕으로 구현 기술 독립적인 데이터 스키마 v1.1과 검수 전 `course-import-v1` working 데이터를 추가했다. 이어 [전체 workbook working 반입](docs/FULL_WORKBOOK_IMPORT_REPORT.md)으로 Question·AnswerPoint 253개, 전체 시각 자료 메타데이터, Part 2 출처 추천 답변 48개와 Part 7 StoryGuide 12개를 구조화하고, [강의 콘텐츠 연결 후보](docs/COURSE_QUESTION_LINK_REPORT.md)를 엄격한 근거만으로 생성했다. 참고 목업 기준의 [모바일 UI 명세](docs/UI_SPEC.md), [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](docs/NAVIGATION_FLOW.md)도 완료했다.
 
 [MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)에 따라 React + TypeScript + Vite 프로젝트를 초기화하고, Part 4 raw 표본 6개를 이용한 첫 수직 기능을 구현했다. 현재 구현 범위는 Part 4 문제 조회, 개발용 deterministic mock 교정, 사용자 승인 후 IndexedDB 답변 저장, 복습 상태 변경과 개인 실수 확인이다. 공용 데이터는 개발 fixture JSON, 개인 `UserAnswer`·개인 `Correction`·`ReviewState`는 현재 브라우저 origin의 IndexedDB에 분리해 저장한다.
 
-아직 전체 253개 문제와 전체 시각 자료의 변환·정규화·검수는 하지 않았다. 실제 AI 공급자·모델, 백엔드 기술, 인증, 서버 동기화, 배포, 이미지 공개 가능 여부와 병음 생성·검수 방식도 계속 미결정이다.
+전체 253개 문제와 시각 자료는 `data/working/full-import-v1/`에 원문 그대로 구조 반입했지만, 정규화·사람 검수·`reviewed` 승격과 앱 연결은 하지 않았다. 실제 AI 공급자·모델, 백엔드 기술, 인증, 서버 동기화, 배포, 이미지 공개 가능 여부와 병음 생성·검수 방식도 계속 미결정이다.
 
 강의 working import는 저장소에 실제 존재하는 분석·학습·문서 추출 Markdown만 Source로 사용한다. 분석이 주장하지만 저장소에 없는 원본 MP4·PDF·DOCX를 확인된 Source로 등록하지 않으며, 모든 콘텐츠는 `review_needed` 이하 상태다. 자세한 공백과 후속 순서는 [Level 8 공백 분석](docs/LEVEL8_GAP_ANALYSIS.md)과 [고득점 목표 데이터 계획](docs/HIGH_SCORE_DATA_PLAN.md)을 따른다.
 
@@ -61,7 +61,10 @@ npm run lint
 npm run test:run
 npm run build
 npm run check
+npm run check:data
 ```
+
+`check:data`는 `course-import-v1`과 `full-import-v1`의 검증·Python 테스트를 실행한다. 전체 working 데이터 재생성은 일반 프론트엔드 `check`와 분리한다.
 
 구현된 라우트:
 
@@ -74,7 +77,7 @@ npm run check
 - `/review`: Part 4 문제 복습
 - `/mistakes`: 저장된 개인 실수
 
-실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용 mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다. Part 1·2·3·5·6·7 화면, 실제 AI, 백엔드, 로그인·동기화, 전체 데이터, 배포는 아직 구현하지 않았다.
+실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용 mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다. Part 1·2·3·5·6·7 화면, 실제 AI, 백엔드, 로그인·동기화, full working dataset의 앱 연결과 배포는 아직 구현하지 않았다.
 
 ## 저장소 구조
 
@@ -98,7 +101,7 @@ npm run check
 
 1. [구현 상태](docs/IMPLEMENTATION_STATUS.md)와 첫 수직 기능의 제한을 검토한다.
 2. Part 4 수직 기능을 실제 모바일 브라우저에서 반복 검증한다.
-3. `course-import-v1`의 근거·충돌 항목을 사람 검수하고 스키마 v1.1의 승격 기준을 확인한다.
-4. 전체 253개 Question과 강의 콘텐츠의 엄격한 연결 후보를 검토한다.
+3. `full-import-v1`의 9개 검수 큐와 `course-import-v1`의 근거·충돌 항목을 사람 검수한다.
+4. Part 2 미연결 30건, Part 7 접미사 후보 12건과 강의 콘텐츠 사용 후보 4건을 승인·거절한다.
 5. 실제 AI 공급자·서버 경계는 별도 비교와 승인 후 결정한다.
-6. 전체 데이터 추출·검수와 다음 Part 구현 범위를 별도로 결정한다.
+6. 언어·출처·이미지 권리 검수를 통과한 항목의 `reviewed` 승격과 다음 Part 구현 범위를 별도로 결정한다.
