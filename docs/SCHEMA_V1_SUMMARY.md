@@ -1,10 +1,23 @@
-# 데이터 스키마 v1 요약
+# 데이터 스키마 v1.1 요약
 
 ## 확정 배경
 
 Part 1~4 Question 20개 표본과 Part 5~7 Question 14개·시각 자료 표본을 검증한 결과, 기존 텍스트 중심 스키마만으로는 출처 주장, 그림 묶음, 시각 하위 질문, 출처 답변과 StoryGuide를 정확히 구분하기 어려웠다. 이에 전체 데이터를 추출하기 전에 구현 기술과 기준 파일 형식에 독립적인 canonical 스키마 v1을 문서로 확정했다.
 
 스키마 v1은 현재 작업용 CSV의 물리 구조를 확정하거나 데이터베이스를 선택한 결과가 아니다. 기존 CSV는 표본 검증 결과 그대로 유지하며, 전체 추출·정규화·검수도 아직 수행하지 않는다.
+
+v1.1은 `other-output`의 3급 목표 강의 분석을 working 데이터로 반입하기 전에 근거 수준과 재사용 학습 콘텐츠를 표현할 수 있도록 additive하게 확장한 버전이다. 기존 Part 4 앱 계약과 v1 엔터티·상태값은 유지한다.
+
+## 강의 자료 검토에서 발견한 문제
+
+- 이번 강의 canonical import의 실제 `Source`는 저장소에 있는 분석·학습·추출 Markdown이다. 원본 MP4·PDF·DOCX는 없으므로 존재하지 않는 경로를 실제 `Source.file_ref`로 만들 수 없다. 충돌 재확인용 screenshot과 screen index는 필요할 때만 별도 근거로 다룬다.
+- 강의는 주로 TSC 3급 목표 과정이다. 정확성·감점 방지 내용은 Level 8 준비의 기초가 될 수 있지만 과정 자체를 Level 8 전략으로 바꿀 수 없다.
+- 직접 문서·화면, 타임스탬프가 있는 강사 발언, 분석자 통합, 재구성 학습 자료의 신뢰도와 의미가 다르다.
+- 표현집의 다수 병음은 `자료에서 확인 불가`, 존재 설명 또는 단어 일부뿐이다. 이를 전체 문장 병음으로 채울 수 없다.
+- 교정 후보에는 정확한 전후 중국어가 있어도 전체 병음이 없거나, 잘못된 중국어 자체가 한국어 설명으로만 남은 사례가 있다.
+- `每天…` 교정 후보는 통합 분석의 전후 문장과 PDF 직접 텍스트의 전후 문장도 서로 달라, 병음 누락과 별개로 원문 충돌 검수가 필요하다.
+- Part 6·7은 시간·구성 언급에 비해 상세 훈련, 표현, 답변 자료가 부족하다.
+- 강의 자료의 실전 과제에는 녹음이 포함되지만, 이를 구조화하는 것이 현재 MVP에 음성 인식·평가를 추가한다는 뜻은 아니다.
 
 ## 표본 검증에서 발견한 문제
 
@@ -31,6 +44,10 @@ Part 1~4 Question 20개 표본과 Part 5~7 Question 14개·시각 자료 표본�
 | 시각 자료 | `VisualQuestion` | 그림 세트 안의 하위 질문 |
 | 스토리 보조 | `StoryGuide` | Part 7 이야기 흐름과 연결어를 보존하는 보조 콘텐츠 |
 | 파트 학습 | `PartGuide` | Part 1~7의 목표·구조·표현 가이드 |
+| 학습 표현 | `LearningExpression` | 여러 문제·Part에서 재사용할 표현과 문장 구조 |
+| 발음 학습 | `PronunciationItem` | 강의에서 직접 확인된 발음·성조·얼화와 혼동 음 항목 |
+| 실전 연습 | `PracticeDrill` | 준비·답변 시간과 학습 행동을 가진 근거 기반 과제 |
+| 강의 인사이트 | `CourseInsight` | 전략·경고·공부법·평가 관점과 과정 범위 제한 |
 | 오류 콘텐츠 | `Correction` | 잘못된 표현, 올바른 표현과 수정 이유 |
 | 개인 기록 | `UserAnswer` | 사용자가 저장을 승인한 개인 답변 |
 | 개인 기록 | `ReviewState` | 사용자별 `못 외움`, `헷갈림`, `외움` 상태 |
@@ -41,7 +58,7 @@ Part 1~4 Question 20개 표본과 Part 5~7 Question 14개·시각 자료 표본�
 
 | 범위 | 포함 데이터 | 원칙 |
 |---|---|---|
-| 공용 콘텐츠 | `Source`, `SourceReference`, `Question`, `AnswerPoint`, `ModelAnswer`, 시각 자료 엔터티, `StoryGuide`, `PartGuide`, 공용 `Correction` | 출처·검수 상태를 보존하고 개인 학습 상태를 넣지 않는다. |
+| 공용 콘텐츠 | `Source`, `SourceReference`, `Question`, `AnswerPoint`, `ModelAnswer`, 시각 자료 엔터티, `StoryGuide`, `PartGuide`, `LearningExpression`, `PronunciationItem`, `PracticeDrill`, `CourseInsight`, 공용 `Correction` | 출처·근거·검수 상태를 보존하고 개인 학습 상태를 넣지 않는다. |
 | 개인 기록 | `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하고 초기 MVP에서는 IndexedDB에 저장한다. 인증과 서버 동기화는 포함하지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.
@@ -109,6 +126,20 @@ Question / UserAnswer / Correction
 - `claimed_source_name`과 `claimed_source_url`은 원본 내부의 주장이다. URL이 있다는 이유만으로 검증된 `Source`로 승격하지 않는다.
 - 한 콘텐츠에는 `extracted_from`, `claimed_origin`, `derived_from`, `supports`, `self_created` 등 여러 출처 관계가 연결될 수 있다.
 - 현재 CSV의 `source_id`, `source_locator`, `source_name`, `source_url`, `source_grade`, `originality`는 전체 반입 시 canonical `SourceReference`로 매핑한다.
+- 강의 반입에서는 저장소에 실제 있는 통합 분석, 강의별 분석, study 문서, PDF·DOCX 추출 Markdown, 인벤토리와 검증 보고서를 `Source`로 등록한다. 분석 문서가 주장하는 원본 MP4·PDF·DOCX는 실제 파일이 없으므로 `claimed_original_names`, `notes`와 locator의 주장 메타데이터로만 보존한다.
+- 분석을 재배열한 study 문서는 `self_created` Source이자 `generated_study_material`로 표시하고, 출처 기반 원문이나 강사 발언 Source처럼 취급하지 않는다.
+- `EvidenceKind`는 `document_text`, `screen_text`, `instructor_speech`, `analyst_synthesis`, `generated_study_material`을 구분한다.
+- 자동 품질 게이트 통과는 파일 처리 완전성을 뜻할 뿐 콘텐츠를 `reviewed` 또는 `verified`로 승격하는 근거가 아니다.
+
+## 강의 학습 콘텐츠
+
+- `LearningExpression`은 재사용 가능한 표현을 분리한다. 자료의 부분 병음이나 병음 존재 설명을 전체 병음으로 저장하지 않는다.
+- `PronunciationItem`은 확인된 지도 내용만 보존하고 음가·병음을 일반 지식으로 보충하지 않는다.
+- `PracticeDrill`은 강의가 말한 시간과 행동을 보존하되 반복 횟수, 하루 분량과 복습 간격을 만들지 않는다.
+- `CourseInsight`는 직접 강사 발언과 분석자 통합을 `evidence_kind`로 구분하고 과정 목표를 `level_3`로 보존한다.
+- 상세분석에 타임스탬프가 있는 발음 지도와 핵심 전략은 `instructor_speech` 관계를 보존하되 원본 영상 부재 때문에 `review_needed`로 유지한다.
+- 정확한 전후 중국어와 전체 병음 요건을 충족하지 않는 강의 교정은 `Correction`으로 만들지 않고 충돌·검토 항목으로 남긴다.
+- 특정 문제 연결과 중국어·전체 병음·한국어·실제 출처 위치가 모두 확인되지 않은 표현이나 템플릿은 `ModelAnswer` 후보가 아니다.
 
 ## 질문, 답변 포인트와 답변
 
@@ -141,7 +172,7 @@ MVP 프론트엔드는 React + TypeScript + Vite, 공용 reviewed 데이터는 �
 - AI API 제공자와 모델
 - 이미지별 실제 공개 가능 여부
 - 자동 병음 생성과 검수 방식
-- IndexedDB 래퍼와 구체적인 패키지 버전
+- IndexedDB 장기 마이그레이션과 백업 정책
 
 세부 상태는 [DECISIONS.md](DECISIONS.md)를 따른다.
 
@@ -159,3 +190,8 @@ MVP 프론트엔드는 React + TypeScript + Vite, 공용 reviewed 데이터는 �
 10. 공용 콘텐츠에 개인 연습 상태, 최근 연습일이나 개인 메모를 넣지 않는다.
 11. `verified` 또는 사이트 표시용 중국어 콘텐츠는 중국어, 병음, 한국어 뜻을 함께 검수한다.
 12. reviewed 공용 데이터는 엔터티별 JSON으로 만들고 관계를 안정적인 ID로 연결한다. working CSV와 개인 IndexedDB 데이터를 공용 canonical JSON에 섞지 않는다.
+13. 강의 자료는 각 레코드의 `evidence_kind`와 실제 Markdown `SourceReference`를 유지하고, 저장소에 없는 원본 매체를 확인한 Source처럼 등록하지 않는다.
+14. 3급 과정 전략을 Level 8 전략으로 바꾸지 않고 `course_target_context = level_3`로 보존한다.
+15. 전체 병음이 없는 표현·교정·답변 후보에 병음을 생성하지 않는다.
+16. 분석자 통합과 재구성 학습 자료를 강사 직접 발언으로 표시하지 않는다.
+17. Part 6·7의 부족한 근거를 임의의 가이드나 답변으로 채우지 않는다.

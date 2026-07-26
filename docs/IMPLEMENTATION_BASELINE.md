@@ -89,7 +89,7 @@ React, TypeScript, Vite와 React Router의 구체적인 버전은 프로젝트 �
 - `localStorage`는 테마처럼 매우 단순한 설정에만 사용할 수 있다.
 - `UserAnswer`, 개인 `Correction`, `ReviewState`의 본문은 `localStorage`에 저장하지 않는다.
 - 내보내기·가져오기, 백업과 기기 간 이전은 후속 기능이다.
-- IndexedDB 직접 API와 작은 래퍼 라이브러리 중 무엇을 사용할지는 프로젝트 초기화 단계에서 결정한다.
+- 프로젝트 초기화에서 작은 IndexedDB 래퍼인 `idb`를 선택했다. 정확한 구현 결정과 재검토 조건은 [DECISIONS.md](DECISIONS.md)의 `D-014`를 따른다.
 - raw Part 4 fixture 환경의 IndexedDB는 reviewed/production 데이터 환경과 DB 이름 또는 dataset namespace로 분리한다. 개발 개인 기록을 production 기록으로 자동 승격하지 않는다.
 
 첫 수직 기능에서도 사용자가 교정 결과를 명시적으로 승인한 뒤에만 `UserAnswer`를 저장한다. `ReviewState`가 없는 문제를 자동으로 `못 외움`으로 만들지 않는다.

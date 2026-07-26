@@ -1,0 +1,154 @@
+[
+  {
+    "pronunciation_item_id": "pi-course-priority",
+    "target_text": "중국어 답변 전체",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "발음·딕션·성조",
+    "explanation_ko": "고급 표현보다 또렷한 발음과 성조를 우선한다.",
+    "example_expression_ids": [],
+    "part_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-priority-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-f-mouth",
+    "target_text": "f",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "윗니와 아랫입술을 사용하는 입 모양",
+    "explanation_ko": "f는 윗니와 아랫입술을 쓰는 입 모양으로 지도했다.",
+    "example_expression_ids": [],
+    "part_numbers": [
+      2,
+      3
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-f-mouth-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-jqx",
+    "target_text": "j/q/x 뒤 모음",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "j/q/x 뒤 모음 구분",
+    "explanation_ko": "j/q/x 뒤 모음을 개별 교정한 항목으로 보존한다.",
+    "example_expression_ids": [],
+    "part_numbers": [
+      2,
+      4,
+      5
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-jqx-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-zcs-zhchsh",
+    "target_text": "z/c/s와 zh/ch/sh",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "평설음과 권설음 구분",
+    "explanation_ko": "z/c/s와 zh/ch/sh를 개별 교정한 항목으로 보존한다.",
+    "example_expression_ids": [],
+    "part_numbers": [
+      2,
+      4,
+      5
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-zcs-zhchsh-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-serial-room",
+    "target_text": "연속 숫자·호수",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "연속 숫자와 호수 발음",
+    "explanation_ko": "연속 숫자와 호수 발음을 개별 교정한 항목으로 보존한다.",
+    "example_expression_ids": [],
+    "part_numbers": [
+      2
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-serial-room-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-bi-geng",
+    "target_text": "比/更",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "비교 표현 발음",
+    "explanation_ko": "비교 표현 比와 更의 발음을 개별 교정한 항목으로 보존한다.",
+    "example_expression_ids": [
+      "le-course-004",
+      "le-course-008"
+    ],
+    "part_numbers": [
+      2
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-bi-geng-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-season-money",
+    "target_text": "계절·돈 관련 단어",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "계절과 돈 관련 어휘 발음",
+    "explanation_ko": "계절과 돈 관련 단어를 개별 교정한 항목으로 보존한다.",
+    "example_expression_ids": [],
+    "part_numbers": [
+      4,
+      5
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-season-money-01",
+      "sr-pi-course-season-money-02"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  },
+  {
+    "pronunciation_item_id": "pi-course-pangbian-erhua",
+    "target_text": "旁边",
+    "pinyin_or_sound": "",
+    "pronunciation_focus": "旁边의 얼화",
+    "explanation_ko": "旁边의 边에는 얼화를 더하면 자연스럽다고 안내했다.",
+    "example_expression_ids": [
+      "le-course-007"
+    ],
+    "part_numbers": [
+      2
+    ],
+    "status": "review_needed",
+    "evidence_kind": "instructor_speech",
+    "source_reference_ids": [
+      "sr-pi-course-pangbian-erhua-01"
+    ],
+    "notes": "정량 속도·억양 기준이나 새 병음은 포함하지 않는다."
+  }
+]

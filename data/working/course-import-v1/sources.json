@@ -1,0 +1,400 @@
+[
+  {
+    "source_id": "src-course-analysis-integrated",
+    "title": "TSC 1~7강 전체 통합분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_1-7강_전체통합분석.md",
+    "file_ref": "other-output/TSC_1-7강_전체통합분석.md",
+    "claimed_original_names": [
+      "01강 / P01",
+      "01강 / V01a",
+      "02강 / V02a",
+      "02강 / V02b",
+      "03강 / V03",
+      "04강 / V04c",
+      "05강 / V05",
+      "06강 / V06",
+      "07강 / V07",
+      "05강 / D05",
+      "02강 / P02",
+      "04강 / P04",
+      "04강 / V04b"
+    ],
+    "sha256": "fe4373f12bd198d9eccbb05ff3eaf50045a1ef735e2976d92af72040805bcb9e",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-01",
+    "title": "01강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "01강_상세분석.md",
+    "file_ref": "other-output/lessons/01강_상세분석.md",
+    "claimed_original_names": [
+      "V01a — 첫 번째 MP4(19:33 시작)",
+      "V01b — 두 번째 MP4(20:22 시작)",
+      "lecture1/2024.05 3급 TSC_5월 제1강.pdf"
+    ],
+    "sha256": "06f722a61bdde95023863d7db9d8a17683a9f440512fc179fa51a456e2eb2744",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-02",
+    "title": "02강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "02강_상세분석.md",
+    "file_ref": "other-output/lessons/02강_상세분석.md",
+    "claimed_original_names": [
+      "V02a — 첫 MP4(19:34 시작)",
+      "V02b — 둘째 MP4(20:09 시작)",
+      "lecture2/2024.05 3급 TSC_5월 제2강.pdf"
+    ],
+    "sha256": "3c3dfec3a7642a2c173ce33702be9c7395cdaf0da209cc407aad20f8a3431eef",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-03",
+    "title": "03강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "03강_상세분석.md",
+    "file_ref": "other-output/lessons/03강_상세분석.md",
+    "claimed_original_names": [
+      "lecture3/3강.mp4"
+    ],
+    "sha256": "774b2766dc480fc3cda78be3a25acb9aa364210b4736ed3b22a95998a4bd3d32",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-04",
+    "title": "04강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "04강_상세분석.md",
+    "file_ref": "other-output/lessons/04강_상세분석.md",
+    "claimed_original_names": [
+      "V04a — 19:31:55 대표 MP4",
+      "V04a-dup — 19:31:55 (1) MP4",
+      "V04b — 19:41:10 MP4",
+      "V04c — 19:55:48 MP4",
+      "lecture4/2024.05 3급 TSC_5월.pdf"
+    ],
+    "sha256": "993e0faa95170abe0b04b865c54c87033f228cfaa0ce40f1f9ae15c2c82b8496",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-05",
+    "title": "05강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "05강_상세분석.md",
+    "file_ref": "other-output/lessons/05강_상세분석.md",
+    "claimed_original_names": [
+      "V05 — 5강 MP4(19:36 시작)",
+      "lecture5/TSC기출문제.docx"
+    ],
+    "sha256": "09a506dfea1efcc9c939c8dc5027d423efb277e9ae015defd219d4b09a731d8b",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-06",
+    "title": "06강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "06강_상세분석.md",
+    "file_ref": "other-output/lessons/06강_상세분석.md",
+    "claimed_original_names": [
+      "V06 — 6강 MP4(2024-05-27 19:44)"
+    ],
+    "sha256": "c200c6752f1dc7325e461b49099e775f36c8ab5fc60ca52fcd66f1905032ddbb",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-analysis-lesson-07",
+    "title": "07강 상세분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "07강_상세분석.md",
+    "file_ref": "other-output/lessons/07강_상세분석.md",
+    "claimed_original_names": [
+      "V07dup — 7강의 2024-05-27 (1).mp4",
+      "V07 — 2024-05-30 09:40 요약 MP4"
+    ],
+    "sha256": "af492ca96529bd52d93ce7dd09078674a330af39525ab0110968f1eb7045919a",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-study-summary",
+    "title": "TSC 1~7강 핵심요약",
+    "source_type": "self_created",
+    "provenance_status": "self_created",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_1-7강_핵심요약.md",
+    "file_ref": "other-output/study/TSC_1-7강_핵심요약.md",
+    "claimed_original_names": [
+      "01강 / V01a",
+      "04강 / V04c"
+    ],
+    "sha256": "f58069fea74537ebfd38e15b73f6b7e730a8f149bc7c77be850e444eaca301a1",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "notes": "분석 결과에서 생성된 학습용 Markdown이다. 주장된 원본 강의 파일은 현재 저장소에 없음. 자동 전사와 부분 병음의 한계를 상속하므로 generated study material을 검수 완료 콘텐츠로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-study-templates",
+    "title": "TSC 문제유형별 답변템플릿",
+    "source_type": "self_created",
+    "provenance_status": "self_created",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_문제유형별_답변템플릿.md",
+    "file_ref": "other-output/study/TSC_문제유형별_답변템플릿.md",
+    "claimed_original_names": [
+      "01강 / P01",
+      "07강 / V07",
+      "06강 / V06",
+      "05강 / D05",
+      "05강 / V05"
+    ],
+    "sha256": "2d7a7562a2235c0ef94135edbbfb4e19e6d276fdc2a9759f983988217adb6dbe",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "notes": "분석 결과에서 생성된 학습용 Markdown이다. 주장된 원본 강의 파일은 현재 저장소에 없음. 자동 전사와 부분 병음의 한계를 상속하므로 generated study material을 검수 완료 콘텐츠로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-study-review-plan",
+    "title": "TSC 복습계획",
+    "source_type": "self_created",
+    "provenance_status": "self_created",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_복습계획.md",
+    "file_ref": "other-output/study/TSC_복습계획.md",
+    "claimed_original_names": [
+      "01강 / V01a",
+      "06강 / V06",
+      "03강 / V03",
+      "07강 / V07"
+    ],
+    "sha256": "51c252db89bb6d9f561bd3b8cf1807eefa10f0ceb59e3f6eb8216d02ccb0619c",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "notes": "분석 결과에서 생성된 학습용 Markdown이다. 주장된 원본 강의 파일은 현재 저장소에 없음. 자동 전사와 부분 병음의 한계를 상속하므로 generated study material을 검수 완료 콘텐츠로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-study-checklist",
+    "title": "TSC 시험직전 체크리스트",
+    "source_type": "self_created",
+    "provenance_status": "self_created",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_시험직전_체크리스트.md",
+    "file_ref": "other-output/study/TSC_시험직전_체크리스트.md",
+    "claimed_original_names": [
+      "01강 / P01",
+      "04강 / V04c"
+    ],
+    "sha256": "e41772e70c95e8ba016adc0d749af9fe07a876c09cf19140c0270fc271f5fe62",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "notes": "분석 결과에서 생성된 학습용 Markdown이다. 주장된 원본 강의 파일은 현재 저장소에 없음. 자동 전사와 부분 병음의 한계를 상속하므로 generated study material을 검수 완료 콘텐츠로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-study-mistakes",
+    "title": "TSC 실수와 감점방지",
+    "source_type": "self_created",
+    "provenance_status": "self_created",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_실수와_감점방지.md",
+    "file_ref": "other-output/study/TSC_실수와_감점방지.md",
+    "claimed_original_names": [
+      "01강 / P01",
+      "04강 / V04b",
+      "05강 / D05",
+      "06강 / V06",
+      "07강 / V07",
+      "04강 / V04c"
+    ],
+    "sha256": "db8a65bb1621890d87d4a8a1700d118ecfbbc4193df83fb07c23ad519f26d675",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "notes": "분석 결과에서 생성된 학습용 Markdown이다. 주장된 원본 강의 파일은 현재 저장소에 없음. 자동 전사와 부분 병음의 한계를 상속하므로 generated study material을 검수 완료 콘텐츠로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-study-expressions",
+    "title": "TSC 필수표현 암기장",
+    "source_type": "self_created",
+    "provenance_status": "self_created",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_필수표현_암기장.md",
+    "file_ref": "other-output/study/TSC_필수표현_암기장.md",
+    "claimed_original_names": [
+      "01강 / P01",
+      "07강 / V07",
+      "02강 / P02",
+      "04강 / P04",
+      "05강 / D05",
+      "06강 / V06"
+    ],
+    "sha256": "c65ec1d2fed253d9e33bb7ed4cf3832977804ef030af597a3ca5ad66b0348a13",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "notes": "분석 결과에서 생성된 학습용 Markdown이다. 주장된 원본 강의 파일은 현재 저장소에 없음. 자동 전사와 부분 병음의 한계를 상속하므로 generated study material을 검수 완료 콘텐츠로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-course-extract-pdf-01",
+    "title": "2024.05 3급 TSC_5월 제1강.pdf 전체 페이지 추출",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "2024.05 3급 TSC_5월 제1강.pdf.md",
+    "file_ref": "other-output/pdf_extracts/01강/2024.05 3급 TSC_5월 제1강.pdf.md",
+    "claimed_original_names": [
+      "2024.05 3급 TSC_5월 제1강.pdf"
+    ],
+    "sha256": "22bc9b5859de9304ea6c66fe52b12788d165ef07c9db77af0f280f331811caac",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "document_text",
+    "notes": "PDF 텍스트 추출 Markdown이다. 주장된 원본 PDF는 현재 저장소에 없음. 텍스트 레이어와 렌더 검토 결과를 보존하지만 원본 자체의 공개 권리와 현재 시험 정보 여부는 확인되지 않았다."
+  },
+  {
+    "source_id": "src-course-extract-pdf-02",
+    "title": "2024.05 3급 TSC_5월 제2강.pdf 전체 페이지 추출",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "2024.05 3급 TSC_5월 제2강.pdf.md",
+    "file_ref": "other-output/pdf_extracts/02강/2024.05 3급 TSC_5월 제2강.pdf.md",
+    "claimed_original_names": [
+      "2024.05 3급 TSC_5월 제2강.pdf"
+    ],
+    "sha256": "7f8791db20a0e29ac83334c6499f62bca0d02cb531f70afafd9ec68ddad549d3",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "document_text",
+    "notes": "PDF 텍스트 추출 Markdown이다. 주장된 원본 PDF는 현재 저장소에 없음. 텍스트 레이어와 렌더 검토 결과를 보존하지만 원본 자체의 공개 권리와 현재 시험 정보 여부는 확인되지 않았다."
+  },
+  {
+    "source_id": "src-course-extract-pdf-04",
+    "title": "2024.05 3급 TSC_5월.pdf 전체 페이지 추출",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "2024.05 3급 TSC_5월.pdf.md",
+    "file_ref": "other-output/pdf_extracts/04강/2024.05 3급 TSC_5월.pdf.md",
+    "claimed_original_names": [
+      "2024.05 3급 TSC_5월.pdf"
+    ],
+    "sha256": "0f2be01756c8f63b7b818334e626ed1612523bd97422def61ccdf23876a54c34",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "document_text",
+    "notes": "PDF 텍스트 추출 Markdown이다. 주장된 원본 PDF는 현재 저장소에 없음. 텍스트 레이어와 렌더 검토 결과를 보존하지만 원본 자체의 공개 권리와 현재 시험 정보 여부는 확인되지 않았다."
+  },
+  {
+    "source_id": "src-course-extract-docx-05",
+    "title": "TSC기출문제.docx 전체 추출",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "05강_TSC기출문제.docx.md",
+    "file_ref": "other-output/pdf_extracts/05강_TSC기출문제.docx.md",
+    "claimed_original_names": [
+      "TSC기출문제.docx"
+    ],
+    "sha256": "b241f7bb97c519e1d1ff22c83c095aca2d9677d2e4d045ed5b9ce7899f4a7adb",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "document_text",
+    "notes": "DOCX OOXML 텍스트 추출 Markdown이다. 주장된 원본 TSC기출문제.docx는 현재 저장소에 없음. 전체 페이지 시각 렌더를 확인하지 못했고 취소선·페이지 표식 해석에 제한이 있다."
+  },
+  {
+    "source_id": "src-course-validation-report",
+    "title": "TSC 분석 완전성 검증 보고서",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "99_validation_report.md",
+    "file_ref": "other-output/99_validation_report.md",
+    "claimed_original_names": [
+      "04강 / V04c",
+      "05강 / V05"
+    ],
+    "sha256": "758f3bd87deb199691f44106268d0e4dcea3409992ba6ed10a19e88bd43fa8d5",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "처리 완전성 검증 보고서다. 원본 파일 처리와 산출물 구조를 다루며 중국어 표현이나 시험 규칙의 내용 검수를 의미하지 않는다. 원본 MP4/PDF/DOCX는 현재 저장소에 없음."
+  },
+  {
+    "source_id": "src-course-file-inventory",
+    "title": "TSC 1~7강 전체 파일 인벤토리",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "00_file_inventory.md",
+    "file_ref": "other-output/00_file_inventory.md",
+    "claimed_original_names": [
+      "2024.05 3급 TSC_5월 제1강.pdf",
+      "Recording_2024-05-13 19-33-18_[깨진 원본 문자] ... .mp4",
+      "Recording_2024-05-13 20-22-28_[깨진 원본 문자] ... .mp4",
+      "2024.05 3급 TSC_5월 제2강.pdf",
+      "Recording_2024-05-17 19-34-34_[깨진 원본 문자] ... .mp4",
+      "Recording_2024-05-17 20-09-15_[깨진 원본 문자] ... .mp4",
+      "3강.mp4",
+      "2024.05 3급 TSC_5월.pdf",
+      "편집충돌 로컬Recording 2024 05 22 19 31 55 ... (1).mp4",
+      "편집충돌 로컬Recording 2024 05 22 19 31 55 ... .mp4",
+      "편집충돌 로컬Recording 2024 05 22 19 41 10 ... .mp4",
+      "Recording 2024 05 22 19 55 48 ... .mp4",
+      "TSC기출문제.docx",
+      "Recording 2024 05 24 19 36 42 ... .mp4",
+      "Recording 2024 05 27 19 44 32 ... .mp4",
+      "Recording 2024 05 27 19 44 32 ... (1).mp4",
+      "Recording_2024-05-30 09-40-07_[글로벌라운지] ... .mp4"
+    ],
+    "sha256": "86279a4f06e2934e451807affafb1fa2ec6cac21f7b3168cfdb9ac4012b1a16e",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 파일 인벤토리다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 파일명·중복·도구 제한을 보존하며 실제 원본 Source를 생성하지 않는다."
+  }
+]

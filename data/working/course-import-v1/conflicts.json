@@ -1,0 +1,470 @@
+[
+  {
+    "conflict_id": "conf-correction-01",
+    "issue_code": "correction_missing_full_pinyin_01",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 哥哥比弟弟很高。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 1,
+      "error_type": "비교 부사",
+      "wrong": "哥哥比弟弟很高。",
+      "wrong_description": "",
+      "correct": "哥哥比弟弟更高。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-02",
+    "issue_code": "correction_missing_full_pinyin_02",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 我10年工作了。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 2,
+      "error_type": "기간 어순",
+      "wrong": "我10年工作了。",
+      "wrong_description": "",
+      "correct": "我工作10年了。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-03",
+    "issue_code": "correction_missing_full_pinyin_03",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 他们在图书馆做读书。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 3,
+      "error_type": "동사 결합",
+      "wrong": "他们在图书馆做读书。",
+      "wrong_description": "",
+      "correct": "他们在图书馆看书。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-04",
+    "issue_code": "correction_missing_full_pinyin_04",
+    "conflict_type": "correction_blocker",
+    "detail": "analyst_synthesis의 교정 문구와 PDF document_text의 전후 문장이 서로 다르고, 두 후보 모두 전체 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 每天每天努力学习了。",
+        "evidence_kind": "analyst_synthesis"
+      },
+      {
+        "source_id": "src-course-extract-pdf-04",
+        "source_locator": "### 35페이지; ### 36페이지; ### 37페이지",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 4,
+      "error_type": "시간어 중복",
+      "wrong": "每天每天努力学习了。",
+      "wrong_description": "",
+      "correct": "每天都努力学习。",
+      "wrong_pinyin": "",
+      "correct_pinyin": "",
+      "document_text_variants": {
+        "wrong": "因为我每天都每天努力学习了。",
+        "correct": "因为我每天都努力学了。"
+      }
+    }
+  },
+  {
+    "conflict_id": "conf-correction-05",
+    "issue_code": "correction_missing_full_pinyin_05",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 物价越来越很贵。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 5,
+      "error_type": "정도 중복",
+      "wrong": "物价越来越很贵。",
+      "wrong_description": "",
+      "correct": "物价越来越贵。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-06",
+    "issue_code": "correction_missing_full_pinyin_06",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 一个小时半",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 6,
+      "error_type": "수량 어순",
+      "wrong": "一个小时半",
+      "wrong_description": "",
+      "correct": "一个半小时",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-07",
+    "issue_code": "correction_missing_full_pinyin_07",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 健身房对天气不影响。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 7,
+      "error_type": "관계 표현",
+      "wrong": "健身房对天气不影响。",
+      "wrong_description": "",
+      "correct": "健身房不受天气的影响。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-08",
+    "issue_code": "correction_missing_full_pinyin_08",
+    "conflict_type": "correction_blocker",
+    "detail": "잘못된 표현과 수정 표현 전체에 대응하는 완전한 문장 병음이 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 香蕉很更重。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 8,
+      "error_type": "비교 중복",
+      "wrong": "香蕉很更重。",
+      "wrong_description": "",
+      "correct": "香蕉更重。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-correction-09",
+    "issue_code": "correction_missing_full_pinyin_09",
+    "conflict_type": "correction_blocker",
+    "detail": "정확한 wrong_zh 원문이 없고 수정 표현 전체에 대응하는 완전한 문장 병음도 없어 canonical Correction으로 만들 수 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 9. 수강생 실수 데이터베이스 / 不是，她在跳舞。",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "중국어·병음·한국어 검수 전까지 후보로만 보존한다.",
+    "candidate": {
+      "sequence": 9,
+      "error_type": "부정 누락",
+      "wrong": "",
+      "wrong_description": "질문은 노래, 답은 춤만 말함",
+      "correct": "不是，她在跳舞。",
+      "wrong_pinyin": "",
+      "correct_pinyin": ""
+    }
+  },
+  {
+    "conflict_id": "conf-lesson04-grade-wording",
+    "issue_code": "lesson04_grade_wording",
+    "conflict_type": "content_ambiguity",
+    "detail": "04강 분석의 '4급 수준의 짧은 답'과 '3급 목표 답' 표현은 프로젝트의 Level 체계와 직접 대응하지 않는다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-lesson-04",
+        "source_locator": "## 1. 강의 정보; ## 2. 강의 전체 흐름",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "등급 체계를 확인하기 전 target_level로 변환하지 않는다."
+  },
+  {
+    "conflict_id": "conf-p02-internal-title",
+    "issue_code": "p02_internal_title",
+    "conflict_type": "source_metadata_conflict",
+    "detail": "제2강 PDF 추출본의 2페이지 내부 제목은 '5월 제1강'으로 기록돼 파일명·강의 번호와 충돌한다.",
+    "evidence_kind": "document_text",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-extract-pdf-02",
+        "source_locator": "### 2페이지",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "원문 충돌을 수정하지 않고 보존한다."
+  },
+  {
+    "conflict_id": "conf-p04-internal-title",
+    "issue_code": "p04_internal_title",
+    "conflict_type": "source_metadata_conflict",
+    "detail": "04강 PDF 추출본의 2페이지 내부 제목은 '5월 제1강'으로 기록돼 폴더·강의 번호와 충돌한다.",
+    "evidence_kind": "document_text",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-extract-pdf-04",
+        "source_locator": "### 2페이지",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "원문 충돌을 수정하지 않고 보존한다."
+  },
+  {
+    "conflict_id": "conf-cumulative-pdf-overlap",
+    "issue_code": "cumulative_pdf_overlap",
+    "conflict_type": "duplicate_candidate",
+    "detail": "제1·2·4강 PDF 추출본은 누적 교재로 보이는 중복 페이지와 표현을 포함한다.",
+    "evidence_kind": "document_text",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-extract-pdf-02",
+        "source_locator": "### 1페이지",
+        "evidence_kind": "document_text"
+      },
+      {
+        "source_id": "src-course-extract-pdf-04",
+        "source_locator": "### 1페이지",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "문장 일치만으로 병합하지 않고 page-level duplicate candidate로 검수한다."
+  },
+  {
+    "conflict_id": "conf-p02-page-citation",
+    "issue_code": "p02_page_citation_mismatch",
+    "conflict_type": "source_locator_conflict",
+    "detail": "학습 표현집의 P02 페이지 인용과 PDF 추출본의 실제 페이지 내용이 일부 일치하지 않는다.",
+    "evidence_kind": "generated_study_material",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-study-expressions",
+        "source_locator": "| 10 | 当然可以。 |; | 15 | 谢谢，不用了。 |",
+        "evidence_kind": "generated_study_material"
+      },
+      {
+        "source_id": "src-course-extract-pdf-02",
+        "source_locator": "### 29페이지; ### 30페이지; ### 31페이지; ### 32페이지; ### 33페이지",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "원문 페이지를 직접 재확인하기 전 locator를 verified로 만들지 않는다."
+  },
+  {
+    "conflict_id": "conf-d05-eye-glasses",
+    "issue_code": "d05_eye_glasses_ambiguity",
+    "conflict_type": "source_text_conflict",
+    "detail": "DOCX의 '안경 옆' 문맥에 眼睛 병음이 붙어 안경과 눈 표현이 충돌한다.",
+    "evidence_kind": "document_text",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-extract-docx-05",
+        "source_locator": "## 원문 / -2P- / 3.钱包在哪儿？(안경 옆)",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "Question이나 표현으로 정규화하지 않는다."
+  },
+  {
+    "conflict_id": "conf-d05-strikethrough",
+    "issue_code": "d05_strikethrough_semantics",
+    "conflict_type": "format_semantics_uncertain",
+    "detail": "DOCX의 취소선 런은 인접 런 분할과 함께 추출되어 삭제·교정 의미를 자동 확정할 수 없다.",
+    "evidence_kind": "document_text",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-extract-docx-05",
+        "source_locator": "## 강조 서식 보존 목록",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "시각 렌더 또는 원본 확인 전 Correction 근거로 사용하지 않는다."
+  },
+  {
+    "conflict_id": "conf-d05-page-marker",
+    "issue_code": "d05_page_marker_not_physical",
+    "conflict_type": "source_locator_conflict",
+    "detail": "DOCX의 -2P- 같은 표식은 작성자 입력값이며 실제 Word 페이지 위치가 아니다.",
+    "evidence_kind": "document_text",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-extract-docx-05",
+        "source_locator": "## 문서 정보 / 페이지 주의",
+        "evidence_kind": "document_text"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "source_locator에 physical page로 기록하지 않는다."
+  },
+  {
+    "conflict_id": "conf-duplicate-video-04",
+    "issue_code": "duplicate_video_04",
+    "conflict_type": "absent_source_claim",
+    "detail": "04강 19:31:55 MP4 두 파일이 같은 SHA-256이라는 주장만 Markdown에 남아 있다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-file-inventory",
+        "source_locator": "## 완전 중복 파일 / ### 04강 중복쌍",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "원본 MP4가 없으므로 fake Source를 만들거나 해시를 재검증하지 않는다."
+  },
+  {
+    "conflict_id": "conf-duplicate-video-06-07",
+    "issue_code": "duplicate_video_06_07",
+    "conflict_type": "absent_source_claim",
+    "detail": "06강 MP4와 07강 (1) MP4가 같은 SHA-256이라는 주장만 Markdown에 남아 있다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-file-inventory",
+        "source_locator": "## 완전 중복 파일 / ### 06강/07강 중복쌍",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "독립 근거 두 건으로 집계하지 않는다."
+  },
+  {
+    "conflict_id": "conf-originals-absent",
+    "issue_code": "originals_absent",
+    "conflict_type": "missing_primary_source",
+    "detail": "인벤토리가 주장하는 13개 MP4·3개 PDF·1개 DOCX 원본은 현재 저장소에 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-file-inventory",
+        "source_locator": "## 강의별 원본 파일",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "현재 존재하는 Markdown 20개만 Source로 만든다."
+  },
+  {
+    "conflict_id": "conf-grade-level-ambiguity",
+    "issue_code": "grade_level_ambiguity",
+    "conflict_type": "content_ambiguity",
+    "detail": "강의의 3급·4급 표현과 프로젝트의 Level 5·8 목표 사이 대응 관계가 확인되지 않았다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 2. TSC 시험에 관한 전체 설명 / ### 평가 기준과 고득점 조건 / 4급 수준의 짧은 답과 3급 목표 답",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "Level 8 답변·규칙을 생성하지 않는다."
+  },
+  {
+    "conflict_id": "conf-part6-insufficient",
+    "issue_code": "part6_insufficient_evidence",
+    "conflict_type": "insufficient_evidence",
+    "detail": "Part 6은 구성과 시간만 확인됐고 실제 답변 구조의 상세 훈련이 거의 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 3. 문제 유형별 완전 정리 / ### Part 6·7",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "PartGuide 구조를 비워 둔다."
+  },
+  {
+    "conflict_id": "conf-part7-insufficient",
+    "issue_code": "part7_insufficient_evidence",
+    "conflict_type": "insufficient_evidence",
+    "detail": "Part 7은 예고 수준이며 완성된 90초 템플릿이나 ModelAnswer 근거가 없다.",
+    "evidence_kind": "analyst_synthesis",
+    "evidence_locations": [
+      {
+        "source_id": "src-course-analysis-integrated",
+        "source_locator": "## 3. 문제 유형별 완전 정리 / ### Part 6·7",
+        "evidence_kind": "analyst_synthesis"
+      }
+    ],
+    "conflict_status": "review_needed",
+    "notes": "StoryGuide나 ModelAnswer를 생성하지 않는다."
+  }
+]

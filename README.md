@@ -30,11 +30,13 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 **Phase 0: 프로젝트 지침과 문서**는 완료했고, **Phase 1: 원본 자료 적재 및 대표 표본 검수**가 진행 중이다.
 
-첫 원본 Excel을 원래 내용과 파일명 그대로 `data/raw`에 적재하고 시트 구조를 조사한 뒤, Part 1~4의 대표 Question 20개와 Part 5~7의 대표 Question 14개를 작업용 CSV로 추출했다. Part 2·7의 그림 세트, 원본 추천 답변과 StoryGuide도 각각 2세트씩 표본 검증했으며, 그 결과를 바탕으로 구현 기술 독립적인 [데이터 스키마 v1](docs/SCHEMA_V1_SUMMARY.md)을 문서화했다. 참고 목업 기준의 [모바일 UI 명세](docs/UI_SPEC.md), [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](docs/NAVIGATION_FLOW.md)도 완료했다.
+첫 원본 Excel을 원래 내용과 파일명 그대로 `data/raw`에 적재하고 시트 구조를 조사한 뒤, Part 1~4의 대표 Question 20개와 Part 5~7의 대표 Question 14개를 작업용 CSV로 추출했다. Part 2·7의 그림 세트, 원본 추천 답변과 StoryGuide도 각각 2세트씩 표본 검증했으며, 그 결과를 바탕으로 구현 기술 독립적인 데이터 스키마 v1을 문서화했다. 이어 3급 목표 강의 분석의 근거 종류와 재사용 학습 콘텐츠를 반영한 [데이터 스키마 v1.1](docs/SCHEMA_V1_SUMMARY.md)과 검수 전 `course-import-v1` working 데이터를 추가했다. 참고 목업 기준의 [모바일 UI 명세](docs/UI_SPEC.md), [화면 데이터 계약](docs/SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](docs/NAVIGATION_FLOW.md)도 완료했다.
 
 [MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)에 따라 React + TypeScript + Vite 프로젝트를 초기화하고, Part 4 raw 표본 6개를 이용한 첫 수직 기능을 구현했다. 현재 구현 범위는 Part 4 문제 조회, 개발용 deterministic mock 교정, 사용자 승인 후 IndexedDB 답변 저장, 복습 상태 변경과 개인 실수 확인이다. 공용 데이터는 개발 fixture JSON, 개인 `UserAnswer`·개인 `Correction`·`ReviewState`는 현재 브라우저 origin의 IndexedDB에 분리해 저장한다.
 
 아직 전체 253개 문제와 전체 시각 자료의 변환·정규화·검수는 하지 않았다. 실제 AI 공급자·모델, 백엔드 기술, 인증, 서버 동기화, 배포, 이미지 공개 가능 여부와 병음 생성·검수 방식도 계속 미결정이다.
+
+강의 working import는 저장소에 실제 존재하는 분석·학습·문서 추출 Markdown만 Source로 사용한다. 분석이 주장하지만 저장소에 없는 원본 MP4·PDF·DOCX를 확인된 Source로 등록하지 않으며, 모든 콘텐츠는 `review_needed` 이하 상태다. 자세한 공백과 후속 순서는 [Level 8 공백 분석](docs/LEVEL8_GAP_ANALYSIS.md)과 [고득점 목표 데이터 계획](docs/HIGH_SCORE_DATA_PLAN.md)을 따른다.
 
 이 저장소는 완성된 문제와 답변만 보관하는 곳이 아니다. 원본 문제를 검수하고, 답변이 없는 예상 문제의 모범답안을 점진적으로 작성하는 작업 공간이다. 답변이 없는 상태는 정상이다.
 
@@ -96,6 +98,7 @@ npm run check
 
 1. [구현 상태](docs/IMPLEMENTATION_STATUS.md)와 첫 수직 기능의 제한을 검토한다.
 2. Part 4 수직 기능을 실제 모바일 브라우저에서 반복 검증한다.
-3. 전체 추출 전에 fixture와 스키마 v1의 변환 규칙을 확정한다.
-4. 실제 AI 공급자·서버 경계는 별도 비교와 승인 후 결정한다.
-5. 전체 데이터 추출·검수와 다음 Part 구현 범위를 별도로 결정한다.
+3. `course-import-v1`의 근거·충돌 항목을 사람 검수하고 스키마 v1.1의 승격 기준을 확인한다.
+4. 전체 253개 Question과 강의 콘텐츠의 엄격한 연결 후보를 검토한다.
+5. 실제 AI 공급자·서버 경계는 별도 비교와 승인 후 결정한다.
+6. 전체 데이터 추출·검수와 다음 Part 구현 범위를 별도로 결정한다.
