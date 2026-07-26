@@ -24,7 +24,9 @@
 
 - 첫 원본 Excel 적재와 읽기 전용 구조 조사 완료
 - Part 1~7과 시각 자료 대표 표본 검증 완료
-- 구현 기술 독립적인 데이터 스키마 v1 문서화 완료
+- 구현 기술 독립적인 데이터 스키마 v1과 강의 근거용 additive v1.1 문서화 완료
+- TSC 1~7강 분석 Markdown의 근거 종류·충돌을 보존한 `course-import-v1` working 구조화 완료
+- Level 8 목표 대비 데이터 공백 분석과 고득점 데이터 보강 계획 완료
 - 모바일 UI 명세, 화면 데이터 계약과 화면 이동 흐름 문서화 완료
 - React + TypeScript + Vite, reviewed JSON과 개인 IndexedDB의 MVP 구현 기준 결정 완료
 - Part 4 첫 수직 기능 구현 계획 완료

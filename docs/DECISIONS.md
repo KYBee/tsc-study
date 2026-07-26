@@ -2,7 +2,7 @@
 
 ## 원칙
 
-Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1의 두 차례 대표 표본 검증을 바탕으로 구현 기술 독립적인 데이터 스키마 v1을 확정했다. 첫 수직 기능을 시작하기 위한 MVP 구현 기준과 데이터 저장 경계도 [IMPLEMENTATION_BASELINE.md](IMPLEMENTATION_BASELINE.md)와 [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md)에서 결정했다.
+Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1의 두 차례 대표 표본 검증을 바탕으로 구현 기술 독립적인 데이터 스키마 v1을 확정했다. 강의 분석 working 반입 검토에서 근거 종류와 재사용 학습 콘텐츠를 additive하게 더한 v1.1을 문서화했다. 첫 수직 기능을 시작하기 위한 MVP 구현 기준과 데이터 저장 경계도 [IMPLEMENTATION_BASELINE.md](IMPLEMENTATION_BASELINE.md)와 [DATA_FORMAT_DECISION.md](DATA_FORMAT_DECISION.md)에서 결정했다.
 
 `MVP 결정`은 현재 MVP의 구현 기준이며 영구적인 기술 고정을 뜻하지 않는다. 재검토 조건이 생기기 전까지 이 기준을 따른다. 첫 Part 4 수직 기능에서 사용한 패키지 버전은 `package-lock.json`으로 고정했지만, 이후 기능의 추가 패키지와 장기 버전 정책을 모두 확정한 것은 아니다.
 
@@ -22,7 +22,27 @@ Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1�
 | `S-010` | 이미지 권리 관리 | 공개 가능 여부는 각 `VisualAsset.rights_status`에서 관리한다. |
 | `S-011` | 중복과 정체성 분리 | 동일 문장 탐지는 `duplicate_candidate` 검수이며 `question_id` 기반 정체성 검증과 구분한다. Part 7 공통 지시문 반복은 정상일 수 있다. |
 
-기존 `D-010`의 시각 자료 엔터티 구조 검토는 `S-003`~`S-010`과 [데이터 스키마 v1](DATA_SCHEMA.md)로 해소되었다.
+기존 `D-010`의 시각 자료 엔터티 구조 검토는 `S-003`~`S-010`과 [데이터 스키마 v1.1](DATA_SCHEMA.md)로 해소되었다.
+
+## 확정된 스키마 v1.1 결정
+
+TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하기 위해 다음 additive 결정을 확정한다. 기존 v1 엔터티와 Part 4 앱 계약은 변경하지 않는다.
+
+| ID | 결정 | 내용 |
+|---|---|---|
+| `S-012` | 근거 종류 분리 | `document_text`, `screen_text`, `instructor_speech`, `analyst_synthesis`, `generated_study_material`을 구분하고 분석·재구성 자료를 강사 직접 근거로 승격하지 않는다. |
+| `S-013` | 과정 목표 보존 | 강의가 밝힌 3급 목표는 `course_target_context = level_3`로 보존하며 Level 8 전략이나 공식 채점 기준으로 이름을 바꾸지 않는다. |
+| `S-014` | 학습 표현 분리 | 여러 문제·Part에서 재사용할 표현은 `LearningExpression`으로 관리하고 부분 병음을 전체 문장 병음으로 사용하지 않는다. |
+| `S-015` | 발음 항목 분리 | 강의에서 확인된 발음·성조·얼화와 혼동 음은 `PronunciationItem`으로 관리하며 확인되지 않은 음가를 생성하지 않는다. |
+| `S-016` | 실전 과제 분리 | 시간과 학습 행동을 가진 연습은 `PracticeDrill`로 관리하고 강의에 없는 반복 횟수·복습 간격을 만들지 않는다. |
+| `S-017` | 강의 인사이트 분리 | 강사의 전략·경고·공부법과 분석자의 범위 정리는 `CourseInsight`로 관리하고 `evidence_kind`로 성격을 구분한다. |
+| `S-018` | 엄격한 교정 반입 | 정확한 전후 중국어가 확인되고 표시용 전체 병음·한국어 조건을 충족할 때만 공용 `Correction`으로 반입한다. 한국어 설명뿐인 오류나 병음 누락을 임의로 채우지 않는다. |
+| `S-019` | 실제 Source만 등록 | `Source.file_ref`는 저장소에서 직접 확인 가능한 파일만 가리킨다. 분석 Markdown이 주장하지만 저장소에 없는 MP4·PDF·DOCX는 실제 Source 경로로 만들지 않는다. |
+| `S-020` | ModelAnswer 후보 게이트 | 특정 Question 또는 VisualQuestion, 완성 중국어, 전체 병음, 전체 한국어와 실제 출처 위치가 모두 확인된 경우에만 출처 `ModelAnswer` 후보를 만든다. |
+| `S-021` | 주장 원본 이름과 생성 자료 구분 | 저장소에 없는 원본 이름·별칭은 `Source.claimed_original_names`에 주장 메타데이터로 보존한다. 분석을 재구성한 study 문서는 `source_type`과 `provenance_status`를 `self_created`, 근거를 `generated_study_material`로 표시한다. |
+| `S-022` | 발언 타임스탬프와 분석 통합 분리 | 상세분석에 강사 발언과 타임스탬프가 함께 기록된 근거는 `instructor_speech`, 통합 설명은 `analyst_synthesis` 관계로 구분한다. 원본 영상 부재 시 둘 다 `review_needed`를 유지한다. |
+
+`data/working/course-import-v1`의 JSON은 스키마와 근거 구조를 검증하는 working 산출물이다. 이는 `D-007`의 reviewed canonical JSON으로 자동 승격된 데이터가 아니며 앱 런타임 데이터에 직접 합치지 않는다.
 
 ## 기술·운영 결정 상태
 
@@ -34,7 +54,7 @@ Phase 0에서 요구사항과 데이터 운영 원칙을 정리했고, Phase 1�
 | `D-004` | 데이터베이스 | MVP 결정 | 초기 MVP에는 서버 데이터베이스가 없다. 공용 데이터는 정적 reviewed JSON, 개인 데이터는 브라우저 IndexedDB. 다중 사용자 도입 시 재결정 |
 | `D-005` | 인증 방식 | 미결정 | 단일 사용자 또는 다중 사용자 여부, 동기화와 배포 범위 |
 | `D-006` | 배포 환경 | 미결정 | 공개 범위, 운영 비용, 비밀키 관리, 데이터 보호 |
-| `D-007` | 기준 데이터 형식 | MVP 결정 | raw는 Excel, working은 CSV, reviewed 공용 canonical은 엔터티별 JSON, 개인 기록은 IndexedDB |
+| `D-007` | 기준 데이터 형식 | MVP 결정 | raw는 Excel, 표 구조 working은 CSV, reviewed 공용 canonical은 엔터티별 JSON, 개인 기록은 IndexedDB. 다중 엔터티 근거 관계를 검증하는 `data/working` JSON은 허용하지만 reviewed canonical로 간주하지 않음 |
 | `D-008` | 병음 생성 및 검수 방식 | 미결정 | 자동 생성 정확도, 경성·다음자 처리, 사람 검수 기준 |
 | `D-009` | 사용자 개인 데이터 저장 방식 | MVP 구현 | 현재 browser origin의 IndexedDB와 `idb` 8.0.3을 사용. 인증·서버 동기화 없음, 내보내기·가져오기는 후속 |
 | `D-011` | 이미지 공개 가능 여부 | 미결정 | `VisualAsset`별 권리 근거, 원본 링크와 이미지의 공개·배포 허용 범위 |

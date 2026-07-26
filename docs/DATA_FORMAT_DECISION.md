@@ -23,13 +23,15 @@
 - 파일 크기, SHA-256과 `original_file_name`으로 동일성을 추적한다.
 - 원본 안의 출처 이름·URL은 검증된 사실이 아니라 원본의 주장일 수 있다.
 
-## working CSV
+## working CSV와 구조 검증 JSON
 
 - Excel에서 추출한 값을 검토하고 canonical 매핑을 시험하는 중간 형식이다.
 - CSV는 공용 앱 데이터의 기준이 아니며 런타임 컴포넌트가 직접 의존하지 않는다.
 - 기존 CSV를 서비스 요구에 맞춰 수동 수정하는 대신 변환·검수 규칙을 명시한다.
 - 현재 import 컬럼은 `Question`, `AnswerPoint`, `SourceReference` 등 canonical 엔터티로 분리해 변환한다.
 - 개인 연습 상태, 최근 연습일과 개인 메모를 공용 변환에 포함하지 않는다.
+- Excel처럼 표 구조를 검토하는 기본 working 형식은 CSV다. 다만 강의 근거처럼 여러 엔터티와 N:M 출처 관계를 함께 검증할 때는 `data/working` 아래에 결정적인 JSON을 사용할 수 있다.
+- working JSON도 reviewed canonical JSON이 아니다. `reviewed`·`verified`로 자동 승격하지 않고 앱 런타임 기준 데이터로 직접 사용하지 않는다.
 
 ## reviewed canonical JSON
 
@@ -96,7 +98,7 @@
 - reviewed JSON의 복제본을 개인 상태와 섞은 레코드
 - API 키와 비밀값
 
-개인 데이터는 현재 브라우저와 origin에 종속된다. 로그인·서버 동기화·내보내기·가져오기는 초기 MVP에서 제공하지 않는다. IndexedDB 직접 API 또는 작은 래퍼 선택, object store 구성, 버전과 마이그레이션 방식은 프로젝트 초기화 단계에서 결정한다.
+개인 데이터는 현재 브라우저와 origin에 종속된다. 로그인·서버 동기화·내보내기·가져오기는 초기 MVP에서 제공하지 않는다. 첫 수직 기능에서는 `idb` 래퍼를 사용하고 object store 구조는 [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)에 기록한다. 장기 버전·마이그레이션과 백업 방식은 다중 사용자나 production 데이터 전환 전에 다시 결정한다.
 
 개발 전용 raw fixture와 reviewed/production 데이터는 IndexedDB의 DB 이름 또는 dataset namespace로 분리한다. canonical `question_id`가 같더라도 개발 개인 기록을 production으로 자동 승격하지 않으며, 전환이 필요하면 질문 검수 상태와 내용 변경을 확인하는 별도 마이그레이션 결정을 거친다.
 

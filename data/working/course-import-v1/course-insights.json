@@ -1,0 +1,249 @@
+[
+  {
+    "insight_id": "ci-course-pronunciation-priority",
+    "part_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "insight_type": "strategy",
+    "content_ko": "고급 어휘보다 발음·딕션·성조와 쉬운 정확한 문장을 우선한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-pronunciation-priority-01",
+      "sr-ci-course-pronunciation-priority-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-p2-accuracy",
+    "part_numbers": [
+      2
+    ],
+    "insight_type": "evaluation_focus",
+    "content_ko": "Part 2는 답변 길이보다 그림 정보와 한 문장의 정확성을 우선한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-p2-accuracy-01",
+      "sr-ci-course-p2-accuracy-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-p3-utterance-function",
+    "part_numbers": [
+      3
+    ],
+    "insight_type": "common_risk",
+    "content_ko": "Part 3의 모든 발화를 질문으로 가정하지 말고 진술에도 기능에 맞게 반응한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-p3-utterance-function-01",
+      "sr-ci-course-p3-utterance-function-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-p4-structure",
+    "part_numbers": [
+      4
+    ],
+    "insight_type": "strategy",
+    "content_ko": "Part 4는 직접 답변, 이유, 구체 사례, 정리 순서로 답한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-p4-structure-01",
+      "sr-ci-course-p4-structure-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-error-accumulation",
+    "part_numbers": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "insight_type": "common_risk",
+    "content_ko": "긴 답변에서 전치사와 어순을 포함한 문법 오류가 누적될 수 있다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-error-accumulation-01",
+      "sr-ci-course-error-accumulation-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-last-five-seconds",
+    "part_numbers": [
+      4,
+      5
+    ],
+    "insight_type": "test_day_behavior",
+    "content_ko": "마지막 약 5초에는 문법과 발음이 확실한 문장만 추가하고 불확실하면 멈춘다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-last-five-seconds-01",
+      "sr-ci-course-last-five-seconds-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-typical-vs-personal",
+    "part_numbers": [
+      4
+    ],
+    "insight_type": "study_method",
+    "content_ko": "전형 답은 외우고 비전형 질문은 자신의 가족·회사·취미 경험으로 준비한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-typical-vs-personal-01",
+      "sr-ci-course-typical-vs-personal-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-type-and-review",
+    "part_numbers": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "insight_type": "study_method",
+    "content_ko": "본인이 실제로 말한 답을 타이핑하고 수정 전후와 이유를 기록한 뒤 수정 문장을 복습한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-type-and-review-01",
+      "sr-ci-course-type-and-review-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-old-set-limit",
+    "part_numbers": [],
+    "insight_type": "common_risk",
+    "content_ko": "오래된 기출 세트가 그대로 출제될 것이라고 믿고 통째로 외우는 방식에만 의존하지 않는다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-old-set-limit-01",
+      "sr-ci-course-old-set-limit-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-part6-7-gap",
+    "part_numbers": [
+      6,
+      7
+    ],
+    "insight_type": "scope_limitation",
+    "content_ko": "Part 6과 Part 7은 현재 과정에서 상세 답변 훈련 근거가 부족하다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-part6-7-gap-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-scope",
+    "part_numbers": [],
+    "insight_type": "scope_limitation",
+    "content_ko": "전체 과정은 3급 대비 자료이며 Level 8 근거로 사용할 수 없다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-scope-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-processing-scope",
+    "part_numbers": [],
+    "insight_type": "scope_limitation",
+    "content_ko": "MP4 13개, PDF 3개 261페이지, DOCX 1개가 처리 대상으로 기록됐다.",
+    "course_target_context": "not_specified",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-processing-scope-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-transcription-limit",
+    "part_numbers": [],
+    "insight_type": "scope_limitation",
+    "content_ko": "중국어 음성은 로컬 한국어 모델에서 오인될 수 있어 사람 재확인이 필요하다.",
+    "course_target_context": "not_specified",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-transcription-limit-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-document-limit",
+    "part_numbers": [],
+    "insight_type": "scope_limitation",
+    "content_ko": "DOCX는 OOXML 전체 텍스트를 추출했지만 전체 페이지 시각 렌더를 확인하지 못했다.",
+    "course_target_context": "not_specified",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-document-limit-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-duplicate-media",
+    "part_numbers": [],
+    "insight_type": "scope_limitation",
+    "content_ko": "04강 한 쌍과 06·07강 한 쌍의 영상이 SHA-256 완전 중복으로 기록됐다.",
+    "course_target_context": "not_specified",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-duplicate-media-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-review-schedule-limit",
+    "part_numbers": [],
+    "insight_type": "scope_limitation",
+    "content_ko": "강의에서 정확한 일수와 반복 횟수를 제시하지 않아 날짜형 계획을 만들지 않는다.",
+    "course_target_context": "not_specified",
+    "evidence_kind": "generated_study_material",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-review-schedule-limit-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  }
+]

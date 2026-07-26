@@ -1,0 +1,812 @@
+[
+  {
+    "expression_id": "le-course-001",
+    "language": {
+      "zh": "我叫XX。",
+      "pinyin": "",
+      "ko": "제 이름은 XX"
+    },
+    "part_numbers": [
+      1
+    ],
+    "expression_type": "fixed_response",
+    "usage_context": "Part 1 이름",
+    "pattern_or_slots": "我叫XX。",
+    "cautions": "짧게",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-001-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 5페이지]"
+  },
+  {
+    "expression_id": "le-course-002",
+    "language": {
+      "zh": "我家有XX口人。",
+      "pinyin": "",
+      "ko": "가족은 XX명"
+    },
+    "part_numbers": [
+      1
+    ],
+    "expression_type": "fixed_response",
+    "usage_context": "Part 1 가족",
+    "pattern_or_slots": "我家有XX口人。",
+    "cautions": "양사 口",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-002-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 5페이지]"
+  },
+  {
+    "expression_id": "le-course-003",
+    "language": {
+      "zh": "我在XX工作。",
+      "pinyin": "",
+      "ko": "XX에서 근무"
+    },
+    "part_numbers": [
+      1
+    ],
+    "expression_type": "fixed_response",
+    "usage_context": "Part 1 소속",
+    "pattern_or_slots": "我在XX工作。",
+    "cautions": "고정 답",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-003-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 5페이지]"
+  },
+  {
+    "expression_id": "le-course-004",
+    "language": {
+      "zh": "哥哥比弟弟更高。",
+      "pinyin": "",
+      "ko": "형이 더 큼"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "comparison",
+    "usage_context": "Part 2 비교",
+    "pattern_or_slots": "",
+    "cautions": "`很` 금지",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-004-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 8페이지]"
+  },
+  {
+    "expression_id": "le-course-005",
+    "language": {
+      "zh": "今天没有昨天冷。",
+      "pinyin": "",
+      "ko": "오늘은 어제만큼 춥지 않음"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "comparison",
+    "usage_context": "Part 2 반대 비교",
+    "pattern_or_slots": "",
+    "cautions": "A/B 방향",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-005-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 8페이지]"
+  },
+  {
+    "expression_id": "le-course-006",
+    "language": {
+      "zh": "公司附近有很多餐厅。",
+      "pinyin": "",
+      "ko": "회사 근처 식당 많음"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "location",
+    "usage_context": "Part 2 존재",
+    "pattern_or_slots": "",
+    "cautions": "장소+有",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-006-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 12페이지]"
+  },
+  {
+    "expression_id": "le-course-007",
+    "language": {
+      "zh": "面包在牛奶旁边。",
+      "pinyin": "",
+      "ko": "빵은 우유 옆"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "location",
+    "usage_context": "Part 2 위치",
+    "pattern_or_slots": "",
+    "cautions": "边 얼화 권장",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-007-01"
+    ],
+    "notes": "원본 병음 셀: 旁边 pang2 bian1. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:00:22]"
+  },
+  {
+    "expression_id": "le-course-008",
+    "language": {
+      "zh": "香蕉更重。",
+      "pinyin": "",
+      "ko": "바나나가 더 무거움"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "comparison",
+    "usage_context": "Part 2 비교",
+    "pattern_or_slots": "",
+    "cautions": "`很更` 금지",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-008-01"
+    ],
+    "notes": "원본 병음 셀: 香蕉 xiang1 jiao1. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:01:42]"
+  },
+  {
+    "expression_id": "le-course-009",
+    "language": {
+      "zh": "不是，她在跳舞。",
+      "pinyin": "",
+      "ko": "아니요, 춤춤"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 2 불일치",
+    "pattern_or_slots": "",
+    "cautions": "부정 먼저",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-009-01"
+    ],
+    "notes": "원본 병음 셀: 跳舞 tiao4 wu3. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:00:22]"
+  },
+  {
+    "expression_id": "le-course-010",
+    "language": {
+      "zh": "当然可以。",
+      "pinyin": "",
+      "ko": "물론 가능"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 수락",
+    "pattern_or_slots": "",
+    "cautions": "짧은 안전 반응",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-010-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [02강 / P02 / 30페이지]"
+  },
+  {
+    "expression_id": "le-course-011",
+    "language": {
+      "zh": "没问题。",
+      "pinyin": "",
+      "ko": "문제없음"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 수락/격려",
+    "pattern_or_slots": "",
+    "cautions": "즉시 반응",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-011-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [02강 / P02 / 31페이지]"
+  },
+  {
+    "expression_id": "le-course-012",
+    "language": {
+      "zh": "不好意思，我现在很忙。",
+      "pinyin": "",
+      "ko": "미안하지만 지금 바쁨"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 거절",
+    "pattern_or_slots": "",
+    "cautions": "이유 포함",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-012-01"
+    ],
+    "notes": "원본 병음 셀: 문서에 병음 표기. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [02강 / P02 / 32페이지]"
+  },
+  {
+    "expression_id": "le-course-013",
+    "language": {
+      "zh": "请等一下。",
+      "pinyin": "",
+      "ko": "잠시 기다려 달라"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 대안",
+    "pattern_or_slots": "",
+    "cautions": "완전 거절 대신",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-013-01"
+    ],
+    "notes": "원본 병음 셀: 문서에 병음 표기. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [02강 / P02 / 33페이지]"
+  },
+  {
+    "expression_id": "le-course-014",
+    "language": {
+      "zh": "你能帮我一个忙吗？",
+      "pinyin": "",
+      "ko": "도와줄 수 있나"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 부탁",
+    "pattern_or_slots": "",
+    "cautions": "요청 핵심",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-014-01"
+    ],
+    "notes": "원본 병음 셀: 문서에 병음 표기. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [02강 / P02 / 33페이지]"
+  },
+  {
+    "expression_id": "le-course-015",
+    "language": {
+      "zh": "谢谢，不用了。",
+      "pinyin": "",
+      "ko": "고맙지만 괜찮음"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 제안 거절",
+    "pattern_or_slots": "",
+    "cautions": "감사 먼저",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-015-01"
+    ],
+    "notes": "원본 병음 셀: 문서에 병음 표기. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [02강 / P02 / 33페이지]"
+  },
+  {
+    "expression_id": "le-course-016",
+    "language": {
+      "zh": "恭喜你！",
+      "pinyin": "gōngxǐ nǐ",
+      "ko": "축하"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 좋은 소식",
+    "pattern_or_slots": "",
+    "cautions": "대상 확인",
+    "related_correction_ids": [],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-016-01"
+    ],
+    "notes": "원본 병음 셀: gōngxǐ nǐ. 전체 문장 병음으로 보이는 원문 표기를 그대로 보존했으며 검수가 필요하다. 원문 출처: [04강 / P04 / 36페이지]"
+  },
+  {
+    "expression_id": "le-course-017",
+    "language": {
+      "zh": "真羡慕他。",
+      "pinyin": "zhēn xiànmù tā",
+      "ko": "정말 부러움"
+    },
+    "part_numbers": [
+      3
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 3 타인 소식",
+    "pattern_or_slots": "",
+    "cautions": "대상 대명사 주의",
+    "related_correction_ids": [],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-017-01"
+    ],
+    "notes": "원본 병음 셀: zhēn xiànmù tā. 전체 문장 병음으로 보이는 원문 표기를 그대로 보존했으며 검수가 필요하다. 원문 출처: [04강 / P04 / 36-38페이지]"
+  },
+  {
+    "expression_id": "le-course-018",
+    "language": {
+      "zh": "别紧张。",
+      "pinyin": "bié jǐnzhāng",
+      "ko": "긴장하지 마"
+    },
+    "part_numbers": [],
+    "expression_type": "reaction",
+    "usage_context": "면접/첫 출근",
+    "pattern_or_slots": "",
+    "cautions": "격려",
+    "related_correction_ids": [],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-018-01"
+    ],
+    "notes": "원본 병음 셀: bié jǐnzhāng. 전체 문장 병음으로 보이는 원문 표기를 그대로 보존했으며 검수가 필요하다. 원문 출처: [04강 / P04 / 35페이지]"
+  },
+  {
+    "expression_id": "le-course-019",
+    "language": {
+      "zh": "结果出来的话，我马上告诉你。",
+      "pinyin": "",
+      "ko": "결과 나오면 바로 알림"
+    },
+    "part_numbers": [],
+    "expression_type": "reaction",
+    "usage_context": "시험/면접",
+    "pattern_or_slots": "",
+    "cautions": "후속 행동",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-019-01"
+    ],
+    "notes": "원본 병음 셀: 문서에 병음 표기. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [04강 / P04 / 35페이지]"
+  },
+  {
+    "expression_id": "le-course-020",
+    "language": {
+      "zh": "在家做菜又省钱又健康。",
+      "pinyin": "",
+      "ko": "집 요리는 절약·건강"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 요리",
+    "pattern_or_slots": "",
+    "cautions": "이유 두 개",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-020-01"
+    ],
+    "notes": "원본 병음 셀: 省钱 sheng3 qian2. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [05강 / D05 / -4P-]"
+  },
+  {
+    "expression_id": "le-course-021",
+    "language": {
+      "zh": "我有很多用外语的机会。",
+      "pinyin": "",
+      "ko": "외국어 쓸 기회 많음"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 외국어",
+    "pattern_or_slots": "",
+    "cautions": "직답",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-021-01"
+    ],
+    "notes": "원본 병음 셀: 机会 ji1 hui4. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [05강 / D05 / -4P-]"
+  },
+  {
+    "expression_id": "le-course-022",
+    "language": {
+      "zh": "一部分存钱和投资。",
+      "pinyin": "",
+      "ko": "일부 저축·투자"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 월급",
+    "pattern_or_slots": "",
+    "cautions": "비중",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-022-01"
+    ],
+    "notes": "원본 병음 셀: 一部分 yi2 bu4 fen4; 投资 tou2 zi1. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [05강 / D05 / -4P-]"
+  },
+  {
+    "expression_id": "le-course-023",
+    "language": {
+      "zh": "我觉得有利有弊。",
+      "pinyin": "",
+      "ko": "장단점 있음"
+    },
+    "part_numbers": [
+      5
+    ],
+    "expression_type": "opinion_structure",
+    "usage_context": "Part 5 장단점",
+    "pattern_or_slots": "",
+    "cautions": "시작/결론",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-023-01"
+    ],
+    "notes": "원본 병음 셀: you3 li4 you3 bi4. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [05강 / D05 / -5P-]"
+  },
+  {
+    "expression_id": "le-course-024",
+    "language": {
+      "zh": "根据情况不一样。",
+      "pinyin": "",
+      "ko": "상황에 따라 다름"
+    },
+    "part_numbers": [
+      5
+    ],
+    "expression_type": "opinion_structure",
+    "usage_context": "Part 5 조건",
+    "pattern_or_slots": "",
+    "cautions": "이유 분기",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-024-01"
+    ],
+    "notes": "원본 병음 셀: gen1 ju4 qing2 kuang4. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [05강 / D05 / -5P-]"
+  },
+  {
+    "expression_id": "le-course-025",
+    "language": {
+      "zh": "我比较在意价格。",
+      "pinyin": "",
+      "ko": "가격을 더 중시"
+    },
+    "part_numbers": [
+      5
+    ],
+    "expression_type": "opinion_structure",
+    "usage_context": "Part 5 선택",
+    "pattern_or_slots": "",
+    "cautions": "입장 명확히",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-025-01"
+    ],
+    "notes": "원본 병음 셀: 在意 zai4 yi4; 价格 jia4 ge2. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [05강 / D05 / -5P-]"
+  },
+  {
+    "expression_id": "le-course-026",
+    "language": {
+      "zh": "我一有时间，就去书店。",
+      "pinyin": "",
+      "ko": "시간만 나면 서점"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "grammar_pattern",
+    "usage_context": "Part 4 빈도",
+    "pattern_or_slots": "",
+    "cautions": "구조 다양성",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-026-01"
+    ],
+    "notes": "원본 병음 셀: 화면 병음. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 00:21:11]"
+  },
+  {
+    "expression_id": "le-course-027",
+    "language": {
+      "zh": "我更喜欢秋天。",
+      "pinyin": "",
+      "ko": "가을을 더 선호"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 계절",
+    "pattern_or_slots": "",
+    "cautions": "직답",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-027-01"
+    ],
+    "notes": "원본 병음 셀: 화면 병음. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 00:43:11]"
+  },
+  {
+    "expression_id": "le-course-028",
+    "language": {
+      "zh": "我觉得秋天很适合旅行。",
+      "pinyin": "",
+      "ko": "가을은 여행에 적합"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 계절",
+    "pattern_or_slots": "",
+    "cautions": "이유",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-028-01"
+    ],
+    "notes": "원본 병음 셀: 화면 병음. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 00:43:11]"
+  },
+  {
+    "expression_id": "le-course-029",
+    "language": {
+      "zh": "其中我最满意的是公司食堂。",
+      "pinyin": "",
+      "ko": "가장 만족은 구내식당"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 회사",
+    "pattern_or_slots": "",
+    "cautions": "핵심 선택",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-029-01"
+    ],
+    "notes": "원본 병음 셀: 화면 병음. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 00:49:44]"
+  },
+  {
+    "expression_id": "le-course-030",
+    "language": {
+      "zh": "对我来说，很有意义。",
+      "pinyin": "",
+      "ko": "내게 의미 큼"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 물건",
+    "pattern_or_slots": "",
+    "cautions": "감정 이유",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-030-01"
+    ],
+    "notes": "원본 병음 셀: 화면 병음. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 01:00:04]"
+  },
+  {
+    "expression_id": "le-course-031",
+    "language": {
+      "zh": "我觉得买二手货很划算。",
+      "pinyin": "",
+      "ko": "중고품 가성비 좋음"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 중고품",
+    "pattern_or_slots": "",
+    "cautions": "결론",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-031-01"
+    ],
+    "notes": "원본 병음 셀: 划算 hua2 suan4. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:08:06]"
+  },
+  {
+    "expression_id": "le-course-032",
+    "language": {
+      "zh": "我想去哪儿就去哪儿。",
+      "pinyin": "",
+      "ko": "가고 싶은 곳에 감"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 자유여행",
+    "pattern_or_slots": "",
+    "cautions": "개인 성향",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-032-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:10:55]"
+  },
+  {
+    "expression_id": "le-course-033",
+    "language": {
+      "zh": "一边旅行，一边学汉语。",
+      "pinyin": "",
+      "ko": "여행하며 중국어 공부"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 조건",
+    "pattern_or_slots": "",
+    "cautions": "동시 행동",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-033-01"
+    ],
+    "notes": "원본 병음 셀: 一边 yi4 bian1. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:12:04]"
+  },
+  {
+    "expression_id": "le-course-034",
+    "language": {
+      "zh": "第一，工资和福利待遇。",
+      "pinyin": "",
+      "ko": "첫째 급여·복지"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "connector",
+    "usage_context": "Part 4 이직",
+    "pattern_or_slots": "",
+    "cautions": "순서 시작",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-034-01"
+    ],
+    "notes": "원본 병음 셀: 福利待遇 fu2 li4 dai4 yu4. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:12:35]"
+  },
+  {
+    "expression_id": "le-course-035",
+    "language": {
+      "zh": "我们可以互补。",
+      "pinyin": "",
+      "ko": "서로 보완"
+    },
+    "part_numbers": [
+      4
+    ],
+    "expression_type": "reusable_sentence",
+    "usage_context": "Part 4 성격",
+    "pattern_or_slots": "",
+    "cautions": "경험 결론",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-035-01"
+    ],
+    "notes": "원본 병음 셀: 互补 hu4 bu3. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:16:36]"
+  },
+  {
+    "expression_id": "le-course-036",
+    "language": {
+      "zh": "第一，我觉得人们应该提高安全意识。",
+      "pinyin": "",
+      "ko": "첫째 안전의식 향상"
+    },
+    "part_numbers": [
+      5
+    ],
+    "expression_type": "opinion_structure",
+    "usage_context": "Part 5 사회",
+    "pattern_or_slots": "",
+    "cautions": "대책 1",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-036-01"
+    ],
+    "notes": "원본 병음 셀: 일부 단어 병음. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 01:12:50]"
+  },
+  {
+    "expression_id": "le-course-037",
+    "language": {
+      "zh": "以上是我的想法。",
+      "pinyin": "",
+      "ko": "이상이 내 생각"
+    },
+    "part_numbers": [
+      5
+    ],
+    "expression_type": "conclusion",
+    "usage_context": "Part 5 마무리",
+    "pattern_or_slots": "",
+    "cautions": "종료",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-037-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [06강 / V06 / 01:12:50]"
+  }
+]

@@ -1,0 +1,151 @@
+{
+  "dataset_id": "course-working-import-v1",
+  "dataset_status": "working",
+  "schema_version": "data-schema-v1.1-working",
+  "input_files": [
+    {
+      "path": "other-output/TSC_1-7강_전체통합분석.md",
+      "sha256": "fe4373f12bd198d9eccbb05ff3eaf50045a1ef735e2976d92af72040805bcb9e"
+    },
+    {
+      "path": "other-output/lessons/01강_상세분석.md",
+      "sha256": "06f722a61bdde95023863d7db9d8a17683a9f440512fc179fa51a456e2eb2744"
+    },
+    {
+      "path": "other-output/lessons/02강_상세분석.md",
+      "sha256": "3c3dfec3a7642a2c173ce33702be9c7395cdaf0da209cc407aad20f8a3431eef"
+    },
+    {
+      "path": "other-output/lessons/03강_상세분석.md",
+      "sha256": "774b2766dc480fc3cda78be3a25acb9aa364210b4736ed3b22a95998a4bd3d32"
+    },
+    {
+      "path": "other-output/lessons/04강_상세분석.md",
+      "sha256": "993e0faa95170abe0b04b865c54c87033f228cfaa0ce40f1f9ae15c2c82b8496"
+    },
+    {
+      "path": "other-output/lessons/05강_상세분석.md",
+      "sha256": "09a506dfea1efcc9c939c8dc5027d423efb277e9ae015defd219d4b09a731d8b"
+    },
+    {
+      "path": "other-output/lessons/06강_상세분석.md",
+      "sha256": "c200c6752f1dc7325e461b49099e775f36c8ab5fc60ca52fcd66f1905032ddbb"
+    },
+    {
+      "path": "other-output/lessons/07강_상세분석.md",
+      "sha256": "af492ca96529bd52d93ce7dd09078674a330af39525ab0110968f1eb7045919a"
+    },
+    {
+      "path": "other-output/study/TSC_1-7강_핵심요약.md",
+      "sha256": "f58069fea74537ebfd38e15b73f6b7e730a8f149bc7c77be850e444eaca301a1"
+    },
+    {
+      "path": "other-output/study/TSC_문제유형별_답변템플릿.md",
+      "sha256": "2d7a7562a2235c0ef94135edbbfb4e19e6d276fdc2a9759f983988217adb6dbe"
+    },
+    {
+      "path": "other-output/study/TSC_복습계획.md",
+      "sha256": "51c252db89bb6d9f561bd3b8cf1807eefa10f0ceb59e3f6eb8216d02ccb0619c"
+    },
+    {
+      "path": "other-output/study/TSC_시험직전_체크리스트.md",
+      "sha256": "e41772e70c95e8ba016adc0d749af9fe07a876c09cf19140c0270fc271f5fe62"
+    },
+    {
+      "path": "other-output/study/TSC_실수와_감점방지.md",
+      "sha256": "db8a65bb1621890d87d4a8a1700d118ecfbbc4193df83fb07c23ad519f26d675"
+    },
+    {
+      "path": "other-output/study/TSC_필수표현_암기장.md",
+      "sha256": "c65ec1d2fed253d9e33bb7ed4cf3832977804ef030af597a3ca5ad66b0348a13"
+    },
+    {
+      "path": "other-output/pdf_extracts/01강/2024.05 3급 TSC_5월 제1강.pdf.md",
+      "sha256": "22bc9b5859de9304ea6c66fe52b12788d165ef07c9db77af0f280f331811caac"
+    },
+    {
+      "path": "other-output/pdf_extracts/02강/2024.05 3급 TSC_5월 제2강.pdf.md",
+      "sha256": "7f8791db20a0e29ac83334c6499f62bca0d02cb531f70afafd9ec68ddad549d3"
+    },
+    {
+      "path": "other-output/pdf_extracts/04강/2024.05 3급 TSC_5월.pdf.md",
+      "sha256": "0f2be01756c8f63b7b818334e626ed1612523bd97422def61ccdf23876a54c34"
+    },
+    {
+      "path": "other-output/pdf_extracts/05강_TSC기출문제.docx.md",
+      "sha256": "b241f7bb97c519e1d1ff22c83c095aca2d9677d2e4d045ed5b9ce7899f4a7adb"
+    },
+    {
+      "path": "other-output/99_validation_report.md",
+      "sha256": "758f3bd87deb199691f44106268d0e4dcea3409992ba6ed10a19e88bd43fa8d5"
+    },
+    {
+      "path": "other-output/00_file_inventory.md",
+      "sha256": "86279a4f06e2934e451807affafb1fa2ec6cac21f7b3168cfdb9ac4012b1a16e"
+    }
+  ],
+  "generated_files": [
+    {
+      "path": "sources.json",
+      "sha256": "10327be858b9e4a5ceb8c236731c8bd0473bed0647085a1998ce7f1506ac22ec"
+    },
+    {
+      "path": "source-references.json",
+      "sha256": "cb871389c66170f35f7968b0d0d2d92c4110373c1af6d3d5de9a57ede3031501"
+    },
+    {
+      "path": "part-guides.json",
+      "sha256": "4a25cb6c76d36d17a0231236b06c6bf2f70e687f3491efac96a3f590186205a2"
+    },
+    {
+      "path": "corrections.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "learning-expressions.json",
+      "sha256": "04e5fcd66e5db8658cdb2f107f2898aa664eb7f5f8d5645743f7aa5e866e813f"
+    },
+    {
+      "path": "pronunciation-items.json",
+      "sha256": "1a90495fbc1b59f5cded4948524a0950dd51df03770c4ecdadeb0c61c7dc97fc"
+    },
+    {
+      "path": "practice-drills.json",
+      "sha256": "affd13eaac6ea7dec564b2125203dcd62004d651e0467e0cb1ec2462700e9c5f"
+    },
+    {
+      "path": "course-insights.json",
+      "sha256": "39ea727fd0d3781fa73fb7a8ec47cfcba8fa78cbc84f7c907b3bacf027ec47a8"
+    },
+    {
+      "path": "model-answer-candidates.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "question-link-candidates.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "conflicts.json",
+      "sha256": "a5670fbcf7cc1ed2c736641d46efdd2eebd44a5e2a6decb99b3b1717c7212c7a"
+    },
+    {
+      "path": "README.md",
+      "sha256": "a0eebff98f87a175f860db25241747fb6d6478dc9b7e9e4d031cd58b5d670390"
+    }
+  ],
+  "counts": {
+    "sources": 20,
+    "source_references": 98,
+    "part_guides": 7,
+    "corrections": 0,
+    "learning_expressions": 37,
+    "pronunciation_items": 8,
+    "practice_drills": 10,
+    "course_insights": 16,
+    "model_answer_candidates": 0,
+    "question_link_candidates": 0,
+    "conflicts": 23
+  },
+  "notes": "결정적 working import. 원본 MP4/PDF/DOCX, reviewed 콘텐츠, 개인 학습 데이터와 생성 시각을 포함하지 않는다."
+}

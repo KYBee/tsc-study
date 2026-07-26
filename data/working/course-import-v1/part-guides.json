@@ -1,0 +1,190 @@
+[
+  {
+    "part_guide_id": "part-guide-01",
+    "part": 1,
+    "goal": "이름, 생년월일, 가족, 소속 네 고정 질문에 짧게 답한다.",
+    "preparation_tips": [],
+    "response_structure": [
+      "이름",
+      "생년월일",
+      "가족",
+      "소속"
+    ],
+    "response_seconds": 10,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p1-pronunciation-warmup"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-01-01"
+    ],
+    "guide_status": "draft",
+    "notes": "자료는 고정 질문과 짧은 응답만 제시한다."
+  },
+  {
+    "part_guide_id": "part-guide-02",
+    "part": 2,
+    "goal": "그림의 위치, 존재, 비교, 동작, 시간, 수량을 질문에 맞춰 말한다.",
+    "preparation_tips": [
+      "그림의 대상·관계·수량을 먼저 확인한다."
+    ],
+    "response_structure": [
+      "그림 핵심 정보 확인",
+      "의문사 자리에 답 정보",
+      "한 문장으로 답하기"
+    ],
+    "response_seconds": 6,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p2-timed-accuracy"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-02-01"
+    ],
+    "guide_status": "draft",
+    "notes": "길이보다 그림 정보와 문장 정확성을 우선한다.",
+    "preparation_seconds": 3
+  },
+  {
+    "part_guide_id": "part-guide-03",
+    "part": 3,
+    "goal": "상대 발화의 기능과 대상을 파악해 자연스러운 다음 말을 한다.",
+    "preparation_tips": [
+      "감사·부탁·초대·축하·곤란의 기능을 먼저 파악한다."
+    ],
+    "response_structure": [
+      "쿠션·리액션",
+      "직접 수락·거절·공감",
+      "후속 질문·대안"
+    ],
+    "response_seconds": 15,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p3-timed-reaction"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-03-01"
+    ],
+    "guide_status": "draft",
+    "notes": "모든 발화를 질문으로 처리하지 않는다.",
+    "preparation_seconds": 2
+  },
+  {
+    "part_guide_id": "part-guide-04",
+    "part": 4,
+    "goal": "화제에 직접 답하고 이유와 구체 사례를 연결한다.",
+    "preparation_tips": [
+      "입장 또는 사실, 이유, 경험·예, 정리를 준비한다."
+    ],
+    "response_structure": [
+      "직접 답",
+      "이유·세부 또는 사례",
+      "정리"
+    ],
+    "response_seconds": 25,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p4-timed-structure"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-04-01"
+    ],
+    "guide_status": "draft",
+    "notes": "강의의 3급·4급 표현은 수준 체계 확인이 필요하다.",
+    "preparation_seconds": 15
+  },
+  {
+    "part_guide_id": "part-guide-05",
+    "part": 5,
+    "goal": "의견·사회 문제에 입장과 근거를 순서화해 답한다.",
+    "preparation_tips": [
+      "입장, 이유·장단점, 구체 예 또는 대책, 마무리를 정한다."
+    ],
+    "response_structure": [
+      "입장",
+      "이유 또는 장단점",
+      "구체 예 또는 대책",
+      "마무리"
+    ],
+    "response_seconds": 50,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p5-timed-opinion"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-05-01"
+    ],
+    "guide_status": "draft",
+    "notes": "강의는 3급 목표에서 정확한 문장을 먼저 확보하도록 안내한다.",
+    "preparation_seconds": 30
+  },
+  {
+    "part_guide_id": "part-guide-06",
+    "part": 6,
+    "goal": "상황에 대응한다.",
+    "preparation_tips": [],
+    "response_structure": [],
+    "response_seconds": 40,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-06-01"
+    ],
+    "guide_status": "draft",
+    "notes": "근거 부족: 전체 구성과 시간만 확인됐고 상세 답변 훈련이 거의 없다.",
+    "preparation_seconds": 30
+  },
+  {
+    "part_guide_id": "part-guide-07",
+    "part": 7,
+    "goal": "그림 순서와 마지막 반전을 확인한다.",
+    "preparation_tips": [
+      "그림 순서와 마지막 반전을 확인한다."
+    ],
+    "response_structure": [],
+    "response_seconds": 90,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-07-01"
+    ],
+    "guide_status": "draft",
+    "notes": "근거 부족: 예고 수준 자료만 있으며 완전한 90초 템플릿은 없다.",
+    "preparation_seconds": 30
+  }
+]
