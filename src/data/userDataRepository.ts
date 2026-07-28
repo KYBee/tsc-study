@@ -1,5 +1,6 @@
 import type {
   Correction,
+  PracticeDraft,
   ReviewState,
   UserAnswer,
 } from '../domain/entities'
@@ -10,6 +11,8 @@ import {
   DEFAULT_USER_DATA_DB_NAME,
   deleteTscStudyUserDatabase,
   openTscStudyUserDatabase,
+  PRACTICE_DRAFTS_STORE,
+  PRACTICE_DRAFT_QUESTION_INDEX,
   REVIEW_STATES_STORE,
   REVIEW_STATE_TARGET_INDEX,
   USER_ANSWERS_STORE,
@@ -46,6 +49,15 @@ export type StoredPersonalCorrection = Correction & {
   created_at: string
 }
 
+export type PracticeDraftInput = Omit<
+  PracticeDraft,
+  'created_at' | 'updated_at'
+> & {
+  created_at?: string
+}
+
+export type StoredPracticeDraft = PracticeDraft
+
 export interface UserDataRepositoryOptions {
   databaseName?: string
   now?: () => string
@@ -74,6 +86,14 @@ export interface UserDataRepository {
   deletePersonalCorrectionsForUserAnswer(
     userAnswerId: string,
   ): Promise<void>
+  getPracticeDraftByQuestionId(
+    questionId: string,
+  ): Promise<StoredPracticeDraft | undefined>
+  listPracticeDrafts(): Promise<StoredPracticeDraft[]>
+  upsertPracticeDraft(
+    practiceDraft: PracticeDraftInput,
+  ): Promise<StoredPracticeDraft>
+  deletePracticeDraft(practiceDraftId: string): Promise<void>
   close(): Promise<void>
   destroy(): Promise<void>
 }
@@ -109,6 +129,21 @@ function validateReviewState(reviewState: ReviewStateInput): void {
   }
   if (!REVIEW_STATUSES.has(reviewState.learning_status)) {
     throw new Error('Unsupported learning_status')
+  }
+}
+
+function validatePracticeDraft(practiceDraft: PracticeDraftInput): void {
+  if (!practiceDraft.practice_draft_id.trim()) {
+    throw new Error('practice_draft_id is required')
+  }
+  if (!practiceDraft.question_id.trim()) {
+    throw new Error('question_id is required')
+  }
+  if (!practiceDraft.original_input.trim()) {
+    throw new Error('빈 original_input은 저장할 수 없습니다')
+  }
+  if (practiceDraft.draft_status !== 'draft') {
+    throw new Error('Only draft PracticeDraft records can be stored')
   }
 }
 
@@ -377,6 +412,57 @@ export function createUserDataRepository(
     await transaction.done
   }
 
+  async function getPracticeDraftByQuestionId(
+    questionId: string,
+  ): Promise<StoredPracticeDraft | undefined> {
+    const database = await databasePromise
+    return database.getFromIndex(
+      PRACTICE_DRAFTS_STORE,
+      PRACTICE_DRAFT_QUESTION_INDEX,
+      questionId,
+    )
+  }
+
+  async function listPracticeDrafts(): Promise<StoredPracticeDraft[]> {
+    const database = await databasePromise
+    const drafts = await database.getAll(PRACTICE_DRAFTS_STORE)
+    return drafts.sort((left, right) =>
+      compareIdentifiers(left.question_id, right.question_id),
+    )
+  }
+
+  async function upsertPracticeDraft(
+    input: PracticeDraftInput,
+  ): Promise<StoredPracticeDraft> {
+    validatePracticeDraft(input)
+    const database = await databasePromise
+    const transaction = database.transaction(PRACTICE_DRAFTS_STORE, 'readwrite')
+    const store = transaction.objectStore(PRACTICE_DRAFTS_STORE)
+    const existing = await store
+      .index(PRACTICE_DRAFT_QUESTION_INDEX)
+      .get(input.question_id)
+    const timestamp = now()
+    const stored: StoredPracticeDraft = {
+      practice_draft_id:
+        existing?.practice_draft_id ?? input.practice_draft_id,
+      learner_ref: input.learner_ref,
+      question_id: input.question_id,
+      input_language: input.input_language,
+      original_input: input.original_input,
+      draft_status: 'draft',
+      created_at: existing?.created_at ?? input.created_at ?? timestamp,
+      updated_at: timestamp,
+    }
+    await store.put(stored)
+    await transaction.done
+    return stored
+  }
+
+  async function deletePracticeDraft(practiceDraftId: string): Promise<void> {
+    const database = await databasePromise
+    await database.delete(PRACTICE_DRAFTS_STORE, practiceDraftId)
+  }
+
   async function close(): Promise<void> {
     const database = await databasePromise
     database.close()
@@ -398,6 +484,10 @@ export function createUserDataRepository(
     upsertReviewState,
     listPersonalCorrections,
     deletePersonalCorrectionsForUserAnswer,
+    getPracticeDraftByQuestionId,
+    listPracticeDrafts,
+    upsertPracticeDraft,
+    deletePracticeDraft,
     close,
     destroy,
   }

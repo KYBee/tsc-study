@@ -455,6 +455,23 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 
 ## 개인 학습 엔터티
 
+### `PracticeDraft`
+
+실제 교정 결과가 없어도 사용자가 명시적으로 저장할 수 있는 교정 전 개인 연습 원문이다. canonical `UserAnswer`와 분리하며 공용 JSON에 포함하지 않는다.
+
+| 필드명 | 타입 | 필수 여부 | 설명 | 예시 |
+|---|---|---|---|---|
+| `practice_draft_id` | `Identifier` | 필수 | 연습 초안 식별자 | `pd-P4-006` |
+| `learner_ref` | `Identifier` | 조건부 | 개인 데이터 소유자 식별자 | `local-user` |
+| `question_id` | `Reference<Question>` | 필수 | 초안 대상 질문 | `P4-006` |
+| `input_language` | `Enum` | 필수 | `ko`, `zh`, `mixed` | `mixed` |
+| `original_input` | `Text` | 필수 | 사용자가 작성한 비어 있지 않은 원문 | `我喜欢在家运动。` |
+| `draft_status` | `Enum` | 필수 | 현재 값 `draft` | `draft` |
+| `created_at` | `DateTime` | 필수 | 최초 저장 시각 | `2026-07-28T10:00:00+09:00` |
+| `updated_at` | `DateTime` | 필수 | 마지막 명시적 저장 시각 | `2026-07-28T10:05:00+09:00` |
+
+질문당 활성 초안 하나를 upsert할 수 있다. `PracticeDraft`에는 교정 중국어·병음·한국어와 수정 내역을 넣지 않고 개인 `Correction`도 생성하지 않는다. `UserAnswer`가 생겨도 자동 삭제하지 않으며 둘은 동시에 존재할 수 있다.
+
 ### `UserAnswer`
 
 사용자가 저장을 승인한 원래 입력과 교정 결과를 보관하는 개인 데이터다. 편집 중 초안은 canonical `UserAnswer`로 보지 않는다. 초기 MVP의 물리 저장은 IndexedDB이며 사용자 식별 방식은 아직 미결정이다.
@@ -491,6 +508,7 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 
 개인 데이터 원칙:
 
+- `PracticeDraft`는 교정 전 원문이며 `UserAnswer`나 승인 답변으로 취급하지 않는다.
 - `UserAnswer`는 사용자가 승인한 답변만 canonical 데이터로 저장한다.
 - `ReviewState`만 사용자별 `못 외움`, `헷갈림`, `외움`을 관리한다.
 - 공용 `Correction`과 개인 `Correction` 모두 콘텐츠 자체에는 학습 상태를 저장하지 않는다.
@@ -528,6 +546,7 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 | `Question` N ↔ N `VisualSet` | `QuestionVisualSet`으로 연결하며 추측한 관계는 만들지 않는다. |
 | `VisualQuestion` 1 → 0..N `ModelAnswer` | `answer_target_type = visual_question`인 경우이며 출처 답변이 여러 개일 수 있다. |
 | `VisualSet` 1 → 0..N `StoryGuide` | 한 그림 세트에 스토리 가이드가 없거나 여러 개일 수 있다. |
+| `Question` 1 → 0..1 활성 `PracticeDraft` | 초기 MVP에서 질문별 활성 연습 초안 하나를 개인 IndexedDB에 upsert한다. |
 | `Question` 1 → N `UserAnswer` | 같은 질문에 사용자가 승인한 여러 답변을 저장할 수 있다. |
 | `UserAnswer` 1 → 0..N `Correction` | 한 사용자 답변에서 여러 개인 오류가 나올 수 있다. |
 | 학습자 1 → N `ReviewState` | 개인 복습 상태는 공용 콘텐츠와 별도로 저장한다. |

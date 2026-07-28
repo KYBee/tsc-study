@@ -1,0 +1,38 @@
+[
+  {
+    "drill_id": "drill-course-p4-timed-structure",
+    "drill_type": "timed_response",
+    "prompt_or_task": "15초 동안 구조를 준비하고 Part 4 전형 주제를 25초 안에 답한다.",
+    "completion_criteria": "직접 답, 이유·세부 또는 사례, 정리 순서를 사용한다.",
+    "required_content_ids": [
+      "part-guide-04"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-p4-timed-structure-01",
+      "sr-drill-course-p4-timed-structure-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 4,
+    "preparation_seconds": 15,
+    "response_seconds": 25
+  },
+  {
+    "drill_id": "drill-course-typical-vs-personal",
+    "drill_type": "structure_recall",
+    "prompt_or_task": "전형 답은 반복해 익히고 비전형 질문은 자신의 실제 경험으로 다시 만든다.",
+    "completion_criteria": "비전형 답에 사용자가 말하지 않은 경험을 만들지 않고 자신의 가족·회사·취미를 사용한다.",
+    "required_content_ids": [
+      "part-guide-04"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-typical-vs-personal-01",
+      "sr-drill-course-typical-vs-personal-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 4
+  }
+]

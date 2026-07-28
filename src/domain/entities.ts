@@ -31,8 +31,12 @@ export interface Source {
   creator_or_provider?: string
   original_file_name?: string
   file_ref?: string
+  claimed_original_names?: string[]
+  sha256?: string
   acquired_date?: string
   rights_status: 'review_needed' | 'private_use' | 'public_allowed' | 'restricted'
+  source_status?: 'raw' | 'review_needed' | 'reviewed'
+  evidence_kind?: EvidenceKind
   notes?: string
 }
 
@@ -46,6 +50,10 @@ export type SourceReferenceTargetType =
   | 'question_visual_set'
   | 'story_guide'
   | 'answer_point'
+  | 'learning_expression'
+  | 'pronunciation_item'
+  | 'practice_drill'
+  | 'course_insight'
 
 export interface SourceReference {
   source_reference_id: string
@@ -63,6 +71,7 @@ export interface SourceReference {
   claimed_source_url?: string
   source_grade?: string
   originality?: string
+  evidence_kind?: EvidenceKind
   verification_status: 'unverified' | 'review_needed' | 'verified' | 'rejected'
   notes?: string
 }
@@ -206,10 +215,95 @@ export interface PartGuide {
   preparation_tips?: string[]
   response_structure?: string[]
   key_expressions?: LanguageSet[]
+  key_expression_ids?: string[]
   representative_question_ids?: string[]
   frequent_correction_ids?: string[]
+  representative_drill_ids?: string[]
+  preparation_seconds?: number
+  response_seconds?: number
+  course_target_context?: CourseTargetContext
+  evidence_kind?: EvidenceKind
   source_reference_ids?: string[]
   guide_status: 'draft' | 'review_needed' | 'reviewed'
+  notes?: string
+}
+
+export type EvidenceKind =
+  | 'document_text'
+  | 'screen_text'
+  | 'instructor_speech'
+  | 'analyst_synthesis'
+  | 'generated_study_material'
+
+export type CourseTargetContext = 'level_3' | 'not_specified' | 'other'
+
+export interface LearningExpression {
+  expression_id: string
+  language: LanguageSet
+  part_numbers: PartNumber[]
+  expression_type:
+    | 'fixed_response'
+    | 'reaction'
+    | 'connector'
+    | 'grammar_pattern'
+    | 'comparison'
+    | 'location'
+    | 'opinion_structure'
+    | 'conclusion'
+    | 'reusable_sentence'
+    | 'other'
+  usage_context?: string
+  pattern_or_slots?: string
+  cautions?: string
+  related_correction_ids?: string[]
+  status: 'raw' | 'review_needed' | 'reviewed'
+  evidence_kind: EvidenceKind
+  source_reference_ids?: string[]
+  notes?: string
+}
+
+export interface PracticeDrill {
+  drill_id: string
+  part?: PartNumber
+  drill_type:
+    | 'timed_response'
+    | 'shadowing'
+    | 'correction_recall'
+    | 'picture_accuracy'
+    | 'reaction_drill'
+    | 'structure_recall'
+    | 'pronunciation'
+    | 'self_recording'
+    | 'other'
+  prompt_or_task: string
+  preparation_seconds?: number
+  response_seconds?: number
+  completion_criteria?: string
+  required_content_ids?: string[]
+  status: 'raw' | 'review_needed' | 'draft' | 'reviewed'
+  evidence_kind: EvidenceKind
+  source_reference_ids?: string[]
+  notes?: string
+}
+
+export interface CourseInsight {
+  insight_id: string
+  part_numbers: PartNumber[]
+  insight_type:
+    | 'strategy'
+    | 'evaluation_focus'
+    | 'time_guidance'
+    | 'common_risk'
+    | 'study_method'
+    | 'test_day_behavior'
+    | 'scope_limitation'
+    | 'other'
+  content_ko: string
+  course_target_context: CourseTargetContext
+  evidence_kind: EvidenceKind
+  confidence_or_status: 'raw' | 'review_needed' | 'draft' | 'reviewed'
+  source_reference_ids?: string[]
+  notes?: string
 }
 
 export interface PartCatalogItem {
@@ -236,6 +330,17 @@ export interface UserAnswer {
   structure_segments: StructureSegment[]
   save_status: 'user_approved'
   created_at: string
+}
+
+export interface PracticeDraft {
+  practice_draft_id: string
+  learner_ref?: string
+  question_id: string
+  input_language: InputLanguage
+  original_input: string
+  draft_status: 'draft'
+  created_at: string
+  updated_at: string
 }
 
 export interface ReviewState {

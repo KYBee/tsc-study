@@ -34,14 +34,16 @@
 - React + TypeScript + Vite, reviewed JSON과 개인 IndexedDB의 MVP 구현 기준 결정 완료
 - Part 4 첫 수직 기능 구현 계획 완료
 - React + TypeScript + Vite 프로젝트 초기화 완료
-- Part 4 raw 개발 fixture 6개와 런타임 검증 완료
-- Part 4 텍스트 문제 첫 수직 기능 완료
+- Part 4 raw 표본 6개 fixture를 보존하고, 전체 working 50문제 앱 fixture와 런타임 검증 완료
+- Part 4 전체 목록·검색·필터·랜덤 문제와 텍스트 문제 흐름 완료
+- IndexedDB v2 `PracticeDraft` 저장·수정·삭제와 기존 개인 데이터 보존 migration 완료
+- Part 4 50문제 복습, 마지막 문제 이어서 보기와 공통 강의 자료 표시 완료
 - deterministic mock 교정과 승인 후 IndexedDB `UserAnswer` 저장 완료
 - 사용자 선택 기반 `ReviewState`와 개인 `Correction` 최소 흐름 완료
 - 타입 검사, lint, 단위·컴포넌트 테스트와 production build 기준 마련 완료
 - 전체 253개 문제의 중국어·병음·한국어·출처 사람 검수와 `reviewed` 승격 미완료
 - 시각 자료 권리, 미연결 VisualQuestion과 Part 7 후보 관계 승인 미완료
-- `full-import-v1`의 앱 런타임 연결 미완료
+- `full-import-v1` 전체 253문제의 앱 런타임 연결 미완료. 현재는 Part 4 50문제만 별도 working fixture로 연결
 - 실제 AI 연결, 개인 데이터 서버 동기화, 전체 Part 구현과 배포 미완료
 - 새 모범답안 작성, 공용 실수 노트 전체와 Part 1·2·3·5·6·7 구현 미완료
 

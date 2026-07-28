@@ -145,11 +145,11 @@
 |---|---|
 | 화면 ID | `MY_ANSWERS` |
 | 화면 목적 | 사용자가 승인해 저장한 답변을 Part와 문제 맥락별로 조회한다. |
-| 읽는 엔터티 | `UserAnswer`, 연결된 `Question`, `ReviewState`, 선택적으로 개인 `Correction` |
-| 필수 데이터 | `user_answer_id`, `question_id`, Part, 중국어·병음·한국어, `save_status = user_approved` |
-| 선택 데이터 | 주제, 원래 입력, 교정 모드, 구조 구간, 학습 상태, 개인 오류 수 |
-| 사용자가 생성·수정하는 데이터 | 답변 수정 후 재승인, 다시 교정. 삭제·보관 요청은 가능하지만 저장 방식은 미결정이다. |
-| 빈 값 처리 | 저장 답변이 없으면 `내 답변 만들기` CTA와 Part 학습 진입을 제공한다. |
+| 읽는 엔터티 | `PracticeDraft`, `UserAnswer`, 연결된 `Question`, `ReviewState`, 선택적으로 개인 `Correction` |
+| 필수 데이터 | 교정 완료: `user_answer_id`, `question_id`, 중국어·병음·한국어, `save_status = user_approved`; 초안: `practice_draft_id`, `question_id`, `original_input`, `input_language`, 수정 시각 |
+| 선택 데이터 | 주제, 교정 모드, 구조 구간, 학습 상태, 개인 오류 수 |
+| 사용자가 생성·수정하는 데이터 | 연습 초안 upsert·삭제, 답변 수정 후 재승인·삭제, 다시 교정 |
+| 빈 값 처리 | 교정 완료와 연습 초안의 빈 상태를 따로 표시하고 Part 4 학습 진입을 제공한다. |
 | 검수 상태 처리 | 개인 답변과 공용 ModelAnswer를 같은 종류로 표시하지 않는다. 학습 상태는 `ReviewState`에서만 읽는다. |
 | 주요 행동 | 연결 문제로 이동, 수정, 다시 교정, 삭제 또는 보관, 복습 시작 |
 | 다음 화면 | 연결된 문제 화면, `ANSWER_EDITOR`, `REVIEW` |
@@ -195,6 +195,7 @@
 | 사용자 행동 | canonical 데이터 영향 |
 |---|---|
 | 답변 입력 | 저장 전에는 화면 세션 상태만 변경 |
+| 연습 초안 저장 | 질문별 활성 `PracticeDraft` 생성 또는 갱신. `UserAnswer`와 `Correction`은 만들지 않음 |
 | 교정 모드 선택 | 세션 상태 변경; 기존 UserAnswer를 자동 변경하지 않음 |
 | 교정 결과 승인 | 지원되는 canonical 답변 대상에서만 `UserAnswer` 생성 또는 명시적 수정 |
 | 개별 오류 승인·저장 | 개인 `Correction` 생성 가능 |
@@ -209,13 +210,13 @@
 1. canonical `Question`과 연결되지 않은 `VisualQuestion`의 승인 `UserAnswer` 저장 대상
 2. 독립 VisualQuestion을 `ReviewState` 대상으로 복습할지 여부
 3. Part 7 UserAnswer에 `visual_set_id` 학습 맥락을 보존하는 방식
-4. UserAnswer의 마지막 수정일과 삭제·보관 상태
+4. UserAnswer의 장기 버전 이력과 소프트 삭제·보관 정책
 5. 개인 Correction의 반복 발생 이력과 최근 발생 시각
 6. 여러 `basic` ModelAnswer 중 기본 비교 답변을 선택하는 검수 규칙
 7. 이미지 `rights_status`별 공개·개인 환경 표시 정책
 8. AI 교정 요청·응답과 실패의 실제 API 계약
 9. `오늘 복습` 대상을 선정하는 일정·우선순위 규칙과 이를 표현할 데이터
-10. IndexedDB에 저장할 `이어서 학습` 문맥의 레코드 형태와 갱신 규칙
-11. 대상별 `ReviewState`를 한 개의 현재 상태로 생성·갱신할지와 그 식별·중복 방지 규칙
+10. 마지막 학습 위치를 여러 Part·기기에서 동기화할 장기 계약
+11. 현재 구현의 대상별 단일 `ReviewState`를 이력형 복습 데이터로 확장할지 여부
 
 이 공백은 프론트엔드 기술, 데이터베이스 또는 API 제공자를 선택한 것으로 해소하지 않는다. 제품·데이터 계약을 먼저 결정해야 한다.

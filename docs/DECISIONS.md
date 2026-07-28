@@ -85,6 +85,9 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-015` | 임시 교정 세션 | 승인 전 입력과 provider 결과는 질문별 `sessionStorage`에 저장한다. 승인된 `UserAnswer`와 분리하며 민감 정보나 API 키는 저장하지 않는다. | 서버 교정·다중 기기 복원·개인정보 정책을 설계할 때 |
 | `D-016` | 교정 공급자 경계 | `CorrectionProvider` 인터페이스와 deterministic mock을 사용한다. 실제 외부 AI 호출과 클라이언트 API 키는 허용하지 않는다. | 공급자 비교와 비밀키를 보호할 서버 경계를 승인할 때 |
 | `D-017` | 테스트 도구 | Vitest, React Testing Library, jest-dom, user-event, jsdom, fake-indexeddb로 타입·도메인·저장소·사용자 흐름을 검증한다. | 브라우저 E2E 또는 다른 실행 환경을 정식 도입할 때 |
+| `D-018` | Part 4 전체 working fixture | `full-import-v1`과 `course-import-v1`에서 Part 4 범위만 deterministic하게 추출한 `part4-full-working-development-fixture-v2`를 앱 기본 데이터로 사용한다. reviewed 승격은 아니다. | 사람 검수를 통과한 reviewed canonical JSON이 준비될 때 |
+| `D-019` | 교정 전 연습 초안 | `PracticeDraft`를 승인된 `UserAnswer`와 분리해 IndexedDB에 저장한다. 질문당 활성 초안 하나를 upsert하며 둘은 동시에 존재할 수 있다. | 다중 기기 동기화나 답변 버전 이력이 필요할 때 |
+| `D-020` | IndexedDB v2 migration | 기존 DB 이름을 유지하고 버전 2에서 `practiceDrafts` store만 additive하게 추가한다. 기존 답변·복습 상태·개인 오류를 삭제하지 않는다. | 추가 개인 엔터티 또는 장기 migration 정책이 필요할 때 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 

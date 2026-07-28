@@ -1,0 +1,49 @@
+[
+  {
+    "part_guide_id": "part-guide-04",
+    "part": 4,
+    "goal": "화제에 직접 답하고 이유와 구체 사례를 연결한다.",
+    "preparation_tips": [
+      "입장 또는 사실, 이유, 경험·예, 정리를 준비한다."
+    ],
+    "response_structure": [
+      "직접 답",
+      "이유·세부 또는 사례",
+      "정리"
+    ],
+    "response_seconds": 25,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p4-timed-structure"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-04-01"
+    ],
+    "guide_status": "draft",
+    "notes": "강의의 3급·4급 표현은 수준 체계 확인이 필요하다.",
+    "preparation_seconds": 15
+  },
+  {
+    "part_guide_id": "part-guide-workbook-04",
+    "part": 4,
+    "goal": "결론+이유+예시+정리",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-04-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  }
+]

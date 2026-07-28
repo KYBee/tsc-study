@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { loadPart4Fixture } from './fixtureLoader'
+import { loadPart4FullFixture } from './fixtureLoader'
 import { createPublicContentRepository } from './publicContentRepository'
 
 describe('fixture public content repository', () => {
   it('lists all Parts but exposes fixture questions only for Part 4', async () => {
-    const repository = createPublicContentRepository(loadPart4Fixture())
+    const repository = createPublicContentRepository(loadPart4FullFixture())
 
     const parts = await repository.listParts()
     const questions = await repository.listQuestionsByPart(4)
@@ -15,7 +15,7 @@ describe('fixture public content repository', () => {
       expect.objectContaining({
         part: 4,
         name: '일상 화제 설명하기',
-        available_question_count: 6,
+        available_question_count: 50,
       }),
     ])
     expect(
@@ -23,25 +23,22 @@ describe('fixture public content repository', () => {
         .filter((part) => part.part !== 4)
         .every((part) => part.available_question_count === undefined),
     ).toBe(true)
-    expect(questions.map((question) => question.question_id)).toEqual([
-      'P4-001',
-      'P4-002',
-      'P4-003',
-      'P4-006',
-      'P4-036',
-      'P4-039',
-    ])
+    expect(questions.map((question) => question.question_id)).toEqual(
+      Array.from({ length: 50 }, (_, index) =>
+        `P4-${String(index + 1).padStart(3, '0')}`,
+      ),
+    )
   })
 
   it('returns undefined for a missing stable ID without treating it as a load failure', async () => {
-    const repository = createPublicContentRepository(loadPart4Fixture())
+    const repository = createPublicContentRepository(loadPart4FullFixture())
 
     await expect(repository.getQuestionById('P4-999')).resolves.toBeUndefined()
     await expect(repository.getPart(8)).resolves.toBeUndefined()
   })
 
   it('queries related content by explicit IDs rather than Chinese text', async () => {
-    const repository = createPublicContentRepository(loadPart4Fixture())
+    const repository = createPublicContentRepository(loadPart4FullFixture())
 
     await expect(repository.listAnswerPointsByQuestionId('P4-006')).resolves.toEqual([
       expect.objectContaining({
@@ -58,5 +55,23 @@ describe('fixture public content repository', () => {
         target_id: 'P4-006',
       }),
     ])
+  })
+
+  it('keeps workbook and level 3 course guidance separate', async () => {
+    const repository = createPublicContentRepository(loadPart4FullFixture())
+
+    await expect(repository.listPartGuides(4)).resolves.toEqual([
+      expect.objectContaining({
+        part_guide_id: 'part-guide-04',
+        course_target_context: 'level_3',
+      }),
+      expect.objectContaining({
+        part_guide_id: 'part-guide-workbook-04',
+        course_target_context: 'not_specified',
+      }),
+    ])
+    await expect(repository.listLearningExpressionsByPart(4)).resolves.toHaveLength(13)
+    await expect(repository.listPracticeDrillsByPart(4)).resolves.toHaveLength(2)
+    await expect(repository.listCourseInsightsByPart(4)).resolves.toHaveLength(6)
   })
 })

@@ -12,6 +12,7 @@ import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
 import type { InputLanguage } from '../../domain/entities'
+import type { StoredPracticeDraft } from '../../data/userDataRepository'
 import {
   createCorrectionSession,
   loadCorrectionSession,
@@ -38,18 +39,30 @@ export function AnswerEditorScreen() {
   const { data, error, loading } = useAsyncData(async () => {
     const question = await publicRepository.getQuestionById(questionId)
     if (!question || question.part !== 4) {
-      return { question: undefined, initialInput: '' }
+      return { question: undefined, initialInput: '', practiceDraft: undefined }
     }
     const session = loadCorrectionSession(questionId)
-    const answer = await userRepository.getUserAnswerByQuestionId(questionId)
+    const [answer, practiceDraft] = await Promise.all([
+      userRepository.getUserAnswerByQuestionId(questionId),
+      userRepository.getPracticeDraftByQuestionId(questionId),
+    ])
     return {
       question,
-      initialInput: session?.original_input ?? answer?.original_input ?? '',
+      practiceDraft,
+      initialInput:
+        session?.original_input ??
+        practiceDraft?.original_input ??
+        answer?.original_input ??
+        '',
     }
   }, [publicRepository, questionId, userRepository])
   const [drafts, setDrafts] = useState<Record<string, string>>({})
   const [validationMessage, setValidationMessage] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [savingDraft, setSavingDraft] = useState(false)
+  const [draftMessage, setDraftMessage] = useState('')
+  const [draftError, setDraftError] = useState('')
+  const [draftOverride, setDraftOverride] = useState<StoredPracticeDraft | null>()
 
   if (loading) {
     return <LoadingState message="답변 작성 화면을 준비하는 중입니다" />
@@ -79,6 +92,8 @@ export function AnswerEditorScreen() {
 
   const { question } = data
   const input = drafts[question.question_id] ?? data.initialInput
+  const practiceDraft =
+    draftOverride === undefined ? data.practiceDraft : draftOverride
 
   const preserveDraft = (value: string) => {
     setDrafts((currentDrafts) => ({
@@ -86,6 +101,7 @@ export function AnswerEditorScreen() {
       [question.question_id]: value,
     }))
     setValidationMessage('')
+    setDraftMessage('')
     saveCorrectionSession(
       createCorrectionSession({
         question_id: question.question_id,
@@ -95,6 +111,47 @@ export function AnswerEditorScreen() {
         provider_result: null,
       }),
     )
+  }
+
+  const handleSaveDraft = async () => {
+    if (!input.trim() || savingDraft) {
+      setValidationMessage('답변을 입력해 주세요')
+      return
+    }
+    setSavingDraft(true)
+    setDraftError('')
+    setDraftMessage('')
+    try {
+      const saved = await userRepository.upsertPracticeDraft({
+        practice_draft_id: `pd-${question.question_id}`,
+        question_id: question.question_id,
+        input_language: inferInputLanguage(input),
+        original_input: input,
+        draft_status: 'draft',
+      })
+      setDraftOverride(saved)
+      setDraftMessage('연습 초안을 저장했습니다')
+    } catch (cause: unknown) {
+      console.error(cause)
+      setDraftError('연습 초안을 저장하지 못했습니다. 입력은 그대로 유지됩니다.')
+    } finally {
+      setSavingDraft(false)
+    }
+  }
+
+  const handleDeleteDraft = async () => {
+    if (!practiceDraft || !window.confirm('저장된 연습 초안을 삭제할까요?')) {
+      return
+    }
+    setDraftError('')
+    try {
+      await userRepository.deletePracticeDraft(practiceDraft.practice_draft_id)
+      setDraftOverride(null)
+      setDraftMessage('저장된 연습 초안을 삭제했습니다')
+    } catch (cause: unknown) {
+      console.error(cause)
+      setDraftError('연습 초안을 삭제하지 못했습니다.')
+    }
   }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -226,11 +283,40 @@ export function AnswerEditorScreen() {
               {validationMessage}
             </p>
           )}
+          {draftMessage && (
+            <p className="success-message" role="status">
+              {draftMessage}
+            </p>
+          )}
+          {draftError && (
+            <p className="field-error" role="alert">
+              {draftError}
+            </p>
+          )}
         </div>
 
-        <button className="primary-button full-width" type="submit" disabled={submitting}>
-          {submitting ? '교정 중…' : '교정하기'}
-        </button>
+        <div className="button-row">
+          <button
+            className="secondary-button"
+            type="button"
+            disabled={savingDraft}
+            onClick={() => void handleSaveDraft()}
+          >
+            {savingDraft ? '초안 저장 중…' : '연습 초안 저장'}
+          </button>
+          {practiceDraft && (
+            <button
+              className="danger-button"
+              type="button"
+              onClick={() => void handleDeleteDraft()}
+            >
+              저장된 초안 삭제
+            </button>
+          )}
+          <button className="primary-button" type="submit" disabled={submitting}>
+            {submitting ? '교정 중…' : '교정하기'}
+          </button>
+        </div>
       </form>
     </div>
   )

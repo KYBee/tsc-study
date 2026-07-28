@@ -1,11 +1,24 @@
 import { afterEach, describe, expect, it } from 'vitest'
+import { openDB } from 'idb'
 
 import {
   createUserDataRepository,
   type PersonalCorrectionInput,
+  type PracticeDraftInput,
   type ReviewStateInput,
   type UserAnswerInput,
 } from './userDataRepository'
+import {
+  CORRECTIONS_STORE,
+  CORRECTION_USER_ANSWER_INDEX,
+  PRACTICE_DRAFTS_STORE,
+  REVIEW_STATES_STORE,
+  REVIEW_STATE_TARGET_ID_INDEX,
+  REVIEW_STATE_TARGET_INDEX,
+  USER_ANSWERS_STORE,
+  USER_ANSWER_QUESTION_INDEX,
+  USER_DATA_DB_VERSION,
+} from './indexedDb'
 
 const openedRepositories: Array<ReturnType<typeof createUserDataRepository>> = []
 let databaseSequence = 0
@@ -75,6 +88,19 @@ function makeReviewState(
     target_type: 'question',
     target_id: 'P4-006',
     learning_status: '못 외움',
+    ...overrides,
+  }
+}
+
+function makePracticeDraft(
+  overrides: Partial<PracticeDraftInput> = {},
+): PracticeDraftInput {
+  return {
+    practice_draft_id: 'pd-P4-001',
+    question_id: 'P4-001',
+    input_language: 'mixed',
+    original_input: '저는 친구와 一起旅行하고 싶어요.',
+    draft_status: 'draft',
     ...overrides,
   }
 }
@@ -221,5 +247,111 @@ describe('UserDataRepository namespace isolation', () => {
 
     await expect(first.listUserAnswers()).resolves.toHaveLength(1)
     await expect(second.listUserAnswers()).resolves.toEqual([])
+  })
+})
+
+describe('UserDataRepository PracticeDraft', () => {
+  it('stores, restores, and upserts one active draft per Question', async () => {
+    const repository = createRepository([
+      '2026-07-26T10:00:00.000Z',
+      '2026-07-26T11:00:00.000Z',
+    ])
+
+    const created = await repository.upsertPracticeDraft(makePracticeDraft())
+    expect(created.created_at).toBe('2026-07-26T10:00:00.000Z')
+    expect(created.updated_at).toBe('2026-07-26T10:00:00.000Z')
+    await expect(repository.getPracticeDraftByQuestionId('P4-001')).resolves.toEqual(
+      created,
+    )
+
+    const updated = await repository.upsertPracticeDraft(
+      makePracticeDraft({
+        practice_draft_id: 'pd-replacement-must-not-win',
+        original_input: '수정한 연습 초안',
+        input_language: 'ko',
+      }),
+    )
+    expect(updated.practice_draft_id).toBe('pd-P4-001')
+    expect(updated.original_input).toBe('수정한 연습 초안')
+    expect(updated.created_at).toBe('2026-07-26T10:00:00.000Z')
+    expect(updated.updated_at).toBe('2026-07-26T11:00:00.000Z')
+    await expect(repository.listPracticeDrafts()).resolves.toEqual([updated])
+  })
+
+  it('rejects blank drafts and deletes only the explicit draft', async () => {
+    const repository = createRepository()
+
+    await expect(
+      repository.upsertPracticeDraft(
+        makePracticeDraft({ original_input: '   ' }),
+      ),
+    ).rejects.toThrow(/빈|original_input|required/)
+
+    await repository.upsertPracticeDraft(makePracticeDraft())
+    await repository.deletePracticeDraft('pd-P4-001')
+    await expect(repository.listPracticeDrafts()).resolves.toEqual([])
+  })
+})
+
+describe('IndexedDB v1 to v2 migration', () => {
+  it('adds practiceDrafts without deleting existing personal records', async () => {
+    const databaseName = `tsc-study-user-data-migration-${databaseSequence++}`
+    const legacy = await openDB(databaseName, 1, {
+      upgrade(database) {
+        const userAnswers = database.createObjectStore(USER_ANSWERS_STORE, {
+          keyPath: 'user_answer_id',
+        })
+        userAnswers.createIndex(USER_ANSWER_QUESTION_INDEX, 'question_id', {
+          unique: true,
+        })
+        const reviewStates = database.createObjectStore(REVIEW_STATES_STORE, {
+          keyPath: 'review_state_id',
+        })
+        reviewStates.createIndex(
+          REVIEW_STATE_TARGET_INDEX,
+          ['target_type', 'target_id'],
+          { unique: true },
+        )
+        reviewStates.createIndex(REVIEW_STATE_TARGET_ID_INDEX, 'target_id')
+        const corrections = database.createObjectStore(CORRECTIONS_STORE, {
+          keyPath: 'correction_id',
+        })
+        corrections.createIndex(
+          CORRECTION_USER_ANSWER_INDEX,
+          'user_answer_id',
+        )
+      },
+    })
+    const legacyAnswer = {
+      ...makeUserAnswer({ created_at: '2026-07-26T09:00:00.000Z' }),
+      updated_at: '2026-07-26T09:00:00.000Z',
+    }
+    const legacyReview = {
+      ...makeReviewState({ last_reviewed_at: '2026-07-26T09:00:00.000Z' }),
+      review_count: 1,
+    }
+    const legacyCorrection = {
+      ...makeCorrection({ user_answer_id: 'ua-P4-006' }),
+      user_answer_id: 'ua-P4-006',
+      created_at: '2026-07-26T09:00:00.000Z',
+    }
+    await legacy.put(USER_ANSWERS_STORE, legacyAnswer)
+    await legacy.put(REVIEW_STATES_STORE, legacyReview)
+    await legacy.put(CORRECTIONS_STORE, legacyCorrection)
+    legacy.close()
+
+    const repository = createUserDataRepository({ databaseName })
+    openedRepositories.push(repository)
+
+    await expect(repository.listUserAnswers()).resolves.toEqual([legacyAnswer])
+    await expect(repository.listReviewStates()).resolves.toEqual([legacyReview])
+    await expect(repository.listPersonalCorrections()).resolves.toEqual([
+      legacyCorrection,
+    ])
+    await expect(repository.listPracticeDrafts()).resolves.toEqual([])
+
+    const migrated = await openDB(databaseName, USER_DATA_DB_VERSION)
+    expect([...migrated.objectStoreNames]).toContain(PRACTICE_DRAFTS_STORE)
+    migrated.close()
   })
 })

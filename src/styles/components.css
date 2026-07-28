@@ -239,7 +239,8 @@
 }
 
 .status-badge--memorized,
-.status-badge--has-answer {
+.status-badge--has-answer,
+.status-badge--has-draft {
   border-color: color-mix(in srgb, var(--success) 30%, white);
   color: var(--success);
   background: var(--success-background);
@@ -317,6 +318,121 @@
 .missing-value {
   color: var(--faint-text);
   font-size: 0.9rem;
+}
+
+.filter-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.filter-grid label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--secondary-text);
+  font-size: 0.82rem;
+  font-weight: 750;
+}
+
+.filter-grid input,
+.filter-grid select {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  padding: 0.65rem 0.75rem;
+  color: var(--primary-text);
+  background: var(--card);
+}
+
+.question-navigation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.guide-details {
+  border-top: 1px solid var(--border);
+  padding-top: 0.8rem;
+}
+
+.guide-details:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.guide-details summary {
+  min-height: 44px;
+  color: var(--primary-text);
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.source-context,
+.draft-preview {
+  padding: 0.8rem;
+  border-radius: 0.7rem;
+  background: var(--secondary-background);
+}
+
+.draft-preview p {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.stats-grid > div {
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+  background: var(--secondary-background);
+}
+
+.stats-grid dt {
+  color: var(--secondary-text);
+  font-size: 0.75rem;
+}
+
+.stats-grid dd {
+  margin: 0.2rem 0 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.segmented-control {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  padding: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  background: var(--secondary-background);
+}
+
+.segmented-control button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 0.6rem;
+  color: var(--secondary-text);
+  background: transparent;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.segmented-control button[aria-selected="true"] {
+  color: var(--accent);
+  background: var(--card);
+  box-shadow: var(--shadow);
 }
 
 .empty-state {
@@ -787,7 +903,10 @@
 
 @media (max-width: 380px) {
   .structure-list,
-  .status-button-group {
+  .status-button-group,
+  .filter-grid,
+  .question-navigation,
+  .stats-grid {
     grid-template-columns: 1fr;
   }
 

@@ -75,6 +75,7 @@ afterEach(async () => {
   cleanup()
   await Promise.all(repositories.splice(0).map((repository) => repository.destroy()))
   window.sessionStorage.clear()
+  window.localStorage.clear()
 })
 
 describe('Part 4 vertical slice navigation', () => {
@@ -101,7 +102,7 @@ describe('Part 4 vertical slice navigation', () => {
     expect(document.querySelector('#main-content')).toHaveFocus()
   })
 
-  it('shows exactly the six canonical Part 4 questions', async () => {
+  it('shows all fifty canonical Part 4 questions', async () => {
     renderApp('/parts/4')
 
     const questionList = await screen.findByRole('list', { name: 'Part 4 문제 목록' })
@@ -109,14 +110,27 @@ describe('Part 4 vertical slice navigation', () => {
       .getAllByTestId('question-id')
       .map((element) => element.textContent)
 
-    expect(ids).toEqual([
-      'P4-001',
-      'P4-002',
-      'P4-003',
-      'P4-006',
-      'P4-036',
-      'P4-039',
-    ])
+    expect(ids).toEqual(
+      Array.from({ length: 50 }, (_, index) =>
+        `P4-${String(index + 1).padStart(3, '0')}`,
+      ),
+    )
+  })
+
+  it('searches and filters the Part 4 list without inventing results', async () => {
+    const user = userEvent.setup()
+    renderApp('/parts/4')
+
+    await user.type(await screen.findByLabelText('문제 검색'), '어디에서 운동')
+    expect(screen.getByText('P4-006')).toBeInTheDocument()
+    expect(screen.queryByText('P4-007')).not.toBeInTheDocument()
+    expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: '필터 초기화' }))
+    await user.selectOptions(screen.getByLabelText('유형 필터'), '운동')
+    expect(screen.getByText('현재 결과 2개')).toBeInTheDocument()
+    expect(screen.getByText('P4-006')).toBeInTheDocument()
+    expect(screen.getByText('P4-007')).toBeInTheDocument()
   })
 
   it('shows a safe error screen for an unknown question ID', async () => {
@@ -293,9 +307,105 @@ describe('question and answer flow', () => {
     ).toBeInTheDocument()
     expect(screen.getByText(EXERCISE_INPUT, { exact: true })).toBeInTheDocument()
   })
+
+  it('stores an unsupported answer as a PracticeDraft and restores it', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    renderApp('/questions/P4-001/answer', { userRepository })
+
+    await user.type(await screen.findByLabelText('내 답변'), '저는 서울에 살아요.')
+    await user.click(screen.getByRole('button', { name: '연습 초안 저장' }))
+    expect(await screen.findByText('연습 초안을 저장했습니다')).toBeInTheDocument()
+    await expect(
+      userRepository.getPracticeDraftByQuestionId('P4-001'),
+    ).resolves.toMatchObject({
+      original_input: '저는 서울에 살아요.',
+      draft_status: 'draft',
+    })
+    await expect(userRepository.listUserAnswers()).resolves.toEqual([])
+
+    cleanup()
+    renderApp('/questions/P4-001/answer', { userRepository })
+    expect(await screen.findByLabelText('내 답변')).toHaveValue('저는 서울에 살아요.')
+  })
+
+  it('keeps PracticeDraft and approved UserAnswer as separate My Answers records', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertPracticeDraft({
+      practice_draft_id: 'pd-P4-006',
+      question_id: 'P4-006',
+      input_language: 'ko',
+      original_input: '교정 전 연습 초안',
+      draft_status: 'draft',
+    })
+    await userRepository.upsertUserAnswer(makeSavedAnswer())
+
+    renderApp('/my-answers', { userRepository })
+
+    expect(await screen.findByRole('tab', { name: '교정 완료 1' })).toBeInTheDocument()
+    expect(screen.getByText(CORRECTED_EXERCISE_INPUT, { exact: true })).toBeInTheDocument()
+    await user.click(screen.getByRole('tab', { name: '연습 초안 1' }))
+    expect(screen.getByText('교정 전 연습 초안')).toBeInTheDocument()
+    expect(screen.getByText('원본 입력 · 한국어')).toBeInTheDocument()
+    await expect(userRepository.listUserAnswers()).resolves.toHaveLength(1)
+    await expect(userRepository.listPracticeDrafts()).resolves.toHaveLength(1)
+  })
+
+  it('shows previous and next questions, display toggles, and separate course guidance', async () => {
+    const user = userEvent.setup()
+    renderApp('/questions/P4-006')
+
+    expect(await screen.findByRole('link', { name: /이전 문제.*P4-005/ })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /다음 문제.*P4-007/ })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '강의 기반 기초 구조' })).toBeInTheDocument()
+    expect(screen.getByText(/3급 과정 맥락/)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '재사용 표현' })).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: '한국어 숨기기' }))
+    expect(screen.getByText('한국어 뜻이 숨겨져 있습니다')).toBeInTheDocument()
+  })
+
+  it('records and restores the last visited Question on HOME', async () => {
+    const userRepository = createTestUserRepository()
+    renderApp('/questions/P4-006', { userRepository })
+    expect(await screen.findByText(/P4-006/)).toBeInTheDocument()
+
+    cleanup()
+    renderApp('/', { userRepository })
+    expect(await screen.findByRole('link', { name: /P4-006 이어서 보기/ })).toHaveAttribute(
+      'href',
+      '/questions/P4-006',
+    )
+  })
 })
 
 describe('review flow', () => {
+  it('filters all fifty review questions by search, type, and explicit state', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertReviewState({
+      review_state_id: 'rs-question-P4-006',
+      target_type: 'question',
+      target_id: 'P4-006',
+      learning_status: '헷갈림',
+    })
+    renderApp('/review', { userRepository })
+
+    expect(await screen.findByText('현재 결과 50개')).toBeInTheDocument()
+    await user.type(screen.getByLabelText('문제 검색'), '어디에서 운동')
+    expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
+    expect(screen.getByText(/^P4-006/)).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: '필터 초기화' }))
+    await user.selectOptions(screen.getByLabelText('복습 상태 필터'), '헷갈림')
+    expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
+    expect(screen.getByText(/^P4-006/)).toBeInTheDocument()
+
+    await user.selectOptions(screen.getByLabelText('유형 필터'), '운동')
+    expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
+  })
+
   it('creates ReviewState only after the learner explicitly selects a status', async () => {
     const user = userEvent.setup()
     const { userRepository } = renderApp('/review')
@@ -324,7 +434,10 @@ describe('review flow', () => {
     expect(screen.getByText(/^P4-002/)).toBeInTheDocument()
     expect(screen.getByText('답변이 숨겨져 있습니다')).toBeInTheDocument()
 
-    const remainingIds = ['P4-002', 'P4-003', 'P4-006', 'P4-036', 'P4-039']
+    const remainingIds = Array.from(
+      { length: 49 },
+      (_, index) => `P4-${String(index + 2).padStart(3, '0')}`,
+    )
     for (const questionId of remainingIds) {
       expect(screen.getByText(new RegExp(`^${questionId}`))).toBeInTheDocument()
       expect(screen.getByRole('button', { name: '다음 문제' })).toBeDisabled()

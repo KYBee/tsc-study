@@ -1,24 +1,40 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { useAppDependencies } from '../../app/dependencies'
+import { loadLastLearningLocation } from '../../app/lastLearningLocation'
+import { useAsyncData } from '../../app/useAsyncData'
 import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LoadingState } from '../../components/LoadingState'
-import { useAsyncData } from '../../app/useAsyncData'
+import { pickRandomQuestion } from '../part/questionFilters'
 
 export function HomeScreen() {
   const { publicRepository, userRepository } = useAppDependencies()
+  const navigate = useNavigate()
   const { data, error, loading } = useAsyncData(async () => {
-    const [parts, reviewStates] = await Promise.all([
+    const [parts, questions, reviewStates, answers, drafts] = await Promise.all([
       publicRepository.listParts(),
+      publicRepository.listQuestionsByPart(4),
       userRepository.listReviewStates(),
+      userRepository.listUserAnswers(),
+      userRepository.listPracticeDrafts(),
     ])
-    return { parts, reviewStates }
+    const questionReviewStates = reviewStates.filter(
+      (state) => state.target_type === 'question',
+    )
+    return {
+      parts,
+      questions,
+      reviewStates: questionReviewStates,
+      answers,
+      drafts,
+      lastLocation: loadLastLearningLocation(
+        questions.map((question) => question.question_id),
+      ),
+    }
   }, [publicRepository, userRepository])
 
-  if (loading) {
-    return <LoadingState message="학습 홈을 불러오는 중입니다" />
-  }
+  if (loading) return <LoadingState message="학습 홈을 불러오는 중입니다" />
   if (error || !data) {
     return (
       <ErrorState
@@ -28,41 +44,102 @@ export function HomeScreen() {
     )
   }
 
+  const reviewCounts = {
+    none: data.questions.length - data.reviewStates.length,
+    '못 외움': data.reviewStates.filter(
+      (state) => state.learning_status === '못 외움',
+    ).length,
+    헷갈림: data.reviewStates.filter(
+      (state) => state.learning_status === '헷갈림',
+    ).length,
+    외움: data.reviewStates.filter((state) => state.learning_status === '외움')
+      .length,
+  }
+
+  const startRandom = () => {
+    const selected = pickRandomQuestion(data.questions)
+    if (selected) navigate(`/questions/${selected.question_id}`)
+  }
+
   return (
     <div className="page">
       <header className="hero">
         <p className="eyebrow">TSC STUDY</p>
-        <h1>오늘도 정확하게 말해 볼까요?</h1>
-        <p>어려운 표현보다 자주 하는 실수를 줄이는 연습부터 시작합니다.</p>
+        <h1>Part 4의 50문제를 직접 연습해 보세요</h1>
+        <p>검수 전 working 문제이며, 연습 초안은 실제 AI 없이도 저장할 수 있습니다.</p>
       </header>
 
-      <section className="card" aria-labelledby="today-review-heading">
+      <section className="card" aria-labelledby="progress-heading">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">REVIEW</p>
-            <h2 id="today-review-heading">오늘 복습</h2>
+            <p className="eyebrow">YOUR DATA</p>
+            <h2 id="progress-heading">Part 4 학습 현황</h2>
           </div>
-          {data.reviewStates.length > 0 && (
-            <Link className="text-link" to="/review">
-              복습하기
-            </Link>
-          )}
+          <Link className="text-link" to="/review">
+            복습 열기
+          </Link>
         </div>
-        {data.reviewStates.length === 0 ? (
-          <EmptyState title="아직 복습할 항목이 없습니다" />
-        ) : (
-          <p>복습 상태가 기록된 항목 {data.reviewStates.length}개가 있습니다.</p>
-        )}
+        <dl className="stats-grid">
+          <div>
+            <dt>전체 문제</dt>
+            <dd>{data.questions.length}</dd>
+          </div>
+          <div>
+            <dt>연습 초안</dt>
+            <dd>{data.drafts.length}</dd>
+          </div>
+          <div>
+            <dt>교정 완료</dt>
+            <dd>{data.answers.length}</dd>
+          </div>
+          <div>
+            <dt>상태 없음</dt>
+            <dd>{reviewCounts.none}</dd>
+          </div>
+          <div>
+            <dt>못 외움</dt>
+            <dd>{reviewCounts['못 외움']}</dd>
+          </div>
+          <div>
+            <dt>헷갈림</dt>
+            <dd>{reviewCounts.헷갈림}</dd>
+          </div>
+          <div>
+            <dt>외움</dt>
+            <dd>{reviewCounts.외움}</dd>
+          </div>
+        </dl>
       </section>
 
       <section className="card" aria-labelledby="continue-heading">
         <p className="eyebrow">CONTINUE</p>
         <h2 id="continue-heading">이어서 학습</h2>
-        <p>아직 저장된 마지막 학습 위치가 없습니다.</p>
-        <Link className="primary-button" to="/parts/4">
-          Part 4 학습 시작
-        </Link>
+        {data.lastLocation ? (
+          <Link
+            className="primary-button"
+            to={`/questions/${data.lastLocation.last_question_id}`}
+          >
+            {data.lastLocation.last_question_id} 이어서 보기
+          </Link>
+        ) : (
+          <>
+            <p>아직 저장된 마지막 학습 위치가 없습니다.</p>
+            <Link className="primary-button" to="/parts/4">
+              Part 4 학습 시작
+            </Link>
+          </>
+        )}
+        <button className="secondary-button" type="button" onClick={startRandom}>
+          랜덤 문제 시작
+        </button>
       </section>
+
+      {data.reviewStates.length === 0 && (
+        <EmptyState
+          title="아직 복습 상태가 없습니다"
+          description="문제에서 상태를 직접 선택하면 이곳의 현황에 반영됩니다."
+        />
+      )}
 
       <section aria-labelledby="part-list-heading">
         <div className="section-heading">
@@ -79,7 +156,7 @@ export function HomeScreen() {
                   <span className="part-card__number">Part {part.part}</span>
                   <span className="part-card__body">
                     <strong>{part.name}</strong>
-                    <small>{part.available_question_count}개 개발 표본</small>
+                    <small>{part.available_question_count}개 검수 전 working 문제</small>
                   </span>
                   <span aria-hidden="true">→</span>
                 </Link>
