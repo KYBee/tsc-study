@@ -60,6 +60,11 @@ v1.1은 `other-output`의 3급 목표 강의 분석을 working 데이터로 반�
 |---|---|---|
 | 공용 콘텐츠 | `Source`, `SourceReference`, `Question`, `AnswerPoint`, `ModelAnswer`, 시각 자료 엔터티, `StoryGuide`, `PartGuide`, `LearningExpression`, `PronunciationItem`, `PracticeDrill`, `CourseInsight`, 공용 `Correction` | 출처·근거·검수 상태를 보존하고 개인 학습 상태를 넣지 않는다. |
 | 개인 기록 | `PracticeDraft`, `ReusablePhrase`, `RecallAttempt`, `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하고 IndexedDB에 저장한다. 구조화 초안과 회상 이력도 공용 데이터에 넣지 않는다. |
+
+현재 working 앱 fixture는 Part 1·3·4·5·6 Question·AnswerPoint 193개를
+동일한 canonical 엔터티 계약으로 읽는다. Part 4만 선택적 구조화
+PracticeDraft를 사용하고 다른 Part는 자유 입력 필드만 사용한다. 이 런타임
+선택은 스키마의 Question 의미나 reviewed 승격 상태를 변경하지 않는다.
 | 검수 운영 | `Part4ReviewDecision` | 필드별 사람 판단과 원문 해시만 별도 IndexedDB·내보내기 JSON에 보존한다. 공용 콘텐츠나 개인 학습 기록과 섞지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.

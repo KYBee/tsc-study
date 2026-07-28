@@ -10,16 +10,20 @@ import type {
   SourceReferenceTargetType,
 } from '../domain/entities'
 import type { PublicContentRepository } from '../domain/repositories'
-import type { Part4Fixture, Part4FullFixture } from '../domain/validation'
-import { loadPart4FullFixture } from './fixtureLoader'
+import type {
+  Part4Fixture,
+  Part4FullFixture,
+  TextPartsFixture,
+} from '../domain/validation'
+import { loadTextPartsFixture } from './fixtureLoader'
 
 const PART_CATALOG: ReadonlyArray<Omit<PartCatalogItem, 'available_question_count'>> = [
-  { part: 1, name: '자기소개', availability: 'coming_soon' },
+  { part: 1, name: '자기소개', availability: 'available' },
   { part: 2, name: '그림 보고 답하기', availability: 'coming_soon' },
-  { part: 3, name: '빠르게 반응하기', availability: 'coming_soon' },
+  { part: 3, name: '빠르게 반응하기', availability: 'available' },
   { part: 4, name: '일상 화제 설명하기', availability: 'available' },
-  { part: 5, name: '의견 제시하기', availability: 'coming_soon' },
-  { part: 6, name: '상황 대응하기', availability: 'coming_soon' },
+  { part: 5, name: '의견 제시하기', availability: 'available' },
+  { part: 6, name: '상황 대응하기', availability: 'available' },
   { part: 7, name: '스토리 구성하기', availability: 'coming_soon' },
 ]
 
@@ -33,18 +37,26 @@ const compareStableIds = (left: string, right: string) => {
 }
 
 class FixturePublicContentRepository implements PublicContentRepository {
-  private readonly fixture: Part4Fixture | Part4FullFixture
+  private readonly fixture: Part4Fixture | Part4FullFixture | TextPartsFixture
 
-  constructor(fixture: Part4Fixture | Part4FullFixture) {
+  constructor(fixture: Part4Fixture | Part4FullFixture | TextPartsFixture) {
     this.fixture = fixture
   }
 
   async listParts(): Promise<PartCatalogItem[]> {
-    return PART_CATALOG.map((part) =>
-      part.part === 4
-        ? { ...part, available_question_count: this.fixture.questions.length }
-        : { ...part },
-    )
+    return PART_CATALOG.map((part) => {
+      if (part.availability !== 'available') return { ...part }
+      const availableQuestionCount = this.fixture.questions.filter(
+        (question) => question.part === part.part,
+      ).length
+      if (availableQuestionCount === 0) {
+        return { ...part, availability: 'coming_soon' as const }
+      }
+      return {
+        ...part,
+        available_question_count: availableQuestionCount,
+      }
+    })
   }
 
   async getPart(partNumber: number): Promise<PartCatalogItem | undefined> {
@@ -128,7 +140,10 @@ class FixturePublicContentRepository implements PublicContentRepository {
 }
 
 export const createPublicContentRepository = (
-  fixture: Part4Fixture | Part4FullFixture = loadPart4FullFixture(),
+  fixture:
+    | Part4Fixture
+    | Part4FullFixture
+    | TextPartsFixture = loadTextPartsFixture(),
 ): PublicContentRepository => new FixturePublicContentRepository(fixture)
 
 export const isPartNumber = (value: number): value is PartNumber =>

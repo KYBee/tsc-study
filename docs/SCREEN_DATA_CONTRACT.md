@@ -206,6 +206,24 @@
 | 재사용 표현 저장 | 사용자가 명시적으로 선택한 원문 전체만 개인 `ReusablePhrase`로 저장 |
 | 회상 결과 선택 | `RecallAttempt`를 추가하고 정해진 매핑으로 Question `ReviewState`를 갱신 |
 
+## 전체 텍스트 Part 공통 화면 계약
+
+| 항목 | 계약 |
+|---|---|
+| 화면 ID | `TEXT_PART_LIST`, `TEXT_QUESTION`, `FREE_ANSWER_EDITOR`, `TEXT_RECALL` |
+| 화면 목적 | Part 1·3·4·5·6의 193개 working 문제를 찾고, 사용자가 자신의 답변을 저장·회상한다. |
+| 읽는 엔터티 | `Question`, `AnswerPoint`, `PartGuide`, `LearningExpression`, `PracticeDrill`, `CourseInsight`, 개인 `PracticeDraft`, `ReusablePhrase`, `RecallAttempt`, `ReviewState`, 선택적 `UserAnswer` |
+| 필수 데이터 | 안정적인 `question_id`, Part, 중국어 질문. 원문에 있는 병음·한국어·AnswerPoint는 생성하지 않고 그대로 사용 |
+| 선택 데이터 | 출처가 분리된 workbook/course 가이드와 Part 공통 표현·드릴·인사이트 |
+| 사용자가 생성·수정하는 데이터 | 자유 입력 또는 Part 4 구조화 `PracticeDraft`, 명시적으로 저장한 `ReusablePhrase`, 회상 후 `RecallAttempt`·`ReviewState` |
+| 빈 값 처리 | ModelAnswer 0개는 정상이며 `답변 예시는 아직 없음`을 표시한다. 표현·가이드가 없으면 섹션을 숨긴다. |
+| 검수 상태 처리 | 193개 모두 `검수 전 문제`로 표시하며 course level_3 자료를 고득점 공식 기준으로 표시하지 않는다. |
+| 주요 행동 | 파트·검색·상태 필터, 문제 이동, 초안 저장·완료·삭제, 내 답변 암기, 명시적 상태 저장 |
+| 다음 화면 | 같은 Part 목록, 문제 상세, 답변 작성·암기, 나의 답변, 복습 |
+
+Part 4는 네 구간 전용 편집기를 유지한다. Part 1·3·5·6은 자유 입력이며
+PartGuide 문구를 자동 폼이나 답변으로 변환하지 않는다.
+
 ## 11. Part 4 로컬 데이터 검수
 
 | 항목 | 계약 |

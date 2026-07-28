@@ -15,7 +15,7 @@ export function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomeScreen />} />
-      <Route path="/parts/4" element={<PartDetailScreen />} />
+      <Route path="/parts/:part" element={<PartDetailScreen />} />
       <Route path="/questions/:questionId" element={<QuestionScreen />} />
       <Route
         path="/questions/:questionId/answer"

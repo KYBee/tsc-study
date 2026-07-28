@@ -1,7 +1,17 @@
-export type SafeReturnPath = '/parts/4' | '/my-answers'
+export type TextPartPath =
+  | '/parts/1'
+  | '/parts/3'
+  | '/parts/4'
+  | '/parts/5'
+  | '/parts/6'
+export type SafeReturnPath = TextPartPath | '/my-answers'
 
 const SAFE_RETURN_PATHS: ReadonlySet<string> = new Set([
   '/parts/4',
+  '/parts/1',
+  '/parts/3',
+  '/parts/5',
+  '/parts/6',
   '/my-answers',
 ])
 

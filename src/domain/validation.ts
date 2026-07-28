@@ -436,6 +436,107 @@ export interface Part4FullFixture {
   manifest: Part4FullFixtureManifest
 }
 
+const TEXT_PARTS_FIXTURE_DATASET_ID =
+  'text-parts-working-development-fixture-v1' as const
+const TEXT_PART_COUNTS = { 1: 4, 3: 84, 4: 50, 5: 36, 6: 19 } as const
+const TEXT_EXPECTED_QUESTION_IDS = Object.entries(TEXT_PART_COUNTS).flatMap(
+  ([part, count]) =>
+    Array.from(
+      { length: count },
+      (_, index) => `P${part}-${String(index + 1).padStart(3, '0')}`,
+    ),
+)
+
+const textPartsManifestSchema = z
+  .object({
+    dataset_id: z.literal(TEXT_PARTS_FIXTURE_DATASET_ID),
+    dataset_status: z.literal('development_fixture'),
+    schema_version: z.literal('data-schema-v1.1-working'),
+    inputs: z
+      .object({
+        full_import_manifest: z
+          .object({ path: z.string().min(1), sha256: sha256Schema })
+          .strict(),
+        course_import_manifest: z
+          .object({ path: z.string().min(1), sha256: sha256Schema })
+          .strict(),
+      })
+      .strict(),
+    script_sha256: sha256Schema,
+    generated_files: z.record(z.string(), sha256Schema),
+    counts: z.record(z.string(), z.number().int().nonnegative()),
+    part_question_counts: z
+      .object({
+        '1': z.literal(4),
+        '3': z.literal(84),
+        '4': z.literal(50),
+        '5': z.literal(36),
+        '6': z.literal(19),
+      })
+      .strict(),
+    ids: z.record(z.string(), z.array(identifierSchema)),
+    validation: z
+      .object({
+        target_parts: z.tuple([
+          z.literal(1),
+          z.literal(3),
+          z.literal(4),
+          z.literal(5),
+          z.literal(6),
+        ]),
+        excluded_visual_parts: z.tuple([z.literal(2), z.literal(7)]),
+        model_answers_generated: z.literal(false),
+        course_target_context_preserved: z.literal(true),
+        working_status_preserved: z.literal(true),
+      })
+      .strict(),
+    manifest_hash_policy: z.string().min(1),
+  })
+  .strict()
+
+const textPartsFixtureSchema = z
+  .object({
+    questions: z.array(questionSchema),
+    answerPoints: z.array(answerPointSchema),
+    sources: z.array(sourceSchema),
+    sourceReferences: z.array(sourceReferenceSchema),
+    modelAnswers: z.array(modelAnswerSchema),
+    partGuides: z.array(partGuideSchema),
+    learningExpressions: z.array(learningExpressionSchema),
+    practiceDrills: z.array(practiceDrillSchema),
+    courseInsights: z.array(courseInsightSchema),
+    manifest: textPartsManifestSchema,
+  })
+  .strict()
+
+export type TextPartsFixtureManifest = z.infer<typeof textPartsManifestSchema>
+
+export interface TextPartsFixtureInput {
+  questions: unknown
+  answerPoints: unknown
+  sources: unknown
+  sourceReferences: unknown
+  modelAnswers: unknown
+  partGuides: unknown
+  learningExpressions: unknown
+  practiceDrills: unknown
+  courseInsights: unknown
+  manifest: unknown
+}
+
+export interface TextPartsFixture {
+  questions: Question[]
+  answerPoints: AnswerPoint[]
+  sources: Source[]
+  sourceReferences: SourceReference[]
+  modelAnswers: ModelAnswer[]
+  partGuides: PartGuide[]
+  learningExpressions: LearningExpression[]
+  practiceDrills: PracticeDrill[]
+  courseInsights: CourseInsight[]
+  manifest: TextPartsFixtureManifest
+}
+
 export class FixtureValidationError extends Error {
   constructor(
     message: string,
@@ -814,6 +915,206 @@ export const parsePart4FullFixture = (
   if (fixture.sources.length !== 7 || fixture.sourceReferences.length !== 131) {
     throw new FixtureValidationError(
       'Source/SourceReference: expected 7 Sources and 131 references',
+    )
+  }
+  const sourceIds = new Set(ids.source)
+  const targetIds: Record<SourceReferenceTargetType, Set<string>> = {
+    question: new Set(ids.question),
+    answer_point: new Set(ids.answer_point),
+    part_guide: new Set(ids.part_guide),
+    learning_expression: new Set(ids.learning_expression),
+    practice_drill: new Set(ids.practice_drill),
+    course_insight: new Set(ids.course_insight),
+    model_answer: new Set(ids.model_answer),
+    correction: new Set(),
+    visual_set: new Set(),
+    visual_question: new Set(),
+    question_visual_set: new Set(),
+    story_guide: new Set(),
+    pronunciation_item: new Set(),
+  }
+  for (const reference of fixture.sourceReferences) {
+    if (!sourceIds.has(reference.source_id)) {
+      throw new FixtureValidationError(
+        `SourceReference ${reference.source_reference_id}: unknown Source`,
+      )
+    }
+    if (!targetIds[reference.target_type].has(reference.target_id)) {
+      throw new FixtureValidationError(
+        `SourceReference ${reference.source_reference_id}: unknown target`,
+      )
+    }
+  }
+
+  const countKeys = Object.keys(ids) as Array<keyof typeof ids>
+  for (const key of countKeys) {
+    if (fixture.manifest.counts[key] !== ids[key].length) {
+      throw new FixtureValidationError(
+        `manifest.counts.${key}: expected ${ids[key].length}`,
+      )
+    }
+    ensureExactIds(
+      ids[key],
+      fixture.manifest.ids[key] ?? [],
+      `manifest.ids.${key}`,
+    )
+  }
+
+  return fixture
+}
+
+export const parseTextPartsFixture = (
+  input: TextPartsFixtureInput,
+): TextPartsFixture => {
+  const parsed = textPartsFixtureSchema.safeParse(input)
+  if (!parsed.success) {
+    throw new FixtureValidationError(formatIssues(parsed.error), {
+      cause: parsed.error,
+    })
+  }
+
+  const fixture = parsed.data as TextPartsFixture
+  const ids = {
+    question: fixture.questions.map((item) => item.question_id),
+    answer_point: fixture.answerPoints.map((item) => item.answer_point_id),
+    source: fixture.sources.map((item) => item.source_id),
+    source_reference: fixture.sourceReferences.map(
+      (item) => item.source_reference_id,
+    ),
+    part_guide: fixture.partGuides.map((item) => item.part_guide_id),
+    learning_expression: fixture.learningExpressions.map(
+      (item) => item.expression_id,
+    ),
+    practice_drill: fixture.practiceDrills.map((item) => item.drill_id),
+    course_insight: fixture.courseInsights.map((item) => item.insight_id),
+    model_answer: fixture.modelAnswers.map((item) => item.answer_id),
+  }
+
+  for (const [label, values] of Object.entries(ids)) {
+    ensureUniqueIds(values, label)
+  }
+  ensureExpectedValues(
+    ids.question,
+    TEXT_EXPECTED_QUESTION_IDS,
+    'text Part question IDs',
+  )
+
+  const allowedParts = new Set([1, 3, 4, 5, 6])
+  for (const [partText, count] of Object.entries(TEXT_PART_COUNTS)) {
+    const part = Number(partText)
+    if (
+      fixture.questions.filter((question) => question.part === part).length !==
+      count
+    ) {
+      throw new FixtureValidationError(
+        `Question: Part ${part} must contain exactly ${count}`,
+      )
+    }
+  }
+  if (
+    fixture.questions.some(
+      (question) =>
+        !allowedParts.has(question.part) || question.question_status !== 'raw',
+    )
+  ) {
+    throw new FixtureValidationError(
+      'Question: only raw Parts 1, 3, 4, 5, and 6 are allowed',
+    )
+  }
+
+  if (
+    fixture.answerPoints.length !== 193 ||
+    fixture.answerPoints.some(
+      (point) =>
+        point.answer_point_id !== `ap-${point.question_id}-001` ||
+        point.point_type !== 'unclassified' ||
+        point.point_status !== 'raw',
+    )
+  ) {
+    throw new FixtureValidationError(
+      'AnswerPoint: exactly 193 raw unclassified records are required',
+    )
+  }
+  for (const questionId of TEXT_EXPECTED_QUESTION_IDS) {
+    if (
+      fixture.answerPoints.filter((point) => point.question_id === questionId)
+        .length !== 1
+    ) {
+      throw new FixtureValidationError(
+        `AnswerPoint: ${questionId} must have exactly one point`,
+      )
+    }
+  }
+
+  const expectedGuideIds = [
+    ...[1, 3, 4, 5, 6].map(
+      (part) => `part-guide-${String(part).padStart(2, '0')}`,
+    ),
+    ...[1, 3, 4, 5, 6].map(
+      (part) => `part-guide-workbook-${String(part).padStart(2, '0')}`,
+    ),
+  ]
+  ensureExpectedValues(ids.part_guide, expectedGuideIds, 'PartGuide IDs')
+  for (const part of allowedParts) {
+    const courseGuide = fixture.partGuides.find(
+      (guide) =>
+        guide.part_guide_id === `part-guide-${String(part).padStart(2, '0')}`,
+    )
+    if (
+      courseGuide?.course_target_context !== 'level_3' ||
+      courseGuide.guide_status !== 'draft'
+    ) {
+      throw new FixtureValidationError(
+        `PartGuide ${part}: course_target_context must remain level_3 and draft`,
+      )
+    }
+  }
+  if (
+    fixture.learningExpressions.length !== 29 ||
+    fixture.learningExpressions.some(
+      (item) =>
+        !item.part_numbers.some((part) => allowedParts.has(part)) ||
+        !['raw', 'review_needed'].includes(item.status),
+    )
+  ) {
+    throw new FixtureValidationError(
+      'LearningExpression: expected 29 raw text-Part common records',
+    )
+  }
+  if (
+    fixture.practiceDrills.length !== 5 ||
+    fixture.practiceDrills.some(
+      (item) =>
+        item.part === undefined ||
+        !allowedParts.has(item.part) ||
+        item.status !== 'review_needed',
+    )
+  ) {
+    throw new FixtureValidationError(
+      'PracticeDrill: expected five review_needed text-Part records',
+    )
+  }
+  if (
+    fixture.courseInsights.length !== 8 ||
+    fixture.courseInsights.some(
+      (item) =>
+        !item.part_numbers.some((part) => allowedParts.has(part)) ||
+        item.confidence_or_status !== 'review_needed',
+    )
+  ) {
+    throw new FixtureValidationError(
+      'CourseInsight: expected eight review_needed text-Part records',
+    )
+  }
+  if (fixture.modelAnswers.length !== 0) {
+    throw new FixtureValidationError(
+      'ModelAnswer: text-parts working fixture must remain empty',
+    )
+  }
+
+  if (fixture.sources.length !== 7 || fixture.sourceReferences.length !== 451) {
+    throw new FixtureValidationError(
+      'Source/SourceReference: expected 7 Sources and 451 references',
     )
   }
   const sourceIds = new Set(ids.source)

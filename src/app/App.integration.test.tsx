@@ -78,8 +78,8 @@ afterEach(async () => {
   window.localStorage.clear()
 })
 
-describe('Part 4 vertical slice navigation', () => {
-  it('shows Part 1 through 7 on HOME and enables only Part 4', async () => {
+describe('text Parts navigation', () => {
+  it('shows Part 1 through 7 and enables the five text Parts', async () => {
     const user = userEvent.setup()
     renderApp()
 
@@ -88,10 +88,15 @@ describe('Part 4 vertical slice navigation', () => {
     expect(
       within(partList).getByRole('link', { name: /Part 4.*일상 화제 설명하기/ }),
     ).toHaveAttribute('href', '/parts/4')
-    expect(within(partList).getAllByText('준비 중')).toHaveLength(6)
-    expect(
-      within(partList).queryByRole('link', { name: /Part 1/ }),
-    ).not.toBeInTheDocument()
+    expect(within(partList).getAllByText('준비 중')).toHaveLength(2)
+    for (const [part, count] of [[1, 4], [3, 84], [4, 50], [5, 36], [6, 19]]) {
+      expect(
+        within(partList).getByRole('link', {
+          name: new RegExp(`Part ${part}.*${count}개`),
+        }),
+      ).toHaveAttribute('href', `/parts/${part}`)
+    }
+    expect(within(partList).getAllByText('그림 문제 준비 중')).toHaveLength(2)
 
     await user.click(
       within(partList).getByRole('link', {
@@ -115,6 +120,21 @@ describe('Part 4 vertical slice navigation', () => {
         `P4-${String(index + 1).padStart(3, '0')}`,
       ),
     )
+  })
+
+  it.each([
+    [1, 4],
+    [3, 84],
+    [5, 36],
+    [6, 19],
+  ])('shows all Part %s questions through the common list', async (part, count) => {
+    renderApp(`/parts/${part}`)
+
+    const questionList = await screen.findByRole('list', {
+      name: `Part ${part} 문제 목록`,
+    })
+    expect(within(questionList).getAllByTestId('question-id')).toHaveLength(count)
+    expect(screen.getByText(`현재 결과 ${count}개`)).toBeInTheDocument()
   })
 
   it('searches and filters the Part 4 list without inventing results', async () => {
@@ -165,6 +185,125 @@ describe('Part 4 vertical slice navigation', () => {
 })
 
 describe('question and answer flow', () => {
+  it.each([1, 3, 5, 6])(
+    'stores and completes a free-input Part %s answer without generating language data',
+    async (part) => {
+      const user = userEvent.setup()
+      const questionId = `P${part}-001`
+      const userRepository = createTestUserRepository()
+      renderApp(`/questions/${questionId}/answer`, { userRepository })
+
+      const editor = await screen.findByLabelText('내 답변')
+      await user.type(editor, `Part ${part}에서 내가 직접 쓴 답변`)
+      await user.click(screen.getByRole('button', { name: '연습 초안 저장' }))
+      expect(await screen.findByText('연습 초안을 저장했습니다')).toBeInTheDocument()
+      await user.click(screen.getByRole('button', { name: '답변 작성 완료' }))
+      expect(
+        await screen.findByRole('heading', { name: '내가 작성한 연습 답변' }),
+      ).toBeInTheDocument()
+
+      await expect(
+        userRepository.getPracticeDraftByQuestionId(questionId),
+      ).resolves.toMatchObject({
+        question_id: questionId,
+        original_input: `Part ${part}에서 내가 직접 쓴 답변`,
+        completion_status: 'completed',
+      })
+      await expect(userRepository.listUserAnswers()).resolves.toEqual([])
+    },
+  )
+
+  it('recalls a saved non-Part-4 draft and maps the explicit result', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertPracticeDraft({
+      practice_draft_id: 'pd-P1-001',
+      question_id: 'P1-001',
+      input_language: 'ko',
+      original_input: '내가 직접 저장한 답변',
+      full_text: '내가 직접 저장한 답변',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    renderApp('/questions/P1-001/answer?step=recall', { userRepository })
+
+    await user.click(await screen.findByRole('radio', { name: '질문만 보기' }))
+    await user.click(screen.getByRole('button', { name: '답변 보기' }))
+    expect(screen.getByText('내가 직접 저장한 답변')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '외워서 말함' }))
+
+    await waitFor(async () => {
+      await expect(
+        userRepository.getReviewState('question', 'P1-001'),
+      ).resolves.toMatchObject({ learning_status: '외움' })
+    })
+    await expect(
+      userRepository.listRecallAttemptsByQuestionId('P1-001'),
+    ).resolves.toMatchObject([
+      { recall_mode: 'question_only', result: 'memorized' },
+    ])
+  })
+
+  it('restores a free-input draft after reload and saves only an explicitly chosen reusable phrase', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    renderApp('/questions/P3-001/answer', { userRepository })
+
+    await user.type(await screen.findByLabelText('내 답변'), '내가 직접 쓴 반응')
+    await user.click(screen.getByRole('button', { name: '연습 초안 저장' }))
+    await user.click(screen.getByRole('button', { name: '재사용 표현으로 저장' }))
+    await expect(userRepository.listReusablePhrases()).resolves.toMatchObject([
+      {
+        text: '내가 직접 쓴 반응',
+        source_kind: 'user_created',
+        source_question_id: 'P3-001',
+      },
+    ])
+
+    cleanup()
+    renderApp('/questions/P3-001/answer', { userRepository })
+    expect(await screen.findByLabelText('내 답변')).toHaveValue('내가 직접 쓴 반응')
+    expect(screen.getByText('내가 저장한 재사용 표현')).toBeInTheDocument()
+  })
+
+  it('shows common details and language toggles for another text Part', async () => {
+    const user = userEvent.setup()
+    renderApp('/questions/P5-001')
+
+    expect(await screen.findByRole('heading', { name: 'Part 5 문제' })).toBeInTheDocument()
+    expect(screen.getByRole('region', { name: '답변 구성 힌트' })).toBeInTheDocument()
+    expect(screen.getByText('아직 모범답안 없음')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '병음 숨기기' }))
+    expect(screen.getByText('병음이 숨겨져 있습니다')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '한국어 숨기기' }))
+    expect(screen.getByText('한국어 뜻이 숨겨져 있습니다')).toBeInTheDocument()
+  })
+
+  it('filters My Answers drafts by Part without losing either record', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    for (const [questionId, text] of [
+      ['P1-001', 'Part 1 개인 답변'],
+      ['P3-001', 'Part 3 개인 답변'],
+    ]) {
+      await userRepository.upsertPracticeDraft({
+        practice_draft_id: `pd-${questionId}`,
+        question_id: questionId,
+        input_language: 'ko',
+        original_input: text,
+        completion_status: 'completed',
+        draft_status: 'draft',
+      })
+    }
+    renderApp('/my-answers', { userRepository })
+
+    await user.click(await screen.findByRole('tab', { name: '연습 초안 2' }))
+    await user.selectOptions(screen.getByLabelText('파트 필터'), '1')
+    expect(screen.getByText('Part 1 개인 답변')).toBeInTheDocument()
+    expect(screen.queryByText('Part 3 개인 답변')).not.toBeInTheDocument()
+    await expect(userRepository.listPracticeDrafts()).resolves.toHaveLength(2)
+  })
+
   it('builds a Part 4 answer through understanding, planning, writing, and completion', async () => {
     const user = userEvent.setup()
     const { userRepository } = renderApp('/questions/P4-001')
@@ -471,15 +610,16 @@ describe('review flow', () => {
     })
     renderApp('/review', { userRepository })
 
+    await user.selectOptions(await screen.findByLabelText('파트 필터'), '4')
     expect(await screen.findByText('현재 결과 50개')).toBeInTheDocument()
     await user.type(screen.getByLabelText('문제 검색'), '어디에서 운동')
     expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
-    expect(screen.getByText(/^P4-006/)).toBeInTheDocument()
+    expect(screen.getByText(/P4-006/)).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: '필터 초기화' }))
     await user.selectOptions(screen.getByLabelText('복습 상태 필터'), '헷갈림')
     expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
-    expect(screen.getByText(/^P4-006/)).toBeInTheDocument()
+    expect(screen.getByText(/P4-006/)).toBeInTheDocument()
 
     await user.selectOptions(screen.getByLabelText('유형 필터'), '운동')
     expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
@@ -489,7 +629,8 @@ describe('review flow', () => {
     const user = userEvent.setup()
     const { userRepository } = renderApp('/review')
 
-    expect(await screen.findByText(/^P4-001/)).toBeInTheDocument()
+    await user.selectOptions(await screen.findByLabelText('파트 필터'), '4')
+    expect(await screen.findByText(/P4-001/)).toBeInTheDocument()
     expect(screen.getByText('답변이 숨겨져 있습니다')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: '다음 문제' })).toBeDisabled()
     await expect(userRepository.listReviewStates()).resolves.toEqual([])
@@ -510,7 +651,7 @@ describe('review flow', () => {
     expect(screen.getByRole('button', { name: '다음 문제' })).toBeEnabled()
 
     await user.click(screen.getByRole('button', { name: '다음 문제' }))
-    expect(screen.getByText(/^P4-002/)).toBeInTheDocument()
+    expect(screen.getByText(/P4-002/)).toBeInTheDocument()
     expect(screen.getByText('답변이 숨겨져 있습니다')).toBeInTheDocument()
 
     const remainingIds = Array.from(
@@ -518,7 +659,7 @@ describe('review flow', () => {
       (_, index) => `P4-${String(index + 2).padStart(3, '0')}`,
     )
     for (const questionId of remainingIds) {
-      expect(screen.getByText(new RegExp(`^${questionId}`))).toBeInTheDocument()
+      expect(screen.getByText(new RegExp(questionId))).toBeInTheDocument()
       expect(screen.getByRole('button', { name: '다음 문제' })).toBeDisabled()
       await user.click(screen.getByRole('button', { name: '외움' }))
       await waitFor(() =>
@@ -530,7 +671,7 @@ describe('review flow', () => {
     expect(screen.getByRole('heading', { name: '복습 완료' })).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: '다시 복습' }))
 
-    expect(screen.getByText(/^P4-001/)).toBeInTheDocument()
+    expect(screen.getByText(/P4-001/)).toBeInTheDocument()
     expect(screen.getByText('답변이 숨겨져 있습니다')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: '다음 문제' })).toBeDisabled()
     expect(screen.getByText('헷갈림', { selector: '[data-status]' })).toBeInTheDocument()
@@ -547,7 +688,8 @@ describe('review flow', () => {
     }
     renderApp('/review', { userRepository: rejectingRepository })
 
-    expect(await screen.findByText(/^P4-001/)).toBeInTheDocument()
+    await user.selectOptions(await screen.findByLabelText('파트 필터'), '4')
+    expect(await screen.findByText(/P4-001/)).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: '못 외움' }))
 
     expect(await screen.findByRole('alert')).toHaveTextContent(

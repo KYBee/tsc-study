@@ -60,6 +60,23 @@ npm run check:data
 
 현재 bundle은 전체 원문을 구조적으로 반입한 결과이지 언어·출처·권리를 검수한 결과가 아니다. `reviewed` 승격과 앱 런타임 연결은 별도 작업이다.
 
+## 전체 텍스트 Part 앱 working fixture
+
+`scripts/build_text_parts_app_fixture.py`는 `full-import-v1`과
+`course-import-v1`을 수정하지 않고 Part 1·3·4·5·6 Question·AnswerPoint
+193개와 해당 공통 참고 자료만 결정적으로 선별한다.
+
+```sh
+python3 scripts/build_text_parts_app_fixture.py
+python3 scripts/build_text_parts_app_fixture.py --validate-only
+```
+
+이 fixture는 앱 사용성 검증을 위한 working 입력이다. Part 2·7 시각
+엔터티와 ModelAnswer를 포함하지 않고, 강의 표현을 특정 문제 답변으로
+연결하지 않는다. 앱에서 생성되는 PracticeDraft·ReusablePhrase·
+RecallAttempt·ReviewState는 개인 IndexedDB에만 저장하며 working 또는
+reviewed 공용 JSON으로 되돌려 쓰지 않는다.
+
 ## Part 4 사람 검수와 부분 승격
 
 Part 4 검수 입력은 `scripts/build_part4_review_fixture.py`가 working 앱 fixture와 review queue에서 결정적으로 만든다. 원문은 수정하지 않고 Question·AnswerPoint 해시와 일곱 필수 검수 영역을 보존한다.

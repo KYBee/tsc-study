@@ -2,38 +2,40 @@
 
 ## 현재 구현 범위
 
-현재 React 앱은 Part 4의 검수 전 working 문제 50개를 대상으로 다음 흐름을 제공한다.
+현재 React 앱은 Part 1·3·4·5·6의 검수 전 working 문제 193개를 대상으로 다음 흐름을 제공한다.
 
 ```text
 HOME
-→ Part 4 50문제 검색·필터·랜덤 선택
+→ 텍스트 Part 선택
+→ 193문제 공통 검색·필터·랜덤 선택
 → 문제 상세와 공통 강의 자료
-→ 연습 초안 저장
+→ Part 1·3·5·6 자유 입력 또는 Part 4 구조화 입력
+→ PracticeDraft 저장·완료
 → 지원되는 경우 deterministic mock 교정
 → 사용자 승인 후 교정 완료 답변 저장
-→ 50문제 복습 상태 변경
+→ 파트별 복습·회상 상태 변경
 → 개인 실수와 마지막 학습 위치 확인
 ```
 
-Part 1·2·3·5·6·7 화면, 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
+Part 2·7 시각 화면, 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
 
 ## 앱 개발 fixture
 
-- dataset ID: `part4-full-working-development-fixture-v2`
-- 경로: `data/working/app-fixtures/part4-full/`
+- dataset ID: `text-parts-working-development-fixture-v1`
+- 경로: `data/working/app-fixtures/text-parts-v1/`
 - 입력: `data/working/full-import-v1/`, `data/working/course-import-v1/`
 
 | 엔터티 | 수 |
 |---|---:|
-| `Question` | 50 |
-| `AnswerPoint` | 50 |
-| `PartGuide` | 2 |
-| `LearningExpression` | 13 |
-| `PracticeDrill` | 2 |
-| `CourseInsight` | 6 |
+| `Question` | 193 |
+| `AnswerPoint` | 193 |
+| `PartGuide` | 10 |
+| `LearningExpression` | 29 |
+| `PracticeDrill` | 5 |
+| `CourseInsight` | 8 |
 | `ModelAnswer` | 0 |
 
-workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 않는다. 강의 자료의 `course_target_context = level_3`도 유지한다. 표현·드릴·인사이트는 Part 4 공통 보조 자료이며 특정 Question의 정답이 아니다. 기존 6문제 fixture `part4-raw-development-fixture-v1`도 삭제하지 않았다.
+workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 않는다. 강의 자료의 `course_target_context = level_3`도 유지한다. 표현·드릴·인사이트는 Part 공통 보조 자료이며 특정 Question의 정답이 아니다. 기존 6문제 및 Part 4 50문제 fixture도 삭제하지 않았다.
 
 ## 개인 데이터 흐름
 
@@ -56,6 +58,10 @@ workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 
 - DB 이름: `tsc-study-part4-fixture-v1` 유지
 - 버전: `3`
 
+DB 이름에 Part 4가 남아 있지만 기존 개인 데이터 보존을 위해 이번 확장에서
+이름과 버전을 바꾸지 않았다. 모든 store의 `question_id`는 다섯 텍스트
+파트를 처리하며, 이름 변경은 명시적 migration 설계가 필요한 기술 부채다.
+
 | object store | keyPath | 규칙 |
 |---|---|---|
 | `userAnswers` | `user_answer_id` | unique `question_id`, 승인 답변만 upsert |
@@ -69,13 +75,13 @@ v2에서 v3로 올릴 때 기존 네 store와 레코드를 유지한 채 재사�
 
 ## 구현 화면
 
-- HOME: 50문제, 초안·교정 답변·복습 상태 통계, 이어서 보기, 랜덤 시작
-- Part 4: 중국어·한국어 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤
+- HOME: 193문제와 Part별 초안·완료·복습 상태, 이어서 보기, 랜덤 시작
+- Part 1·3·4·5·6: 공통 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤
 - 문제 상세: 이전·다음·랜덤, 병음·한국어 토글, AnswerPoint, 출처 성격이 분리된 공통 강의 자료
-- 답변 작성: 질문 이해, 네 구간 키워드 설계, 구조별/전체 작성, 초안·완료 저장, 기존 mock 교정
-- 암기 연습: 전체·중국어·키워드·질문만 보기, 명시적 답변 공개와 회상 결과 저장
-- 나의 답변: `교정 완료`와 `연습 초안` 분리
-- 복습: 상태 없음 포함 50문제, 검색·유형·상태 필터, 랜덤, 상세 이동
+- 답변 작성: Part 4 네 구간 구조화 입력 유지, 다른 Part는 자유 입력 초안·완료 저장
+- 암기 연습: Part 4 전용 네 모드와 다른 Part의 전체·답변·질문 모드
+- 나의 답변: `교정 완료`와 `연습 초안` 분리 및 Part 필터
+- 복습: 상태 없음 포함 193문제, Part·검색·유형·상태 필터, 랜덤
 - 실수 노트: 승인 저장에서 생성된 개인 Correction만 표시
 
 ## mock 교정과 ModelAnswer
@@ -93,7 +99,7 @@ P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 
 - 실제 AI와 자연스럽게·Level 8 확장 결과는 없다.
 - 강의 기반 가이드는 3급 과정 맥락의 기초 전략이며 Level 8 공식 기준이 아니다.
 - 개인 데이터는 현재 브라우저와 origin에 종속된다.
-- 전체 253문제, 시각 문제와 다른 Part는 앱에 연결하지 않았다.
+- 전체 253문제 중 텍스트 193개만 연결했으며 Part 2·7 시각 문제는 연결하지 않았다.
 
 ## 다음 추천 작업
 

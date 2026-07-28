@@ -5,7 +5,7 @@ import type {
   StoredUserAnswer,
 } from '../../data/userDataRepository'
 
-export interface Part4QuestionListItem {
+export interface QuestionListItem {
   question: Question
   reviewState?: StoredReviewState
   practiceDraft?: StoredPracticeDraft
@@ -15,17 +15,17 @@ export interface Part4QuestionListItem {
 export type ReviewFilter = 'all' | 'none' | '못 외움' | '헷갈림' | '외움'
 export type WritingFilter = 'all' | 'unwritten' | 'draft' | 'approved'
 
-export interface Part4QuestionFilters {
+export interface QuestionFilters {
   query?: string
   questionType?: string
   reviewStatus?: ReviewFilter
   writingStatus?: WritingFilter
 }
 
-export function filterPart4QuestionItems(
-  items: Part4QuestionListItem[],
-  filters: Part4QuestionFilters,
-): Part4QuestionListItem[] {
+export function filterQuestionItems(
+  items: QuestionListItem[],
+  filters: QuestionFilters,
+): QuestionListItem[] {
   const query = filters.query?.trim().toLocaleLowerCase() ?? ''
   const questionType = filters.questionType ?? 'all'
   const reviewStatus = filters.reviewStatus ?? 'all'
@@ -56,6 +56,10 @@ export function filterPart4QuestionItems(
     return true
   })
 }
+
+export type Part4QuestionListItem = QuestionListItem
+export type Part4QuestionFilters = QuestionFilters
+export const filterPart4QuestionItems = filterQuestionItems
 
 export function pickRandomQuestion<T>(
   items: T[],

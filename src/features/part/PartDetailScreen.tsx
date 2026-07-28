@@ -1,8 +1,12 @@
 import { useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
-import { createNavigationContext } from '../../app/navigationContext'
 import { useAppDependencies } from '../../app/dependencies'
+import { loadLastLearningLocation } from '../../app/lastLearningLocation'
+import {
+  createNavigationContext,
+  type TextPartPath,
+} from '../../app/navigationContext'
 import { useAsyncData } from '../../app/useAsyncData'
 import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
@@ -10,15 +14,24 @@ import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
 import { getDraftLearningStatus } from '../answer/part4AnswerDraft'
 import {
-  filterPart4QuestionItems,
+  filterQuestionItems,
   pickRandomQuestion,
   type ReviewFilter,
   type WritingFilter,
 } from './questionFilters'
 
-const RESPONSE_STRUCTURE = ['직접 답변', '이유', '설명 또는 경험', '결론']
+const TEXT_PARTS = new Set([1, 3, 4, 5, 6])
+const partPath = (part: number) => `/parts/${part}` as TextPartPath
+const PART4_RESPONSE_STRUCTURE = [
+  '직접 답변',
+  '이유',
+  '설명 또는 경험',
+  '결론',
+]
 
 export function PartDetailScreen() {
+  const { part: partParam = '' } = useParams()
+  const partNumber = Number(partParam)
   const { publicRepository, userRepository } = useAppDependencies()
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
@@ -26,12 +39,17 @@ export function PartDetailScreen() {
   const [reviewStatus, setReviewStatus] = useState<ReviewFilter>('all')
   const [writingStatus, setWritingStatus] = useState<WritingFilter>('all')
   const { data, error, loading } = useAsyncData(async () => {
-    const [questions, answers, drafts, reviewStates] = await Promise.all([
-      publicRepository.listQuestionsByPart(4),
-      userRepository.listUserAnswers(),
-      userRepository.listPracticeDrafts(),
-      userRepository.listReviewStates(),
-    ])
+    if (!TEXT_PARTS.has(partNumber)) return undefined
+    const [part, questions, guides, answers, drafts, reviewStates] =
+      await Promise.all([
+        publicRepository.getPart(partNumber),
+        publicRepository.listQuestionsByPart(partNumber),
+        publicRepository.listPartGuides(partNumber),
+        userRepository.listUserAnswers(),
+        userRepository.listPracticeDrafts(),
+        userRepository.listReviewStates(),
+      ])
+    if (!part || part.availability !== 'available') return undefined
     const answerByQuestion = new Map(
       answers.map((answer) => [answer.question_id, answer]),
     )
@@ -43,23 +61,36 @@ export function PartDetailScreen() {
         .filter((state) => state.target_type === 'question')
         .map((state) => [state.target_id, state]),
     )
-    return questions.map((question) => ({
-      question,
-      userAnswer: answerByQuestion.get(question.question_id),
-      practiceDraft: draftByQuestion.get(question.question_id),
-      reviewState: reviewByQuestion.get(question.question_id),
-    }))
-  }, [publicRepository, userRepository])
+    return {
+      part,
+      questions,
+      guides,
+      items: questions.map((question) => ({
+        question,
+        userAnswer: answerByQuestion.get(question.question_id),
+        practiceDraft: draftByQuestion.get(question.question_id),
+        reviewState: reviewByQuestion.get(question.question_id),
+      })),
+      lastLocation: loadLastLearningLocation(
+        questions.map((question) => question.question_id),
+      ),
+    }
+  }, [partNumber, publicRepository, userRepository])
 
   const questionTypes = useMemo(
     () =>
-      [...new Set(data?.map(({ question }) => question.question_type).filter(Boolean))]
-        .sort((left, right) => left!.localeCompare(right!, 'ko')) as string[],
+      [
+        ...new Set(
+          data?.items
+            .map(({ question }) => question.question_type)
+            .filter(Boolean),
+        ),
+      ].sort((left, right) => left!.localeCompare(right!, 'ko')) as string[],
     [data],
   )
   const filtered = useMemo(
     () =>
-      filterPart4QuestionItems(data ?? [], {
+      filterQuestionItems(data?.items ?? [], {
         query,
         questionType,
         reviewStatus,
@@ -79,53 +110,89 @@ export function PartDetailScreen() {
     const selected = pickRandomQuestion(filtered)
     if (selected) {
       navigate(`/questions/${selected.question.question_id}`, {
-        state: createNavigationContext('/parts/4'),
+        state: createNavigationContext(partPath(partNumber)),
       })
     }
   }
 
-  if (loading) return <LoadingState message="Part 4 문제를 불러오는 중입니다" />
+  if (loading) return <LoadingState message={`Part ${partParam} 문제를 불러오는 중입니다`} />
   if (error || !data) {
     return (
-      <ErrorState
-        title="Part 4를 불러오지 못했습니다"
-        message="학습 문제 데이터를 확인해 주세요."
-      />
+      <div className="page">
+        <ErrorState
+          title="학습할 수 없는 Part입니다"
+          message={
+            partNumber === 2 || partNumber === 7
+              ? '그림 문제는 아직 준비 중입니다.'
+              : '텍스트 파트 문제 데이터를 확인해 주세요.'
+          }
+          action={<Link className="primary-button" to="/">학습 홈</Link>}
+        />
+      </div>
     )
   }
+
+  const courseGuide = data.guides.find(
+    (guide) => guide.course_target_context === 'level_3',
+  )
+  const workbookGuide = data.guides.find(
+    (guide) => guide.part_guide_id.startsWith('part-guide-workbook-'),
+  )
+  const responseStructure =
+    partNumber === 4
+      ? PART4_RESPONSE_STRUCTURE
+      : courseGuide?.response_structure ?? workbookGuide?.response_structure ?? []
 
   return (
     <div className="page">
       <header className="page-header">
-        <Link className="back-link" to="/">
-          ← 학습 홈
-        </Link>
+        <Link className="back-link" to="/">← 학습 홈</Link>
         <div className="badge-row">
           <StatusBadge status="development_fixture" />
           <StatusBadge status="raw" />
         </div>
-        <p className="eyebrow">PART 4</p>
-        <h1>일상 화제 설명하기</h1>
-        <p>직접 답한 뒤 이유와 구체적인 설명을 연결해 말하는 연습입니다.</p>
+        <p className="eyebrow">PART {partNumber}</p>
+        <h1>{data.part.name}</h1>
+        <p>{workbookGuide?.goal || courseGuide?.goal || '내 답변을 직접 작성해 연습합니다.'}</p>
       </header>
 
-      <section className="card" aria-labelledby="structure-heading">
-        <p className="eyebrow">ANSWER STRUCTURE</p>
-        <h2 id="structure-heading">권장 답변 구조</h2>
-        <ol className="structure-list">
-          {RESPONSE_STRUCTURE.map((step, index) => (
-            <li key={step}>
-              <span>{index + 1}</span>
-              {step}
-            </li>
-          ))}
-        </ol>
-      </section>
+      {responseStructure.length > 0 && (
+        <section className="card" aria-labelledby="structure-heading">
+          <p className="eyebrow">
+            {courseGuide ? '강의 참고 구조' : '문제 원본 구조'}
+          </p>
+          <h2 id="structure-heading">권장 답변 구조</h2>
+          {courseGuide && (
+            <p className="source-context">
+              3급 과정 기반 기초 자료이며 문제별 정답이 아닙니다.
+            </p>
+          )}
+          <ol className="structure-list">
+            {responseStructure.map((step, index) => (
+              <li key={`${index}-${step}`}>
+                <span>{index + 1}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
 
-      <aside className="notice" aria-label="개발 데이터 안내">
-        원본 workbook 기반 Part 4 검수 전 문제 50개입니다. 모범답안과 전체 AI
-        교정은 제공하지 않습니다.
+      <aside className="notice">
+        원본 workbook 기반 Part {partNumber} 검수 전 문제 {data.questions.length}
+        개입니다. 답변 예시는 아직 없습니다.
       </aside>
+
+      {data.lastLocation && (
+        <section className="card compact-card">
+          <Link
+            className="secondary-button"
+            to={`/questions/${data.lastLocation.last_question_id}`}
+          >
+            {data.lastLocation.last_question_id} 이어서 보기
+          </Link>
+        </section>
+      )}
 
       <section className="card filter-panel" aria-labelledby="question-filter-heading">
         <div className="section-heading">
@@ -149,16 +216,9 @@ export function PartDetailScreen() {
           </label>
           <label>
             <span>유형 필터</span>
-            <select
-              value={questionType}
-              onChange={(event) => setQuestionType(event.target.value)}
-            >
+            <select value={questionType} onChange={(event) => setQuestionType(event.target.value)}>
               <option value="all">전체</option>
-              {questionTypes.map((type) => (
-                <option key={type} value={type}>
-                  {type}
-                </option>
-              ))}
+              {questionTypes.map((type) => <option key={type} value={type}>{type}</option>)}
             </select>
           </label>
           <label>
@@ -188,9 +248,7 @@ export function PartDetailScreen() {
           </label>
         </div>
         <div className="button-row">
-          <p className="count-label" aria-live="polite">
-            현재 결과 {filtered.length}개
-          </p>
+          <p className="count-label" aria-live="polite">현재 결과 {filtered.length}개</p>
           <button
             className="secondary-button"
             type="button"
@@ -204,30 +262,31 @@ export function PartDetailScreen() {
 
       <section aria-labelledby="question-list-heading">
         <div className="section-heading">
-          <h2 id="question-list-heading">문제 50개</h2>
-          <span className="count-label">{data.length}개</span>
+          <h2 id="question-list-heading">문제 {data.questions.length}개</h2>
+          <span className="count-label">{data.items.length}개</span>
         </div>
         {filtered.length === 0 ? (
-          <EmptyState
-            title="조건에 맞는 문제가 없습니다"
-            description="검색어나 필터를 바꿔 보세요."
-          />
+          <EmptyState title="조건에 맞는 문제가 없습니다" description="검색어나 필터를 바꿔 보세요." />
         ) : (
-          <ul className="card-list" aria-label="Part 4 문제 목록">
-            {filtered.map(
-              ({ question, userAnswer, practiceDraft, reviewState }) => (
+          <ul className="card-list" aria-label={`Part ${partNumber} 문제 목록`}>
+            {filtered.map(({ question, userAnswer, practiceDraft, reviewState }) => {
+              const isPart4 = question.part === 4
+              const cta = practiceDraft?.completion_status === 'completed'
+                ? reviewState?.learning_status === '외움' ? '다시 복습' : '암기하기'
+                : isPart4 && getDraftLearningStatus(practiceDraft) === 'planning'
+                  ? '설계 이어서'
+                  : practiceDraft ? '이어서 작성' : '답변 만들기'
+              return (
                 <li key={question.question_id} className="question-card">
                   <Link
                     to={`/questions/${question.question_id}`}
-                    state={createNavigationContext('/parts/4')}
+                    state={createNavigationContext(partPath(partNumber))}
                   >
                     <div className="question-card__meta">
                       <span data-testid="question-id">{question.question_id}</span>
                       <span>{question.question_type || '유형 미분류'}</span>
                     </div>
-                    <p className="question-card__zh" lang="zh-CN">
-                      {question.question_zh}
-                    </p>
+                    <p className="question-card__zh" lang="zh-CN">{question.question_zh}</p>
                     <p className="question-card__ko" lang="ko">
                       {question.question_ko || '한국어 뜻 제공되지 않음'}
                     </p>
@@ -236,21 +295,11 @@ export function PartDetailScreen() {
                       {userAnswer && <StatusBadge status="has_answer" />}
                       <StatusBadge status={reviewState?.learning_status ?? 'unstarted'} />
                     </div>
-                    <span className="question-card__cta">
-                      {practiceDraft?.completion_status === 'completed'
-                        ? reviewState?.learning_status === '외움'
-                          ? '다시 복습'
-                          : '암기하기'
-                        : getDraftLearningStatus(practiceDraft) === 'planning'
-                          ? '설계 이어서'
-                          : practiceDraft
-                            ? '이어서 작성'
-                            : '답변 만들기'}
-                    </span>
+                    <span className="question-card__cta">{cta}</span>
                   </Link>
                 </li>
-              ),
-            )}
+              )
+            })}
           </ul>
         )}
       </section>

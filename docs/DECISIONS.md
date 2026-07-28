@@ -92,6 +92,7 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-022` | reviewed 승격 게이트 | 일곱 필드 전체 승인과 현재 Question·AnswerPoint 해시 일치가 있을 때만 원문을 그대로 승격한다. stale·미검수·수정 요청·보류는 제외한다. | 수정안 자체를 구조화하는 후속 워크플로 도입 시 |
 | `D-023` | 출처 주장 승인 의미 | `claimed_source_metadata` 승인은 workbook에 기록된 값을 확인했다는 뜻이며 외부 URL·원출처 진위 검증으로 자동 승격하지 않는다. | 실제 외부 출처 검증 절차와 상태 모델이 마련될 때 |
 | `D-024` | Part 4 답변 만들기·회상 | 기존 자유 입력 `PracticeDraft`를 유지하면서 네 구조의 키워드·문장을 additive하게 저장한다. 사용자가 명시적으로 저장한 `ReusablePhrase`와 상세 `RecallAttempt`는 학습 IndexedDB v3의 별도 store로 관리하고, 회상 결과만 기존 `ReviewState` 세 단계로 매핑한다. | 서버 동기화, 답변 버전 이력 또는 간격 반복 정책을 도입할 때 |
+| `D-025` | 전체 텍스트 Part working fixture | `full-import-v1`과 `course-import-v1`에서 Part 1·3·4·5·6의 Question·AnswerPoint 193개를 선별한 `text-parts-working-development-fixture-v1`을 앱 기본 source로 사용한다. Part 2·7은 시각 연결 전까지 제외하고 ModelAnswer는 생성하지 않는다. Part 4 구조화 UX는 유지하며 다른 Part는 자유 입력 PracticeDraft를 사용한다. 기존 학습 DB 이름과 v3 store는 개인 데이터 보존을 위해 변경하지 않는다. | 시각 Part를 구현하거나 reviewed canonical을 기본 source로 전환할 때 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 

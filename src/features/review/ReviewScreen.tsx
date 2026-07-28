@@ -10,7 +10,7 @@ import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
 import type { ReviewState } from '../../domain/entities'
 import {
-  filterPart4QuestionItems,
+  filterQuestionItems,
   pickRandomQuestion,
   type ReviewFilter,
 } from '../part/questionFilters'
@@ -24,6 +24,7 @@ const REVIEW_STATUSES: ReviewState['learning_status'][] = [
 export function ReviewScreen() {
   const { publicRepository, userRepository } = useAppDependencies()
   const [query, setQuery] = useState('')
+  const [partFilter, setPartFilter] = useState('all')
   const [questionType, setQuestionType] = useState('all')
   const [reviewFilter, setReviewFilter] = useState<ReviewFilter>('all')
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -36,11 +37,19 @@ export function ReviewScreen() {
   const [savingStatus, setSavingStatus] =
     useState<ReviewState['learning_status']>()
   const { data, error, loading } = useAsyncData(async () => {
-    const questions = await publicRepository.listQuestionsByPart(4)
+    const questions = (
+      await Promise.all(
+        [1, 3, 4, 5, 6].map((part) =>
+          publicRepository.listQuestionsByPart(part),
+        ),
+      )
+    ).flat()
     return Promise.all(
       questions.map(async (question) => ({
         question,
         userAnswer: await userRepository.getUserAnswerByQuestionId(question.question_id),
+        practiceDraft:
+          await userRepository.getPracticeDraftByQuestionId(question.question_id),
         modelAnswers:
           await publicRepository.listModelAnswersByQuestionId(question.question_id),
         reviewState: await userRepository.getReviewState(
@@ -65,34 +74,44 @@ export function ReviewScreen() {
 
   const filteredData = useMemo(() => {
     if (!data) return []
-    const filteredItems = filterPart4QuestionItems(
-      data.map((item) => ({
+    const filteredItems = filterQuestionItems(
+      data
+        .filter(
+          ({ question }) =>
+            partFilter === 'all' || question.part === Number(partFilter),
+        )
+        .map((item) => ({
         question: item.question,
         userAnswer: item.userAnswer,
+        practiceDraft: item.practiceDraft,
         reviewState:
           localReviewStates[item.question.question_id] ?? item.reviewState,
-      })),
+        })),
       { query, questionType, reviewStatus: reviewFilter },
     )
     const allowedIds = new Set(filteredItems.map(({ question }) => question.question_id))
     return data.filter(({ question }) => allowedIds.has(question.question_id))
-  }, [data, localReviewStates, query, questionType, reviewFilter])
+  }, [data, localReviewStates, partFilter, query, questionType, reviewFilter])
 
   const statusCounts = useMemo(() => {
+    const scopedData = (data ?? []).filter(
+      ({ question }) =>
+        partFilter === 'all' || question.part === Number(partFilter),
+    )
     const counts: Record<ReviewFilter, number> = {
-      all: data?.length ?? 0,
+      all: scopedData.length,
       none: 0,
       '못 외움': 0,
       헷갈림: 0,
       외움: 0,
     }
-    for (const item of data ?? []) {
+    for (const item of scopedData) {
       const state = localReviewStates[item.question.question_id] ?? item.reviewState
       if (state) counts[state.learning_status] += 1
       else counts.none += 1
     }
     return counts
-  }, [data, localReviewStates])
+  }, [data, localReviewStates, partFilter])
 
   const resetReviewRound = () => {
     setCurrentIndex(0)
@@ -115,8 +134,8 @@ export function ReviewScreen() {
         <EmptyState
           title="복습할 문제가 없습니다"
           action={
-            <Link className="primary-button" to="/parts/4">
-              Part 4 학습하기
+            <Link className="primary-button" to="/">
+              텍스트 파트 학습하기
             </Link>
           }
         />
@@ -134,6 +153,21 @@ export function ReviewScreen() {
   const filterPanel = (
     <section className="card filter-panel" aria-label="복습 문제 찾기">
       <div className="filter-grid">
+        <label>
+          파트 필터
+          <select
+            value={partFilter}
+            onChange={(event) => {
+              setPartFilter(event.target.value)
+              resetReviewRound()
+            }}
+          >
+            <option value="all">전체 텍스트 파트</option>
+            {[1, 3, 4, 5, 6].map((part) => (
+              <option key={part} value={part}>Part {part}</option>
+            ))}
+          </select>
+        </label>
         <label>
           문제 검색
           <input
@@ -186,6 +220,7 @@ export function ReviewScreen() {
           type="button"
           onClick={() => {
             setQuery('')
+            setPartFilter('all')
             setQuestionType('all')
             setReviewFilter('all')
             resetReviewRound()
@@ -237,7 +272,7 @@ export function ReviewScreen() {
         <header className="page-header">
           <p className="eyebrow">REVIEW COMPLETE</p>
           <h1>복습 완료</h1>
-          <p>현재 조건의 Part 4 문제 {filteredData.length}개를 확인했습니다.</p>
+          <p>현재 조건의 텍스트 문제 {filteredData.length}개를 확인했습니다.</p>
         </header>
         {filterPanel}
         <EmptyState
@@ -248,8 +283,8 @@ export function ReviewScreen() {
               <button className="primary-button" type="button" onClick={resetRound}>
                 다시 복습
               </button>
-              <Link className="secondary-button" to="/parts/4">
-                Part 4로 이동
+              <Link className="secondary-button" to="/">
+                파트 선택
               </Link>
             </div>
           }
@@ -314,7 +349,7 @@ export function ReviewScreen() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">
-              {current.question.question_id} ·{' '}
+              Part {current.question.part} · {current.question.question_id} ·{' '}
               {current.question.question_type || '유형 미분류'}
             </p>
             <h2 id="review-question-heading">질문을 보고 답을 떠올려 보세요</h2>
@@ -364,9 +399,12 @@ export function ReviewScreen() {
                   ko: current.userAnswer.corrected_ko,
                 }}
               />
-            ) : (
-              <EmptyState title="저장된 내 답변 없음" />
-            )}
+            ) : current.practiceDraft ? (
+              <div className="draft-preview">
+                <strong>내 연습 답변</strong>
+                <p>{current.practiceDraft.original_input}</p>
+              </div>
+            ) : <EmptyState title="저장된 내 답변 없음" />}
             {current.modelAnswers.length === 0 && (
               <EmptyState title="아직 모범답안 없음" />
             )}

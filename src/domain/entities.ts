@@ -378,6 +378,7 @@ export interface ReusablePhrase {
 
 export type RecallMode =
   | 'full'
+  | 'answer_only'
   | 'chinese_only'
   | 'keywords_only'
   | 'question_only'

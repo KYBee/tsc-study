@@ -1,0 +1,232 @@
+[
+  {
+    "part_guide_id": "part-guide-01",
+    "part": 1,
+    "goal": "이름, 생년월일, 가족, 소속 네 고정 질문에 짧게 답한다.",
+    "preparation_tips": [],
+    "response_structure": [
+      "이름",
+      "생년월일",
+      "가족",
+      "소속"
+    ],
+    "response_seconds": 10,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p1-pronunciation-warmup"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-01-01"
+    ],
+    "guide_status": "draft",
+    "notes": "자료는 고정 질문과 짧은 응답만 제시한다."
+  },
+  {
+    "part_guide_id": "part-guide-03",
+    "part": 3,
+    "goal": "상대 발화의 기능과 대상을 파악해 자연스러운 다음 말을 한다.",
+    "preparation_tips": [
+      "감사·부탁·초대·축하·곤란의 기능을 먼저 파악한다."
+    ],
+    "response_structure": [
+      "쿠션·리액션",
+      "직접 수락·거절·공감",
+      "후속 질문·대안"
+    ],
+    "response_seconds": 15,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p3-timed-reaction"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-03-01"
+    ],
+    "guide_status": "draft",
+    "notes": "모든 발화를 질문으로 처리하지 않는다.",
+    "preparation_seconds": 2
+  },
+  {
+    "part_guide_id": "part-guide-04",
+    "part": 4,
+    "goal": "화제에 직접 답하고 이유와 구체 사례를 연결한다.",
+    "preparation_tips": [
+      "입장 또는 사실, 이유, 경험·예, 정리를 준비한다."
+    ],
+    "response_structure": [
+      "직접 답",
+      "이유·세부 또는 사례",
+      "정리"
+    ],
+    "response_seconds": 25,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p4-timed-structure"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-04-01"
+    ],
+    "guide_status": "draft",
+    "notes": "강의의 3급·4급 표현은 수준 체계 확인이 필요하다.",
+    "preparation_seconds": 15
+  },
+  {
+    "part_guide_id": "part-guide-05",
+    "part": 5,
+    "goal": "의견·사회 문제에 입장과 근거를 순서화해 답한다.",
+    "preparation_tips": [
+      "입장, 이유·장단점, 구체 예 또는 대책, 마무리를 정한다."
+    ],
+    "response_structure": [
+      "입장",
+      "이유 또는 장단점",
+      "구체 예 또는 대책",
+      "마무리"
+    ],
+    "response_seconds": 50,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [
+      "drill-course-p5-timed-opinion"
+    ],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-05-01"
+    ],
+    "guide_status": "draft",
+    "notes": "강의는 3급 목표에서 정확한 문장을 먼저 확보하도록 안내한다.",
+    "preparation_seconds": 30
+  },
+  {
+    "part_guide_id": "part-guide-06",
+    "part": 6,
+    "goal": "상황에 대응한다.",
+    "preparation_tips": [],
+    "response_structure": [],
+    "response_seconds": 40,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-06-01"
+    ],
+    "guide_status": "draft",
+    "notes": "근거 부족: 전체 구성과 시간만 확인됐고 상세 답변 훈련이 거의 없다.",
+    "preparation_seconds": 30
+  },
+  {
+    "part_guide_id": "part-guide-workbook-01",
+    "part": 1,
+    "goal": "고정 4문항을 막힘없이",
+    "preparation_tips": [
+      "Part 1 자기소개는 한 문제 안에서 네 가지를 말하는 것이 아니라, 네 문항이 각각 따로 출제됩니다."
+    ],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-01-summary-extracted",
+      "sr-part-guide-workbook-01-structure-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음.",
+    "response_seconds": 10
+  },
+  {
+    "part_guide_id": "part-guide-workbook-03",
+    "part": 3,
+    "goal": "반응+이유+후속표현",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-03-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-04",
+    "part": 4,
+    "goal": "결론+이유+예시+정리",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-04-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-05",
+    "part": 5,
+    "goal": "입장+근거+반론+결론",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-05-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  },
+  {
+    "part_guide_id": "part-guide-workbook-06",
+    "part": 6,
+    "goal": "상황 설명+요청/설득",
+    "preparation_tips": [],
+    "response_structure": [],
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-06-summary-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음."
+  }
+]

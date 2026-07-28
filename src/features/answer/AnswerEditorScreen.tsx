@@ -42,6 +42,7 @@ import {
   joinStructuredAnswer,
   mapRecallResultToReviewStatus,
 } from './part4AnswerDraft'
+import { GenericAnswerEditorContent } from './GenericAnswerEditorContent'
 
 type LearningStep = 'design' | 'write' | 'complete' | 'recall'
 type WritingMode = 'structured' | 'full'
@@ -154,16 +155,17 @@ function LearningProgress({
 export function AnswerEditorScreen() {
   const { questionId = '' } = useParams()
   const location = useLocation()
-  const returnTo = getSafeReturnPath(location.state)
   const { publicRepository, userRepository, correctionProvider } =
     useAppDependencies()
   const { data, error, loading } = useAsyncData(async () => {
     const question = await publicRepository.getQuestionById(questionId)
-    if (!question || question.part !== 4) return { question: undefined }
+    if (!question || ![1, 3, 4, 5, 6].includes(question.part)) {
+      return { question: undefined }
+    }
     const [answer, practiceDraft, expressions, phrases] = await Promise.all([
       userRepository.getUserAnswerByQuestionId(questionId),
       userRepository.getPracticeDraftByQuestionId(questionId),
-      publicRepository.listLearningExpressionsByPart(4),
+      publicRepository.listLearningExpressionsByPart(question.part),
       userRepository.listReusablePhrases(),
     ])
     return { question, answer, practiceDraft, expressions, phrases }
@@ -176,12 +178,29 @@ export function AnswerEditorScreen() {
         <ErrorState
           title={error ? '답변 학습 화면을 불러오지 못했습니다' : '문제를 찾을 수 없습니다'}
           action={
-            <Link className="primary-button" to="/parts/4">
-              Part 4로 돌아가기
+            <Link className="primary-button" to="/">
+              학습 홈으로 돌아가기
             </Link>
           }
         />
       </div>
+    )
+  }
+
+  const returnTo = getSafeReturnPath(
+    location.state,
+    `/parts/${data.question.part}` as SafeReturnPath,
+  )
+  if (data.question.part !== 4) {
+    return (
+      <GenericAnswerEditorContent
+        key={questionId}
+        question={data.question}
+        initialDraft={data.practiceDraft}
+        initialPhrases={data.phrases}
+        returnTo={returnTo}
+        userRepository={userRepository}
+      />
     )
   }
 

@@ -1,9 +1,10 @@
 import { PART4_FIXTURE_DATASET_ID } from '../data/fixtureLoader'
+import type { PartNumber } from '../domain/entities'
 
 const STORAGE_KEY = `tsc-study:${PART4_FIXTURE_DATASET_ID}:last-learning-location`
 
 export interface LastLearningLocation {
-  last_part: 4
+  last_part: PartNumber
   last_question_id: string
   updated_at: string
 }
@@ -29,7 +30,7 @@ export function loadLastLearningLocation(
   try {
     const value = JSON.parse(raw) as Partial<LastLearningLocation>
     if (
-      value.last_part !== 4 ||
+      ![1, 3, 4, 5, 6].includes(value.last_part ?? 0) ||
       typeof value.last_question_id !== 'string' ||
       typeof value.updated_at !== 'string' ||
       !validQuestionIds.includes(value.last_question_id)

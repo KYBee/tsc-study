@@ -45,13 +45,16 @@
 - 검수 결정 JSON 내보내기·가져오기, stale 판정과 reviewed 승격 CLI 완료
 - 검수 결정·학습 개인 데이터·공용 working 데이터의 저장 경계 분리 완료
 - Part 4 질문 이해→키워드 설계→구조별 작성→암기·회상 흐름과 IndexedDB v3 개인 이력 완료
+- Part 1·3·4·5·6 전체 텍스트 Question 193개·AnswerPoint 193개 deterministic 앱 fixture와 런타임 검증 완료
+- 다섯 텍스트 Part의 공통 목록·상세·검색·필터·랜덤·복습과 마지막 위치 흐름 완료
+- Part 1·3·5·6 자유 입력 PracticeDraft·완료·암기 흐름 완료, Part 4 전용 구조화 UX 보존
 - 실제 Part 4 사람 검수, 결정 파일 Git 반영과 reviewed 데이터 생성 미완료
 - reviewed 부분 데이터의 학습 앱 연결 미완료
 - 전체 253개 문제의 중국어·병음·한국어·출처 사람 검수와 `reviewed` 승격 미완료
 - 시각 자료 권리, 미연결 VisualQuestion과 Part 7 후보 관계 승인 미완료
-- `full-import-v1` 전체 253문제의 앱 런타임 연결 미완료. 현재는 Part 4 50문제만 별도 working fixture로 연결
-- 실제 AI 연결, 개인 데이터 서버 동기화, 전체 Part 구현과 배포 미완료
-- 새 모범답안 작성, 공용 실수 노트 전체와 Part 1·2·3·5·6·7 구현 미완료
+- `full-import-v1` 전체 253문제의 앱 런타임 연결 미완료. 현재는 시각 자료가 필요 없는 193문제만 별도 working fixture로 연결
+- 실제 AI 연결, 개인 데이터 서버 동기화, Part 2·7 시각 화면과 배포 미완료
+- 새 모범답안 작성, 공용 실수 노트 전체와 Part 2·7 구현 미완료
 
 Part 4 수직 기능은 Phase 2~4의 핵심 경계를 raw 표본으로 조기에 검증한 것이며, 검수된 전체 데이터나 각 Phase 완료를 뜻하지 않는다. Phase 1 전체는 계속 진행 중이다.
 

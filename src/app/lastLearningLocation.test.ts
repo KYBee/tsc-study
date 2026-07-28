@@ -29,4 +29,25 @@ describe('last learning location', () => {
     clearLastLearningLocation(storage)
     expect(loadLastLearningLocation(['P4-001', 'P4-006'], storage)).toBeUndefined()
   })
+
+  it('preserves the same storage contract for another enabled text Part', () => {
+    const values = new Map<string, string>()
+    const storage = {
+      getItem: (key: string) => values.get(key) ?? null,
+      setItem: (key: string, value: string) => values.set(key, value),
+      removeItem: (key: string) => values.delete(key),
+    } as unknown as Storage
+
+    saveLastLearningLocation(
+      { last_part: 1, last_question_id: 'P1-004' },
+      storage,
+      () => '2026-07-28T10:00:00.000Z',
+    )
+
+    expect(loadLastLearningLocation(['P1-001', 'P1-004'], storage)).toEqual({
+      last_part: 1,
+      last_question_id: 'P1-004',
+      updated_at: '2026-07-28T10:00:00.000Z',
+    })
+  })
 })

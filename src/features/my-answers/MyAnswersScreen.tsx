@@ -30,6 +30,7 @@ const RECALL_RESULT_LABELS = {
 export function MyAnswersScreen() {
   const { publicRepository, userRepository } = useAppDependencies()
   const [activeView, setActiveView] = useState<AnswerView>('approved')
+  const [partFilter, setPartFilter] = useState('all')
   const [draftFilter, setDraftFilter] = useState<DraftFilter>('all')
   const [reloadKey, setReloadKey] = useState(0)
   const [deleteError, setDeleteError] = useState('')
@@ -97,7 +98,12 @@ export function MyAnswersScreen() {
   }
 
   const { approvedItems, draftItems, attempts } = data
-  const filteredDraftItems = draftItems.filter(({ draft, reviewState }) => {
+  const filteredApprovedItems = approvedItems.filter(
+    ({ question }) =>
+      partFilter === 'all' || question?.part === Number(partFilter),
+  )
+  const filteredDraftItems = draftItems.filter(({ draft, question, reviewState }) => {
+    if (partFilter !== 'all' && question?.part !== Number(partFilter)) return false
     if (draftFilter === 'all') return true
     if (draftFilter === 'in_progress') return draft.completion_status !== 'completed'
     if (draftFilter === 'completed') return draft.completion_status === 'completed'
@@ -140,6 +146,16 @@ export function MyAnswersScreen() {
         </button>
       </div>
 
+      <label className="card compact-filter">
+        파트 필터
+        <select value={partFilter} onChange={(event) => setPartFilter(event.target.value)}>
+          <option value="all">전체 텍스트 파트</option>
+          {[1, 3, 4, 5, 6].map((part) => (
+            <option key={part} value={part}>Part {part}</option>
+          ))}
+        </select>
+      </label>
+
       {deleteError && (
         <p className="field-error" role="alert">
           {deleteError}
@@ -152,14 +168,16 @@ export function MyAnswersScreen() {
             title="아직 교정 완료 답변이 없습니다"
             description="지원되는 mock 교정 결과를 직접 승인하면 이곳에 저장됩니다."
             action={
-              <Link className="primary-button" to="/parts/4">
-                Part 4 문제로 이동
+              <Link className="primary-button" to="/">
+                문제 선택
               </Link>
             }
           />
+        ) : filteredApprovedItems.length === 0 ? (
+          <EmptyState title="선택한 Part에 교정 완료 답변이 없습니다" />
         ) : (
           <ul className="answer-list" aria-label="교정 완료 답변">
-            {approvedItems.map(({ answer, question, reviewState }) => (
+            {filteredApprovedItems.map(({ answer, question, reviewState }) => (
               <li key={answer.user_answer_id} className="card answer-card">
                 <div className="section-heading">
                   <div>
@@ -235,8 +253,8 @@ export function MyAnswersScreen() {
             title="아직 연습 초안이 없습니다"
             description="실제 AI가 지원하지 않는 입력도 원문 그대로 초안에 저장할 수 있습니다."
             action={
-              <Link className="primary-button" to="/parts/4">
-                Part 4 문제로 이동
+              <Link className="primary-button" to="/">
+                문제 선택
               </Link>
             }
           />
@@ -303,13 +321,15 @@ export function MyAnswersScreen() {
                   >
                     이어서 편집
                   </Link>
-                  <Link
-                    className="secondary-button"
-                    to={`/questions/${draft.question_id}/answer`}
-                    state={createNavigationContext('/my-answers')}
-                  >
-                    mock 교정 시도
-                  </Link>
+                  {question?.part === 4 && (
+                    <Link
+                      className="secondary-button"
+                      to={`/questions/${draft.question_id}/answer`}
+                      state={createNavigationContext('/my-answers')}
+                    >
+                      mock 교정 시도
+                    </Link>
+                  )}
                   {draft.completion_status === 'completed' && (
                     <Link
                       className="primary-button"

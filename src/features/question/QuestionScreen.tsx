@@ -46,8 +46,6 @@ export function QuestionScreen() {
   const { questionId = '' } = useParams()
   const navigate = useNavigate()
   const location = useLocation()
-  const returnTo = getSafeReturnPath(location.state)
-  const navigationState = createNavigationContext(returnTo)
   const { publicRepository, userRepository } = useAppDependencies()
   const [display, setDisplay] = useState(loadDisplayPreferences)
   const [reviewOverride, setReviewOverride] = useState<ReviewState>()
@@ -56,7 +54,9 @@ export function QuestionScreen() {
   const [understood, setUnderstood] = useState(false)
   const { data, error, loading } = useAsyncData(async () => {
     const question = await publicRepository.getQuestionById(questionId)
-    if (!question || question.part !== 4) return { question: undefined }
+    if (!question || ![1, 3, 4, 5, 6].includes(question.part)) {
+      return { question: undefined }
+    }
     const [
       questions,
       answerPoints,
@@ -69,16 +69,16 @@ export function QuestionScreen() {
       practiceDrills,
       courseInsights,
     ] = await Promise.all([
-      publicRepository.listQuestionsByPart(4),
+      publicRepository.listQuestionsByPart(question.part),
       publicRepository.listAnswerPointsByQuestionId(questionId),
       publicRepository.listModelAnswersByQuestionId(questionId),
       userRepository.getUserAnswerByQuestionId(questionId),
       userRepository.getPracticeDraftByQuestionId(questionId),
       userRepository.getReviewState('question', questionId),
-      publicRepository.listPartGuides(4),
-      publicRepository.listLearningExpressionsByPart(4),
-      publicRepository.listPracticeDrillsByPart(4),
-      publicRepository.listCourseInsightsByPart(4),
+      publicRepository.listPartGuides(question.part),
+      publicRepository.listLearningExpressionsByPart(question.part),
+      publicRepository.listPracticeDrillsByPart(question.part),
+      publicRepository.listCourseInsightsByPart(question.part),
     ])
     return {
       question,
@@ -109,7 +109,7 @@ export function QuestionScreen() {
   useEffect(() => {
     if (data?.question && data.questions) {
       saveLastLearningLocation({
-        last_part: 4,
+        last_part: data.question.part,
         last_question_id: data.question.question_id,
       })
     }
@@ -129,10 +129,15 @@ export function QuestionScreen() {
       <div className="page">
         <ErrorState
           title="문제를 찾을 수 없습니다"
-          message={`요청한 question_id(${questionId || '없음'})가 Part 4 fixture에 없습니다.`}
+          message={`요청한 question_id(${questionId || '없음'})가 텍스트 문제에 없습니다.`}
           action={
-            <Link className="primary-button" to="/parts/4">
-              Part 4로 돌아가기
+            <Link
+              className="primary-button"
+              to={questionId.startsWith('P4-') ? '/parts/4' : '/'}
+            >
+              {questionId.startsWith('P4-')
+                ? 'Part 4로 돌아가기'
+                : '학습 홈으로 돌아가기'}
             </Link>
           }
         />
@@ -152,6 +157,11 @@ export function QuestionScreen() {
     practiceDrills,
     courseInsights,
   } = data
+  const returnTo = getSafeReturnPath(
+    location.state,
+    `/parts/${question.part}` as '/parts/1' | '/parts/3' | '/parts/4' | '/parts/5' | '/parts/6',
+  )
+  const navigationState = createNavigationContext(returnTo)
   const currentIndex = questions.findIndex(
     (item) => item.question_id === question.question_id,
   )
@@ -161,6 +171,10 @@ export function QuestionScreen() {
   const courseGuide = partGuides.find(
     (guide) => guide.course_target_context === 'level_3',
   )
+  const workbookGuide = partGuides.find((guide) =>
+    guide.part_guide_id.startsWith('part-guide-workbook-'),
+  )
+  const isPart4 = question.part === 4
 
   const saveReview = async (learningStatus: ReviewState['learning_status']) => {
     if (savingReview) return
@@ -195,7 +209,9 @@ export function QuestionScreen() {
     <div className="page">
       <header className="page-header">
         <Link className="back-link" to={returnTo}>
-          {returnTo === '/my-answers' ? '← 나의 답변' : '← Part 4 문제 목록'}
+          {returnTo === '/my-answers'
+            ? '← 나의 답변'
+            : `← Part ${question.part} 문제 목록`}
         </Link>
         <div className="badge-row">
           <StatusBadge status="development_fixture" />
@@ -207,21 +223,23 @@ export function QuestionScreen() {
         <p className="eyebrow">
           {question.question_id} · {question.question_type || '유형 미분류'}
         </p>
-        <p className="learning-step-label">1단계 · 질문 이해</p>
-        <h1>질문 이해</h1>
+        {isPart4 && <p className="learning-step-label">1단계 · 질문 이해</p>}
+        <h1>{isPart4 ? '질문 이해' : `Part ${question.part} 문제`}</h1>
         <p>원본 workbook 기반 검수 전 학습 문제입니다.</p>
       </header>
 
-      <ol className="learning-progress" aria-label="Part 4 학습 단계">
-        {['질문 이해', '답변 설계', '답변 작성', '암기 연습'].map(
-          (step, index) => (
-            <li key={step} aria-current={index === 0 ? 'step' : undefined}>
-              <span>{index + 1}</span>
-              {step}
-            </li>
-          ),
-        )}
-      </ol>
+      {isPart4 && (
+        <ol className="learning-progress" aria-label="Part 4 학습 단계">
+          {['질문 이해', '답변 설계', '답변 작성', '암기 연습'].map(
+            (step, index) => (
+              <li key={step} aria-current={index === 0 ? 'step' : undefined}>
+                <span>{index + 1}</span>
+                {step}
+              </li>
+            ),
+          )}
+        </ol>
+      )}
 
       <nav className="question-navigation" aria-label="문제 이동">
         {previousQuestion ? (
@@ -295,14 +313,29 @@ export function QuestionScreen() {
         )}
       </section>
 
-      <details className="card guide-details" open>
-        <summary>
-          <h2>강의 기반 기초 구조</h2>
-        </summary>
-        <p className="source-context">
-          3급 과정 맥락 · 검수 전 강의 분석 자료이며 Level 8 공식 가이드가 아닙니다.
-        </p>
-        {courseGuide ? (
+      {workbookGuide && (
+        <details className="card guide-details">
+          <summary><h2>문제 원본 가이드</h2></summary>
+          {workbookGuide.goal && <p>{workbookGuide.goal}</p>}
+          {workbookGuide.response_structure &&
+            workbookGuide.response_structure.length > 0 && (
+              <ol className="plain-list">
+                {workbookGuide.response_structure.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+            )}
+        </details>
+      )}
+
+      {courseGuide && (
+        <details className="card guide-details" open={isPart4}>
+          <summary>
+            <h2>강의 기반 기초 구조</h2>
+          </summary>
+          <p className="source-context">
+            3급 과정 맥락 · 검수 전 강의 분석 자료이며 Level 8 공식 가이드가 아닙니다.
+          </p>
           <>
             <p>{courseGuide.goal}</p>
             <ol className="plain-list">
@@ -311,53 +344,61 @@ export function QuestionScreen() {
               ))}
             </ol>
           </>
-        ) : (
-          <EmptyState title="강의 기반 구조 없음" />
-        )}
-      </details>
+        </details>
+      )}
 
-      <details className="card guide-details">
-        <summary>
-          <h2>재사용 표현</h2>
-        </summary>
-        <p className="source-context">
-          Part 4 공통 학습 자료이며 이 문제의 정답이 아닙니다.
-        </p>
-        <ul className="plain-list">
-          {learningExpressions.map((expression) => (
-            <li key={expression.expression_id}>
-              <span lang="zh-CN">{expression.language.zh}</span>
-              {expression.language.ko && <small>{expression.language.ko}</small>}
-            </li>
-          ))}
-        </ul>
-      </details>
+      {learningExpressions.length > 0 && (
+        <details className="card guide-details">
+          <summary><h2>재사용 표현</h2></summary>
+          <p className="source-context">
+            Part {question.part} 공통 학습 자료이며 이 문제의 정답이 아닙니다.
+          </p>
+          <ul className="plain-list">
+            {learningExpressions.map((expression) => (
+              <li key={expression.expression_id}>
+                <span lang="zh-CN">{expression.language.zh}</span>
+                {expression.language.ko && <small>{expression.language.ko}</small>}
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
 
-      <section className="card understanding-action" aria-label="질문 이해 확인">
-        <label className="check-option">
-          <input
-            type="checkbox"
-            checked={understood}
-            onChange={(event) => setUnderstood(event.target.checked)}
-          />
-          질문을 이해했습니다
-        </label>
+      {isPart4 ? (
+        <section className="card understanding-action" aria-label="질문 이해 확인">
+          <label className="check-option">
+            <input
+              type="checkbox"
+              checked={understood}
+              onChange={(event) => setUnderstood(event.target.checked)}
+            />
+            질문을 이해했습니다
+          </label>
+          <Link
+            className={`primary-button${understood ? '' : ' is-disabled'}`}
+            aria-disabled={!understood}
+            tabIndex={understood ? undefined : -1}
+            to={
+              understood
+                ? `/questions/${question.question_id}/answer?step=design`
+                : location.pathname
+            }
+            state={navigationState}
+          >
+            질문 이해 완료
+          </Link>
+        </section>
+      ) : (
         <Link
-          className={`primary-button${understood ? '' : ' is-disabled'}`}
-          aria-disabled={!understood}
-          tabIndex={understood ? undefined : -1}
-          to={
-            understood
-              ? `/questions/${question.question_id}/answer?step=design`
-              : location.pathname
-          }
+          className="primary-button full-width"
+          to={`/questions/${question.question_id}/answer`}
           state={navigationState}
         >
-          질문 이해 완료
+          내 답변 작성
         </Link>
-      </section>
+      )}
 
-      <details className="card guide-details">
+      {practiceDrills.length > 0 && <details className="card guide-details">
         <summary>
           <h2>실전 연습</h2>
         </summary>
@@ -366,9 +407,9 @@ export function QuestionScreen() {
             <li key={drill.drill_id}>{drill.prompt_or_task}</li>
           ))}
         </ul>
-      </details>
+      </details>}
 
-      <details className="card guide-details">
+      {courseInsights.length > 0 && <details className="card guide-details">
         <summary>
           <h2>주의할 실수</h2>
         </summary>
@@ -377,7 +418,7 @@ export function QuestionScreen() {
             <li key={insight.insight_id}>{insight.content_ko}</li>
           ))}
         </ul>
-      </details>
+      </details>}
 
       <section className="card" aria-labelledby="review-status-heading">
         <div className="section-heading">

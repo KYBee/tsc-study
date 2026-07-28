@@ -14,15 +14,28 @@ import fullPracticeDrills from '../../data/working/app-fixtures/part4-full/pract
 import fullQuestions from '../../data/working/app-fixtures/part4-full/questions.json'
 import fullSourceReferences from '../../data/working/app-fixtures/part4-full/source-references.json'
 import fullSources from '../../data/working/app-fixtures/part4-full/sources.json'
+import textAnswerPoints from '../../data/working/app-fixtures/text-parts-v1/answer-points.json'
+import textCourseInsights from '../../data/working/app-fixtures/text-parts-v1/course-insights.json'
+import textLearningExpressions from '../../data/working/app-fixtures/text-parts-v1/learning-expressions.json'
+import textManifest from '../../data/working/app-fixtures/text-parts-v1/manifest.json'
+import textModelAnswers from '../../data/working/app-fixtures/text-parts-v1/model-answers.json'
+import textPartGuides from '../../data/working/app-fixtures/text-parts-v1/part-guides.json'
+import textPracticeDrills from '../../data/working/app-fixtures/text-parts-v1/practice-drills.json'
+import textQuestions from '../../data/working/app-fixtures/text-parts-v1/questions.json'
+import textSourceReferences from '../../data/working/app-fixtures/text-parts-v1/source-references.json'
+import textSources from '../../data/working/app-fixtures/text-parts-v1/sources.json'
 import {
   parsePart4Fixture,
   parsePart4FullFixture,
+  parseTextPartsFixture,
   type Part4Fixture,
   type Part4FullFixture,
+  type TextPartsFixture,
 } from '../domain/validation'
 
 export const PART4_LEGACY_FIXTURE_DATASET_ID = manifest.dataset_id
 export const PART4_FIXTURE_DATASET_ID = fullManifest.dataset_id
+export const TEXT_PARTS_FIXTURE_DATASET_ID = textManifest.dataset_id
 
 let cachedFixture: Part4Fixture | undefined
 
@@ -56,4 +69,23 @@ export const loadPart4FullFixture = (): Part4FullFixture => {
   })
 
   return cachedFullFixture
+}
+
+let cachedTextPartsFixture: TextPartsFixture | undefined
+
+export const loadTextPartsFixture = (): TextPartsFixture => {
+  cachedTextPartsFixture ??= parseTextPartsFixture({
+    questions: textQuestions,
+    answerPoints: textAnswerPoints,
+    sources: textSources,
+    sourceReferences: textSourceReferences,
+    modelAnswers: textModelAnswers,
+    partGuides: textPartGuides,
+    learningExpressions: textLearningExpressions,
+    practiceDrills: textPracticeDrills,
+    courseInsights: textCourseInsights,
+    manifest: textManifest,
+  })
+
+  return cachedTextPartsFixture
 }

@@ -1,9 +1,44 @@
 import { describe, expect, it } from 'vitest'
 
-import { loadPart4FullFixture } from './fixtureLoader'
+import { loadPart4FullFixture, loadTextPartsFixture } from './fixtureLoader'
 import { createPublicContentRepository } from './publicContentRepository'
 
 describe('fixture public content repository', () => {
+  it('exposes all five text Parts from the new default fixture', async () => {
+    const repository = createPublicContentRepository(loadTextPartsFixture())
+
+    const parts = await repository.listParts()
+    expect(
+      parts
+        .filter((part) => part.availability === 'available')
+        .map((part) => [part.part, part.available_question_count]),
+    ).toEqual([
+      [1, 4],
+      [3, 84],
+      [4, 50],
+      [5, 36],
+      [6, 19],
+    ])
+    expect(parts.find((part) => part.part === 2)).toMatchObject({
+      availability: 'coming_soon',
+    })
+    expect(parts.find((part) => part.part === 7)).toMatchObject({
+      availability: 'coming_soon',
+    })
+  })
+
+  it('queries every included Part without leaking visual questions', async () => {
+    const repository = createPublicContentRepository(loadTextPartsFixture())
+
+    await expect(repository.listQuestionsByPart(1)).resolves.toHaveLength(4)
+    await expect(repository.listQuestionsByPart(3)).resolves.toHaveLength(84)
+    await expect(repository.listQuestionsByPart(4)).resolves.toHaveLength(50)
+    await expect(repository.listQuestionsByPart(5)).resolves.toHaveLength(36)
+    await expect(repository.listQuestionsByPart(6)).resolves.toHaveLength(19)
+    await expect(repository.listQuestionsByPart(2)).resolves.toEqual([])
+    await expect(repository.listQuestionsByPart(7)).resolves.toEqual([])
+  })
+
   it('lists all Parts but exposes fixture questions only for Part 4', async () => {
     const repository = createPublicContentRepository(loadPart4FullFixture())
 

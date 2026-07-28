@@ -1,0 +1,94 @@
+[
+  {
+    "drill_id": "drill-course-p1-pronunciation-warmup",
+    "drill_type": "pronunciation",
+    "prompt_or_task": "Part 1 네 고정 답을 화면 없이 소리 내어 말해 발음을 푼다.",
+    "completion_criteria": "네 고정 답을 짧고 또렷하게 말한다.",
+    "required_content_ids": [
+      "part-guide-01"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-p1-pronunciation-warmup-01",
+      "sr-drill-course-p1-pronunciation-warmup-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 1,
+    "response_seconds": 10
+  },
+  {
+    "drill_id": "drill-course-p3-timed-reaction",
+    "drill_type": "reaction_drill",
+    "prompt_or_task": "2초 준비 후 15초 안에 발화 기능에 맞는 첫 반응을 말한다.",
+    "completion_criteria": "상대 발화의 기능에 맞는 첫 반응을 말한다.",
+    "required_content_ids": [
+      "part-guide-03"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-p3-timed-reaction-01",
+      "sr-drill-course-p3-timed-reaction-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 3,
+    "preparation_seconds": 2,
+    "response_seconds": 15
+  },
+  {
+    "drill_id": "drill-course-p4-timed-structure",
+    "drill_type": "timed_response",
+    "prompt_or_task": "15초 동안 구조를 준비하고 Part 4 전형 주제를 25초 안에 답한다.",
+    "completion_criteria": "직접 답, 이유·세부 또는 사례, 정리 순서를 사용한다.",
+    "required_content_ids": [
+      "part-guide-04"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-p4-timed-structure-01",
+      "sr-drill-course-p4-timed-structure-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 4,
+    "preparation_seconds": 15,
+    "response_seconds": 25
+  },
+  {
+    "drill_id": "drill-course-p5-timed-opinion",
+    "drill_type": "timed_response",
+    "prompt_or_task": "30초 동안 순서를 준비하고 Part 5 의견을 50초 안에 답한다.",
+    "completion_criteria": "입장, 이유 또는 장단점, 구체 예 또는 대책, 마무리 순서를 사용한다.",
+    "required_content_ids": [
+      "part-guide-05"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-p5-timed-opinion-01",
+      "sr-drill-course-p5-timed-opinion-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 5,
+    "preparation_seconds": 30,
+    "response_seconds": 50
+  },
+  {
+    "drill_id": "drill-course-typical-vs-personal",
+    "drill_type": "structure_recall",
+    "prompt_or_task": "전형 답은 반복해 익히고 비전형 질문은 자신의 실제 경험으로 다시 만든다.",
+    "completion_criteria": "비전형 답에 사용자가 말하지 않은 경험을 만들지 않고 자신의 가족·회사·취미를 사용한다.",
+    "required_content_ids": [
+      "part-guide-04"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-typical-vs-personal-01",
+      "sr-drill-course-typical-vs-personal-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 4
+  }
+]

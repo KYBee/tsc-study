@@ -501,6 +501,12 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 
 질문당 활성 초안 하나를 upsert할 수 있다. `PracticeDraft`에는 교정 중국어·병음·한국어와 수정 내역을 넣지 않고 개인 `Correction`도 생성하지 않는다. `UserAnswer`가 생겨도 자동 삭제하지 않으며 둘은 동시에 존재할 수 있다.
 
+Part 1·3·4·5·6의 `question_id`를 동일하게 지원한다. Part 4의
+`planning_keywords`와 `structured_answer`는 선택적 확장 필드이며 다른
+Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full_text`,
+`completion_status`만으로 유효한 자유 입력 초안이 될 수 있다. fixture
+변경이나 Part 확장을 이유로 기존 개인 초안을 자동 삭제하지 않는다.
+
 기존 자유 입력 초안에는 구조화 필드가 없어도 유효하며 이 경우 `original_input`을 `full_text`처럼 표시한다. `completed`는 네 구간이 모두 채워졌다는 자동 판정이 아니라 사용자의 명시적 완료 행동이다.
 
 ### `ReusablePhrase`
@@ -511,7 +517,7 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 
 ### `RecallAttempt`
 
-저장된 연습 답변을 보지 않고 말한 뒤 사용자가 직접 남기는 회상 이력이다. 필드는 `recall_attempt_id`, `question_id`, 선택적인 `practice_draft_id` 또는 `user_answer_id`, `recall_mode`, `result`, `attempted_at`이다. `recall_mode`는 `full`, `chinese_only`, `keywords_only`, `question_only`, 결과는 `could_not_say`, `used_keywords`, `almost`, `memorized`를 사용한다.
+저장된 연습 답변을 보지 않고 말한 뒤 사용자가 직접 남기는 회상 이력이다. 필드는 `recall_attempt_id`, `question_id`, 선택적인 `practice_draft_id` 또는 `user_answer_id`, `recall_mode`, `result`, `attempted_at`이다. `recall_mode`는 `full`, `answer_only`, `chinese_only`, `keywords_only`, `question_only`, 결과는 `could_not_say`, `used_keywords`, `almost`, `memorized`를 사용한다. `keywords_only`는 실제 `planning_keywords`가 있는 구조화 초안에서만 표시하고, 다른 Part는 전체·답변·질문 모드를 사용한다.
 
 ### `UserAnswer`
 

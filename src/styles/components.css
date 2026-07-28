@@ -761,6 +761,24 @@
   cursor: pointer;
 }
 
+.segmented-control label {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem;
+  border-radius: 0.6rem;
+  color: var(--secondary-text);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.segmented-control label:has(input:checked) {
+  color: var(--accent);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
 .segmented-control button[aria-selected="true"] {
   color: var(--accent);
   background: var(--card);
@@ -1256,7 +1274,8 @@
   }
 
   .review-stats,
-  .review-field-actions {
+  .review-field-actions,
+  .segmented-control {
     grid-template-columns: 1fr;
   }
 }
