@@ -315,6 +315,14 @@ export interface PartCatalogItem {
 
 export type InputLanguage = 'ko' | 'zh' | 'mixed'
 export type UserAnswerCorrectionMode = 'minimal' | 'easy' | 'natural' | 'level_8_expansion'
+export type Part4AnswerSection =
+  | 'direct_answer'
+  | 'reasons'
+  | 'example'
+  | 'conclusion'
+
+export type Part4PlanningKeywords = Record<Part4AnswerSection, string[]>
+export type Part4StructuredAnswer = Record<Part4AnswerSection, string>
 
 export interface UserAnswer {
   user_answer_id: string
@@ -338,9 +346,55 @@ export interface PracticeDraft {
   question_id: string
   input_language: InputLanguage
   original_input: string
+  planning_keywords?: Part4PlanningKeywords
+  structured_answer?: Part4StructuredAnswer
+  full_text?: string
+  completion_status?: 'in_progress' | 'completed'
+  completed_at?: string
+  understanding_confirmed?: boolean
+  skipped_sections?: Part4AnswerSection[]
   draft_status: 'draft'
   created_at: string
   updated_at: string
+}
+
+export interface ReusablePhrase {
+  reusable_phrase_id: string
+  text: string
+  language: InputLanguage
+  phrase_type:
+    | 'reason'
+    | 'advantage'
+    | 'disadvantage'
+    | 'experience'
+    | 'example'
+    | 'conclusion'
+    | 'other'
+  source_kind: 'user_created'
+  source_question_id: string
+  created_at: string
+  updated_at: string
+}
+
+export type RecallMode =
+  | 'full'
+  | 'chinese_only'
+  | 'keywords_only'
+  | 'question_only'
+export type RecallResult =
+  | 'could_not_say'
+  | 'used_keywords'
+  | 'almost'
+  | 'memorized'
+
+export interface RecallAttempt {
+  recall_attempt_id: string
+  question_id: string
+  practice_draft_id?: string
+  user_answer_id?: string
+  recall_mode: RecallMode
+  result: RecallResult
+  attempted_at: string
 }
 
 export interface ReviewState {

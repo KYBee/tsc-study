@@ -12,6 +12,8 @@ import {
   CORRECTIONS_STORE,
   CORRECTION_USER_ANSWER_INDEX,
   PRACTICE_DRAFTS_STORE,
+  RECALL_ATTEMPTS_STORE,
+  REUSABLE_PHRASES_STORE,
   REVIEW_STATES_STORE,
   REVIEW_STATE_TARGET_ID_INDEX,
   REVIEW_STATE_TARGET_INDEX,
@@ -293,10 +295,68 @@ describe('UserDataRepository PracticeDraft', () => {
   })
 })
 
-describe('IndexedDB v1 to v2 migration', () => {
-  it('adds practiceDrafts without deleting existing personal records', async () => {
+describe('UserDataRepository structured learning records', () => {
+  it('persists additive structured draft fields and one explicitly saved reusable phrase', async () => {
+    const repository = createRepository()
+    const draft = await repository.upsertPracticeDraft(
+      makePracticeDraft({
+        planning_keywords: {
+          direct_answer: ['집 운동'],
+          reasons: ['편리함', '시간 절약'],
+          example: [],
+          conclusion: [],
+        },
+        structured_answer: {
+          direct_answer: '我喜欢在家运动。',
+          reasons: '在家运动很方便。',
+          example: '',
+          conclusion: '',
+        },
+        full_text: '我喜欢在家运动。\n在家运动很方便。',
+        completion_status: 'completed',
+        completed_at: '2026-07-26T09:00:00.000Z',
+      }),
+    )
+    expect(draft.structured_answer?.reasons).toBe('在家运动很方便。')
+
+    await repository.upsertReusablePhrase({
+      reusable_phrase_id: 'rp-P4-001-001',
+      text: '在家运动很方便。',
+      language: 'zh',
+      phrase_type: 'reason',
+      source_kind: 'user_created',
+      source_question_id: 'P4-001',
+    })
+    await expect(repository.listReusablePhrases()).resolves.toMatchObject([
+      { text: '在家运动很方便。', source_kind: 'user_created' },
+    ])
+    await repository.deleteReusablePhrase('rp-P4-001-001')
+    await expect(repository.listReusablePhrases()).resolves.toEqual([])
+  })
+
+  it('stores every explicit recall attempt without inventing review timing', async () => {
+    const repository = createRepository()
+    await repository.addRecallAttempt({
+      recall_attempt_id: 'ra-P4-001-001',
+      question_id: 'P4-001',
+      practice_draft_id: 'pd-P4-001',
+      recall_mode: 'keywords_only',
+      result: 'used_keywords',
+    })
+    await expect(repository.listRecallAttemptsByQuestionId('P4-001')).resolves.toMatchObject([
+      {
+        recall_mode: 'keywords_only',
+        result: 'used_keywords',
+        attempted_at: '2026-07-26T10:00:00.000Z',
+      },
+    ])
+  })
+})
+
+describe('IndexedDB v2 to v3 migration', () => {
+  it('adds structured learning stores without deleting existing v2 personal records', async () => {
     const databaseName = `tsc-study-user-data-migration-${databaseSequence++}`
-    const legacy = await openDB(databaseName, 1, {
+    const legacy = await openDB(databaseName, 2, {
       upgrade(database) {
         const userAnswers = database.createObjectStore(USER_ANSWERS_STORE, {
           keyPath: 'user_answer_id',
@@ -320,6 +380,13 @@ describe('IndexedDB v1 to v2 migration', () => {
           CORRECTION_USER_ANSWER_INDEX,
           'user_answer_id',
         )
+        const practiceDrafts = database.createObjectStore(
+          PRACTICE_DRAFTS_STORE,
+          { keyPath: 'practice_draft_id' },
+        )
+        practiceDrafts.createIndex('by-question-id', 'question_id', {
+          unique: true,
+        })
       },
     })
     const legacyAnswer = {
@@ -338,6 +405,12 @@ describe('IndexedDB v1 to v2 migration', () => {
     await legacy.put(USER_ANSWERS_STORE, legacyAnswer)
     await legacy.put(REVIEW_STATES_STORE, legacyReview)
     await legacy.put(CORRECTIONS_STORE, legacyCorrection)
+    const legacyDraft = {
+      ...makePracticeDraft(),
+      created_at: '2026-07-26T09:00:00.000Z',
+      updated_at: '2026-07-26T09:00:00.000Z',
+    }
+    await legacy.put(PRACTICE_DRAFTS_STORE, legacyDraft)
     legacy.close()
 
     const repository = createUserDataRepository({ databaseName })
@@ -348,10 +421,12 @@ describe('IndexedDB v1 to v2 migration', () => {
     await expect(repository.listPersonalCorrections()).resolves.toEqual([
       legacyCorrection,
     ])
-    await expect(repository.listPracticeDrafts()).resolves.toEqual([])
+    await expect(repository.listPracticeDrafts()).resolves.toEqual([legacyDraft])
 
     const migrated = await openDB(databaseName, USER_DATA_DB_VERSION)
     expect([...migrated.objectStoreNames]).toContain(PRACTICE_DRAFTS_STORE)
+    expect([...migrated.objectStoreNames]).toContain(REUSABLE_PHRASES_STORE)
+    expect([...migrated.objectStoreNames]).toContain(RECALL_ATTEMPTS_STORE)
     migrated.close()
   })
 })

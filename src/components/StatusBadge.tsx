@@ -13,8 +13,8 @@ interface StatusBadgeProps {
 }
 
 const STATUS_LABELS: Record<StatusBadgeProps['status'], string> = {
-  development_fixture: '개발용 표본',
-  raw: 'raw · 검수 전',
+  development_fixture: '원본 workbook 기반',
+  raw: '검수 전 문제',
   review_needed: '검수 필요',
   source_review_needed: '출처 확인 필요',
   has_answer: '내 답변 있음',

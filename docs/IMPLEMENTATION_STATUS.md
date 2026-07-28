@@ -54,7 +54,7 @@ workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 
 ## IndexedDB
 
 - DB 이름: `tsc-study-part4-fixture-v1` 유지
-- 버전: `2`
+- 버전: `3`
 
 | object store | keyPath | 규칙 |
 |---|---|---|
@@ -62,15 +62,18 @@ workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 
 | `reviewStates` | `review_state_id` | unique 대상, 사용자가 상태를 선택할 때만 생성 |
 | `corrections` | `correction_id` | 승인 답변의 실제 변경만 저장 |
 | `practiceDrafts` | `practice_draft_id` | unique `question_id`, 빈 원문 금지, 질문당 활성 초안 하나 upsert |
+| `reusablePhrases` | `reusable_phrase_id` | 사용자가 명시적으로 저장한 개인 원문 표현 |
+| `recallAttempts` | `recall_attempt_id` | 암기 모드와 사용자가 선택한 상세 회상 결과 |
 
-v1에서 v2로 올릴 때 기존 세 store와 레코드를 유지한 채 `practiceDrafts`만 추가한다. DB 이름을 바꾸거나 기존 개인 데이터를 초기화하지 않는다.
+v2에서 v3로 올릴 때 기존 네 store와 레코드를 유지한 채 재사용 표현과 회상 이력 store만 추가한다. 검수 전용 DB에는 영향을 주지 않는다.
 
 ## 구현 화면
 
 - HOME: 50문제, 초안·교정 답변·복습 상태 통계, 이어서 보기, 랜덤 시작
 - Part 4: 중국어·한국어 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤
 - 문제 상세: 이전·다음·랜덤, 병음·한국어 토글, AnswerPoint, 출처 성격이 분리된 공통 강의 자료
-- 답변 작성: 초안 저장·수정·삭제, 기존 mock 교정
+- 답변 작성: 질문 이해, 네 구간 키워드 설계, 구조별/전체 작성, 초안·완료 저장, 기존 mock 교정
+- 암기 연습: 전체·중국어·키워드·질문만 보기, 명시적 답변 공개와 회상 결과 저장
 - 나의 답변: `교정 완료`와 `연습 초안` 분리
 - 복습: 상태 없음 포함 50문제, 검색·유형·상태 필터, 랜덤, 상세 이동
 - 실수 노트: 승인 저장에서 생성된 개인 Correction만 표시

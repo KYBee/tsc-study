@@ -36,6 +36,8 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
+Part 4 학습은 [답변 만들기·회상 흐름](docs/PART4_ANSWER_BUILD_AND_RECALL_UX.md)을 제공한다. 질문을 이해한 뒤 네 구간의 키워드와 문장을 직접 작성하고, 저장 답변을 전체·중국어·키워드·질문만 보기로 암기한다. 앱은 답변이나 병음을 생성하지 않으며 상세 회상 결과만 개인 IndexedDB에 기록한다.
+
 전체 253개 문제와 시각 자료는 `data/working/full-import-v1/`에 원문 그대로 구조 반입했지만, 정규화·사람 검수·`reviewed` 승격과 앱 연결은 하지 않았다. 실제 AI 공급자·모델, 백엔드 기술, 인증, 서버 동기화, 배포, 이미지 공개 가능 여부와 병음 생성·검수 방식도 계속 미결정이다.
 
 강의 working import는 저장소에 실제 존재하는 분석·학습·문서 추출 Markdown만 Source로 사용한다. 분석이 주장하지만 저장소에 없는 원본 MP4·PDF·DOCX를 확인된 Source로 등록하지 않으며, 모든 콘텐츠는 `review_needed` 이하 상태다. 자세한 공백과 후속 순서는 [Level 8 공백 분석](docs/LEVEL8_GAP_ANALYSIS.md)과 [고득점 목표 데이터 계획](docs/HIGH_SCORE_DATA_PLAN.md)을 따른다.

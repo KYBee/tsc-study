@@ -1,6 +1,8 @@
 import type {
   Correction,
   PracticeDraft,
+  RecallAttempt,
+  ReusablePhrase,
   ReviewState,
   UserAnswer,
 } from '../domain/entities'
@@ -13,6 +15,9 @@ import {
   openTscStudyUserDatabase,
   PRACTICE_DRAFTS_STORE,
   PRACTICE_DRAFT_QUESTION_INDEX,
+  RECALL_ATTEMPTS_STORE,
+  RECALL_ATTEMPT_QUESTION_INDEX,
+  REUSABLE_PHRASES_STORE,
   REVIEW_STATES_STORE,
   REVIEW_STATE_TARGET_INDEX,
   USER_ANSWERS_STORE,
@@ -57,6 +62,15 @@ export type PracticeDraftInput = Omit<
 }
 
 export type StoredPracticeDraft = PracticeDraft
+export type ReusablePhraseInput = Omit<
+  ReusablePhrase,
+  'created_at' | 'updated_at'
+> & { created_at?: string }
+export type StoredReusablePhrase = ReusablePhrase
+export type RecallAttemptInput = Omit<RecallAttempt, 'attempted_at'> & {
+  attempted_at?: string
+}
+export type StoredRecallAttempt = RecallAttempt
 
 export interface UserDataRepositoryOptions {
   databaseName?: string
@@ -94,6 +108,16 @@ export interface UserDataRepository {
     practiceDraft: PracticeDraftInput,
   ): Promise<StoredPracticeDraft>
   deletePracticeDraft(practiceDraftId: string): Promise<void>
+  listReusablePhrases(): Promise<StoredReusablePhrase[]>
+  upsertReusablePhrase(
+    phrase: ReusablePhraseInput,
+  ): Promise<StoredReusablePhrase>
+  deleteReusablePhrase(reusablePhraseId: string): Promise<void>
+  listRecallAttemptsByQuestionId(
+    questionId: string,
+  ): Promise<StoredRecallAttempt[]>
+  listRecallAttempts(): Promise<StoredRecallAttempt[]>
+  addRecallAttempt(attempt: RecallAttemptInput): Promise<StoredRecallAttempt>
   close(): Promise<void>
   destroy(): Promise<void>
 }
@@ -139,7 +163,10 @@ function validatePracticeDraft(practiceDraft: PracticeDraftInput): void {
   if (!practiceDraft.question_id.trim()) {
     throw new Error('question_id is required')
   }
-  if (!practiceDraft.original_input.trim()) {
+  const hasPlanningKeywords = Object.values(
+    practiceDraft.planning_keywords ?? {},
+  ).some((keywords) => keywords.some((keyword) => keyword.trim()))
+  if (!practiceDraft.original_input.trim() && !hasPlanningKeywords) {
     throw new Error('빈 original_input은 저장할 수 없습니다')
   }
   if (practiceDraft.draft_status !== 'draft') {
@@ -449,6 +476,21 @@ export function createUserDataRepository(
       question_id: input.question_id,
       input_language: input.input_language,
       original_input: input.original_input,
+      planning_keywords: input.planning_keywords
+        ? structuredClone(input.planning_keywords)
+        : existing?.planning_keywords,
+      structured_answer: input.structured_answer
+        ? structuredClone(input.structured_answer)
+        : existing?.structured_answer,
+      full_text: input.full_text ?? existing?.full_text,
+      completion_status:
+        input.completion_status ?? existing?.completion_status,
+      completed_at: input.completed_at ?? existing?.completed_at,
+      understanding_confirmed:
+        input.understanding_confirmed ?? existing?.understanding_confirmed,
+      skipped_sections: input.skipped_sections
+        ? [...input.skipped_sections]
+        : existing?.skipped_sections,
       draft_status: 'draft',
       created_at: existing?.created_at ?? input.created_at ?? timestamp,
       updated_at: timestamp,
@@ -461,6 +503,75 @@ export function createUserDataRepository(
   async function deletePracticeDraft(practiceDraftId: string): Promise<void> {
     const database = await databasePromise
     await database.delete(PRACTICE_DRAFTS_STORE, practiceDraftId)
+  }
+
+  async function listReusablePhrases(): Promise<StoredReusablePhrase[]> {
+    const database = await databasePromise
+    return (await database.getAll(REUSABLE_PHRASES_STORE)).sort((left, right) =>
+      compareIdentifiers(left.reusable_phrase_id, right.reusable_phrase_id),
+    )
+  }
+
+  async function upsertReusablePhrase(
+    input: ReusablePhraseInput,
+  ): Promise<StoredReusablePhrase> {
+    if (!input.reusable_phrase_id.trim() || !input.text.trim()) {
+      throw new Error('재사용 표현 ID와 원문은 필수입니다')
+    }
+    const database = await databasePromise
+    const existing = await database.get(
+      REUSABLE_PHRASES_STORE,
+      input.reusable_phrase_id,
+    )
+    const timestamp = now()
+    const stored: StoredReusablePhrase = {
+      ...input,
+      text: input.text,
+      source_kind: 'user_created',
+      created_at: existing?.created_at ?? input.created_at ?? timestamp,
+      updated_at: timestamp,
+    }
+    await database.put(REUSABLE_PHRASES_STORE, stored)
+    return stored
+  }
+
+  async function deleteReusablePhrase(reusablePhraseId: string): Promise<void> {
+    const database = await databasePromise
+    await database.delete(REUSABLE_PHRASES_STORE, reusablePhraseId)
+  }
+
+  async function listRecallAttemptsByQuestionId(
+    questionId: string,
+  ): Promise<StoredRecallAttempt[]> {
+    const database = await databasePromise
+    return database.getAllFromIndex(
+      RECALL_ATTEMPTS_STORE,
+      RECALL_ATTEMPT_QUESTION_INDEX,
+      questionId,
+    )
+  }
+
+  async function listRecallAttempts(): Promise<StoredRecallAttempt[]> {
+    const database = await databasePromise
+    return database.getAll(RECALL_ATTEMPTS_STORE)
+  }
+
+  async function addRecallAttempt(
+    input: RecallAttemptInput,
+  ): Promise<StoredRecallAttempt> {
+    if (!input.recall_attempt_id.trim() || !input.question_id.trim()) {
+      throw new Error('회상 기록 ID와 question_id는 필수입니다')
+    }
+    if (!input.practice_draft_id && !input.user_answer_id) {
+      throw new Error('회상 기록은 연습 초안 또는 교정 답변을 참조해야 합니다')
+    }
+    const database = await databasePromise
+    const stored: StoredRecallAttempt = {
+      ...input,
+      attempted_at: input.attempted_at ?? now(),
+    }
+    await database.put(RECALL_ATTEMPTS_STORE, stored)
+    return stored
   }
 
   async function close(): Promise<void> {
@@ -488,6 +599,12 @@ export function createUserDataRepository(
     listPracticeDrafts,
     upsertPracticeDraft,
     deletePracticeDraft,
+    listReusablePhrases,
+    upsertReusablePhrase,
+    deleteReusablePhrase,
+    listRecallAttemptsByQuestionId,
+    listRecallAttempts,
+    addRecallAttempt,
     close,
     destroy,
   }

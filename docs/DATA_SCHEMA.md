@@ -487,12 +487,31 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 | `learner_ref` | `Identifier` | 조건부 | 개인 데이터 소유자 식별자 | `local-user` |
 | `question_id` | `Reference<Question>` | 필수 | 초안 대상 질문 | `P4-006` |
 | `input_language` | `Enum` | 필수 | `ko`, `zh`, `mixed` | `mixed` |
-| `original_input` | `Text` | 필수 | 사용자가 작성한 비어 있지 않은 원문 | `我喜欢在家运动。` |
+| `original_input` | `Text` | 조건부 | 사용자가 작성한 원문. 키워드 설계만 저장한 동안은 빈 값 가능 | `我喜欢在家运动。` |
+| `planning_keywords` | `Part4PlanningKeywords` | 선택 | 직접 답변·이유·경험/예시·마무리에 사용자가 직접 입력한 키워드 | `reasons: ["편리함"]` |
+| `structured_answer` | `Part4StructuredAnswer` | 선택 | 네 구간별 사용자 원문. 연결어를 자동 생성하지 않음 | `reasons: "在家运动很方便。"` |
+| `full_text` | `Text` | 선택 | 구조 구간을 사용자 입력 순서대로 합친 값 또는 자유 입력 전체 답변 | `我喜欢在家运动。` |
+| `completion_status` | `Enum` | 선택 | `in_progress`, `completed` | `completed` |
+| `completed_at` | `DateTime` | 조건부 | 사용자가 완료를 명시적으로 누른 시각 | `2026-07-28T13:00:00+09:00` |
+| `understanding_confirmed` | `Boolean` | 선택 | 사용자가 질문 이해 완료를 명시적으로 확인했는지 | `true` |
+| `skipped_sections` | `List<Enum>` | 선택 | 사용자가 생략하기로 한 구조 구간 | `["conclusion"]` |
 | `draft_status` | `Enum` | 필수 | 현재 값 `draft` | `draft` |
 | `created_at` | `DateTime` | 필수 | 최초 저장 시각 | `2026-07-28T10:00:00+09:00` |
 | `updated_at` | `DateTime` | 필수 | 마지막 명시적 저장 시각 | `2026-07-28T10:05:00+09:00` |
 
 질문당 활성 초안 하나를 upsert할 수 있다. `PracticeDraft`에는 교정 중국어·병음·한국어와 수정 내역을 넣지 않고 개인 `Correction`도 생성하지 않는다. `UserAnswer`가 생겨도 자동 삭제하지 않으며 둘은 동시에 존재할 수 있다.
+
+기존 자유 입력 초안에는 구조화 필드가 없어도 유효하며 이 경우 `original_input`을 `full_text`처럼 표시한다. `completed`는 네 구간이 모두 채워졌다는 자동 판정이 아니라 사용자의 명시적 완료 행동이다.
+
+### `ReusablePhrase`
+
+사용자가 직접 작성한 원문 중 명시적으로 재사용 저장한 개인 표현이다. 공용 `LearningExpression`과 분리하며 자동 번역·요약·문장 분해를 하지 않는다.
+
+필드는 `reusable_phrase_id`, `text`, `language`, `phrase_type`, `source_kind = user_created`, `source_question_id`, `created_at`, `updated_at`이다.
+
+### `RecallAttempt`
+
+저장된 연습 답변을 보지 않고 말한 뒤 사용자가 직접 남기는 회상 이력이다. 필드는 `recall_attempt_id`, `question_id`, 선택적인 `practice_draft_id` 또는 `user_answer_id`, `recall_mode`, `result`, `attempted_at`이다. `recall_mode`는 `full`, `chinese_only`, `keywords_only`, `question_only`, 결과는 `could_not_say`, `used_keywords`, `almost`, `memorized`를 사용한다.
 
 ### `UserAnswer`
 
@@ -569,6 +588,8 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 | `VisualQuestion` 1 → 0..N `ModelAnswer` | `answer_target_type = visual_question`인 경우이며 출처 답변이 여러 개일 수 있다. |
 | `VisualSet` 1 → 0..N `StoryGuide` | 한 그림 세트에 스토리 가이드가 없거나 여러 개일 수 있다. |
 | `Question` 1 → 0..1 활성 `PracticeDraft` | 초기 MVP에서 질문별 활성 연습 초안 하나를 개인 IndexedDB에 upsert한다. |
+| `Question` 1 → N `ReusablePhrase` | 사용자가 명시적으로 저장한 원문 표현이며 공용 표현과 분리한다. |
+| `Question` 1 → N `RecallAttempt` | 암기 모드와 상세 회상 결과 이력이다. |
 | `Question` 1 → 0..1 활성 `Part4ReviewDecision` | 한 검수 dataset에서 Question당 활성 결정 하나를 별도 검수 IndexedDB에 저장한다. |
 | `Question` 1 → N `UserAnswer` | 같은 질문에 사용자가 승인한 여러 답변을 저장할 수 있다. |
 | `UserAnswer` 1 → 0..N `Correction` | 한 사용자 답변에서 여러 개인 오류가 나올 수 있다. |

@@ -8,23 +8,29 @@ import {
 import type {
   StoredPersonalCorrection,
   StoredPracticeDraft,
+  StoredRecallAttempt,
+  StoredReusablePhrase,
   StoredReviewState,
   StoredUserAnswer,
 } from './userDataRepository'
 
 export const DEFAULT_USER_DATA_DB_NAME = 'tsc-study-part4-fixture-v1'
-export const USER_DATA_DB_VERSION = 2
+export const USER_DATA_DB_VERSION = 3
 
 export const USER_ANSWERS_STORE = 'userAnswers'
 export const REVIEW_STATES_STORE = 'reviewStates'
 export const CORRECTIONS_STORE = 'corrections'
 export const PRACTICE_DRAFTS_STORE = 'practiceDrafts'
+export const REUSABLE_PHRASES_STORE = 'reusablePhrases'
+export const RECALL_ATTEMPTS_STORE = 'recallAttempts'
 
 export const USER_ANSWER_QUESTION_INDEX = 'by-question-id'
 export const REVIEW_STATE_TARGET_INDEX = 'by-target'
 export const REVIEW_STATE_TARGET_ID_INDEX = 'by-target-id'
 export const CORRECTION_USER_ANSWER_INDEX = 'by-user-answer-id'
 export const PRACTICE_DRAFT_QUESTION_INDEX = 'by-question-id'
+export const REUSABLE_PHRASE_QUESTION_INDEX = 'by-question-id'
+export const RECALL_ATTEMPT_QUESTION_INDEX = 'by-question-id'
 
 export interface TscStudyUserDataSchema extends DBSchema {
   [USER_ANSWERS_STORE]: {
@@ -57,6 +63,20 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredPracticeDraft
     indexes: {
       [PRACTICE_DRAFT_QUESTION_INDEX]: string
+    }
+  }
+  [REUSABLE_PHRASES_STORE]: {
+    key: string
+    value: StoredReusablePhrase
+    indexes: {
+      [REUSABLE_PHRASE_QUESTION_INDEX]: string
+    }
+  }
+  [RECALL_ATTEMPTS_STORE]: {
+    key: string
+    value: StoredRecallAttempt
+    indexes: {
+      [RECALL_ATTEMPT_QUESTION_INDEX]: string
     }
   }
 }
@@ -110,6 +130,22 @@ export function openTscStudyUserDatabase(
             PRACTICE_DRAFT_QUESTION_INDEX,
             'question_id',
             { unique: true },
+          )
+        }
+        if (oldVersion < 3) {
+          const phrases = database.createObjectStore(REUSABLE_PHRASES_STORE, {
+            keyPath: 'reusable_phrase_id',
+          })
+          phrases.createIndex(
+            REUSABLE_PHRASE_QUESTION_INDEX,
+            'source_question_id',
+          )
+          const attempts = database.createObjectStore(RECALL_ATTEMPTS_STORE, {
+            keyPath: 'recall_attempt_id',
+          })
+          attempts.createIndex(
+            RECALL_ATTEMPT_QUESTION_INDEX,
+            'question_id',
           )
         }
       },

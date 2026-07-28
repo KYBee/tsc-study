@@ -105,7 +105,7 @@ export function ReviewScreen() {
     return (
       <ErrorState
         title="복습을 불러오지 못했습니다"
-        message="개발 fixture와 브라우저 저장소를 확인해 주세요."
+        message="학습 문제와 브라우저 저장소를 확인해 주세요."
       />
     )
   }

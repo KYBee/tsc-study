@@ -12,12 +12,13 @@ export function HomeScreen() {
   const { publicRepository, userRepository } = useAppDependencies()
   const navigate = useNavigate()
   const { data, error, loading } = useAsyncData(async () => {
-    const [parts, questions, reviewStates, answers, drafts] = await Promise.all([
+    const [parts, questions, reviewStates, answers, drafts, recallAttempts] = await Promise.all([
       publicRepository.listParts(),
       publicRepository.listQuestionsByPart(4),
       userRepository.listReviewStates(),
       userRepository.listUserAnswers(),
       userRepository.listPracticeDrafts(),
+      userRepository.listRecallAttempts(),
     ])
     const questionReviewStates = reviewStates.filter(
       (state) => state.target_type === 'question',
@@ -28,6 +29,7 @@ export function HomeScreen() {
       reviewStates: questionReviewStates,
       answers,
       drafts,
+      recallAttempts,
       lastLocation: loadLastLearningLocation(
         questions.map((question) => question.question_id),
       ),
@@ -60,13 +62,25 @@ export function HomeScreen() {
     const selected = pickRandomQuestion(data.questions)
     if (selected) navigate(`/questions/${selected.question_id}`)
   }
+  const firstInProgress = data.drafts.find(
+    (draft) => draft.completion_status !== 'completed',
+  )
+  const firstCompleted = data.drafts.find(
+    (draft) => draft.completion_status === 'completed',
+  )
+  const firstConfused = data.reviewStates.find(
+    (state) => state.learning_status === '헷갈림',
+  )
+  const completedDraftCount = data.drafts.filter(
+    (draft) => draft.completion_status === 'completed',
+  ).length
 
   return (
     <div className="page">
       <header className="hero">
         <p className="eyebrow">TSC STUDY</p>
         <h1>Part 4의 50문제를 직접 연습해 보세요</h1>
-        <p>검수 전 working 문제이며, 연습 초안은 실제 AI 없이도 저장할 수 있습니다.</p>
+        <p>검수 전 문제이며, 연습 초안은 실제 AI 없이도 저장할 수 있습니다.</p>
       </header>
 
       <section className="card" aria-labelledby="progress-heading">
@@ -85,8 +99,12 @@ export function HomeScreen() {
             <dd>{data.questions.length}</dd>
           </div>
           <div>
-            <dt>연습 초안</dt>
+            <dt>작성 시작</dt>
             <dd>{data.drafts.length}</dd>
+          </div>
+          <div>
+            <dt>작성 완료</dt>
+            <dd>{completedDraftCount}</dd>
           </div>
           <div>
             <dt>교정 완료</dt>
@@ -109,6 +127,50 @@ export function HomeScreen() {
             <dd>{reviewCounts.외움}</dd>
           </div>
         </dl>
+      </section>
+
+      <section className="card" aria-labelledby="learning-actions-heading">
+        <h2 id="learning-actions-heading">무엇을 연습할까요?</h2>
+        <div className="home-action-grid">
+          <Link className="primary-button" to="/parts/4">
+            새 문제로 답변 만들기
+          </Link>
+          {firstInProgress && (
+            <Link
+              className="secondary-button"
+              to={`/questions/${firstInProgress.question_id}/answer?step=write`}
+            >
+              작성 중인 답변 이어서
+            </Link>
+          )}
+          {firstCompleted && (
+            <>
+              <Link
+                className="secondary-button"
+                to={`/questions/${firstCompleted.question_id}/answer?step=recall&mode=keywords_only`}
+              >
+                키워드 암기
+              </Link>
+              <Link
+                className="secondary-button"
+                to={`/questions/${firstCompleted.question_id}/answer?step=recall&mode=question_only`}
+              >
+                질문만 보고 말하기
+              </Link>
+            </>
+          )}
+          {firstConfused && (
+            <Link
+              className="secondary-button"
+              to={`/questions/${firstConfused.target_id}/answer?step=recall`}
+            >
+              헷갈리는 문제 복습
+            </Link>
+          )}
+        </div>
+        {data.recallAttempts.length > 0 && (
+          <p className="field-help">저장된 회상 기록 {data.recallAttempts.length}회</p>
+        )}
       </section>
 
       <section className="card" aria-labelledby="continue-heading">
@@ -156,7 +218,7 @@ export function HomeScreen() {
                   <span className="part-card__number">Part {part.part}</span>
                   <span className="part-card__body">
                     <strong>{part.name}</strong>
-                    <small>{part.available_question_count}개 검수 전 working 문제</small>
+                    <small>{part.available_question_count}개 검수 전 문제</small>
                   </span>
                   <span aria-hidden="true">→</span>
                 </Link>

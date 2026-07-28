@@ -53,6 +53,7 @@ export function QuestionScreen() {
   const [reviewOverride, setReviewOverride] = useState<ReviewState>()
   const [reviewError, setReviewError] = useState('')
   const [savingReview, setSavingReview] = useState(false)
+  const [understood, setUnderstood] = useState(false)
   const { data, error, loading } = useAsyncData(async () => {
     const question = await publicRepository.getQuestionById(questionId)
     if (!question || question.part !== 4) return { question: undefined }
@@ -206,9 +207,21 @@ export function QuestionScreen() {
         <p className="eyebrow">
           {question.question_id} · {question.question_type || '유형 미분류'}
         </p>
-        <h1>문제 확인</h1>
+        <p className="learning-step-label">1단계 · 질문 이해</p>
+        <h1>질문 이해</h1>
         <p>원본 workbook 기반 검수 전 학습 문제입니다.</p>
       </header>
+
+      <ol className="learning-progress" aria-label="Part 4 학습 단계">
+        {['질문 이해', '답변 설계', '답변 작성', '암기 연습'].map(
+          (step, index) => (
+            <li key={step} aria-current={index === 0 ? 'step' : undefined}>
+              <span>{index + 1}</span>
+              {step}
+            </li>
+          ),
+        )}
+      </ol>
 
       <nav className="question-navigation" aria-label="문제 이동">
         {previousQuestion ? (
@@ -319,6 +332,30 @@ export function QuestionScreen() {
           ))}
         </ul>
       </details>
+
+      <section className="card understanding-action" aria-label="질문 이해 확인">
+        <label className="check-option">
+          <input
+            type="checkbox"
+            checked={understood}
+            onChange={(event) => setUnderstood(event.target.checked)}
+          />
+          질문을 이해했습니다
+        </label>
+        <Link
+          className={`primary-button${understood ? '' : ' is-disabled'}`}
+          aria-disabled={!understood}
+          tabIndex={understood ? undefined : -1}
+          to={
+            understood
+              ? `/questions/${question.question_id}/answer?step=design`
+              : location.pathname
+          }
+          state={navigationState}
+        >
+          질문 이해 완료
+        </Link>
+      </section>
 
       <details className="card guide-details">
         <summary>

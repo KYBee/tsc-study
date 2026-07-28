@@ -59,7 +59,7 @@ v1.1은 `other-output`의 3급 목표 강의 분석을 working 데이터로 반�
 | 범위 | 포함 데이터 | 원칙 |
 |---|---|---|
 | 공용 콘텐츠 | `Source`, `SourceReference`, `Question`, `AnswerPoint`, `ModelAnswer`, 시각 자료 엔터티, `StoryGuide`, `PartGuide`, `LearningExpression`, `PronunciationItem`, `PracticeDrill`, `CourseInsight`, 공용 `Correction` | 출처·근거·검수 상태를 보존하고 개인 학습 상태를 넣지 않는다. |
-| 개인 기록 | `PracticeDraft`, `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하고 초기 MVP에서는 IndexedDB에 저장한다. `PracticeDraft`는 교정 전 원문이며 승인된 `UserAnswer`와 동시에 존재할 수 있다. 인증과 서버 동기화는 포함하지 않는다. |
+| 개인 기록 | `PracticeDraft`, `ReusablePhrase`, `RecallAttempt`, `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하고 IndexedDB에 저장한다. 구조화 초안과 회상 이력도 공용 데이터에 넣지 않는다. |
 | 검수 운영 | `Part4ReviewDecision` | 필드별 사람 판단과 원문 해시만 별도 IndexedDB·내보내기 JSON에 보존한다. 공용 콘텐츠나 개인 학습 기록과 섞지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.

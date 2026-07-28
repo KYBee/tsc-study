@@ -44,6 +44,7 @@
 - Part 4 50문제의 deterministic 검수 fixture와 로컬 필드별 검수 화면 완료
 - 검수 결정 JSON 내보내기·가져오기, stale 판정과 reviewed 승격 CLI 완료
 - 검수 결정·학습 개인 데이터·공용 working 데이터의 저장 경계 분리 완료
+- Part 4 질문 이해→키워드 설계→구조별 작성→암기·회상 흐름과 IndexedDB v3 개인 이력 완료
 - 실제 Part 4 사람 검수, 결정 파일 Git 반영과 reviewed 데이터 생성 미완료
 - reviewed 부분 데이터의 학습 앱 연결 미완료
 - 전체 253개 문제의 중국어·병음·한국어·출처 사람 검수와 `reviewed` 승격 미완료

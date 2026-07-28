@@ -165,6 +165,85 @@ describe('Part 4 vertical slice navigation', () => {
 })
 
 describe('question and answer flow', () => {
+  it('builds a Part 4 answer through understanding, planning, writing, and completion', async () => {
+    const user = userEvent.setup()
+    const { userRepository } = renderApp('/questions/P4-001')
+
+    expect(await screen.findByText('1단계 · 질문 이해')).toBeInTheDocument()
+    await user.click(screen.getByLabelText('질문을 이해했습니다'))
+    await user.click(screen.getByRole('link', { name: '질문 이해 완료' }))
+
+    expect(await screen.findByRole('heading', { name: '답변 설계' })).toBeInTheDocument()
+    await user.type(screen.getByLabelText('직접 답변 키워드'), '가족 여행')
+    await user.type(screen.getByLabelText('이유 키워드'), '함께 시간 보내기')
+    await user.click(screen.getByRole('button', { name: '답변 작성으로' }))
+
+    await user.type(screen.getByLabelText('직접 답변 문장'), '가족과 여행하고 싶다.')
+    await user.type(screen.getByLabelText('이유 문장'), '함께 시간을 보내고 싶다.')
+    expect(
+      within(screen.getByRole('region', { name: '전체 답변 미리보기' })).getByText(
+        /가족과 여행하고 싶다\./,
+      ),
+    ).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '연습 초안 저장' }))
+    await user.click(screen.getByRole('button', { name: '답변 작성 완료' }))
+
+    expect(await screen.findByRole('heading', { name: '내가 작성한 연습 답변' })).toBeInTheDocument()
+    await expect(userRepository.getPracticeDraftByQuestionId('P4-001')).resolves.toMatchObject({
+      completion_status: 'completed',
+      planning_keywords: {
+        direct_answer: ['가족 여행'],
+        reasons: ['함께 시간 보내기'],
+      },
+      structured_answer: {
+        direct_answer: '가족과 여행하고 싶다.',
+        reasons: '함께 시간을 보내고 싶다.',
+      },
+    })
+    await expect(userRepository.listUserAnswers()).resolves.toEqual([])
+  })
+
+  it('records explicit keyword recall and maps it to 헷갈림', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertPracticeDraft({
+      practice_draft_id: 'pd-P4-001',
+      question_id: 'P4-001',
+      input_language: 'ko',
+      original_input: '가족과 여행하고 싶다.',
+      planning_keywords: {
+        direct_answer: ['가족 여행'],
+        reasons: [],
+        example: [],
+        conclusion: [],
+      },
+      structured_answer: {
+        direct_answer: '가족과 여행하고 싶다.',
+        reasons: '',
+        example: '',
+        conclusion: '',
+      },
+      full_text: '가족과 여행하고 싶다.',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    renderApp('/questions/P4-001/answer?step=recall', { userRepository })
+
+    await user.click(await screen.findByRole('radio', { name: 'C. 키워드만 보기' }))
+    expect(screen.getByText('가족 여행')).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '답변 보기' }))
+    await user.click(screen.getByRole('button', { name: '키워드 보고 말함' }))
+
+    await waitFor(async () => {
+      await expect(userRepository.getReviewState('question', 'P4-001')).resolves.toMatchObject({
+        learning_status: '헷갈림',
+      })
+    })
+    await expect(userRepository.listRecallAttemptsByQuestionId('P4-001')).resolves.toMatchObject([
+      { recall_mode: 'keywords_only', result: 'used_keywords' },
+    ])
+  })
+
   it('shows AnswerPoint as an unreviewed hint and treats missing ModelAnswer as normal', async () => {
     renderApp('/questions/P4-006')
 
@@ -177,17 +256,17 @@ describe('question and answer flow', () => {
     expect(screen.getByText('아직 모범답안 없음')).toBeInTheDocument()
   })
 
-  it('shows raw development fixture status in direct answer and review contexts', async () => {
+  it('shows learner-facing working data status in direct answer and review contexts', async () => {
     renderApp('/questions/P4-006/answer')
 
-    expect(await screen.findByText('개발용 표본')).toBeInTheDocument()
-    expect(screen.getByText('raw · 검수 전')).toBeInTheDocument()
+    expect(await screen.findByText('원본 workbook 기반')).toBeInTheDocument()
+    expect(screen.getByText('검수 전 문제')).toBeInTheDocument()
 
     cleanup()
     renderApp('/review')
 
-    expect(await screen.findByText('개발용 표본')).toBeInTheDocument()
-    expect(screen.getByText('raw · 검수 전')).toBeInTheDocument()
+    expect(await screen.findByText('원본 workbook 기반')).toBeInTheDocument()
+    expect(screen.getByText('검수 전 문제')).toBeInTheDocument()
   })
 
   it('blocks a blank or whitespace-only answer', async () => {
@@ -200,7 +279,7 @@ describe('question and answer flow', () => {
 
     expect(screen.getByRole('alert')).toHaveTextContent('답변을 입력해 주세요')
     expect(editor).toHaveValue('   ')
-    expect(screen.getByRole('heading', { name: '나의 답변 작성' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: '답변 작성' })).toBeInTheDocument()
   })
 
   it('shows the exact deterministic mock result and saves only after explicit approval', async () => {

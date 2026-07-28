@@ -9,8 +9,10 @@ import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
+import { getDraftFullText } from '../answer/part4AnswerDraft'
 
 type AnswerView = 'approved' | 'drafts'
+type DraftFilter = 'all' | 'in_progress' | 'completed' | 'needs_recall' | 'confused' | 'memorized'
 
 const INPUT_LANGUAGE_LABELS = {
   ko: '한국어',
@@ -18,15 +20,24 @@ const INPUT_LANGUAGE_LABELS = {
   mixed: '한국어·중국어 혼합',
 } as const
 
+const RECALL_RESULT_LABELS = {
+  could_not_say: '못 말함',
+  used_keywords: '키워드 보고 말함',
+  almost: '거의 말함',
+  memorized: '외워서 말함',
+} as const
+
 export function MyAnswersScreen() {
   const { publicRepository, userRepository } = useAppDependencies()
   const [activeView, setActiveView] = useState<AnswerView>('approved')
+  const [draftFilter, setDraftFilter] = useState<DraftFilter>('all')
   const [reloadKey, setReloadKey] = useState(0)
   const [deleteError, setDeleteError] = useState('')
   const { data, error, loading } = useAsyncData(async () => {
-    const [answers, drafts] = await Promise.all([
+    const [answers, drafts, attempts] = await Promise.all([
       userRepository.listUserAnswers(),
       userRepository.listPracticeDrafts(),
+      userRepository.listRecallAttempts(),
     ])
     const approvedItems = await Promise.all(
       answers.map(async (answer) => ({
@@ -48,7 +59,7 @@ export function MyAnswersScreen() {
         ),
       })),
     )
-    return { approvedItems, draftItems }
+    return { approvedItems, draftItems, attempts }
   }, [publicRepository, reloadKey, userRepository])
 
   const deleteAnswer = async (userAnswerId: string) => {
@@ -85,7 +96,20 @@ export function MyAnswersScreen() {
     )
   }
 
-  const { approvedItems, draftItems } = data
+  const { approvedItems, draftItems, attempts } = data
+  const filteredDraftItems = draftItems.filter(({ draft, reviewState }) => {
+    if (draftFilter === 'all') return true
+    if (draftFilter === 'in_progress') return draft.completion_status !== 'completed'
+    if (draftFilter === 'completed') return draft.completion_status === 'completed'
+    if (draftFilter === 'needs_recall') {
+      return (
+        draft.completion_status === 'completed' &&
+        !attempts.some((attempt) => attempt.question_id === draft.question_id)
+      )
+    }
+    if (draftFilter === 'confused') return reviewState?.learning_status === '헷갈림'
+    return reviewState?.learning_status === '외움'
+  })
 
   return (
     <div className="page">
@@ -191,7 +215,22 @@ export function MyAnswersScreen() {
         ))}
 
       {activeView === 'drafts' &&
-        (draftItems.length === 0 ? (
+        <>
+          <label className="card compact-filter">
+            연습 답변 필터
+            <select
+              value={draftFilter}
+              onChange={(event) => setDraftFilter(event.target.value as DraftFilter)}
+            >
+              <option value="all">전체</option>
+              <option value="in_progress">작성 중</option>
+              <option value="completed">답변 완성</option>
+              <option value="needs_recall">암기 필요</option>
+              <option value="confused">헷갈림</option>
+              <option value="memorized">외움</option>
+            </select>
+          </label>
+          {draftItems.length === 0 ? (
           <EmptyState
             title="아직 연습 초안이 없습니다"
             description="실제 AI가 지원하지 않는 입력도 원문 그대로 초안에 저장할 수 있습니다."
@@ -201,9 +240,11 @@ export function MyAnswersScreen() {
               </Link>
             }
           />
-        ) : (
+          ) : filteredDraftItems.length === 0 ? (
+            <EmptyState title="조건에 맞는 연습 답변이 없습니다" />
+          ) : (
           <ul className="answer-list" aria-label="연습 초안">
-            {draftItems.map(({ draft, question, reviewState }) => (
+            {filteredDraftItems.map(({ draft, question, reviewState }) => (
               <li key={draft.practice_draft_id} className="card answer-card">
                 <div className="section-heading">
                   <div>
@@ -226,7 +267,30 @@ export function MyAnswersScreen() {
                   <span className="language-label">
                     원본 입력 · {INPUT_LANGUAGE_LABELS[draft.input_language]}
                   </span>
-                  <p>{draft.original_input}</p>
+                  <p>{getDraftFullText(draft)}</p>
+                  <strong>
+                    {draft.completion_status === 'completed' ? '답변 완성' : '작성 중'}
+                  </strong>
+                  {draft.planning_keywords && (
+                    <p className="keyword-line">
+                      키워드:{' '}
+                      {Object.values(draft.planning_keywords).flat().join(' · ') || '없음'}
+                    </p>
+                  )}
+                  {attempts.findLast(
+                    (attempt) => attempt.question_id === draft.question_id,
+                  ) && (
+                    <small>
+                      마지막 회상 결과:{' '}
+                      {
+                        RECALL_RESULT_LABELS[
+                          attempts.findLast(
+                            (attempt) => attempt.question_id === draft.question_id,
+                          )!.result
+                        ]
+                      }
+                    </small>
+                  )}
                 </div>
                 <p className="timestamp">
                   마지막 수정일 <time dateTime={draft.updated_at}>{draft.updated_at}</time>
@@ -246,6 +310,15 @@ export function MyAnswersScreen() {
                   >
                     mock 교정 시도
                   </Link>
+                  {draft.completion_status === 'completed' && (
+                    <Link
+                      className="primary-button"
+                      to={`/questions/${draft.question_id}/answer?step=recall`}
+                      state={createNavigationContext('/my-answers')}
+                    >
+                      암기 시작
+                    </Link>
+                  )}
                   <button
                     className="danger-button"
                     type="button"
@@ -257,7 +330,8 @@ export function MyAnswersScreen() {
               </li>
             ))}
           </ul>
-        ))}
+          )}
+        </>}
     </div>
   )
 }

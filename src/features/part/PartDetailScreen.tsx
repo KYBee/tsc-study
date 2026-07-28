@@ -8,6 +8,7 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
+import { getDraftLearningStatus } from '../answer/part4AnswerDraft'
 import {
   filterPart4QuestionItems,
   pickRandomQuestion,
@@ -88,7 +89,7 @@ export function PartDetailScreen() {
     return (
       <ErrorState
         title="Part 4를 불러오지 못했습니다"
-        message="개발용 fixture를 확인해 주세요."
+        message="학습 문제 데이터를 확인해 주세요."
       />
     )
   }
@@ -122,8 +123,8 @@ export function PartDetailScreen() {
       </section>
 
       <aside className="notice" aria-label="개발 데이터 안내">
-        원본 workbook 기반 Part 4 50개를 사용하는 검수 전 working fixture입니다.
-        모범답안과 전체 AI 교정은 제공하지 않습니다.
+        원본 workbook 기반 Part 4 검수 전 문제 50개입니다. 모범답안과 전체 AI
+        교정은 제공하지 않습니다.
       </aside>
 
       <section className="card filter-panel" aria-labelledby="question-filter-heading">
@@ -235,6 +236,17 @@ export function PartDetailScreen() {
                       {userAnswer && <StatusBadge status="has_answer" />}
                       <StatusBadge status={reviewState?.learning_status ?? 'unstarted'} />
                     </div>
+                    <span className="question-card__cta">
+                      {practiceDraft?.completion_status === 'completed'
+                        ? reviewState?.learning_status === '외움'
+                          ? '다시 복습'
+                          : '암기하기'
+                        : getDraftLearningStatus(practiceDraft) === 'planning'
+                          ? '설계 이어서'
+                          : practiceDraft
+                            ? '이어서 작성'
+                            : '답변 만들기'}
+                    </span>
                   </Link>
                 </li>
               ),
