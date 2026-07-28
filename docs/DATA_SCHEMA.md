@@ -453,6 +453,28 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 
 `analyst_synthesis`와 `generated_study_material`을 `instructor_speech`로 승격하지 않는다. 시험 규칙·평가 기준으로 보이는 내용도 현재 공식 자료가 아니라 강의의 주장이라면 그 범위를 `notes`에 명시한다.
 
+## 검수 운영 엔터티
+
+### `Part4ReviewDecision`
+
+Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한 로컬 검수 결정이다. 공용 콘텐츠도 개인 학습 기록도 아니며, 수정된 언어 콘텐츠를 포함하지 않는다.
+
+| 필드명 | 타입 | 필수 여부 | 설명 | 예시 |
+|---|---|---|---|---|
+| `review_decision_id` | `Identifier` | 필수 | dataset과 Question에 대해 안정적인 결정 ID | `rd-part4-review-fixture-v1-P4-001` |
+| `dataset_id` | `Identifier` | 필수 | 결정이 검수한 fixture ID | `part4-review-fixture-v1` |
+| `question_id` | `Reference<Question>` | 필수 | 검수 대상 Question | `P4-001` |
+| `field_decisions` | `Map<Field, Enum>` | 필수 | 일곱 필수 필드별 `approved`, `needs_fix`, `not_checked` | `chinese_text: approved` |
+| `overall_status` | `Enum` | 필수 | `approved`, `needs_fix`, `deferred` | `approved` |
+| `reviewer_note` | `Text` | 선택 | 수정 필요 이유와 보류 메모 | `병음 표기 재확인 필요` |
+| `reviewed_by` | `Text` | 필수 | 사용자가 입력한 로컬 표시명 | `reviewer-a` |
+| `reviewed_at` | `DateTime` | 필수 | 사용자가 결정을 저장한 시각 | `2026-07-28T12:00:00+09:00` |
+| `source_question_hash` | `SHA256` | 필수 | 검수한 Question canonical JSON 해시 | `…` |
+| `source_answer_point_hash` | `SHA256` | 필수 | 검수한 AnswerPoint canonical JSON 해시 | `…` |
+| `decision_version` | `Integer` | 필수 | 결정 계약 버전 | `1` |
+
+필수 검수 필드는 `chinese_text`, `pinyin`, `korean_translation`, `question_type`, `answer_point`, `source_locator`, `claimed_source_metadata`다. 전체 `approved`는 모두 승인됐을 때만 유효하다. 현재 원문 해시와 다르면 stale이며 승격에 사용할 수 없다. 출처 주장 필드 승인은 workbook에 값이 존재함을 확인한 것이지 외부 출처 진위를 확인한 것이 아니다.
+
 ## 개인 학습 엔터티
 
 ### `PracticeDraft`
@@ -547,6 +569,7 @@ Part 1~7의 학습 가이드다. 확인되지 않은 파트 구조나 시험 규
 | `VisualQuestion` 1 → 0..N `ModelAnswer` | `answer_target_type = visual_question`인 경우이며 출처 답변이 여러 개일 수 있다. |
 | `VisualSet` 1 → 0..N `StoryGuide` | 한 그림 세트에 스토리 가이드가 없거나 여러 개일 수 있다. |
 | `Question` 1 → 0..1 활성 `PracticeDraft` | 초기 MVP에서 질문별 활성 연습 초안 하나를 개인 IndexedDB에 upsert한다. |
+| `Question` 1 → 0..1 활성 `Part4ReviewDecision` | 한 검수 dataset에서 Question당 활성 결정 하나를 별도 검수 IndexedDB에 저장한다. |
 | `Question` 1 → N `UserAnswer` | 같은 질문에 사용자가 승인한 여러 답변을 저장할 수 있다. |
 | `UserAnswer` 1 → 0..N `Correction` | 한 사용자 답변에서 여러 개인 오류가 나올 수 있다. |
 | 학습자 1 → N `ReviewState` | 개인 복습 상태는 공용 콘텐츠와 별도로 저장한다. |

@@ -94,8 +94,18 @@ P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 
 
 ## 다음 추천 작업
 
-1. Part 4 언어·출처와 AnswerPoint를 사람 검수한다.
-2. reviewed 승격 계약과 working→reviewed deterministic 변환을 별도 설계한다.
-3. 실제 AI 공급자와 비밀키를 보호할 서버 경계를 승인 후 결정한다.
-4. 로그인·동기화 전에 개인 데이터 내보내기·복구 요구를 검토한다.
+1. `/data-review/part4`에서 Part 4 언어·출처와 AnswerPoint를 사람이 검수하고 결정 JSON을 내보낸다.
+2. 내보낸 결정을 검토한 뒤 승격 CLI로 승인 항목만 reviewed JSON에 반영한다.
+3. reviewed 부분 데이터의 앱 연결 정책을 별도 결정한다.
+4. 실제 AI 공급자와 비밀키를 보호할 서버 경계를 승인 후 결정한다.
 5. 다음 Part는 데이터 검수와 화면별 계약을 확인한 뒤 선택한다.
+
+## Part 4 로컬 검수 도구
+
+- fixture: `part4-review-fixture-v1`, 50개 검수 항목
+- 화면: 개발 환경의 `/data-review/part4`
+- 저장: 학습 DB와 분리된 `tsc-study-data-review-v1` / `part4ReviewDecisions`
+- 기능: 일곱 필드 결정, 전체 상태 계산, 검색·필터, stale 판정, JSON 내보내기·가져오기·초기화
+- 승격: `scripts/promote_part4_reviewed_data.py --decisions <path>`
+
+도구와 승격 규칙만 구현했다. 실제 사람 결정 파일, 기본 경로의 reviewed 데이터와 앱 source 전환은 아직 없다. 자세한 계약은 [PART4_REVIEW_WORKFLOW.md](PART4_REVIEW_WORKFLOW.md)를 따른다.

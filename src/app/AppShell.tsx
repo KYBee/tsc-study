@@ -6,6 +6,7 @@ import { BottomNavigation } from '../components/BottomNavigation'
 export function AppShell({ children }: PropsWithChildren) {
   const mainRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
+  const dataReviewRoute = pathname.startsWith('/data-review/')
   const navigationType = useNavigationType()
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export function AppShell({ children }: PropsWithChildren) {
   }, [navigationType, pathname])
 
   return (
-    <div className="app-shell">
+    <div className={dataReviewRoute ? 'app-shell app-shell--data-review' : 'app-shell'}>
       <a className="skip-link" href="#main-content">
         본문으로 건너뛰기
       </a>
@@ -27,7 +28,7 @@ export function AppShell({ children }: PropsWithChildren) {
       >
         {children}
       </main>
-      <BottomNavigation />
+      {!dataReviewRoute && <BottomNavigation />}
     </div>
   )
 }

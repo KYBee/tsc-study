@@ -203,6 +203,23 @@
 | 답변 삭제·보관 | 물리·소프트 삭제 방식 결정 전까지 요청 의미만 정의 |
 | 병음 표시·숨김 | 표시 설정만 변경; 공용 언어 데이터를 수정하지 않음 |
 
+## 11. Part 4 로컬 데이터 검수
+
+| 항목 | 계약 |
+|---|---|
+| 화면 ID | `PART4_DATA_REVIEW` |
+| 화면 목적 | Part 4 working Question을 수정하지 않고 필드별 사람 결정을 기록하고 reviewed 승격 가능성을 확인한다. |
+| 읽는 엔터티 | `Question`, `AnswerPoint`, `Source`, `SourceReference`, working review queue, `Part4ReviewDecision` |
+| 필수 데이터 | `part4-review-fixture-v1`의 Question 50개, Question당 AnswerPoint 하나, 일곱 필수 검수 필드, Question·AnswerPoint SHA-256 |
+| 선택 데이터 | 관련 review queue 요약, claimed source URL·등급·원문성, 기존 결정 |
+| 사용자가 생성·수정하는 데이터 | 별도 검수 IndexedDB의 `Part4ReviewDecision`; 원문 콘텐츠는 수정하지 않음 |
+| 빈 값 처리 | 결정이 없으면 미검수다. 빈 claimed source URL은 그대로 표시하며 자동 오류나 승인으로 처리하지 않는다. |
+| 검수 상태 처리 | 전체 승인은 모든 필드 승인과 최신 해시가 필요하다. 해시 불일치는 stale이며 승격 가능 수에서 제외한다. |
+| 주요 행동 | 검색·필터, 필드별 결정, 전체 결정, 메모 저장, 다음 미검수, JSON 내보내기·가져오기, 확인 후 초기화 |
+| 다음 화면 | 같은 `PART4_DATA_REVIEW`; reviewed 생성은 화면이 아니라 별도 CLI |
+
+이 화면은 개발 환경 전용이며 네 개 하단 학습 메뉴와 학습 개인 데이터 저장소에 포함되지 않는다. 출처 주장 승인도 외부 출처의 공식성 검증을 뜻하지 않는다.
+
 ## 구현 전 해결해야 할 계약 공백
 
 다음은 이 작업에서 스키마나 기술을 임의로 바꾸지 않고 명시만 한다.

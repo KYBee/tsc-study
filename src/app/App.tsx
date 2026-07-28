@@ -9,6 +9,7 @@ import { BrowserRouter, MemoryRouter } from 'react-router-dom'
 
 import { createPublicContentRepository } from '../data/publicContentRepository'
 import { createUserDataRepository } from '../data/userDataRepository'
+import { createReviewDecisionRepository } from '../data/reviewDecisionRepository'
 import { MockCorrectionProvider } from '../providers/MockCorrectionProvider'
 import { ErrorState } from '../components/ErrorState'
 import { AppShell } from './AppShell'
@@ -77,6 +78,7 @@ function createDefaultDependencies(): AppDependencies {
     publicRepository: createPublicContentRepository(),
     userRepository: createUserDataRepository(),
     correctionProvider: new MockCorrectionProvider(),
+    reviewDecisionRepository: createReviewDecisionRepository(),
   }
 }
 

@@ -41,6 +41,11 @@
 - deterministic mock 교정과 승인 후 IndexedDB `UserAnswer` 저장 완료
 - 사용자 선택 기반 `ReviewState`와 개인 `Correction` 최소 흐름 완료
 - 타입 검사, lint, 단위·컴포넌트 테스트와 production build 기준 마련 완료
+- Part 4 50문제의 deterministic 검수 fixture와 로컬 필드별 검수 화면 완료
+- 검수 결정 JSON 내보내기·가져오기, stale 판정과 reviewed 승격 CLI 완료
+- 검수 결정·학습 개인 데이터·공용 working 데이터의 저장 경계 분리 완료
+- 실제 Part 4 사람 검수, 결정 파일 Git 반영과 reviewed 데이터 생성 미완료
+- reviewed 부분 데이터의 학습 앱 연결 미완료
 - 전체 253개 문제의 중국어·병음·한국어·출처 사람 검수와 `reviewed` 승격 미완료
 - 시각 자료 권리, 미연결 VisualQuestion과 Part 7 후보 관계 승인 미완료
 - `full-import-v1` 전체 253문제의 앱 런타임 연결 미완료. 현재는 Part 4 50문제만 별도 working fixture로 연결

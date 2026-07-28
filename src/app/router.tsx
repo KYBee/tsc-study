@@ -9,6 +9,7 @@ import { PartDetailScreen } from '../features/part/PartDetailScreen'
 import { QuestionScreen } from '../features/question/QuestionScreen'
 import { ReviewScreen } from '../features/review/ReviewScreen'
 import { NotFoundScreen } from '../features/question/NotFoundScreen'
+import { Part4DataReviewScreen } from '../features/data-review/Part4DataReviewScreen'
 
 export function AppRouter() {
   return (
@@ -27,6 +28,7 @@ export function AppRouter() {
       <Route path="/my-answers" element={<MyAnswersScreen />} />
       <Route path="/review" element={<ReviewScreen />} />
       <Route path="/mistakes" element={<MistakesScreen />} />
+      <Route path="/data-review/part4" element={<Part4DataReviewScreen />} />
       <Route path="*" element={<NotFoundScreen />} />
     </Routes>
   )

@@ -88,6 +88,9 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-018` | Part 4 전체 working fixture | `full-import-v1`과 `course-import-v1`에서 Part 4 범위만 deterministic하게 추출한 `part4-full-working-development-fixture-v2`를 앱 기본 데이터로 사용한다. reviewed 승격은 아니다. | 사람 검수를 통과한 reviewed canonical JSON이 준비될 때 |
 | `D-019` | 교정 전 연습 초안 | `PracticeDraft`를 승인된 `UserAnswer`와 분리해 IndexedDB에 저장한다. 질문당 활성 초안 하나를 upsert하며 둘은 동시에 존재할 수 있다. | 다중 기기 동기화나 답변 버전 이력이 필요할 때 |
 | `D-020` | IndexedDB v2 migration | 기존 DB 이름을 유지하고 버전 2에서 `practiceDrafts` store만 additive하게 추가한다. 기존 답변·복습 상태·개인 오류를 삭제하지 않는다. | 추가 개인 엔터티 또는 장기 migration 정책이 필요할 때 |
+| `D-021` | 로컬 데이터 검수 저장소 | `Part4ReviewDecision`은 학습 DB와 분리된 `tsc-study-data-review-v1` IndexedDB의 `part4ReviewDecisions`에 Question당 하나를 저장한다. | 여러 검수자 병합이나 서버 검수 도입 시 |
+| `D-022` | reviewed 승격 게이트 | 일곱 필드 전체 승인과 현재 Question·AnswerPoint 해시 일치가 있을 때만 원문을 그대로 승격한다. stale·미검수·수정 요청·보류는 제외한다. | 수정안 자체를 구조화하는 후속 워크플로 도입 시 |
+| `D-023` | 출처 주장 승인 의미 | `claimed_source_metadata` 승인은 workbook에 기록된 값을 확인했다는 뜻이며 외부 URL·원출처 진위 검증으로 자동 승격하지 않는다. | 실제 외부 출처 검증 절차와 상태 모델이 마련될 때 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 

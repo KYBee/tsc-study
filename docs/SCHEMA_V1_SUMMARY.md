@@ -60,8 +60,15 @@ v1.1은 `other-output`의 3급 목표 강의 분석을 working 데이터로 반�
 |---|---|---|
 | 공용 콘텐츠 | `Source`, `SourceReference`, `Question`, `AnswerPoint`, `ModelAnswer`, 시각 자료 엔터티, `StoryGuide`, `PartGuide`, `LearningExpression`, `PronunciationItem`, `PracticeDrill`, `CourseInsight`, 공용 `Correction` | 출처·근거·검수 상태를 보존하고 개인 학습 상태를 넣지 않는다. |
 | 개인 기록 | `PracticeDraft`, `UserAnswer`, 개인 `Correction`, `ReviewState` | 학습자 소유 범위로 분리하고 초기 MVP에서는 IndexedDB에 저장한다. `PracticeDraft`는 교정 전 원문이며 승인된 `UserAnswer`와 동시에 존재할 수 있다. 인증과 서버 동기화는 포함하지 않는다. |
+| 검수 운영 | `Part4ReviewDecision` | 필드별 사람 판단과 원문 해시만 별도 IndexedDB·내보내기 JSON에 보존한다. 공용 콘텐츠나 개인 학습 기록과 섞지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.
+
+## Part 4 reviewed 승격 게이트
+
+Part 4 검수 fixture는 Question·AnswerPoint 원문과 각각의 SHA-256을 제공한다. 사용자가 일곱 필수 필드를 모두 승인하고 두 해시가 현재 fixture와 일치할 때만 CLI가 해당 Question과 AnswerPoint를 reviewed 데이터에 포함한다. 해시가 달라진 결정은 stale로 보존하되 승격하지 않는다.
+
+검수된 Question은 기존 상태값 `verified`, AnswerPoint는 `reviewed`를 사용한다. SourceReference의 주장 메타데이터 승인은 workbook에 기록된 값 확인에 한정하므로 외부 출처 진위를 의미하는 `verified`로 자동 변경하지 않는다. 실제 결정 파일과 reviewed 데이터는 아직 생성하지 않았으며 학습 앱도 working fixture를 계속 사용한다.
 
 ## 주요 학습 흐름과 관계도
 

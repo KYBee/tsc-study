@@ -259,3 +259,26 @@ Part 4 목록
 ```
 
 `PracticeDraft`와 `UserAnswer`는 같은 Question에 동시에 존재할 수 있다. 미지원 mock 결과도 초안으로 저장할 수 있지만 승인 답변으로 이동하지 않는다.
+
+## 12. Part 4 로컬 데이터 검수
+
+```text
+개발 환경에서 /data-review/part4 직접 진입
+→ 검수 현황·목록
+→ Question 선택
+→ 일곱 필드별 결정
+→ 사용자 표시명·메모 입력
+→ 명시적 저장
+→ 다음 미검수
+
+저장된 결정
+├→ JSON 내보내기
+├→ JSON 가져오기 미리보기 → 사용자 확인 → 적용
+└→ stale 또는 승격 가능 현황 확인
+
+내보낸 결정 파일
+→ 별도 CLI 검증
+→ 완전 승인·현재 해시 일치 항목만 reviewed JSON 생성
+```
+
+이 흐름은 일반 학습 하단 메뉴, PracticeDraft, UserAnswer, Correction, ReviewState와 분리한다. 화면 진입만으로 승인하지 않으며 reviewed 데이터는 아직 학습 앱 기본 source로 전환하지 않는다.

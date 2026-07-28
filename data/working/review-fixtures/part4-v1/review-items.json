@@ -1,0 +1,4242 @@
+[
+  {
+    "review_item_id": "p4-review-item-P4-001",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-001",
+    "question": {
+      "question_id": "P4-001",
+      "part": 4,
+      "question_type": "친구",
+      "question_zh": "你有没有跟你兴趣爱好非常相似的朋友？请简单说一说。",
+      "question_pinyin": "nǐ yǒu méi yǒu gēn nǐ xìng qù ài hào fēi cháng xiāng sì de péng yǒu ？ qǐng jiǎn dān shuō yī shuō 。",
+      "question_ko": "취미가 매우 비슷한 친구가 있습니까? 간단히 말해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-001-001",
+      "question_id": "P4-001",
+      "point_type": "unclassified",
+      "content": "결론 → 이유 → 예시 → 정리",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-001-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-001-extracted",
+        "target_type": "question",
+        "target_id": "P4-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A138:N138",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-001-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-001-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A138:N138",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "5dcd9a49c858425fc87d0bac575795b8e75463ad0cf0767a5f1ba5a5dc1d8180",
+    "source_answer_point_hash": "494285b188c4654aa1a22924e3c520b8ad8f39c1ac9bf8a404d1f846bca3247b"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-002",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-002",
+    "question": {
+      "question_id": "P4-002",
+      "part": 4,
+      "question_type": "생활습관",
+      "question_zh": "你一般会在早上洗澡还是在晚上洗澡？请简单谈谈。",
+      "question_pinyin": "nǐ yì bān huì zài zǎo shàng xǐ zǎo hái shì zài wǎn shàng xǐ zǎo ？ qǐng jiǎn dān tán tán 。",
+      "question_ko": "보통 아침과 저녁 중 언제 샤워합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-002-001",
+      "question_id": "P4-002",
+      "point_type": "unclassified",
+      "content": "결론 → 이유 → 예시 → 정리",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-002-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-002-extracted",
+        "target_type": "question",
+        "target_id": "P4-002",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A139:N139",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-002-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-002-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A139:N139",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "0bc749b60c93475e65e9b470f59f6f40a18e8deb01e418a2e09194a0f88809e1",
+    "source_answer_point_hash": "a6ef0eb586ca5e992f8542a47e0ceb86eb0413d3e411361a58525e56844dacce"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-003",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-003",
+    "question": {
+      "question_id": "P4-003",
+      "part": 4,
+      "question_type": "성장지역",
+      "question_zh": "从小到大，你一直在同一个地区生活吗？请简单说说。",
+      "question_pinyin": "cóng xiǎo dào dà ， nǐ yì zhí zài tóng yī gè dì qū shēng huó ma ？ qǐng jiǎn dān shuō shuō 。",
+      "question_ko": "어릴 때부터 계속 같은 지역에서 살았습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-003-001",
+      "question_id": "P4-003",
+      "point_type": "unclassified",
+      "content": "결론 → 이유 → 예시 → 정리",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-003-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-003-extracted",
+        "target_type": "question",
+        "target_id": "P4-003",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A140:N140",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-003-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-003-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A140:N140",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "e862dc969598f86c947c46651b34a8381f2492e6a348d1a0a12e4a1dcb1ee9d3",
+    "source_answer_point_hash": "2cf2e0b41ca97c30e93ca53d3d01e14eab2fb7b65aedfeaf268f44a22b1e0f28"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-004",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-004",
+    "question": {
+      "question_id": "P4-004",
+      "part": 4,
+      "question_type": "감정조절",
+      "question_zh": "心情不好的时候，你一般会怎么调节情绪？请简单谈谈。",
+      "question_pinyin": "xīn qíng bù hǎo de shí hòu ， nǐ yì bān huì zěn me tiáo jié qíng xù ？ qǐng jiǎn dān tán tán 。",
+      "question_ko": "기분이 좋지 않을 때 어떻게 감정을 조절합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-004-001",
+      "question_id": "P4-004",
+      "point_type": "unclassified",
+      "content": "결론 → 이유 → 예시 → 정리",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-004-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-004-extracted",
+        "target_type": "question",
+        "target_id": "P4-004",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A141:N141",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-004-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-004-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A141:N141",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "820acd40db4c60e7ff01f04313b24d88b21914f2a1bfb7994459c92d9b055bf4",
+    "source_answer_point_hash": "712f448e5b4ad43c634967574a5500681e2eaa2ae86a0a73eec82df3df70332f"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-005",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-005",
+    "question": {
+      "question_id": "P4-005",
+      "part": 4,
+      "question_type": "명품",
+      "question_zh": "你买衣服或鞋子等服饰时，喜欢买名牌吗？请简单谈一谈。",
+      "question_pinyin": "nǐ mǎi yī fú huò xié zi děng fú shì shí ， xǐ huān mǎi míng pái ma ？ qǐng jiǎn dān tán yī tán 。",
+      "question_ko": "옷이나 신발을 살 때 명품을 선호합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-005-001",
+      "question_id": "P4-005",
+      "point_type": "unclassified",
+      "content": "결론 → 이유 → 예시 → 정리",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-005-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-005-extracted",
+        "target_type": "question",
+        "target_id": "P4-005",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A142:N142",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-005-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-005-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A142:N142",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "YBM 공식 샘플",
+        "claimed_source_url": "https://www.ybmtsc.co.kr/content/TSC/sample/sample4.php",
+        "source_grade": "A 공식 샘플",
+        "originality": "공식 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "ac2d7773e09c96c4cb32132c95d7461df3d499abbae4c70dd5751ee5e88ff5aa",
+    "source_answer_point_hash": "83936ba9663f4da5fc11049095c316e57ad84c0ea8b0f369c2266afa93196b55"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-006",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-006",
+    "question": {
+      "question_id": "P4-006",
+      "part": 4,
+      "question_type": "운동",
+      "question_zh": "你喜欢在哪儿运动？",
+      "question_pinyin": "nǐ xǐ huān zài nǎ ér yùn dòng ？",
+      "question_ko": "어디에서 운동하는 것을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-006-001",
+      "question_id": "P4-006",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-006-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-006-extracted",
+        "target_type": "question",
+        "target_id": "P4-006",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A143:N143",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-006-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-006-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A143:N143",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "af38c8eed0bff5d925e9cd9029b0c31ffbdbf97317fa9f329a65481d5055d6e0",
+    "source_answer_point_hash": "68570ddd90c8c902e7301afb6f48a25de24b9dd33388da9cc59cd0784037b6c6"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-007",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-007",
+    "question": {
+      "question_id": "P4-007",
+      "part": 4,
+      "question_type": "운동",
+      "question_zh": "你一个星期运动几次？",
+      "question_pinyin": "nǐ yí gè xīng qī yùn dòng jǐ cì ？",
+      "question_ko": "일주일에 몇 번 운동합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-007-001",
+      "question_id": "P4-007",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-007-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-007-extracted",
+        "target_type": "question",
+        "target_id": "P4-007",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A144:N144",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-007-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-007-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A144:N144",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "f978e8baf4bc1061dc50c8086a5ea0ceafc9af95ffc6d196eebb4cc1531fa91f",
+    "source_answer_point_hash": "e06e6699438a7b5298f13fd2bcf9b5120ad16ef5421329042d5a18a43bdff31e"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-008",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-008",
+    "question": {
+      "question_id": "P4-008",
+      "part": 4,
+      "question_type": "인물",
+      "question_zh": "你的上司是什么样的人？",
+      "question_pinyin": "nǐ de shàng sī shì shén me yàng de rén ？",
+      "question_ko": "상사는 어떤 사람입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-008-001",
+      "question_id": "P4-008",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-008-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-008-extracted",
+        "target_type": "question",
+        "target_id": "P4-008",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A145:N145",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-008-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-008-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A145:N145",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "6155de3e505412736a95f48e9189c1701235b8ed2bbb5984f0cc7e405864bb84",
+    "source_answer_point_hash": "cd067cadad0d0343d76e8b0abe6542edcd21001ded2434584548123a52bdc0be"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-009",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-009",
+    "question": {
+      "question_id": "P4-009",
+      "part": 4,
+      "question_type": "인물",
+      "question_zh": "你最尊敬的人是谁？",
+      "question_pinyin": "nǐ zuì zūn jìng de rén shì shuí ？",
+      "question_ko": "가장 존경하는 사람은 누구입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-009-001",
+      "question_id": "P4-009",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-009-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-009-extracted",
+        "target_type": "question",
+        "target_id": "P4-009",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A146:N146",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-009-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-009-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A146:N146",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "332e1a68da9893baeffbb949f51cdf7ead59010a64f913644bf67423dbd1ce47",
+    "source_answer_point_hash": "1834e2f6c63229c7f2c1323e6e8bfd8049ac96916292b4f3ab03ad2abdeeb6ed"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-010",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-010",
+    "question": {
+      "question_id": "P4-010",
+      "part": 4,
+      "question_type": "생활습관",
+      "question_zh": "你周末也早起吗？",
+      "question_pinyin": "nǐ zhōu mò yě zǎo qǐ ma ？",
+      "question_ko": "주말에도 일찍 일어납니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-010-001",
+      "question_id": "P4-010",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-010-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-010-extracted",
+        "target_type": "question",
+        "target_id": "P4-010",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A147:N147",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-010-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-010-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A147:N147",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "833c24ca0de831d3b8d203af4cd05d54895880f228f9b3259664ed527df32e23",
+    "source_answer_point_hash": "1b78b988c70d7c7883f99e8827061c3b8de75481e03c5245a355844229cd5372"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-011",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-011",
+    "question": {
+      "question_id": "P4-011",
+      "part": 4,
+      "question_type": "음식",
+      "question_zh": "你喜欢西餐吗？请简单谈谈。",
+      "question_pinyin": "nǐ xǐ huān xī cān ma ？ qǐng jiǎn dān tán tán 。",
+      "question_ko": "서양 음식을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-011-001",
+      "question_id": "P4-011",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-011-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-011-extracted",
+        "target_type": "question",
+        "target_id": "P4-011",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A148:N148",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-011-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-011-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A148:N148",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "ce153ad7b7ebc7008aaaf668358d855426e9cf23ea5771c60b1288a677a94b1a",
+    "source_answer_point_hash": "8cea4dbf9107b03cd0047c610fb6d57a2101d12302844fb094ecaea2056628d0"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-012",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-012",
+    "question": {
+      "question_id": "P4-012",
+      "part": 4,
+      "question_type": "영화",
+      "question_zh": "你一个月看几次电影？",
+      "question_pinyin": "nǐ yí gè yuè kàn jǐ cì diàn yǐng ？",
+      "question_ko": "한 달에 영화를 몇 번 봅니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-012-001",
+      "question_id": "P4-012",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-012-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-012-extracted",
+        "target_type": "question",
+        "target_id": "P4-012",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A149:N149",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-012-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-012-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A149:N149",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "01bbc31bb7ccc6cfd7f6c8f7beaf1492b8b0e0696445e42772a82b746cabfe30",
+    "source_answer_point_hash": "03af50533f36708fb520f45352504c515141ded32819c7dd6109f98828942963"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-013",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-013",
+    "question": {
+      "question_id": "P4-013",
+      "part": 4,
+      "question_type": "소비",
+      "question_zh": "跟朋友吃饭的时候，你一般AA制吗？",
+      "question_pinyin": "gēn péng yǒu chī fàn de shí hòu ， nǐ yì bān A A zhì ma ？",
+      "question_ko": "친구와 식사할 때 보통 더치페이를 합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-013-001",
+      "question_id": "P4-013",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-013-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-013-extracted",
+        "target_type": "question",
+        "target_id": "P4-013",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A150:N150",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-013-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-013-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A150:N150",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "12b909f1cb3bfacdd81fef183f6f9d72cbbfe75fd69e094c909180fa4792aa82",
+    "source_answer_point_hash": "61fd636505fac39f177b5823c19eab80a14fd18f51c30e3ad3628df4090b38bc"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-014",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-014",
+    "question": {
+      "question_id": "P4-014",
+      "part": 4,
+      "question_type": "독서",
+      "question_zh": "你经常去书店吗？",
+      "question_pinyin": "nǐ jīng cháng qù shū diàn ma ？",
+      "question_ko": "서점에 자주 갑니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-014-001",
+      "question_id": "P4-014",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-014-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-014-extracted",
+        "target_type": "question",
+        "target_id": "P4-014",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A151:N151",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-014-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-014-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A151:N151",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "0f7f144b1e66248c9393dcf5be2eaf4904df668194cedac6a8e053106ceb8240",
+    "source_answer_point_hash": "2e9ed05b773dfea0a7b9cebe41552f25e9bb0bb3902e07174e469d4b82ea0445"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-015",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-015",
+    "question": {
+      "question_id": "P4-015",
+      "part": 4,
+      "question_type": "독서",
+      "question_zh": "你喜欢纸质书还是电子书？",
+      "question_pinyin": "nǐ xǐ huān zhǐ zhì shū hái shì diàn zi shū ？",
+      "question_ko": "종이책과 전자책 중 무엇을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-015-001",
+      "question_id": "P4-015",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-015-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-015-extracted",
+        "target_type": "question",
+        "target_id": "P4-015",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A152:N152",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-015-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-015-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A152:N152",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "285b167ecaf321c23e1654343e5fa06642f1645a24318090cd948fbfcd82e8ae",
+    "source_answer_point_hash": "1830c985a6def9e70c9f3e71ed3e50b1045c4c3cdba126d66b90a1c03906a803"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-016",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-016",
+    "question": {
+      "question_id": "P4-016",
+      "part": 4,
+      "question_type": "계절",
+      "question_zh": "你喜欢春天还是秋天？",
+      "question_pinyin": "nǐ xǐ huān chūn tiān hái shì qiū tiān ？",
+      "question_ko": "봄과 가을 중 어느 계절을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-016-001",
+      "question_id": "P4-016",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-016-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-016-extracted",
+        "target_type": "question",
+        "target_id": "P4-016",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A153:N153",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-016-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-016-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A153:N153",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "8088b4541dbef927dd5b53e8fcb0da40ff5b66d278b46374ebc17095ea5bb655",
+    "source_answer_point_hash": "9d606faad41d0da8cb9875a1323f33b8aa1a63bc6f9806e7b70ec7af47107fd8"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-017",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-017",
+    "question": {
+      "question_id": "P4-017",
+      "part": 4,
+      "question_type": "회사",
+      "question_zh": "你对公司的工作环境中哪个部分比较满意？",
+      "question_pinyin": "nǐ duì gōng sī de gōng zuò huán jìng zhōng nǎ ge bù fèn bǐ jiào mǎn yì ？",
+      "question_ko": "회사 업무환경 중 어느 부분이 만족스럽습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-017-001",
+      "question_id": "P4-017",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-017-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-017-extracted",
+        "target_type": "question",
+        "target_id": "P4-017",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A154:N154",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-017-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-017-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A154:N154",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "c48cfd3ce2489c7113f2b5fc169c01542a940146b1cccd0996eeea9928f7e06f",
+    "source_answer_point_hash": "4bbcce1949bda54466f0cf1c124623d3e722729f7721138d34395c9401788958"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-018",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-018",
+    "question": {
+      "question_id": "P4-018",
+      "part": 4,
+      "question_type": "영화",
+      "question_zh": "你每年大概看几次电影？",
+      "question_pinyin": "nǐ měi nián dà gài kàn jǐ cì diàn yǐng ？",
+      "question_ko": "1년에 대략 영화를 몇 번 봅니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-018-001",
+      "question_id": "P4-018",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-018-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-018-extracted",
+        "target_type": "question",
+        "target_id": "P4-018",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A155:N155",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-018-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-018-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A155:N155",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "af6c983d371b756ba0a02ec3be52274f6fbd5c683f328686de9bfc7b7673c79c",
+    "source_answer_point_hash": "52ecb7e0ef8788f72e10495d800d71b25ddba4c55e4cbba679a7d131f732ad9c"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-019",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-019",
+    "question": {
+      "question_id": "P4-019",
+      "part": 4,
+      "question_type": "경험",
+      "question_zh": "丢的东西中最可惜的是什么？",
+      "question_pinyin": "diū de dōng xī zhōng zuì kě xī de shì shén me ？",
+      "question_ko": "잃어버린 물건 중 가장 아까운 것은 무엇입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-019-001",
+      "question_id": "P4-019",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-019-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-019-extracted",
+        "target_type": "question",
+        "target_id": "P4-019",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A156:N156",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-019-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-019-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A156:N156",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "7b88028dfc8369cad77ba8bc26c028f2f9e01255c8f251110279ae4b41931b85",
+    "source_answer_point_hash": "d3b4802219c4e3bd094892ebdeb4f9b5d6ec1860020f48737ac5b8541fe9c6fc"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-020",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-020",
+    "question": {
+      "question_id": "P4-020",
+      "part": 4,
+      "question_type": "구독",
+      "question_zh": "你定期订阅杂志或者报纸吗？",
+      "question_pinyin": "nǐ dìng qī dìng yuè zá zhì huò zhě bào zhǐ ma ？",
+      "question_ko": "잡지나 신문을 정기 구독합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-020-001",
+      "question_id": "P4-020",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-020-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-020-extracted",
+        "target_type": "question",
+        "target_id": "P4-020",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A157:N157",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-020-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-020-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A157:N157",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "14d2067ddbb45f0ae70aae9523f4cdd000e5c0b74b4e27c230f95bc88f2cc3d2",
+    "source_answer_point_hash": "b11e5dbbe4eeeeab2b150a23c4caa0e3509fcc7033d36a01e6013800c7baee67"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-021",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-021",
+    "question": {
+      "question_id": "P4-021",
+      "part": 4,
+      "question_type": "연예인",
+      "question_zh": "你跟明星见过面吗？",
+      "question_pinyin": "nǐ gēn míng xīng jiàn guò miàn ma ？",
+      "question_ko": "연예인을 만난 적이 있습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-021-001",
+      "question_id": "P4-021",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-021-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-021-extracted",
+        "target_type": "question",
+        "target_id": "P4-021",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A158:N158",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-021-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-021-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A158:N158",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "3e85aef3b4a10485e70cff067a2ef8d8d286937d951aaf4a6202837e7dbf5afb",
+    "source_answer_point_hash": "5df5c3df146faf08717c7310ca10bf6c42ad326e540da00ee2a5acd21d6b2301"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-022",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-022",
+    "question": {
+      "question_id": "P4-022",
+      "part": 4,
+      "question_type": "행복",
+      "question_zh": "一天当中最开心的时候是什么时候？",
+      "question_pinyin": "yī tiān dāng zhōng zuì kāi xīn de shí hòu shì shén me shí hòu ？",
+      "question_ko": "하루 중 가장 행복한 시간은 언제입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-022-001",
+      "question_id": "P4-022",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-022-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-022-extracted",
+        "target_type": "question",
+        "target_id": "P4-022",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A159:N159",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-022-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-022-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A159:N159",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "b1b5c6397035c77af00ce975b78aa95abc58fc3fd57ede819b001951beea698a",
+    "source_answer_point_hash": "9801955daf68c2bea4e47be1296318cce9aebcdcccec91bd01ef87acd617387d"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-023",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-023",
+    "question": {
+      "question_id": "P4-023",
+      "part": 4,
+      "question_type": "건강",
+      "question_zh": "请说一说吃早饭的好处。",
+      "question_pinyin": "qǐng shuō yī shuō chī zǎo fàn de hǎo chù 。",
+      "question_ko": "아침 식사의 장점을 말해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-023-001",
+      "question_id": "P4-023",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-023-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-023-extracted",
+        "target_type": "question",
+        "target_id": "P4-023",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A160:N160",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-023-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-023-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A160:N160",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "d7a96a504ce56f3513406bedc7aac1c94686923014c4605be4785e8633f93207",
+    "source_answer_point_hash": "1e4f71f2badf14141ed2f43f2141282f849c995b8f219104815cc3290abbe4e0"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-024",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-024",
+    "question": {
+      "question_id": "P4-024",
+      "part": 4,
+      "question_type": "독서",
+      "question_zh": "请谈谈看漫画书的好处和坏处。",
+      "question_pinyin": "qǐng tán tán kàn màn huà shū de hǎo chù hé huài chù 。",
+      "question_ko": "만화책의 장단점을 말해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-024-001",
+      "question_id": "P4-024",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-024-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-024-extracted",
+        "target_type": "question",
+        "target_id": "P4-024",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A161:N161",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-024-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-024-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A161:N161",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "0f94b0104dc43ca8e89284338f69d476ae43f3eefb7d42b0ea388ca266ee9681",
+    "source_answer_point_hash": "ca5e9a32c790dd0a1cab9e4261ac8eed9291214a9521337d13daade44afac09f"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-025",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-025",
+    "question": {
+      "question_id": "P4-025",
+      "part": 4,
+      "question_type": "음식",
+      "question_zh": "你喜欢吃辣的菜吗？",
+      "question_pinyin": "nǐ xǐ huān chī là de cài ma ？",
+      "question_ko": "매운 음식을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-025-001",
+      "question_id": "P4-025",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-025-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-025-extracted",
+        "target_type": "question",
+        "target_id": "P4-025",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A162:N162",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-025-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-025-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A162:N162",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "625f48779c808880d420b83299d6a37b2b3bad02e2f29c5d3c639d930177d539",
+    "source_answer_point_hash": "f4e6da3c921169ed3a2850c46f8c4be56d7a8a741ca91db6f4754f6d48d4caa6"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-026",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-026",
+    "question": {
+      "question_id": "P4-026",
+      "part": 4,
+      "question_type": "예술",
+      "question_zh": "你对美术感兴趣吗？",
+      "question_pinyin": "nǐ duì měi shù gǎn xìng qù ma ？",
+      "question_ko": "미술에 관심이 있습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-026-001",
+      "question_id": "P4-026",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-026-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-026-extracted",
+        "target_type": "question",
+        "target_id": "P4-026",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A163:N163",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-026-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-026-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A163:N163",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "fc463f59fcdad2aff8cda8a5a0278a10b1d7237d226bd30d24e8ab5e39af4de8",
+    "source_answer_point_hash": "701f322b0d7e5943b2f9ec0f5d1868dc2d5b7181d316d9a79dec8735cb61fbf6"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-027",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-027",
+    "question": {
+      "question_id": "P4-027",
+      "part": 4,
+      "question_type": "소비",
+      "question_zh": "你在穿衣打扮上花很多钱吗？",
+      "question_pinyin": "nǐ zài chuān yī dǎ bàn shàng huā hěn duō qián ma ？",
+      "question_ko": "옷차림에 돈을 많이 씁니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-027-001",
+      "question_id": "P4-027",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-027-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-027-extracted",
+        "target_type": "question",
+        "target_id": "P4-027",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A164:N164",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-027-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-027-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A164:N164",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "c9b648689eb24739e19216ff9feef2b5b3dd955f5d29625e23e32c3f9a34e2ba",
+    "source_answer_point_hash": "5e254f1b67aab06ff0eeafc8917d0676ab697c85dbb5f413fbcf3ad600067883"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-028",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-028",
+    "question": {
+      "question_id": "P4-028",
+      "part": 4,
+      "question_type": "선물",
+      "question_zh": "看望住院的朋友时，你会带什么礼物？",
+      "question_pinyin": "kàn wàng zhù yuàn de péng yǒu shí ， nǐ huì dài shén me lǐ wù ？",
+      "question_ko": "입원한 친구를 방문할 때 어떤 선물을 가져갑니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-028-001",
+      "question_id": "P4-028",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-028-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-028-extracted",
+        "target_type": "question",
+        "target_id": "P4-028",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A165:N165",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-028-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-028-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A165:N165",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "d76cb13917a62dc2968e75b0c45c7aa03be7af8c4a640b64a17b7a6d7f7d663d",
+    "source_answer_point_hash": "e1c72b287670dcefbd755f580ef6354f34dbd9f0faff33faa747592fb52a3822"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-029",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-029",
+    "question": {
+      "question_id": "P4-029",
+      "part": 4,
+      "question_type": "칭찬",
+      "question_zh": "你称赞过别人吗？",
+      "question_pinyin": "nǐ chēng zàn guò bié rén ma ？",
+      "question_ko": "다른 사람을 칭찬한 적이 있습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-029-001",
+      "question_id": "P4-029",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-029-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-029-extracted",
+        "target_type": "question",
+        "target_id": "P4-029",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A166:N166",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-029-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-029-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A166:N166",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "a2ec53e5f42cac81c185ad04f3d560c92d1cc5e1e3c2a20480b2f305905f3051",
+    "source_answer_point_hash": "443e61f92309e1d547a8a7e60ea054189a79f7642d6d8b8db345fded3c2c829a"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-030",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-030",
+    "question": {
+      "question_id": "P4-030",
+      "part": 4,
+      "question_type": "직장",
+      "question_zh": "同事和上司之间的关系好吗？",
+      "question_pinyin": "tóng shì hé shàng sī zhī jiān de guān xì hǎo ma ？",
+      "question_ko": "동료와 상사의 관계가 좋습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-030-001",
+      "question_id": "P4-030",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-030-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-030-extracted",
+        "target_type": "question",
+        "target_id": "P4-030",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A167:N167",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-030-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-030-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A167:N167",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "e553234f4a5fc7121342152b036fb69d642b1a8e58021140d61777333acff597",
+    "source_answer_point_hash": "84fe62490b70d5cdd454c4efcf2b1f2e449204760ed77e1a9a90ced2c51166d0"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-031",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-031",
+    "question": {
+      "question_id": "P4-031",
+      "part": 4,
+      "question_type": "직장",
+      "question_zh": "工作时什么能力最重要？",
+      "question_pinyin": "gōng zuò shí shén me néng lì zuì zhòng yào ？",
+      "question_ko": "일할 때 어떤 능력이 가장 중요합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-031-001",
+      "question_id": "P4-031",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-031-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-031-extracted",
+        "target_type": "question",
+        "target_id": "P4-031",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A168:N168",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-031-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-031-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A168:N168",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "df05f8ea24cccaf3c1bbe1758554dc542ae94552bdb7e983f26d6ad81a3cbd7f",
+    "source_answer_point_hash": "2c39f191f6b05920141639ac20e332368495b0e643a662f6b20d97e95f75431c"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-032",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-032",
+    "question": {
+      "question_id": "P4-032",
+      "part": 4,
+      "question_type": "기술",
+      "question_zh": "使用电子邮件有什么好处？",
+      "question_pinyin": "shǐ yòng diàn zi yóu jiàn yǒu shén me hǎo chù ？",
+      "question_ko": "이메일 사용의 장점은 무엇입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-032-001",
+      "question_id": "P4-032",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-032-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-032-extracted",
+        "target_type": "question",
+        "target_id": "P4-032",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A169:N169",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-032-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-032-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A169:N169",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "c3a4a37e643351fe5dd0ebe9ac81c803b3fd5e7d2111c5eab15343e8d2815554",
+    "source_answer_point_hash": "e5cab05e7a60ccc931b20686e318834dde80ef3b5e37d6b3bf08834b2ffcfe8d"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-033",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-033",
+    "question": {
+      "question_id": "P4-033",
+      "part": 4,
+      "question_type": "언어",
+      "question_zh": "工作的时候用汉语吗？",
+      "question_pinyin": "gōng zuò de shí hòu yòng hàn yǔ ma ？",
+      "question_ko": "업무 중 중국어를 사용합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-033-001",
+      "question_id": "P4-033",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-033-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-033-extracted",
+        "target_type": "question",
+        "target_id": "P4-033",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A170:N170",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-033-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-033-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A170:N170",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "6d43d4525bb235f759b32091af9d872a670d7e4f8c965a541dab3d8ba6325500",
+    "source_answer_point_hash": "3dcf0200eb714712b178146a515a908e224406037cfa0ff40f0dfefcba62cb9e"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-034",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-034",
+    "question": {
+      "question_id": "P4-034",
+      "part": 4,
+      "question_type": "경험",
+      "question_zh": "你养过宠物吗？",
+      "question_pinyin": "nǐ yǎng guò chǒng wù ma ？",
+      "question_ko": "반려동물을 키운 적이 있습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-034-001",
+      "question_id": "P4-034",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-034-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-034-extracted",
+        "target_type": "question",
+        "target_id": "P4-034",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A171:N171",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-034-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-034-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A171:N171",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "974028817748a6adf7de4d166e8a65e92800adfb85624117d36b7b84cd90248e",
+    "source_answer_point_hash": "2f0821f4a35d6f81eb31caba0799fb1c9fce69fab4682291088b26e9dd1a07a5"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-035",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-035",
+    "question": {
+      "question_id": "P4-035",
+      "part": 4,
+      "question_type": "선택",
+      "question_zh": "你喜欢养猫还是养狗？",
+      "question_pinyin": "nǐ xǐ huān yǎng māo hái shì yǎng gǒu ？",
+      "question_ko": "고양이와 개 중 어떤 것을 키우는 것을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-035-001",
+      "question_id": "P4-035",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-035-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-035-extracted",
+        "target_type": "question",
+        "target_id": "P4-035",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A172:N172",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-035-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-035-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A172:N172",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "6e03f4635f845d894916e40503b5b0e4c29bbac112b67775220ba50ae356a406",
+    "source_answer_point_hash": "b71a369a3edaac79f8669c0cb7a31803d1d02ede3d4469ca5986871184100aa9"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-036",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-036",
+    "question": {
+      "question_id": "P4-036",
+      "part": 4,
+      "question_type": "여행",
+      "question_zh": "你喜欢一个人去旅行吗？",
+      "question_pinyin": "nǐ xǐ huān yí gè rén qù lǚ xíng ma ？",
+      "question_ko": "혼자 여행하는 것을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-036-001",
+      "question_id": "P4-036",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-036-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-036-extracted",
+        "target_type": "question",
+        "target_id": "P4-036",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A173:N173",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1438",
+        "source_grade": "C 공개 기출형",
+        "originality": "웹 공개 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-036-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-036-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A173:N173",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1438",
+        "source_grade": "C 공개 기출형",
+        "originality": "웹 공개 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "7288e770db9e49e910ac21d3605c39700cca5cc8d380a1ca151835c7821adfe0",
+    "source_answer_point_hash": "07af9183fa8be027b7376d5c941b35a3a4701715e378fefeca78d589a372ee4e"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-037",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-037",
+    "question": {
+      "question_id": "P4-037",
+      "part": 4,
+      "question_type": "여행",
+      "question_zh": "请说说一次坐飞机的经历。",
+      "question_pinyin": "qǐng shuō shuō yī cì zuò fēi jī de jīng lì 。",
+      "question_ko": "비행기를 탔던 경험을 말해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-037-001",
+      "question_id": "P4-037",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-037-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-037-extracted",
+        "target_type": "question",
+        "target_id": "P4-037",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A174:N174",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1439",
+        "source_grade": "C 공개 기출형",
+        "originality": "웹 공개 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-037-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-037-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A174:N174",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1439",
+        "source_grade": "C 공개 기출형",
+        "originality": "웹 공개 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "22adc6e4b1941fd91a7c3da473e46c4c7a7d0950917ddd1ae3e1802211343471",
+    "source_answer_point_hash": "431deccfd2892f12a5b366f0155406b6815a1189fd8bf31e31c23953a88f05ff"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-038",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-038",
+    "question": {
+      "question_id": "P4-038",
+      "part": 4,
+      "question_type": "장소",
+      "question_zh": "请说说你最喜欢的地方。",
+      "question_pinyin": "qǐng shuō shuō nǐ zuì xǐ huān de dì fāng 。",
+      "question_ko": "가장 좋아하는 장소를 말해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-038-001",
+      "question_id": "P4-038",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-038-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-038-extracted",
+        "target_type": "question",
+        "target_id": "P4-038",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A175:N175",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1439",
+        "source_grade": "C 공개 기출형",
+        "originality": "웹 공개 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-038-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-038-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A175:N175",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1439",
+        "source_grade": "C 공개 기출형",
+        "originality": "웹 공개 원문",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "eb331eff6b13136e07d7daa0c9ac601211a7d56fed4a134253b82df9ae8c61fd",
+    "source_answer_point_hash": "cd6f94a67ea4cf0db9917007154d7c1d15d6b66eb753c59f3497dc9eaf055d3c"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-039",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-039",
+    "question": {
+      "question_id": "P4-039",
+      "part": 4,
+      "question_type": "명절",
+      "question_zh": "你最喜欢的节日是什么？",
+      "question_pinyin": "nǐ zuì xǐ huān de jié rì shì shén me ？",
+      "question_ko": "가장 좋아하는 명절은 무엇입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-039-001",
+      "question_id": "P4-039",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-039-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-039-extracted",
+        "target_type": "question",
+        "target_id": "P4-039",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A176:N176",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1440",
+        "source_grade": "C 공개 기출형",
+        "originality": "정규화",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-039-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-039-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A176:N176",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "공개 기출형 자료",
+        "claimed_source_url": "https://qingone.tistory.com/1440",
+        "source_grade": "C 공개 기출형",
+        "originality": "정규화",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      },
+      {
+        "review_item_id": "rq-source-url-verification",
+        "target_type": "source_reference",
+        "issue_type": "claimed_url_verification",
+        "priority": "later",
+        "reason": "workbook 내부 URL은 접근·진위·권리를 검증하지 않은 주장임.",
+        "source_locator": "문제은행!I2:I254; '공식·참고 링크'!C2:C18",
+        "review_status": "review_needed",
+        "notes": "빈 URL은 오류가 아니다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "a7dcb35faa776195976ffff47081fde33dee3ade82b6058f55b7e9f0ddf45a30",
+    "source_answer_point_hash": "5ff0bbbe392e21e492248739af3a932161a4adad230bf0fed71b474e59575c1c"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-040",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-040",
+    "question": {
+      "question_id": "P4-040",
+      "part": 4,
+      "question_type": "취미",
+      "question_zh": "你平时有什么兴趣爱好？",
+      "question_pinyin": "nǐ píng shí yǒu shén me xìng qù ài hào ？",
+      "question_ko": "평소 어떤 취미가 있습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-040-001",
+      "question_id": "P4-040",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-040-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-040-extracted",
+        "target_type": "question",
+        "target_id": "P4-040",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A177:N177",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-040-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-040-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A177:N177",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "22e463d5d5337a5696283b111e081494fa970a0fc0019ed285cc33452ce59970",
+    "source_answer_point_hash": "9d6f82907e3246160975d9f3eb6c5d32f5722890713a107786b42c9d5313c15f"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-041",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-041",
+    "question": {
+      "question_id": "P4-041",
+      "part": 4,
+      "question_type": "요리",
+      "question_zh": "你最拿手的菜是什么？",
+      "question_pinyin": "nǐ zuì ná shǒu de cài shì shén me ？",
+      "question_ko": "가장 자신 있는 요리는 무엇입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-041-001",
+      "question_id": "P4-041",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-041-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-041-extracted",
+        "target_type": "question",
+        "target_id": "P4-041",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A178:N178",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-041-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-041-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A178:N178",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "69fb6b950c8dd0d8164a263f50b51ad5e99eebd738b28e1345826a1d6559f605",
+    "source_answer_point_hash": "ed78e6814e9e5bd592e076e625e59809db0398f90c481d1bb43ef590077222e6"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-042",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-042",
+    "question": {
+      "question_id": "P4-042",
+      "part": 4,
+      "question_type": "외식",
+      "question_zh": "你经常在外面吃饭吗？",
+      "question_pinyin": "nǐ jīng cháng zài wài miàn chī fàn ma ？",
+      "question_ko": "외식을 자주 합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-042-001",
+      "question_id": "P4-042",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-042-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-042-extracted",
+        "target_type": "question",
+        "target_id": "P4-042",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A179:N179",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-042-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-042-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A179:N179",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "6ffcfa936279d08596a7e9f62d95fa0b3f339a39cfd6033b44f0dc161c2ad440",
+    "source_answer_point_hash": "c8e48e09daff8d4988d95305567854367018e4f0b5d67e1d5076f78c8f595758"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-043",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-043",
+    "question": {
+      "question_id": "P4-043",
+      "part": 4,
+      "question_type": "여행",
+      "question_zh": "有机会的话，你想去国内旅行还是国外旅行？",
+      "question_pinyin": "yǒu jī huì de huà ， nǐ xiǎng qù guó nèi lǚ xíng hái shì guó wài lǚ xíng ？",
+      "question_ko": "기회가 있다면 국내와 해외 중 어디로 여행하고 싶습니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-043-001",
+      "question_id": "P4-043",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-043-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-043-extracted",
+        "target_type": "question",
+        "target_id": "P4-043",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A180:N180",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-043-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-043-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A180:N180",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "53bc7f2afc700e8426037ff2c4147780dc9bc813595a8360b51afa78baf22bd2",
+    "source_answer_point_hash": "957ec7a2989259e99998898e3d8173a46b19830c38470330e783f0489ab9c746"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-044",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-044",
+    "question": {
+      "question_id": "P4-044",
+      "part": 4,
+      "question_type": "계절",
+      "question_zh": "你最喜欢什么季节？为什么？",
+      "question_pinyin": "nǐ zuì xǐ huān shén me jì jié ？ wèi shén me ？",
+      "question_ko": "가장 좋아하는 계절은 무엇이며 이유는 무엇입니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-044-001",
+      "question_id": "P4-044",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-044-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-044-extracted",
+        "target_type": "question",
+        "target_id": "P4-044",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A181:N181",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-044-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-044-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A181:N181",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "3c62508da8971a85091ada8aa6006915e4bcd83319b35dc74f8089977a40ee2f",
+    "source_answer_point_hash": "9764ed3d8a4060343b4a04920262ce282bfdc9ff461c1c95af0d665b1ec60d75"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-045",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-045",
+    "question": {
+      "question_id": "P4-045",
+      "part": 4,
+      "question_type": "출퇴근",
+      "question_zh": "上下班的路上你一般做什么？",
+      "question_pinyin": "shàng xià bān de lù shàng nǐ yì bān zuò shén me ？",
+      "question_ko": "출퇴근길에 보통 무엇을 합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-045-001",
+      "question_id": "P4-045",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-045-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-045-extracted",
+        "target_type": "question",
+        "target_id": "P4-045",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A182:N182",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-045-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-045-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A182:N182",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "81b342ccd42ff49d19ce08f179e6d23f77ac8732ca9e0c0b6f34f0f2284642d2",
+    "source_answer_point_hash": "f3ac104ffa5a90de1bf0b587e71bce080e7e68aa2a66ea32fc45060a98ef2279"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-046",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-046",
+    "question": {
+      "question_id": "P4-046",
+      "part": 4,
+      "question_type": "산책",
+      "question_zh": "你喜欢散步吗？",
+      "question_pinyin": "nǐ xǐ huān sàn bù ma ？",
+      "question_ko": "산책하는 것을 좋아합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-046-001",
+      "question_id": "P4-046",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-046-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-046-extracted",
+        "target_type": "question",
+        "target_id": "P4-046",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A183:N183",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-046-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-046-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A183:N183",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "e547760a7e4eb3fc0bda451204f72b725ef1ed2fd116623914f5328a2452bb63",
+    "source_answer_point_hash": "8f63e43d8be0f5ed149aa3c3e4d28f84570777392c9640d7daa8d2695f6518db"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-047",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-047",
+    "question": {
+      "question_id": "P4-047",
+      "part": 4,
+      "question_type": "인터넷",
+      "question_zh": "你平时怎么使用互联网？",
+      "question_pinyin": "nǐ píng shí zěn me shǐ yòng hù lián wǎng ？",
+      "question_ko": "평소 인터넷을 어떻게 사용합니까?",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-047-001",
+      "question_id": "P4-047",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-047-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-047-extracted",
+        "target_type": "question",
+        "target_id": "P4-047",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A184:N184",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-047-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-047-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A184:N184",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "3cd1738e134dc9163d4d8ef1a666819a093a3cb7d84016b2c0f7955d153054f7",
+    "source_answer_point_hash": "269718ef4ace28a6c36c1bfb80a6f359fa06ea9099544cacf2a7173a926fe284"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-048",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-048",
+    "question": {
+      "question_id": "P4-048",
+      "part": 4,
+      "question_type": "가족",
+      "question_zh": "请简单介绍一下你的家人。",
+      "question_pinyin": "qǐng jiǎn dān jiè shào yī xià nǐ de jiā rén 。",
+      "question_ko": "가족을 간단히 소개해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-048-001",
+      "question_id": "P4-048",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-048-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-048-extracted",
+        "target_type": "question",
+        "target_id": "P4-048",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A185:N185",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-048-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-048-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A185:N185",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "331711e74cda3c800bfe278381b0a767840127d2a357073a911339960f1c8496",
+    "source_answer_point_hash": "7f6af53d3d0cb9a831261e37b7c67b5e13cd40621f00e007b456be8f8358d877"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-049",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-049",
+    "question": {
+      "question_id": "P4-049",
+      "part": 4,
+      "question_type": "주거",
+      "question_zh": "请简单介绍一下你住的地方。",
+      "question_pinyin": "qǐng jiǎn dān jiè shào yī xià nǐ zhù de dì fāng 。",
+      "question_ko": "사는 곳을 간단히 소개해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-049-001",
+      "question_id": "P4-049",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-049-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-049-extracted",
+        "target_type": "question",
+        "target_id": "P4-049",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A186:N186",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-049-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-049-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A186:N186",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "15723496a01b529c1da016742509089b7f8ee377f1c3e305230e3ca31fc90c9d",
+    "source_answer_point_hash": "653a5622eec443812debf7c44e28d220594e3f0c6dac8570d717f794970d691b"
+  },
+  {
+    "review_item_id": "p4-review-item-P4-050",
+    "dataset_id": "part4-review-fixture-v1",
+    "question_id": "P4-050",
+    "question": {
+      "question_id": "P4-050",
+      "part": 4,
+      "question_type": "회사",
+      "question_zh": "请简单介绍一下你的工作。",
+      "question_pinyin": "qǐng jiǎn dān jiè shào yī xià nǐ de gōng zuò 。",
+      "question_ko": "업무를 간단히 소개해 주세요.",
+      "question_status": "raw",
+      "normalization_notes": "",
+      "tags": []
+    },
+    "answer_point": {
+      "answer_point_id": "ap-P4-050-001",
+      "question_id": "P4-050",
+      "point_type": "unclassified",
+      "content": "25초: 직접 답변 + 이유 2개 + 경험/예시 + 결론",
+      "sequence": 1,
+      "point_status": "raw",
+      "source_reference_ids": [
+        "sr-answer-point-ap-P4-050-001-extracted"
+      ],
+      "notes": "workbook 원문을 분해하거나 구조 분석하지 않음."
+    },
+    "question_source_references": [
+      {
+        "source_reference_id": "sr-question-P4-050-extracted",
+        "target_type": "question",
+        "target_id": "P4-050",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A187:N187",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "answer_point_source_references": [
+      {
+        "source_reference_id": "sr-answer-point-ap-P4-050-001-extracted",
+        "target_type": "answer_point",
+        "target_id": "ap-P4-050-001",
+        "source_id": "src-001",
+        "source_locator": "문제은행!A187:N187",
+        "relationship_kind": "extracted_from",
+        "claimed_source_name": "프로젝트 강의 분석",
+        "claimed_source_url": "",
+        "source_grade": "B 강의 기출·복원",
+        "originality": "강의 확인 문제",
+        "verification_status": "unverified",
+        "notes": ""
+      }
+    ],
+    "review_queue_items": [
+      {
+        "review_item_id": "rq-question-language-and-source-review",
+        "target_type": "question",
+        "issue_type": "language_and_source_verification",
+        "priority": "important",
+        "reason": "253개 raw 질문의 중국어·병음·한국어·유형·출처를 사람 검수해야 함.",
+        "source_locator": "문제은행!A2:N254",
+        "review_status": "review_needed",
+        "notes": "자동 정규화나 교정을 수행하지 않았다."
+      }
+    ],
+    "required_review_fields": [
+      "chinese_text",
+      "pinyin",
+      "korean_translation",
+      "question_type",
+      "answer_point",
+      "source_locator",
+      "claimed_source_metadata"
+    ],
+    "source_question_hash": "6e5dfc194bc8eb364892577dea7e75b43a341bca304082aee4de223a890f6288",
+    "source_answer_point_hash": "73b5748993bc349a910cdd9a16cac76dc5ce7344ec18b4499aa14b2e5bcf46a4"
+  }
+]

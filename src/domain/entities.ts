@@ -352,3 +352,31 @@ export interface ReviewState {
   last_reviewed_at?: string
   review_count: number
 }
+
+export type Part4ReviewField =
+  | 'chinese_text'
+  | 'pinyin'
+  | 'korean_translation'
+  | 'question_type'
+  | 'answer_point'
+  | 'source_locator'
+  | 'claimed_source_metadata'
+
+export type Part4ReviewFieldStatus =
+  | 'approved'
+  | 'needs_fix'
+  | 'not_checked'
+
+export interface Part4ReviewDecision {
+  review_decision_id: string
+  dataset_id: 'part4-review-fixture-v1'
+  question_id: string
+  field_decisions: Record<Part4ReviewField, Part4ReviewFieldStatus>
+  overall_status: 'approved' | 'needs_fix' | 'deferred'
+  reviewer_note: string
+  reviewed_by: string
+  reviewed_at: string
+  source_question_hash: string
+  source_answer_point_hash: string
+  decision_version: 1
+}

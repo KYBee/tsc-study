@@ -60,6 +60,14 @@ npm run check:data
 
 현재 bundle은 전체 원문을 구조적으로 반입한 결과이지 언어·출처·권리를 검수한 결과가 아니다. `reviewed` 승격과 앱 런타임 연결은 별도 작업이다.
 
+## Part 4 사람 검수와 부분 승격
+
+Part 4 검수 입력은 `scripts/build_part4_review_fixture.py`가 working 앱 fixture와 review queue에서 결정적으로 만든다. 원문은 수정하지 않고 Question·AnswerPoint 해시와 일곱 필수 검수 영역을 보존한다.
+
+사용자 결정은 `/data-review/part4`의 별도 IndexedDB에 저장하고 JSON 파일로 명시적으로 내보낸다. 학습자의 PracticeDraft, UserAnswer, Correction, ReviewState는 검수 결정에 포함하지 않는다.
+
+`scripts/promote_part4_reviewed_data.py --decisions <path>`는 모든 필드가 승인되고 현재 해시와 일치하는 항목만 `data/reviewed/part4-v1/` 후보로 생성한다. 승인 가능한 항목이 0개면 출력하지 않는다. SourceReference의 workbook 내부 주장 승인만으로 외부 출처 검증 상태를 변경하지 않는다. 실제 reviewed 데이터와 학습 앱 연결은 별도 사용자 결정 전까지 미완료다.
+
 ## 상태 관리
 
 ### 질문 상태

@@ -34,6 +34,8 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 [MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)에 따라 React + TypeScript + Vite 프로젝트를 초기화했다. 현재 앱은 `full-import-v1`에서 Part 4의 raw working 문제 50개만 뽑은 deterministic 개발 fixture를 읽는다. 전체 목록·검색·유형 및 상태 필터·랜덤 문제, 문제별 연습 초안, 개발용 deterministic mock 교정, 사용자 승인 후 답변 저장, 50문제 복습 상태, 개인 실수와 마지막 학습 위치 흐름을 구현했다. 개인 `PracticeDraft`·`UserAnswer`·개인 `Correction`·`ReviewState`는 현재 브라우저 origin의 IndexedDB에 분리해 저장한다.
 
+Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
+
 전체 253개 문제와 시각 자료는 `data/working/full-import-v1/`에 원문 그대로 구조 반입했지만, 정규화·사람 검수·`reviewed` 승격과 앱 연결은 하지 않았다. 실제 AI 공급자·모델, 백엔드 기술, 인증, 서버 동기화, 배포, 이미지 공개 가능 여부와 병음 생성·검수 방식도 계속 미결정이다.
 
 강의 working import는 저장소에 실제 존재하는 분석·학습·문서 추출 Markdown만 Source로 사용한다. 분석이 주장하지만 저장소에 없는 원본 MP4·PDF·DOCX를 확인된 Source로 등록하지 않으며, 모든 콘텐츠는 `review_needed` 이하 상태다. 자세한 공백과 후속 순서는 [Level 8 공백 분석](docs/LEVEL8_GAP_ANALYSIS.md)과 [고득점 목표 데이터 계획](docs/HIGH_SCORE_DATA_PLAN.md)을 따른다.
@@ -47,6 +49,7 @@ Node.js와 npm이 준비된 환경에서 다음 명령을 사용한다.
 ```sh
 npm install
 npm run fixture:part4-full
+npm run fixture:part4-review
 npm run dev
 ```
 
@@ -58,6 +61,9 @@ Part 4 전체 개발 fixture는 `data/working/app-fixtures/part4-full/`에 생�
 npm run validate:fixtures
 npm run validate:part4-full
 npm run test:part4-full
+npm run validate:part4-review
+npm run test:part4-review
+npm run test:part4-promotion
 npm run typecheck
 npm run lint
 npm run test:run
@@ -78,6 +84,7 @@ npm run check:data
 - `/my-answers`: 교정 완료 답변과 연습 초안
 - `/review`: Part 4 50문제 검색·필터 복습
 - `/mistakes`: 저장된 개인 실수
+- `/data-review/part4`: 개발 환경의 로컬 Part 4 데이터 검수
 
 실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용 mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다. 미지원 입력도 `PracticeDraft`로 원문 저장할 수 있지만 승인된 `UserAnswer`나 `Correction`으로 취급하지 않는다. Part 1·2·3·5·6·7 화면, 실제 AI, 백엔드, 로그인·동기화, 전체 253문제 앱 연결과 배포는 아직 구현하지 않았다.
 
@@ -101,9 +108,9 @@ npm run check:data
 
 ## 다음 작업 순서
 
-1. [구현 상태](docs/IMPLEMENTATION_STATUS.md)와 [Part 4 전체 working slice](docs/PART4_FULL_WORKING_SLICE.md)의 제한을 검토한다.
-2. Part 4 50문제 흐름을 실제 모바일 브라우저에서 반복 검증한다.
-3. `full-import-v1`의 9개 검수 큐와 `course-import-v1`의 근거·충돌 항목을 사람 검수한다.
-4. Part 2 미연결 30건, Part 7 접미사 후보 12건과 강의 콘텐츠 사용 후보 4건을 승인·거절한다.
-5. 실제 AI 공급자·서버 경계는 별도 비교와 승인 후 결정한다.
-6. 언어·출처·이미지 권리 검수를 통과한 항목의 `reviewed` 승격과 다음 Part 구현 범위를 별도로 결정한다.
+1. [구현 상태](docs/IMPLEMENTATION_STATUS.md), [Part 4 전체 working slice](docs/PART4_FULL_WORKING_SLICE.md)와 [Part 4 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)의 제한을 검토한다.
+2. `/data-review/part4`에서 실제 50문제를 사람이 확인하고 결정 JSON을 내보낸다.
+3. 내보낸 결정 파일을 별도 검토한 뒤 `promote_part4_reviewed_data.py`로 승인 항목만 승격한다.
+4. `full-import-v1`의 나머지 검수 큐와 `course-import-v1`의 근거·충돌 항목을 사람 검수한다.
+5. Part 2 미연결 30건, Part 7 접미사 후보 12건과 강의 콘텐츠 사용 후보 4건을 승인·거절한다.
+6. 실제 AI 공급자·서버 경계와 reviewed 부분 데이터의 앱 연결 정책은 별도 승인 후 결정한다.
