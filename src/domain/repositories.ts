@@ -9,6 +9,9 @@ import type {
   Question,
   SourceReference,
   SourceReferenceTargetType,
+  VisualAsset,
+  VisualQuestion,
+  VisualSet,
 } from './entities'
 
 export interface PublicContentRepository {
@@ -22,6 +25,17 @@ export interface PublicContentRepository {
   listLearningExpressionsByPart(partNumber: number): Promise<LearningExpression[]>
   listPracticeDrillsByPart(partNumber: number): Promise<PracticeDrill[]>
   listCourseInsightsByPart(partNumber: number): Promise<CourseInsight[]>
+  listVisualSetsByPart(partNumber: number): Promise<VisualSet[]>
+  getVisualSetById(visualSetId: string): Promise<VisualSet | undefined>
+  listVisualAssetsBySetId(visualSetId: string): Promise<VisualAsset[]>
+  getVisualAssetById(visualAssetId: string): Promise<VisualAsset | undefined>
+  listVisualQuestionsBySetId(visualSetId: string): Promise<VisualQuestion[]>
+  getVisualQuestionById(
+    visualQuestionId: string,
+  ): Promise<VisualQuestion | undefined>
+  listModelAnswersByVisualQuestionId(
+    visualQuestionId: string,
+  ): Promise<ModelAnswer[]>
   listSourceReferencesForTarget(
     targetType: SourceReferenceTargetType,
     targetId: string,

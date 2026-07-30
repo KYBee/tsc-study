@@ -311,9 +311,12 @@ export interface PartCatalogItem {
   name: string
   availability: 'available' | 'coming_soon'
   available_question_count?: number
+  available_visual_set_count?: number
+  available_visual_question_count?: number
 }
 
 export type InputLanguage = 'ko' | 'zh' | 'mixed'
+export type LearningTargetType = 'question' | 'visual_question'
 export type UserAnswerCorrectionMode = 'minimal' | 'easy' | 'natural' | 'level_8_expansion'
 export type Part4AnswerSection =
   | 'direct_answer'
@@ -344,6 +347,8 @@ export interface PracticeDraft {
   practice_draft_id: string
   learner_ref?: string
   question_id: string
+  target_type?: LearningTargetType
+  target_id?: string
   input_language: InputLanguage
   original_input: string
   planning_keywords?: Part4PlanningKeywords
@@ -372,6 +377,8 @@ export interface ReusablePhrase {
     | 'other'
   source_kind: 'user_created'
   source_question_id: string
+  source_target_type?: LearningTargetType
+  source_target_id?: string
   created_at: string
   updated_at: string
 }
@@ -382,6 +389,8 @@ export type RecallMode =
   | 'chinese_only'
   | 'keywords_only'
   | 'question_only'
+  | 'visual_question'
+  | 'visual_only'
 export type RecallResult =
   | 'could_not_say'
   | 'used_keywords'
@@ -391,6 +400,8 @@ export type RecallResult =
 export interface RecallAttempt {
   recall_attempt_id: string
   question_id: string
+  target_type?: LearningTargetType
+  target_id?: string
   practice_draft_id?: string
   user_answer_id?: string
   recall_mode: RecallMode
@@ -401,7 +412,10 @@ export interface RecallAttempt {
 export interface ReviewState {
   review_state_id: string
   learner_ref?: string
-  target_type: 'question' | 'user_answer' | 'correction'
+  target_type:
+    | LearningTargetType
+    | 'user_answer'
+    | 'correction'
   target_id: string
   learning_status: '못 외움' | '헷갈림' | '외움'
   last_reviewed_at?: string

@@ -88,7 +88,7 @@ describe('text Parts navigation', () => {
     expect(
       within(partList).getByRole('link', { name: /Part 4.*일상 화제 설명하기/ }),
     ).toHaveAttribute('href', '/parts/4')
-    expect(within(partList).getAllByText('준비 중')).toHaveLength(2)
+    expect(within(partList).getAllByText('준비 중')).toHaveLength(1)
     for (const [part, count] of [[1, 4], [3, 84], [4, 50], [5, 36], [6, 19]]) {
       expect(
         within(partList).getByRole('link', {
@@ -96,7 +96,10 @@ describe('text Parts navigation', () => {
         }),
       ).toHaveAttribute('href', `/parts/${part}`)
     }
-    expect(within(partList).getAllByText('그림 문제 준비 중')).toHaveLength(2)
+    expect(
+      within(partList).getByRole('link', { name: /Part 2.*12세트.*48문항/ }),
+    ).toHaveAttribute('href', '/parts/2')
+    expect(within(partList).getAllByText('그림 문제 준비 중')).toHaveLength(1)
 
     await user.click(
       within(partList).getByRole('link', {

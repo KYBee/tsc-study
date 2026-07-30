@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 
 import { AnswerEditorScreen } from '../features/answer/AnswerEditorScreen'
 import { CorrectionResultScreen } from '../features/correction/CorrectionResultScreen'
@@ -10,11 +10,39 @@ import { QuestionScreen } from '../features/question/QuestionScreen'
 import { ReviewScreen } from '../features/review/ReviewScreen'
 import { NotFoundScreen } from '../features/question/NotFoundScreen'
 import { Part4DataReviewScreen } from '../features/data-review/Part4DataReviewScreen'
+import { Part2SetScreen } from '../features/part2/Part2SetScreen'
+import { Part2SetsScreen } from '../features/part2/Part2SetsScreen'
+import { VisualQuestionAnswerScreen } from '../features/part2/VisualQuestionAnswerScreen'
+import { VisualQuestionScreen } from '../features/part2/VisualQuestionScreen'
+
+function VisualQuestionRecallRoute() {
+  const { visualQuestionId = '' } = useParams()
+  return (
+    <Navigate
+      replace
+      to={`/visual-questions/${visualQuestionId}/answer?step=recall`}
+    />
+  )
+}
 
 export function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<HomeScreen />} />
+      <Route path="/parts/2" element={<Part2SetsScreen />} />
+      <Route path="/parts/2/sets/:visualSetId" element={<Part2SetScreen />} />
+      <Route
+        path="/visual-questions/:visualQuestionId"
+        element={<VisualQuestionScreen />}
+      />
+      <Route
+        path="/visual-questions/:visualQuestionId/answer"
+        element={<VisualQuestionAnswerScreen />}
+      />
+      <Route
+        path="/visual-questions/:visualQuestionId/recall"
+        element={<VisualQuestionRecallRoute />}
+      />
       <Route path="/parts/:part" element={<PartDetailScreen />} />
       <Route path="/questions/:questionId" element={<QuestionScreen />} />
       <Route

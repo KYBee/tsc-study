@@ -86,9 +86,10 @@ UserAnswer·Correction 저장도 유지한다.
 
 ## 개인 데이터와 암기
 
-기존 학습 DB `tsc-study-part4-fixture-v1`, 버전 3과 모든 object store를
-그대로 사용한다. DB 이름에 Part 4가 남아 있는 것은 기존 개인 데이터를
-잃지 않기 위한 호환성 결정이며 후속 기술 부채다.
+기존 학습 DB `tsc-study-part4-fixture-v1`와 모든 object store를 그대로
+유지하면서, Part 2의 `visual_question` 대상을 지원하는 additive v4
+migration을 적용한다. DB 이름에 Part 4가 남아 있는 것은 기존 개인
+데이터를 잃지 않기 위한 호환성 결정이며 후속 기술 부채다.
 
 - `practiceDrafts`: 모든 텍스트 파트의 질문별 활성 초안
 - `reusablePhrases`: 사용자가 명시적으로 저장한 개인 표현
@@ -131,8 +132,14 @@ UserAnswer·Correction 저장도 유지한다.
 
 - 193문제는 모두 사람 검수 전 working 데이터다.
 - ModelAnswer와 실제 AI가 없다.
-- Part 2·7 시각 화면과 이미지 권리 검수가 없다.
+- Part 2 시각 화면은 별도 로컬 working slice로 후속 구현했다. 이미지
+  권리·질문·추천 답변 사람 검수와 공개 배포는 여전히 완료되지 않았다.
+- Part 7 시각 화면은 없다.
 - Part 1·3·5·6의 파트별 구조화 답변 UX는 실제 사용 후 결정한다.
 - 실제 사용자 답변을 사용해 개인 경험·키워드 뱅크를 설계하되 자동 생성은
   하지 않는다.
 - reviewed 데이터 앱 연결, 로그인·동기화·배포는 별도 결정이 필요하다.
+
+Part 2 후속 구현의 데이터·권리·화면 경계는
+[PART2_VISUAL_APP_SLICE.md](PART2_VISUAL_APP_SLICE.md)를 따른다. 이
+변경은 텍스트 193개 fixture나 Part 4 전용 구조화 UX를 대체하지 않는다.

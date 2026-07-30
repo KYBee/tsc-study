@@ -15,7 +15,7 @@
 9. [MVP 데이터 형식 결정](DATA_FORMAT_DECISION.md)
 10. [MVP UI 명세](UI_SPEC.md), [화면 데이터 계약](SCREEN_DATA_CONTRACT.md), [화면 이동 흐름](NAVIGATION_FLOW.md)
 11. [MVP 구현 기준](IMPLEMENTATION_BASELINE.md), [Part 4 첫 수직 기능 계획](VERTICAL_SLICE_PLAN.md)
-12. [현재 구현 상태](IMPLEMENTATION_STATUS.md), [전체 텍스트 파트 앱 slice](TEXT_PARTS_APP_SLICE.md), [Part 4 전체 working slice](PART4_FULL_WORKING_SLICE.md), [Part 4 로컬 검수 워크플로](PART4_REVIEW_WORKFLOW.md)
+12. [현재 구현 상태](IMPLEMENTATION_STATUS.md), [전체 텍스트 파트 앱 slice](TEXT_PARTS_APP_SLICE.md), [Part 2 로컬 시각 학습 slice](PART2_VISUAL_APP_SLICE.md), [Part 4 전체 working slice](PART4_FULL_WORKING_SLICE.md), [Part 4 로컬 검수 워크플로](PART4_REVIEW_WORKFLOW.md)
 13. [AI 답변 교정 규칙](AI_CORRECTION_RULES.md)
 14. [Level 8 공백 분석](LEVEL8_GAP_ANALYSIS.md), [고득점 목표 데이터 계획](HIGH_SCORE_DATA_PLAN.md)
 15. [로드맵](ROADMAP.md), [백로그](BACKLOG.md), [의사결정 기록](DECISIONS.md)
@@ -46,6 +46,7 @@
 | [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md) | Part 4 첫 수직 기능의 화면·fixture·저장소·검증 결과와 제한 | 현재 앱 실행·검증·후속 구현 |
 | [PART4_FULL_WORKING_SLICE.md](PART4_FULL_WORKING_SLICE.md) | Part 4 working 50문제 fixture, PracticeDraft, migration, 화면·검증 결과 | 현재 Part 4 앱 범위와 제한 확인 |
 | [TEXT_PARTS_APP_SLICE.md](TEXT_PARTS_APP_SLICE.md) | Part 1·3·4·5·6의 193문제 fixture, 공통 화면, 자유 입력·회상과 Part 4 전용 UX | 현재 전체 텍스트 문제 앱 범위와 제한 확인 |
+| [PART2_VISUAL_APP_SLICE.md](PART2_VISUAL_APP_SLICE.md) | Part 2 12세트·48문항 fixture, 로컬 이미지 권리 경계, 출처 답변·개인 회상 흐름 | 로컬 Part 2 실행·검증과 Part 7 후속 설계 |
 | [PART4_REVIEW_WORKFLOW.md](PART4_REVIEW_WORKFLOW.md) | Part 4 필드별 사람 검수, 결정 교환, stale 판정과 reviewed 승격 규칙 | 실제 검수와 부분 승격 전 확인 |
 | [LEVEL8_GAP_ANALYSIS.md](LEVEL8_GAP_ANALYSIS.md) | 3급 강의가 제공하는 정확성 기반과 Level 8 목표 대비 Part별·데이터별 공백 | 고득점 데이터 보강 범위 결정 |
 | [HIGH_SCORE_DATA_PLAN.md](HIGH_SCORE_DATA_PLAN.md) | 정확성 데이터부터 약점 추천까지 열 단계의 데이터·화면·검수 계획 | 후속 데이터와 기능 우선순위 |
@@ -63,6 +64,7 @@
 - [`data/working/app-fixtures/part4/README.md`](../data/working/app-fixtures/part4/README.md): Part 4 raw 개발 fixture의 생성·검증·사용 제한
 - [`data/working/app-fixtures/part4-full/README.md`](../data/working/app-fixtures/part4-full/README.md): Part 4 전체 50문제 working 개발 fixture의 생성·검증·사용 제한
 - [`data/working/app-fixtures/text-parts-v1/README.md`](../data/working/app-fixtures/text-parts-v1/README.md): Part 1·3·4·5·6 전체 193문제 working 개발 fixture
+- [`data/working/app-fixtures/part2-visual-v1/README.md`](../data/working/app-fixtures/part2-visual-v1/README.md): Part 2 12세트·48문항과 검수 전 출처 답변 working 개발 fixture
 - [`data/working/review-fixtures/part4-v1/README.md`](../data/working/review-fixtures/part4-v1/README.md): Part 4 사람 검수 입력 fixture와 원문 해시 규칙
 - [`data/working/course-import-v1/README.md`](../data/working/course-import-v1/README.md): 강의 분석 Markdown을 근거 종류별로 구조화한 검수 전 working import
 - [`data/working/full-import-v1/README.md`](../data/working/full-import-v1/README.md): 전체 workbook을 스키마 v1.1 형태로 구조화한 검수 전 working import

@@ -10,6 +10,7 @@ import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
 import { getDraftFullText } from '../answer/part4AnswerDraft'
+import { Part2VisualImage } from '../part2/Part2VisualImage'
 
 type AnswerView = 'approved' | 'drafts'
 type DraftFilter = 'all' | 'in_progress' | 'completed' | 'needs_recall' | 'confused' | 'memorized'
@@ -51,14 +52,33 @@ export function MyAnswersScreen() {
       })),
     )
     const draftItems = await Promise.all(
-      drafts.map(async (draft) => ({
-        draft,
-        question: await publicRepository.getQuestionById(draft.question_id),
-        reviewState: await userRepository.getReviewState(
-          'question',
-          draft.question_id,
-        ),
-      })),
+      drafts.map(async (draft) => {
+        const targetType = draft.target_type ?? 'question'
+        const targetId = draft.target_id ?? draft.question_id
+        const visualQuestion =
+          targetType === 'visual_question'
+            ? await publicRepository.getVisualQuestionById(targetId)
+            : undefined
+        const visualSet = visualQuestion
+          ? await publicRepository.getVisualSetById(visualQuestion.visual_set_id)
+          : undefined
+        const visualAssets = visualSet
+          ? await publicRepository.listVisualAssetsBySetId(visualSet.visual_set_id)
+          : []
+        return {
+          draft,
+          targetType,
+          targetId,
+          question:
+            targetType === 'question'
+              ? await publicRepository.getQuestionById(targetId)
+              : undefined,
+          visualQuestion,
+          visualSet,
+          visualAsset: visualAssets[0],
+          reviewState: await userRepository.getReviewState(targetType, targetId),
+        }
+      }),
     )
     return { approvedItems, draftItems, attempts }
   }, [publicRepository, reloadKey, userRepository])
@@ -102,15 +122,26 @@ export function MyAnswersScreen() {
     ({ question }) =>
       partFilter === 'all' || question?.part === Number(partFilter),
   )
-  const filteredDraftItems = draftItems.filter(({ draft, question, reviewState }) => {
-    if (partFilter !== 'all' && question?.part !== Number(partFilter)) return false
+  const filteredDraftItems = draftItems.filter(({
+    draft,
+    question,
+    targetId,
+    targetType,
+    reviewState,
+  }) => {
+    const part = targetType === 'visual_question' ? 2 : question?.part
+    if (partFilter !== 'all' && part !== Number(partFilter)) return false
     if (draftFilter === 'all') return true
     if (draftFilter === 'in_progress') return draft.completion_status !== 'completed'
     if (draftFilter === 'completed') return draft.completion_status === 'completed'
     if (draftFilter === 'needs_recall') {
       return (
         draft.completion_status === 'completed' &&
-        !attempts.some((attempt) => attempt.question_id === draft.question_id)
+        !attempts.some(
+          (attempt) =>
+            (attempt.target_type ?? 'question') === targetType &&
+            (attempt.target_id ?? attempt.question_id) === targetId,
+        )
       )
     }
     if (draftFilter === 'confused') return reviewState?.learning_status === '헷갈림'
@@ -149,8 +180,8 @@ export function MyAnswersScreen() {
       <label className="card compact-filter">
         파트 필터
         <select value={partFilter} onChange={(event) => setPartFilter(event.target.value)}>
-          <option value="all">전체 텍스트 파트</option>
-          {[1, 3, 4, 5, 6].map((part) => (
+          <option value="all">전체 학습 파트</option>
+          {[1, 2, 3, 4, 5, 6].map((part) => (
             <option key={part} value={part}>Part {part}</option>
           ))}
         </select>
@@ -262,14 +293,46 @@ export function MyAnswersScreen() {
             <EmptyState title="조건에 맞는 연습 답변이 없습니다" />
           ) : (
           <ul className="answer-list" aria-label="연습 초안">
-            {filteredDraftItems.map(({ draft, question, reviewState }) => (
+            {filteredDraftItems.map(({
+              draft,
+              question,
+              visualQuestion,
+              visualSet,
+              visualAsset,
+              targetType,
+              targetId,
+              reviewState,
+            }) => {
+              const isVisualQuestion = targetType === 'visual_question'
+              const setNumber = visualSet
+                ? Number(visualSet.visual_set_id.match(/V(\d+)$/)?.[1] ?? 0)
+                : 0
+              const latestAttempt = attempts.findLast(
+                (attempt) =>
+                  (attempt.target_type ?? 'question') === targetType &&
+                  (attempt.target_id ?? attempt.question_id) === targetId,
+              )
+              const editPath = isVisualQuestion
+                ? `/visual-questions/${targetId}/answer`
+                : `/questions/${targetId}/answer`
+              const recallPath = isVisualQuestion
+                ? `/visual-questions/${targetId}/recall`
+                : `/questions/${targetId}/answer?step=recall`
+
+              return (
               <li key={draft.practice_draft_id} className="card answer-card">
                 <div className="section-heading">
                   <div>
                     <p className="eyebrow">
-                      Part {question?.part ?? 4} · {draft.question_id}
+                      {isVisualQuestion
+                        ? `Part 2 · 세트 ${setNumber} · 질문 ${visualQuestion?.item_number ?? ''}`
+                        : `Part ${question?.part ?? 4} · ${targetId}`}
                     </p>
-                    <h2>{question?.question_type || '문제 유형 미분류'}</h2>
+                    <h2>
+                      {isVisualQuestion
+                        ? visualQuestion?.question_zh || '그림 세부 질문'
+                        : question?.question_type || '문제 유형 미분류'}
+                    </h2>
                   </div>
                   <div className="badge-row">
                     <StatusBadge status="has_draft" />
@@ -280,6 +343,20 @@ export function MyAnswersScreen() {
                   <p className="answer-card__question" lang="zh-CN">
                     {question.question_zh}
                   </p>
+                )}
+                {isVisualQuestion && visualQuestion && (
+                  <>
+                    <Part2VisualImage
+                      asset={visualAsset}
+                      setNumber={setNumber}
+                      thumbnail
+                    />
+                    {visualQuestion.question_ko && (
+                      <p className="answer-card__question" lang="ko">
+                        {visualQuestion.question_ko}
+                      </p>
+                    )}
+                  </>
                 )}
                 <div className="draft-preview">
                   <span className="language-label">
@@ -295,18 +372,10 @@ export function MyAnswersScreen() {
                       {Object.values(draft.planning_keywords).flat().join(' · ') || '없음'}
                     </p>
                   )}
-                  {attempts.findLast(
-                    (attempt) => attempt.question_id === draft.question_id,
-                  ) && (
+                  {latestAttempt && (
                     <small>
                       마지막 회상 결과:{' '}
-                      {
-                        RECALL_RESULT_LABELS[
-                          attempts.findLast(
-                            (attempt) => attempt.question_id === draft.question_id,
-                          )!.result
-                        ]
-                      }
+                      {RECALL_RESULT_LABELS[latestAttempt.result]}
                     </small>
                   )}
                 </div>
@@ -316,15 +385,15 @@ export function MyAnswersScreen() {
                 <div className="button-row">
                   <Link
                     className="secondary-button"
-                    to={`/questions/${draft.question_id}/answer`}
+                    to={editPath}
                     state={createNavigationContext('/my-answers')}
                   >
                     이어서 편집
                   </Link>
-                  {question?.part === 4 && (
+                  {!isVisualQuestion && question?.part === 4 && (
                     <Link
                       className="secondary-button"
-                      to={`/questions/${draft.question_id}/answer`}
+                      to={editPath}
                       state={createNavigationContext('/my-answers')}
                     >
                       mock 교정 시도
@@ -333,7 +402,7 @@ export function MyAnswersScreen() {
                   {draft.completion_status === 'completed' && (
                     <Link
                       className="primary-button"
-                      to={`/questions/${draft.question_id}/answer?step=recall`}
+                      to={recallPath}
                       state={createNavigationContext('/my-answers')}
                     >
                       암기 시작
@@ -348,7 +417,8 @@ export function MyAnswersScreen() {
                   </button>
                 </div>
               </li>
-            ))}
+              )
+            })}
           </ul>
           )}
         </>}

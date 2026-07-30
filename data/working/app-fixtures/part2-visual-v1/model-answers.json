@@ -1,0 +1,818 @@
+[
+  {
+    "answer_id": "ma-P2-V01-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V01-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "男的正在跑步。",
+    "answer_pinyin": "nán de zhèng zài pǎo bù 。",
+    "answer_ko": "남자는 달리고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V01-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V01-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V01-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "女的坐在长椅上。",
+    "answer_pinyin": "nǚ de zuò zài zhǎng yǐ shàng 。",
+    "answer_ko": "여자가 벤치에 앉아 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V01-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V01-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V01-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "猫在长椅下面。",
+    "answer_pinyin": "māo zài zhǎng yǐ xià miàn 。",
+    "answer_ko": "고양이는 벤치 아래에 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V01-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V01-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V01-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "现在七点半。",
+    "answer_pinyin": "xiàn zài qī diǎn bàn 。",
+    "answer_ko": "지금 7시 30분입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V01-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V02-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V02-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "今天阴天，还下雨。",
+    "answer_pinyin": "jīn tiān yīn tiān ， hái xià yǔ 。",
+    "answer_ko": "오늘은 흐리고 비가 옵니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V02-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V02-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V02-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "是的，今天比昨天冷。",
+    "answer_pinyin": "shì de ， jīn tiān bǐ zuó tiān lěng 。",
+    "answer_ko": "네, 오늘이 어제보다 춥습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V02-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V02-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V02-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "今天八度。",
+    "answer_pinyin": "jīn tiān bā dù 。",
+    "answer_ko": "오늘은 8도입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V02-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V02-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V02-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "昨天是晴天。",
+    "answer_pinyin": "zuó tiān shì qíng tiān 。",
+    "answer_ko": "어제는 맑았습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V02-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V03-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V03-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "西瓜最大。",
+    "answer_pinyin": "xī guā zuì dà 。",
+    "answer_ko": "수박이 가장 큽니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V03-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V03-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V03-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "苹果两公斤。",
+    "answer_pinyin": "píng guǒ liǎng gōng jīn 。",
+    "answer_ko": "사과는 2kg입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V03-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V03-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V03-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "葡萄五块钱。",
+    "answer_pinyin": "pú táo wǔ kuài qián 。",
+    "answer_ko": "포도는 5위안입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V03-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V03-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V03-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "不，橘子没有西瓜大。",
+    "answer_pinyin": "bù ， jú zi méi yǒu xī guā dà 。",
+    "answer_ko": "아니요, 귤은 수박만큼 크지 않습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V03-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V04-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V04-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "右边的面包更贵。",
+    "answer_pinyin": "yòu biān de miàn bāo gèng guì 。",
+    "answer_ko": "오른쪽 빵이 더 비쌉니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V04-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V04-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V04-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "左边的面包五块钱。",
+    "answer_pinyin": "zuǒ biān de miàn bāo wǔ kuài qián 。",
+    "answer_ko": "왼쪽 빵은 5위안입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V04-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V04-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V04-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "这本杂志十七块四毛。",
+    "answer_pinyin": "zhè běn zá zhì shí qī kuài sì máo 。",
+    "answer_ko": "이 잡지는 17.4위안입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V04-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V04-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V04-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "手表一百块钱。",
+    "answer_pinyin": "shǒu biǎo yì bǎi kuài qián 。",
+    "answer_ko": "손목시계는 100위안입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V04-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V05-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V05-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "医院比学校更高。",
+    "answer_pinyin": "yī yuàn bǐ xué xiào gèng gāo 。",
+    "answer_ko": "병원이 학교보다 더 높습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V05-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V05-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V05-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "书店在二楼。",
+    "answer_pinyin": "shū diàn zài èr lóu 。",
+    "answer_ko": "서점은 2층에 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V05-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V05-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V05-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "从家到地铁站有一公里。",
+    "answer_pinyin": "cóng jiā dào dì tiě zhàn yǒu yī gōng lǐ 。",
+    "answer_ko": "집에서 지하철역까지 1km입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V05-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V05-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V05-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "他应该坐五二一一路公交车。",
+    "answer_pinyin": "tā yīng gāi zuò wǔ èr yī yī lù gōng jiāo chē 。",
+    "answer_ko": "그는 5211번 버스를 타야 합니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V05-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V06-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V06-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "书在苹果的右边。",
+    "answer_pinyin": "shū zài píng guǒ de yòu biān 。",
+    "answer_ko": "책은 사과 오른쪽에 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V06-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V06-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V06-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "猫在屋子外边。",
+    "answer_pinyin": "māo zài wū zi wài biān 。",
+    "answer_ko": "고양이는 집 밖에 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V06-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V06-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V06-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "地上有一双鞋。",
+    "answer_pinyin": "dì shàng yǒu yī shuāng xié 。",
+    "answer_ko": "바닥에 신발 한 켤레가 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V06-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V06-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V06-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "桌子旁边有花。",
+    "answer_pinyin": "zhuō zi páng biān yǒu huā 。",
+    "answer_ko": "책상 옆에는 꽃이 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V06-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V07-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V07-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "男的在复印资料。",
+    "answer_pinyin": "nán de zài fù yìn zī liào 。",
+    "answer_ko": "남자는 자료를 복사하고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V07-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V07-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V07-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "女的拿着会议资料。",
+    "answer_pinyin": "nǚ de ná zhe huì yì zī liào 。",
+    "answer_ko": "여자는 회의 자료를 들고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V07-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V07-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V07-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "会议下午三点开始。",
+    "answer_pinyin": "huì yì xià wǔ sān diǎn kāi shǐ 。",
+    "answer_ko": "회의는 오후 3시에 시작합니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V07-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V07-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V07-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "办公室是五零三号。",
+    "answer_pinyin": "bàn gōng shì shì wǔ líng sān hào 。",
+    "answer_ko": "사무실은 503호입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V07-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V08-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V08-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "他们在图书馆看书。",
+    "answer_pinyin": "tā men zài tú shū guǎn kàn shū 。",
+    "answer_ko": "그들은 도서관에서 책을 읽습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V08-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V08-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V08-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "男的在看报。",
+    "answer_pinyin": "nán de zài kàn bào 。",
+    "answer_ko": "남자는 신문을 보고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V08-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V08-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V08-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "女的在做菜。",
+    "answer_pinyin": "nǚ de zài zuò cài 。",
+    "answer_ko": "여자는 요리하고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V08-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V08-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V08-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "她在洗碗。",
+    "answer_pinyin": "tā zài xǐ wǎn 。",
+    "answer_ko": "그녀는 설거지하고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V08-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V09-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V09-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "公交车是五二一一路。",
+    "answer_pinyin": "gōng jiāo chē shì wǔ èr yī yī lù 。",
+    "answer_ko": "버스는 5211번입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V09-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V09-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V09-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "他住一零三号房间。",
+    "answer_pinyin": "tā zhù yī líng sān hào fáng jiān 。",
+    "answer_ko": "그는 103호실에 삽니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V09-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V09-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V09-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "小王住五零三号病房。",
+    "answer_pinyin": "xiǎo wáng zhù wǔ líng sān hào bìng fáng 。",
+    "answer_ko": "샤오왕은 503호 병실에 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V09-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V09-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V09-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "现在两点零五分。",
+    "answer_pinyin": "xiàn zài liǎng diǎn líng wǔ fēn 。",
+    "answer_ko": "지금 2시 5분입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V09-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V10-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V10-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "男的一米八。",
+    "answer_pinyin": "nán de yī mǐ bā 。",
+    "answer_ko": "남자는 180cm입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V10-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V10-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V10-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "女的一米六二。",
+    "answer_pinyin": "nǚ de yī mǐ liù èr 。",
+    "answer_ko": "여자는 162cm입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V10-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V10-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V10-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "电脑三公斤。",
+    "answer_pinyin": "diàn nǎo sān gōng jīn 。",
+    "answer_ko": "컴퓨터는 3kg입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V10-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V10-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V10-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "行李十五公斤。",
+    "answer_pinyin": "xíng lǐ shí wǔ gōng jīn 。",
+    "answer_ko": "짐은 15kg입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V10-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V11-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V11-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "是的，男的戴着帽子。",
+    "answer_pinyin": "shì de ， nán de dài zhe mào zi 。",
+    "answer_ko": "네, 남자는 모자를 쓰고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V11-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V11-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V11-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "女的拿着雨伞。",
+    "answer_pinyin": "nǚ de ná zhe yǔ sǎn 。",
+    "answer_ko": "여자는 우산을 들고 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V11-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V11-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V11-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "墙上有两条裤子。",
+    "answer_pinyin": "qiáng shàng yǒu liǎng tiáo kù zi 。",
+    "answer_ko": "벽에는 바지 두 벌이 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V11-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V11-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V11-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "地上有一双鞋。",
+    "answer_pinyin": "dì shàng yǒu yī shuāng xié 。",
+    "answer_ko": "바닥에 신발 한 켤레가 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V11-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V12-Q1-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V12-Q1",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "蛋糕比咖啡更贵。",
+    "answer_pinyin": "dàn gāo bǐ kā fēi gèng guì 。",
+    "answer_ko": "케이크가 커피보다 더 비쌉니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V12-Q1-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V12-Q2-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V12-Q2",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "咖啡四块钱。",
+    "answer_pinyin": "kā fēi sì kuài qián 。",
+    "answer_ko": "커피는 4위안입니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V12-Q2-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V12-Q3-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V12-Q3",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "女的买了两个苹果。",
+    "answer_pinyin": "nǚ de mǎi le liǎng gè píng guǒ 。",
+    "answer_ko": "여자는 사과 두 개를 샀습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V12-Q3-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  },
+  {
+    "answer_id": "ma-P2-V12-Q4-basic-01",
+    "answer_target_type": "visual_question",
+    "answer_target_id": "vq-P2-V12-Q4",
+    "answer_variant": "basic",
+    "target_level": "",
+    "answer_zh": "雨伞是湿的。",
+    "answer_pinyin": "yǔ sǎn shì shī de 。",
+    "answer_ko": "우산은 젖어 있습니다.",
+    "structure_segments": [],
+    "answer_status": "review_needed",
+    "provenance_kind": "unverified_source",
+    "source_reference_ids": [
+      "sr-model-answer-ma-P2-V12-Q4-basic-01-extracted"
+    ],
+    "review_notes": "Excel 원본 추천 답변이며 승인된 공식 정답이 아님."
+  }
+]

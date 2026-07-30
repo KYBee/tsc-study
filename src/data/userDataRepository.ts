@@ -1,5 +1,6 @@
 import type {
   Correction,
+  LearningTargetType,
   PracticeDraft,
   RecallAttempt,
   ReusablePhrase,
@@ -14,9 +15,9 @@ import {
   deleteTscStudyUserDatabase,
   openTscStudyUserDatabase,
   PRACTICE_DRAFTS_STORE,
-  PRACTICE_DRAFT_QUESTION_INDEX,
+  PRACTICE_DRAFT_TARGET_INDEX,
   RECALL_ATTEMPTS_STORE,
-  RECALL_ATTEMPT_QUESTION_INDEX,
+  RECALL_ATTEMPT_TARGET_INDEX,
   REUSABLE_PHRASES_STORE,
   REVIEW_STATES_STORE,
   REVIEW_STATE_TARGET_INDEX,
@@ -103,6 +104,10 @@ export interface UserDataRepository {
   getPracticeDraftByQuestionId(
     questionId: string,
   ): Promise<StoredPracticeDraft | undefined>
+  getPracticeDraftByTarget(
+    targetType: LearningTargetType,
+    targetId: string,
+  ): Promise<StoredPracticeDraft | undefined>
   listPracticeDrafts(): Promise<StoredPracticeDraft[]>
   upsertPracticeDraft(
     practiceDraft: PracticeDraftInput,
@@ -115,6 +120,10 @@ export interface UserDataRepository {
   deleteReusablePhrase(reusablePhraseId: string): Promise<void>
   listRecallAttemptsByQuestionId(
     questionId: string,
+  ): Promise<StoredRecallAttempt[]>
+  listRecallAttemptsByTarget(
+    targetType: LearningTargetType,
+    targetId: string,
   ): Promise<StoredRecallAttempt[]>
   listRecallAttempts(): Promise<StoredRecallAttempt[]>
   addRecallAttempt(attempt: RecallAttemptInput): Promise<StoredRecallAttempt>
@@ -160,8 +169,9 @@ function validatePracticeDraft(practiceDraft: PracticeDraftInput): void {
   if (!practiceDraft.practice_draft_id.trim()) {
     throw new Error('practice_draft_id is required')
   }
-  if (!practiceDraft.question_id.trim()) {
-    throw new Error('question_id is required')
+  const targetId = practiceDraft.target_id ?? practiceDraft.question_id
+  if (!targetId.trim()) {
+    throw new Error('learning target_id is required')
   }
   const hasPlanningKeywords = Object.values(
     practiceDraft.planning_keywords ?? {},
@@ -442,20 +452,36 @@ export function createUserDataRepository(
   async function getPracticeDraftByQuestionId(
     questionId: string,
   ): Promise<StoredPracticeDraft | undefined> {
+    return getPracticeDraftByTarget('question', questionId)
+  }
+
+  async function getPracticeDraftByTarget(
+    targetType: LearningTargetType,
+    targetId: string,
+  ): Promise<StoredPracticeDraft | undefined> {
     const database = await databasePromise
     return database.getFromIndex(
       PRACTICE_DRAFTS_STORE,
-      PRACTICE_DRAFT_QUESTION_INDEX,
-      questionId,
+      PRACTICE_DRAFT_TARGET_INDEX,
+      [targetType, targetId],
     )
   }
 
   async function listPracticeDrafts(): Promise<StoredPracticeDraft[]> {
     const database = await databasePromise
     const drafts = await database.getAll(PRACTICE_DRAFTS_STORE)
-    return drafts.sort((left, right) =>
-      compareIdentifiers(left.question_id, right.question_id),
-    )
+    return drafts.sort((left, right) => {
+      const typeOrder = compareIdentifiers(
+        left.target_type ?? 'question',
+        right.target_type ?? 'question',
+      )
+      return typeOrder === 0
+        ? compareIdentifiers(
+            left.target_id ?? left.question_id,
+            right.target_id ?? right.question_id,
+          )
+        : typeOrder
+    })
   }
 
   async function upsertPracticeDraft(
@@ -465,15 +491,19 @@ export function createUserDataRepository(
     const database = await databasePromise
     const transaction = database.transaction(PRACTICE_DRAFTS_STORE, 'readwrite')
     const store = transaction.objectStore(PRACTICE_DRAFTS_STORE)
+    const targetType = input.target_type ?? 'question'
+    const targetId = input.target_id ?? input.question_id
     const existing = await store
-      .index(PRACTICE_DRAFT_QUESTION_INDEX)
-      .get(input.question_id)
+      .index(PRACTICE_DRAFT_TARGET_INDEX)
+      .get([targetType, targetId])
     const timestamp = now()
     const stored: StoredPracticeDraft = {
       practice_draft_id:
         existing?.practice_draft_id ?? input.practice_draft_id,
       learner_ref: input.learner_ref,
       question_id: input.question_id,
+      target_type: targetType,
+      target_id: targetId,
       input_language: input.input_language,
       original_input: input.original_input,
       planning_keywords: input.planning_keywords
@@ -528,6 +558,9 @@ export function createUserDataRepository(
       ...input,
       text: input.text,
       source_kind: 'user_created',
+      source_target_type: input.source_target_type ?? 'question',
+      source_target_id:
+        input.source_target_id ?? input.source_question_id,
       created_at: existing?.created_at ?? input.created_at ?? timestamp,
       updated_at: timestamp,
     }
@@ -543,11 +576,18 @@ export function createUserDataRepository(
   async function listRecallAttemptsByQuestionId(
     questionId: string,
   ): Promise<StoredRecallAttempt[]> {
+    return listRecallAttemptsByTarget('question', questionId)
+  }
+
+  async function listRecallAttemptsByTarget(
+    targetType: LearningTargetType,
+    targetId: string,
+  ): Promise<StoredRecallAttempt[]> {
     const database = await databasePromise
     return database.getAllFromIndex(
       RECALL_ATTEMPTS_STORE,
-      RECALL_ATTEMPT_QUESTION_INDEX,
-      questionId,
+      RECALL_ATTEMPT_TARGET_INDEX,
+      [targetType, targetId],
     )
   }
 
@@ -559,8 +599,10 @@ export function createUserDataRepository(
   async function addRecallAttempt(
     input: RecallAttemptInput,
   ): Promise<StoredRecallAttempt> {
-    if (!input.recall_attempt_id.trim() || !input.question_id.trim()) {
-      throw new Error('회상 기록 ID와 question_id는 필수입니다')
+    const targetType = input.target_type ?? 'question'
+    const targetId = input.target_id ?? input.question_id
+    if (!input.recall_attempt_id.trim() || !targetId.trim()) {
+      throw new Error('회상 기록 ID와 target_id는 필수입니다')
     }
     if (!input.practice_draft_id && !input.user_answer_id) {
       throw new Error('회상 기록은 연습 초안 또는 교정 답변을 참조해야 합니다')
@@ -568,6 +610,8 @@ export function createUserDataRepository(
     const database = await databasePromise
     const stored: StoredRecallAttempt = {
       ...input,
+      target_type: targetType,
+      target_id: targetId,
       attempted_at: input.attempted_at ?? now(),
     }
     await database.put(RECALL_ATTEMPTS_STORE, stored)
@@ -596,6 +640,7 @@ export function createUserDataRepository(
     listPersonalCorrections,
     deletePersonalCorrectionsForUserAnswer,
     getPracticeDraftByQuestionId,
+    getPracticeDraftByTarget,
     listPracticeDrafts,
     upsertPracticeDraft,
     deletePracticeDraft,
@@ -603,6 +648,7 @@ export function createUserDataRepository(
     upsertReusablePhrase,
     deleteReusablePhrase,
     listRecallAttemptsByQuestionId,
+    listRecallAttemptsByTarget,
     listRecallAttempts,
     addRecallAttempt,
     close,

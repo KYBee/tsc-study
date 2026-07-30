@@ -84,9 +84,12 @@
 계약 주의:
 
 - canonical Question 연결은 명시적 ID 또는 단일 완전 일치 근거가 있을 때만 사용한다.
-- 독립 `VisualQuestion`도 작성·교정 세션의 유효한 대상이다.
-- 독립 `VisualQuestion`의 `ReviewState`는 현재 계약에 없으며, 표시 가능한 상태는 연결된 Question 또는 UserAnswer를 대상으로 한 경우에 한정한다.
-- 현재 `UserAnswer`는 `question_id`를 필수로 하므로 연결되지 않은 `VisualQuestion`의 승인 저장 대상을 표현하지 못한다. 구현 전에 이 저장 계약을 결정해야 하며 임의 Question 연결로 우회하지 않는다.
+- 독립 `VisualQuestion`도 작성·회상 세션의 유효한 대상이다.
+- `PracticeDraft`, `ReviewState`, `RecallAttempt`는
+  `target_type = visual_question`과 `visual_question_id`를 직접 사용한다.
+- 현재 `UserAnswer`는 `question_id`를 필수로 하므로 Part 2에서 만들지
+  않는다. 교정 공급자나 승인 답변 대상을 표현하기 위해 임의 Question
+  연결로 우회하지 않는다.
 
 ## 5. Part 7 스토리 문제
 
@@ -224,7 +227,27 @@
 Part 4는 네 구간 전용 편집기를 유지한다. Part 1·3·5·6은 자유 입력이며
 PartGuide 문구를 자동 폼이나 답변으로 변환하지 않는다.
 
-## 11. Part 4 로컬 데이터 검수
+## 11. Part 2 로컬 시각 학습
+
+| 항목 | 계약 |
+|---|---|
+| 화면 ID | `PART2_SET_LIST`, `PART2_SET`, `VISUAL_QUESTION`, `VISUAL_ANSWER_EDITOR`, `VISUAL_RECALL` |
+| 화면 목적 | 로컬 권리 경계 안에서 12세트·48 VisualQuestion을 보고 내 짧은 답변을 저장·회상한다. |
+| 읽는 엔터티 | `VisualSet`, `VisualSetAsset`, `VisualAsset`, `VisualQuestion`, `ModelAnswer`, `SourceReference`, 개인 `PracticeDraft`, `RecallAttempt`, `ReviewState`, `ReusablePhrase` |
+| 필수 데이터 | 등록된 set/asset/question ID와 관계, 이미지 메타데이터, 순서, 질문 중국어, 권리·검수 상태 |
+| 선택 데이터 | 질문 병음·한국어, canonical `question_id`, 접힌 출처 ModelAnswer, Part 공통 강의 자료 |
+| 사용자가 생성·수정하는 데이터 | `visual_question` 대상 PracticeDraft·RecallAttempt·ReviewState, 명시적으로 저장한 ReusablePhrase |
+| 빈 값 처리 | 로컬 이미지가 없으면 추출 명령 안내. 언어가 비면 생성하지 않는다. 출처 답변이 없어도 초안·회상 가능 |
+| 검수 상태 처리 | 그림은 로컬 전용·권리 검수 필요, 답변은 원본 자료의 검수 전 추천 답변이며 공식 정답이 아님 |
+| 주요 행동 | 세트 필터·랜덤, 이미지 확대, 질문 이동, 자유 입력 저장·완료, 추천 답변 비교, 내 답변 회상 |
+| 다음 화면 | 홈, 세트 목록·상세, VisualQuestion 상세·답변·회상, 나의 답변, 복습 |
+
+Part 2 이미지는 fixture에 등록된 ID만 개발 서버에서 제공한다. production
+build는 이미지 바이트를 포함하지 않으며 화면도 로컬 학습을 활성화하지
+않는다. ModelAnswer는 내 답변을 덮어쓰거나 UserAnswer로 자동 저장하지
+않는다.
+
+## 12. Part 4 로컬 데이터 검수
 
 | 항목 | 계약 |
 |---|---|
@@ -245,8 +268,7 @@ PartGuide 문구를 자동 폼이나 답변으로 변환하지 않는다.
 
 다음은 이 작업에서 스키마나 기술을 임의로 바꾸지 않고 명시만 한다.
 
-1. canonical `Question`과 연결되지 않은 `VisualQuestion`의 승인 `UserAnswer` 저장 대상
-2. 독립 VisualQuestion을 `ReviewState` 대상으로 복습할지 여부
+1. canonical `Question`과 연결되지 않은 `VisualQuestion`의 향후 교정 완료 `UserAnswer` 저장 대상
 3. Part 7 UserAnswer에 `visual_set_id` 학습 맥락을 보존하는 방식
 4. UserAnswer의 장기 버전 이력과 소프트 삭제·보관 정책
 5. 개인 Correction의 반복 발생 이력과 최근 발생 시각

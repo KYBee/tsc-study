@@ -1,0 +1,134 @@
+[
+  {
+    "expression_id": "le-course-004",
+    "language": {
+      "zh": "哥哥比弟弟更高。",
+      "pinyin": "",
+      "ko": "형이 더 큼"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "comparison",
+    "usage_context": "Part 2 비교",
+    "pattern_or_slots": "",
+    "cautions": "`很` 금지",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-004-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 8페이지]"
+  },
+  {
+    "expression_id": "le-course-005",
+    "language": {
+      "zh": "今天没有昨天冷。",
+      "pinyin": "",
+      "ko": "오늘은 어제만큼 춥지 않음"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "comparison",
+    "usage_context": "Part 2 반대 비교",
+    "pattern_or_slots": "",
+    "cautions": "A/B 방향",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-005-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 8페이지]"
+  },
+  {
+    "expression_id": "le-course-006",
+    "language": {
+      "zh": "公司附近有很多餐厅。",
+      "pinyin": "",
+      "ko": "회사 근처 식당 많음"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "location",
+    "usage_context": "Part 2 존재",
+    "pattern_or_slots": "",
+    "cautions": "장소+有",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-006-01"
+    ],
+    "notes": "원본 병음 셀: 자료에서 확인 불가. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [01강 / P01 / 12페이지]"
+  },
+  {
+    "expression_id": "le-course-007",
+    "language": {
+      "zh": "面包在牛奶旁边。",
+      "pinyin": "",
+      "ko": "빵은 우유 옆"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "location",
+    "usage_context": "Part 2 위치",
+    "pattern_or_slots": "",
+    "cautions": "边 얼화 권장",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-007-01"
+    ],
+    "notes": "원본 병음 셀: 旁边 pang2 bian1. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:00:22]"
+  },
+  {
+    "expression_id": "le-course-008",
+    "language": {
+      "zh": "香蕉更重。",
+      "pinyin": "",
+      "ko": "바나나가 더 무거움"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "comparison",
+    "usage_context": "Part 2 비교",
+    "pattern_or_slots": "",
+    "cautions": "`很更` 금지",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-008-01"
+    ],
+    "notes": "원본 병음 셀: 香蕉 xiang1 jiao1. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:01:42]"
+  },
+  {
+    "expression_id": "le-course-009",
+    "language": {
+      "zh": "不是，她在跳舞。",
+      "pinyin": "",
+      "ko": "아니요, 춤춤"
+    },
+    "part_numbers": [
+      2
+    ],
+    "expression_type": "reaction",
+    "usage_context": "Part 2 불일치",
+    "pattern_or_slots": "",
+    "cautions": "부정 먼저",
+    "related_correction_ids": [],
+    "status": "raw",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-le-course-009-01"
+    ],
+    "notes": "원본 병음 셀: 跳舞 tiao4 wu3. 전체 문장 병음으로 확인되지 않아 pinyin을 비워 두었다. 원문 출처: [07강 / V07 / 00:00:22]"
+  }
+]

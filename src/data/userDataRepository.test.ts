@@ -12,7 +12,11 @@ import {
   CORRECTIONS_STORE,
   CORRECTION_USER_ANSWER_INDEX,
   PRACTICE_DRAFTS_STORE,
+  PRACTICE_DRAFT_QUESTION_INDEX,
+  PRACTICE_DRAFT_TARGET_INDEX,
   RECALL_ATTEMPTS_STORE,
+  RECALL_ATTEMPT_TARGET_INDEX,
+  REUSABLE_PHRASE_TARGET_INDEX,
   REUSABLE_PHRASES_STORE,
   REVIEW_STATES_STORE,
   REVIEW_STATE_TARGET_ID_INDEX,
@@ -351,6 +355,200 @@ describe('UserDataRepository structured learning records', () => {
       },
     ])
   })
+
+  it('stores visual-question drafts, phrases, recall attempts, and review state by explicit target', async () => {
+    const repository = createRepository()
+    const targetId = 'vq-P2-V01-Q1'
+
+    const draft = await repository.upsertPracticeDraft({
+      practice_draft_id: `pd-${targetId}`,
+      question_id: targetId,
+      target_type: 'visual_question',
+      target_id: targetId,
+      input_language: 'zh',
+      original_input: '她在看书。',
+      full_text: '她在看书。',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    await expect(
+      repository.getPracticeDraftByTarget('visual_question', targetId),
+    ).resolves.toEqual(draft)
+
+    await repository.upsertReusablePhrase({
+      reusable_phrase_id: `rp-${targetId}-001`,
+      text: '她在看书。',
+      language: 'zh',
+      phrase_type: 'other',
+      source_kind: 'user_created',
+      source_question_id: targetId,
+      source_target_type: 'visual_question',
+      source_target_id: targetId,
+    })
+    await expect(repository.listReusablePhrases()).resolves.toEqual([
+      expect.objectContaining({
+        source_target_type: 'visual_question',
+        source_target_id: targetId,
+      }),
+    ])
+
+    await repository.addRecallAttempt({
+      recall_attempt_id: `ra-${targetId}-001`,
+      question_id: targetId,
+      target_type: 'visual_question',
+      target_id: targetId,
+      practice_draft_id: draft.practice_draft_id,
+      recall_mode: 'visual_only',
+      result: 'used_keywords',
+    })
+    await expect(
+      repository.listRecallAttemptsByTarget('visual_question', targetId),
+    ).resolves.toHaveLength(1)
+
+    await repository.upsertReviewState({
+      review_state_id: `rs-visual-question-${targetId}`,
+      target_type: 'visual_question',
+      target_id: targetId,
+      learning_status: '헷갈림',
+    })
+    await expect(
+      repository.getReviewState('visual_question', targetId),
+    ).resolves.toMatchObject({ learning_status: '헷갈림' })
+  })
+})
+
+describe('IndexedDB v3 to v4 migration', () => {
+  it('adds target indexes and preserves every existing learning record', async () => {
+    const databaseName = `tsc-study-user-data-target-migration-${databaseSequence++}`
+    const legacy = await openDB(databaseName, 3, {
+      upgrade(database) {
+        const userAnswers = database.createObjectStore(USER_ANSWERS_STORE, {
+          keyPath: 'user_answer_id',
+        })
+        userAnswers.createIndex(USER_ANSWER_QUESTION_INDEX, 'question_id', {
+          unique: true,
+        })
+        const reviewStates = database.createObjectStore(REVIEW_STATES_STORE, {
+          keyPath: 'review_state_id',
+        })
+        reviewStates.createIndex(
+          REVIEW_STATE_TARGET_INDEX,
+          ['target_type', 'target_id'],
+          { unique: true },
+        )
+        reviewStates.createIndex(REVIEW_STATE_TARGET_ID_INDEX, 'target_id')
+        const corrections = database.createObjectStore(CORRECTIONS_STORE, {
+          keyPath: 'correction_id',
+        })
+        corrections.createIndex(
+          CORRECTION_USER_ANSWER_INDEX,
+          'user_answer_id',
+        )
+        const drafts = database.createObjectStore(PRACTICE_DRAFTS_STORE, {
+          keyPath: 'practice_draft_id',
+        })
+        drafts.createIndex(PRACTICE_DRAFT_QUESTION_INDEX, 'question_id', {
+          unique: true,
+        })
+        const phrases = database.createObjectStore(REUSABLE_PHRASES_STORE, {
+          keyPath: 'reusable_phrase_id',
+        })
+        phrases.createIndex('by-question-id', 'source_question_id')
+        const attempts = database.createObjectStore(RECALL_ATTEMPTS_STORE, {
+          keyPath: 'recall_attempt_id',
+        })
+        attempts.createIndex('by-question-id', 'question_id')
+      },
+    })
+    const draft = {
+      ...makePracticeDraft(),
+      created_at: '2026-07-26T09:00:00.000Z',
+      updated_at: '2026-07-26T09:00:00.000Z',
+    }
+    const phrase = {
+      reusable_phrase_id: 'rp-P4-001-001',
+      text: '在家运动。',
+      language: 'zh',
+      phrase_type: 'other',
+      source_kind: 'user_created',
+      source_question_id: 'P4-001',
+      created_at: '2026-07-26T09:00:00.000Z',
+      updated_at: '2026-07-26T09:00:00.000Z',
+    }
+    const attempt = {
+      recall_attempt_id: 'ra-P4-001-001',
+      question_id: 'P4-001',
+      practice_draft_id: 'pd-P4-001',
+      recall_mode: 'question_only',
+      result: 'almost',
+      attempted_at: '2026-07-26T09:00:00.000Z',
+    }
+    const answer = {
+      ...makeUserAnswer({ created_at: '2026-07-26T09:00:00.000Z' }),
+      updated_at: '2026-07-26T09:00:00.000Z',
+    }
+    const review = {
+      ...makeReviewState({ last_reviewed_at: '2026-07-26T09:00:00.000Z' }),
+      review_count: 1,
+    }
+    const correction = {
+      ...makeCorrection({ user_answer_id: 'ua-P4-006' }),
+      user_answer_id: 'ua-P4-006',
+      created_at: '2026-07-26T09:00:00.000Z',
+    }
+    await legacy.put(PRACTICE_DRAFTS_STORE, draft)
+    await legacy.put(REUSABLE_PHRASES_STORE, phrase)
+    await legacy.put(RECALL_ATTEMPTS_STORE, attempt)
+    await legacy.put(USER_ANSWERS_STORE, answer)
+    await legacy.put(REVIEW_STATES_STORE, review)
+    await legacy.put(CORRECTIONS_STORE, correction)
+    legacy.close()
+
+    const repository = createUserDataRepository({ databaseName })
+    openedRepositories.push(repository)
+
+    await expect(
+      repository.getPracticeDraftByTarget('question', 'P4-001'),
+    ).resolves.toMatchObject({
+      practice_draft_id: 'pd-P4-001',
+      target_type: 'question',
+      target_id: 'P4-001',
+    })
+    await expect(repository.listReusablePhrases()).resolves.toEqual([
+      expect.objectContaining({
+        reusable_phrase_id: 'rp-P4-001-001',
+        source_target_type: 'question',
+        source_target_id: 'P4-001',
+      }),
+    ])
+    await expect(
+      repository.listRecallAttemptsByTarget('question', 'P4-001'),
+    ).resolves.toEqual([
+      expect.objectContaining({
+        recall_attempt_id: 'ra-P4-001-001',
+        target_type: 'question',
+        target_id: 'P4-001',
+      }),
+    ])
+    await expect(repository.listUserAnswers()).resolves.toHaveLength(1)
+    await expect(repository.listReviewStates()).resolves.toHaveLength(1)
+    await expect(repository.listPersonalCorrections()).resolves.toHaveLength(1)
+
+    const migrated = await openDB(databaseName, USER_DATA_DB_VERSION)
+    const transaction = migrated.transaction(
+      [PRACTICE_DRAFTS_STORE, REUSABLE_PHRASES_STORE, RECALL_ATTEMPTS_STORE],
+    )
+    expect(
+      [...transaction.objectStore(PRACTICE_DRAFTS_STORE).indexNames],
+    ).toContain(PRACTICE_DRAFT_TARGET_INDEX)
+    expect(
+      [...transaction.objectStore(REUSABLE_PHRASES_STORE).indexNames],
+    ).toContain(REUSABLE_PHRASE_TARGET_INDEX)
+    expect(
+      [...transaction.objectStore(RECALL_ATTEMPTS_STORE).indexNames],
+    ).toContain(RECALL_ATTEMPT_TARGET_INDEX)
+    migrated.close()
+  })
 })
 
 describe('IndexedDB v2 to v3 migration', () => {
@@ -421,7 +619,13 @@ describe('IndexedDB v2 to v3 migration', () => {
     await expect(repository.listPersonalCorrections()).resolves.toEqual([
       legacyCorrection,
     ])
-    await expect(repository.listPracticeDrafts()).resolves.toEqual([legacyDraft])
+    await expect(repository.listPracticeDrafts()).resolves.toEqual([
+      expect.objectContaining({
+        ...legacyDraft,
+        target_type: 'question',
+        target_id: 'P4-001',
+      }),
+    ])
 
     const migrated = await openDB(databaseName, USER_DATA_DB_VERSION)
     expect([...migrated.objectStoreNames]).toContain(PRACTICE_DRAFTS_STORE)

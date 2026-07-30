@@ -34,6 +34,13 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 [MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)에 따라 React + TypeScript + Vite 프로젝트를 초기화했다. 현재 앱은 [전체 텍스트 파트 fixture](docs/TEXT_PARTS_APP_SLICE.md)를 읽어 Part 1·3·4·5·6의 raw working Question 193개와 AnswerPoint 193개를 제공한다. 공통 목록·검색·유형 및 상태 필터·랜덤 문제, 자유 입력 PracticeDraft, 복습·회상과 마지막 학습 위치 흐름을 구현했다. Part 4의 네 구간 답변 만들기와 P4-006 deterministic mock 교정·승인 저장도 그대로 유지한다. 개인 `PracticeDraft`·`ReusablePhrase`·`RecallAttempt`·`UserAnswer`·개인 `Correction`·`ReviewState`는 현재 브라우저 origin의 IndexedDB에 분리해 저장한다.
 
+[Part 2 로컬 시각 학습 slice](docs/PART2_VISUAL_APP_SLICE.md)는
+VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48개를
+개발 환경에 연결한다. 이미지 12개는 Git에서 제외된 로컬 생성 경로에서만
+개발 서버가 제공하며 production build에는 포함하지 않는다. Part 2의
+PracticeDraft·RecallAttempt·ReviewState는 `visual_question`을 대상으로
+저장하고 원본 추천 답변을 내 답변이나 공식 정답으로 자동 저장하지 않는다.
+
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
 Part 4 학습은 [답변 만들기·회상 흐름](docs/PART4_ANSWER_BUILD_AND_RECALL_UX.md)을 제공한다. 질문을 이해한 뒤 네 구간의 키워드와 문장을 직접 작성하고, 저장 답변을 전체·중국어·키워드·질문만 보기로 암기한다. 앱은 답변이나 병음을 생성하지 않으며 상세 회상 결과만 개인 IndexedDB에 기록한다.
@@ -50,18 +57,27 @@ Node.js와 npm이 준비된 환경에서 다음 명령을 사용한다.
 
 ```sh
 npm install
+npm run assets:part2-local
+npm run fixture:part2-visual
 npm run fixture:text-parts
 npm run fixture:part4-full
 npm run fixture:part4-review
 npm run dev
 ```
 
-기본 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`에 생성된다. 이는 검수 완료 또는 배포용 데이터가 아니라 `full-import-v1`과 `course-import-v1`에서 Part 1·3·4·5·6만 보존한 raw working 입력이다. 기존 6문제 및 Part 4 50문제 fixture도 계속 보존하며 원본 working 데이터·CSV·Excel은 수정하지 않는다.
+텍스트 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`, Part 2
+시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`에 생성된다.
+모두 검수 완료 또는 배포용 데이터가 아니다. 로컬 이미지 바이트는
+`data/working/generated-assets/full-import-v1/`에만 있으며 Git에
+포함되지 않는다. 기존 6문제 및 Part 4 50문제 fixture도 계속 보존하며
+원본 working 데이터·CSV·Excel은 수정하지 않는다.
 
 주요 검증 명령은 다음과 같다.
 
 ```sh
 npm run validate:fixtures
+npm run validate:part2-visual
+npm run test:part2-visual
 npm run validate:text-parts
 npm run test:text-parts
 npm run validate:part4-full
@@ -73,6 +89,7 @@ npm run typecheck
 npm run lint
 npm run test:run
 npm run build
+npm run validate:part2-assets
 npm run check
 npm run check:data
 ```
@@ -83,15 +100,25 @@ npm run check:data
 
 - `/`: 학습 홈
 - `/parts/:part`: Part 1·3·4·5·6 공통 목록·검색·필터·랜덤 선택
+- `/parts/2`: 로컬 Part 2 그림 세트 목록
+- `/parts/2/sets/:visualSetId`: 그림과 세부 질문 4개
+- `/visual-questions/:visualQuestionId`: 그림 세부 질문
+- `/visual-questions/:visualQuestionId/answer`: Part 2 자유 입력·비교
+- `/visual-questions/:visualQuestionId/recall`: 그림 기반 회상
 - `/questions/:questionId`: 텍스트 문제
 - `/questions/:questionId/answer`: 답변 작성
 - `/questions/:questionId/correction`: mock 교정 결과
 - `/my-answers`: 교정 완료 답변과 연습 초안
-- `/review`: 193개 텍스트 문제의 파트·검색·유형·상태 필터 복습
+- `/review`: 텍스트 193개와 Part 2 시각 질문 48개의 필터 복습
 - `/mistakes`: 저장된 개인 실수
 - `/data-review/part4`: 개발 환경의 로컬 Part 4 데이터 검수
 
-실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용 mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다. Part 1·3·5·6은 사용자의 자유 입력을 원문 그대로 PracticeDraft에 저장하며 UserAnswer로 자동 승인하지 않는다. Part 2·7 시각 화면, 실제 AI, 백엔드, 로그인·동기화, 전체 253문제 앱 연결과 배포는 아직 구현하지 않았다.
+실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용
+mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다.
+Part 1·2·3·5·6은 사용자의 자유 입력을 원문 그대로 PracticeDraft에
+저장하며 UserAnswer로 자동 승인하지 않는다. Part 2 추천 답변은
+`review_needed` 출처 자료로만 접어 표시한다. Part 7, 백엔드,
+로그인·동기화, reviewed 전체 데이터 연결과 배포는 아직 구현하지 않았다.
 
 ## 저장소 구조
 
@@ -103,7 +130,7 @@ npm run check:data
 │   ├── raw/         # 내용과 원래 파일명을 유지하는 원본 입력 자료
 │   ├── working/     # 추출·정규화·검수 중 자료
 │   └── reviewed/    # 필수 항목과 출처를 검수한 자료
-├── src/              # Part 1·3·4·5·6 텍스트 193문제 working React 앱
+├── src/              # 텍스트 193문제 + 로컬 Part 2 시각 48문항 React 앱
 ├── public/           # 정적 공개 파일 위치
 ├── package.json      # npm 실행 명령과 의존성
 └── sources/         # 출처 자료의 보관 및 메타데이터 지침

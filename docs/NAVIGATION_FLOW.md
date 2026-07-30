@@ -92,7 +92,9 @@ PART_DETAIL
 - 문항 이동은 같은 `visual_set_id` 안의 `item_number`를 따른다.
 - `VisualQuestion.question_id`가 비어 있어도 문제 표시와 답변 초안·교정은 가능하다.
 - canonical Question 연결이 없으면 가짜 `question_id`를 만들지 않는다.
-- 현재 v1에서 독립 VisualQuestion의 승인 UserAnswer를 저장할 수 없는 경우 저장 계약 보완이 필요하다고 표시한다.
+- 현재 로컬 slice는 독립 VisualQuestion의 PracticeDraft·RecallAttempt·
+  ReviewState를 `visual_question_id` 대상으로 저장한다. 실제 교정
+  UserAnswer는 만들지 않는다.
 - 원본 추천 답변이 검수 전이면 `원본 추천 답변 · 검수 필요`로 표시하고 승인 모범답안처럼 보이지 않게 한다.
 
 뒤로가기는 현재 세트와 문항 번호를 보존한 Part 2 목록 문맥으로 돌아간다.
@@ -280,11 +282,12 @@ Part 4 목록
 ```text
 HOME
 ├→ Part 1 (4)
+├→ Part 2 (로컬 12세트·48 VisualQuestion)
 ├→ Part 3 (84)
 ├→ Part 4 (50)
 ├→ Part 5 (36)
 ├→ Part 6 (19)
-└→ Part 2·7: 그림 문제 준비 중
+└→ Part 7: 그림 문제 준비 중
 
 텍스트 Part 목록
 → 검색·유형·복습 상태·작성 상태 필터
@@ -300,9 +303,10 @@ HOME
 → RecallAttempt + ReviewState
 ```
 
-Part 4 키워드 모드는 planning_keywords가 있을 때만 사용한다. Part 2·7은
-시각 자료 연결 전까지 라우팅하지 않으며, ModelAnswer가 없어도 개인 답변
-작성과 질문 회상을 계속한다.
+Part 4 키워드 모드는 planning_keywords가 있을 때만 사용한다. Part 2는
+별도 세트→VisualQuestion→자유 입력→출처 답변 비교→그림 기반 회상
+경로를 사용한다. 이미지 바이트는 development에서만 읽고 production은
+비활성화한다. Part 7은 시각 관계 검수와 별도 UX 전까지 라우팅하지 않는다.
 
 ## 13. Part 4 로컬 데이터 검수
 

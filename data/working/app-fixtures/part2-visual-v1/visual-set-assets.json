@@ -1,0 +1,110 @@
+[
+  {
+    "visual_set_asset_id": "vsa-P2-V01-01",
+    "visual_set_id": "vs-P2-V01",
+    "visual_asset_id": "va-P2-V01-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V02-01",
+    "visual_set_id": "vs-P2-V02",
+    "visual_asset_id": "va-P2-V02-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V03-01",
+    "visual_set_id": "vs-P2-V03",
+    "visual_asset_id": "va-P2-V03-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V04-01",
+    "visual_set_id": "vs-P2-V04",
+    "visual_asset_id": "va-P2-V04-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V05-01",
+    "visual_set_id": "vs-P2-V05",
+    "visual_asset_id": "va-P2-V05-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V06-01",
+    "visual_set_id": "vs-P2-V06",
+    "visual_asset_id": "va-P2-V06-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V07-01",
+    "visual_set_id": "vs-P2-V07",
+    "visual_asset_id": "va-P2-V07-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V08-01",
+    "visual_set_id": "vs-P2-V08",
+    "visual_asset_id": "va-P2-V08-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V09-01",
+    "visual_set_id": "vs-P2-V09",
+    "visual_asset_id": "va-P2-V09-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V10-01",
+    "visual_set_id": "vs-P2-V10",
+    "visual_asset_id": "va-P2-V10-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V11-01",
+    "visual_set_id": "vs-P2-V11",
+    "visual_asset_id": "va-P2-V11-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  },
+  {
+    "visual_set_asset_id": "vsa-P2-V12-01",
+    "visual_set_id": "vs-P2-V12",
+    "visual_asset_id": "va-P2-V12-01",
+    "sequence": 1,
+    "role": "primary",
+    "mapping_status": "review_needed",
+    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+  }
+]

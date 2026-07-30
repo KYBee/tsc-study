@@ -92,7 +92,10 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-022` | reviewed 승격 게이트 | 일곱 필드 전체 승인과 현재 Question·AnswerPoint 해시 일치가 있을 때만 원문을 그대로 승격한다. stale·미검수·수정 요청·보류는 제외한다. | 수정안 자체를 구조화하는 후속 워크플로 도입 시 |
 | `D-023` | 출처 주장 승인 의미 | `claimed_source_metadata` 승인은 workbook에 기록된 값을 확인했다는 뜻이며 외부 URL·원출처 진위 검증으로 자동 승격하지 않는다. | 실제 외부 출처 검증 절차와 상태 모델이 마련될 때 |
 | `D-024` | Part 4 답변 만들기·회상 | 기존 자유 입력 `PracticeDraft`를 유지하면서 네 구조의 키워드·문장을 additive하게 저장한다. 사용자가 명시적으로 저장한 `ReusablePhrase`와 상세 `RecallAttempt`는 학습 IndexedDB v3의 별도 store로 관리하고, 회상 결과만 기존 `ReviewState` 세 단계로 매핑한다. | 서버 동기화, 답변 버전 이력 또는 간격 반복 정책을 도입할 때 |
-| `D-025` | 전체 텍스트 Part working fixture | `full-import-v1`과 `course-import-v1`에서 Part 1·3·4·5·6의 Question·AnswerPoint 193개를 선별한 `text-parts-working-development-fixture-v1`을 앱 기본 source로 사용한다. Part 2·7은 시각 연결 전까지 제외하고 ModelAnswer는 생성하지 않는다. Part 4 구조화 UX는 유지하며 다른 Part는 자유 입력 PracticeDraft를 사용한다. 기존 학습 DB 이름과 v3 store는 개인 데이터 보존을 위해 변경하지 않는다. | 시각 Part를 구현하거나 reviewed canonical을 기본 source로 전환할 때 |
+| `D-025` | 전체 텍스트 Part working fixture | `full-import-v1`과 `course-import-v1`에서 Part 1·3·4·5·6의 Question·AnswerPoint 193개를 선별한 `text-parts-working-development-fixture-v1`을 앱 기본 source로 사용한다. Part 2·7은 시각 연결 전까지 제외하고 ModelAnswer는 생성하지 않는다. Part 4 구조화 UX는 유지하며 다른 Part는 자유 입력 PracticeDraft를 사용한다. 기존 학습 DB 이름과 store는 개인 데이터 보존을 위해 변경하지 않는다. | 시각 Part를 구현하거나 reviewed canonical을 기본 source로 전환할 때 |
+| `D-026` | Part 2 로컬 시각 working fixture | `part2-visual-working-development-fixture-v1`의 VisualSet·VisualAsset·VisualSetAsset 각 12개와 VisualQuestion·검수 전 출처 ModelAnswer 각 48개를 텍스트 fixture와 병행 로드한다. 엄격 연결 18개와 미연결 30개를 그대로 유지하고 Part 7·공식 샘플은 제외한다. | Part 2 reviewed 데이터 또는 권리 승인 자산이 준비될 때 |
+| `D-027` | 로컬 이미지 권리 경계 | `rights_status = review_needed` Part 2 바이트는 Git ignore 생성 경로에 두고 Vite `serve` 전용 allowlist 미들웨어로만 제공한다. production build에는 바이트를 넣지 않으며 production 화면에서 Part 2를 비활성화한다. | VisualAsset별 공개 권리 근거가 승인될 때 |
+| `D-028` | 개인 데이터 다형 대상과 IndexedDB v4 | 기존 DB 이름과 모든 레코드를 유지하며 `PracticeDraft`, `ReviewState`, `RecallAttempt`, `ReusablePhrase` source에 `question | visual_question` target을 additive하게 추가한다. v3 레코드는 `question` 대상으로 migration한다. Part 2는 UserAnswer·Correction을 자동 생성하지 않는다. | 실제 시각 문제 교정 공급자 또는 서버 동기화를 설계할 때 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 

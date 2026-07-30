@@ -1,0 +1,21 @@
+[
+  {
+    "drill_id": "drill-course-p2-timed-accuracy",
+    "drill_type": "picture_accuracy",
+    "prompt_or_task": "3초 동안 그림을 확인하고 6초 안에 한 문장으로 정확히 답한다.",
+    "completion_criteria": "그림의 핵심 정보에 맞는 한 문장으로 답한다.",
+    "required_content_ids": [
+      "part-guide-02"
+    ],
+    "status": "review_needed",
+    "evidence_kind": "generated_study_material",
+    "source_reference_ids": [
+      "sr-drill-course-p2-timed-accuracy-01",
+      "sr-drill-course-p2-timed-accuracy-02"
+    ],
+    "notes": "정확한 반복 횟수와 복습 일정은 자료에 없어 추가하지 않는다.",
+    "part": 2,
+    "preparation_seconds": 3,
+    "response_seconds": 6
+  }
+]

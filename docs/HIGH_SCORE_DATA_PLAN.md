@@ -118,11 +118,14 @@
 
 ## 단계별 종료 기준
 
-현재 앱에는 Part 1·3·4·5·6 working Question 193개가 연결되어 사용자가
-직접 PracticeDraft·ReusablePhrase·RecallAttempt·ReviewState를 쌓을 수
-있다. 이는 아래 보강 계획의 개인 경험 데이터 입력 기반이며 reviewed 승격,
-기본 ModelAnswer 또는 Level 8 확장 답변이 준비됐다는 뜻은 아니다. Part 2·7
-시각 학습과 Part 6의 상세 훈련 보강은 계속 별도 우선 과제다.
+현재 앱에는 Part 1·3·4·5·6 working Question 193개와 Part 2
+VisualQuestion 48개가 연결되어 사용자가 직접
+PracticeDraft·ReusablePhrase·RecallAttempt·ReviewState를 쌓을 수 있다.
+Part 2 출처 ModelAnswer 48개는 `review_needed` 상태로만 비교하며 기본
+정답이나 Level 8 답변으로 승인한 것이 아니다. 이는 개인 경험 데이터 입력
+기반이며 reviewed 승격이나 고득점 답변 준비 완료를 뜻하지 않는다. Part 2
+권리·언어·답변 검수, Part 7 시각 학습과 Part 6 상세 훈련 보강은 계속 별도
+우선 과제다.
 
 1. working 반입은 모든 레코드가 실제 Source와 `evidence_kind`를 갖고 `review_needed` 이하일 때 완료한다.
 2. reviewed 공용 데이터 승격은 중국어·전체 병음·한국어, 출처와 권리 검수가 끝난 레코드에만 적용한다.

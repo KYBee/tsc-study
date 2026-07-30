@@ -1,0 +1,76 @@
+[
+  {
+    "insight_id": "ci-course-error-accumulation",
+    "part_numbers": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "insight_type": "common_risk",
+    "content_ko": "긴 답변에서 전치사와 어순을 포함한 문법 오류가 누적될 수 있다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-error-accumulation-01",
+      "sr-ci-course-error-accumulation-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-p2-accuracy",
+    "part_numbers": [
+      2
+    ],
+    "insight_type": "evaluation_focus",
+    "content_ko": "Part 2는 답변 길이보다 그림 정보와 한 문장의 정확성을 우선한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-p2-accuracy-01",
+      "sr-ci-course-p2-accuracy-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-pronunciation-priority",
+    "part_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "insight_type": "strategy",
+    "content_ko": "고급 어휘보다 발음·딕션·성조와 쉬운 정확한 문장을 우선한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-pronunciation-priority-01",
+      "sr-ci-course-pronunciation-priority-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  },
+  {
+    "insight_id": "ci-course-type-and-review",
+    "part_numbers": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "insight_type": "study_method",
+    "content_ko": "본인이 실제로 말한 답을 타이핑하고 수정 전후와 이유를 기록한 뒤 수정 문장을 복습한다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "instructor_speech",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-type-and-review-01",
+      "sr-ci-course-type-and-review-02"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  }
+]

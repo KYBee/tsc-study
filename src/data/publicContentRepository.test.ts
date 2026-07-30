@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
-import { loadPart4FullFixture, loadTextPartsFixture } from './fixtureLoader'
+import {
+  loadPart2VisualFixture,
+  loadPart4FullFixture,
+  loadTextPartsFixture,
+} from './fixtureLoader'
 import { createPublicContentRepository } from './publicContentRepository'
 
 describe('fixture public content repository', () => {
@@ -108,5 +112,37 @@ describe('fixture public content repository', () => {
     await expect(repository.listLearningExpressionsByPart(4)).resolves.toHaveLength(13)
     await expect(repository.listPracticeDrillsByPart(4)).resolves.toHaveLength(2)
     await expect(repository.listCourseInsightsByPart(4)).resolves.toHaveLength(6)
+  })
+
+  it('queries all Part 2 visual entities by stable IDs', async () => {
+    const repository = createPublicContentRepository(
+      loadTextPartsFixture(),
+      loadPart2VisualFixture(),
+    )
+
+    await expect(repository.listVisualSetsByPart(2)).resolves.toHaveLength(12)
+    await expect(repository.listVisualQuestionsBySetId('vs-P2-V01')).resolves.toHaveLength(4)
+    await expect(repository.listVisualAssetsBySetId('vs-P2-V01')).resolves.toEqual([
+      expect.objectContaining({ visual_asset_id: 'va-P2-V01-01' }),
+    ])
+    await expect(
+      repository.listModelAnswersByVisualQuestionId('vq-P2-V01-Q1'),
+    ).resolves.toEqual([
+      expect.objectContaining({
+        answer_target_type: 'visual_question',
+        answer_status: 'review_needed',
+        provenance_kind: 'unverified_source',
+      }),
+    ])
+    await expect(repository.getVisualQuestionById('vq-P2-V12-Q4')).resolves.toEqual(
+      expect.objectContaining({ visual_set_id: 'vs-P2-V12', item_number: 4 }),
+    )
+
+    const part2 = await repository.getPart(2)
+    expect(part2).toMatchObject({
+      availability: 'available',
+      available_visual_set_count: 12,
+      available_visual_question_count: 48,
+    })
   })
 })

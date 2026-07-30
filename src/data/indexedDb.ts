@@ -15,7 +15,7 @@ import type {
 } from './userDataRepository'
 
 export const DEFAULT_USER_DATA_DB_NAME = 'tsc-study-part4-fixture-v1'
-export const USER_DATA_DB_VERSION = 3
+export const USER_DATA_DB_VERSION = 4
 
 export const USER_ANSWERS_STORE = 'userAnswers'
 export const REVIEW_STATES_STORE = 'reviewStates'
@@ -29,8 +29,11 @@ export const REVIEW_STATE_TARGET_INDEX = 'by-target'
 export const REVIEW_STATE_TARGET_ID_INDEX = 'by-target-id'
 export const CORRECTION_USER_ANSWER_INDEX = 'by-user-answer-id'
 export const PRACTICE_DRAFT_QUESTION_INDEX = 'by-question-id'
+export const PRACTICE_DRAFT_TARGET_INDEX = 'by-target'
 export const REUSABLE_PHRASE_QUESTION_INDEX = 'by-question-id'
+export const REUSABLE_PHRASE_TARGET_INDEX = 'by-source-target'
 export const RECALL_ATTEMPT_QUESTION_INDEX = 'by-question-id'
+export const RECALL_ATTEMPT_TARGET_INDEX = 'by-target'
 
 export interface TscStudyUserDataSchema extends DBSchema {
   [USER_ANSWERS_STORE]: {
@@ -63,6 +66,7 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredPracticeDraft
     indexes: {
       [PRACTICE_DRAFT_QUESTION_INDEX]: string
+      [PRACTICE_DRAFT_TARGET_INDEX]: ['question' | 'visual_question', string]
     }
   }
   [REUSABLE_PHRASES_STORE]: {
@@ -70,6 +74,7 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredReusablePhrase
     indexes: {
       [REUSABLE_PHRASE_QUESTION_INDEX]: string
+      [REUSABLE_PHRASE_TARGET_INDEX]: ['question' | 'visual_question', string]
     }
   }
   [RECALL_ATTEMPTS_STORE]: {
@@ -77,6 +82,7 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredRecallAttempt
     indexes: {
       [RECALL_ATTEMPT_QUESTION_INDEX]: string
+      [RECALL_ATTEMPT_TARGET_INDEX]: ['question' | 'visual_question', string]
     }
   }
 }
@@ -88,7 +94,7 @@ export function openTscStudyUserDatabase(
     databaseName,
     USER_DATA_DB_VERSION,
     {
-      upgrade(database, oldVersion) {
+      async upgrade(database, oldVersion, _newVersion, transaction) {
         if (oldVersion < 1) {
           const userAnswers = database.createObjectStore(USER_ANSWERS_STORE, {
             keyPath: 'user_answer_id',
@@ -147,6 +153,57 @@ export function openTscStudyUserDatabase(
             RECALL_ATTEMPT_QUESTION_INDEX,
             'question_id',
           )
+        }
+        if (oldVersion < 4) {
+          const drafts = transaction.objectStore(PRACTICE_DRAFTS_STORE)
+          drafts.createIndex(
+            PRACTICE_DRAFT_TARGET_INDEX,
+            ['target_type', 'target_id'],
+            { unique: true },
+          )
+          let draftCursor = await drafts.openCursor()
+          while (draftCursor) {
+            const value = draftCursor.value
+            await draftCursor.update({
+              ...value,
+              target_type: value.target_type ?? 'question',
+              target_id: value.target_id ?? value.question_id,
+            })
+            draftCursor = await draftCursor.continue()
+          }
+
+          const phrases = transaction.objectStore(REUSABLE_PHRASES_STORE)
+          phrases.createIndex(
+            REUSABLE_PHRASE_TARGET_INDEX,
+            ['source_target_type', 'source_target_id'],
+          )
+          let phraseCursor = await phrases.openCursor()
+          while (phraseCursor) {
+            const value = phraseCursor.value
+            await phraseCursor.update({
+              ...value,
+              source_target_type: value.source_target_type ?? 'question',
+              source_target_id:
+                value.source_target_id ?? value.source_question_id,
+            })
+            phraseCursor = await phraseCursor.continue()
+          }
+
+          const attempts = transaction.objectStore(RECALL_ATTEMPTS_STORE)
+          attempts.createIndex(
+            RECALL_ATTEMPT_TARGET_INDEX,
+            ['target_type', 'target_id'],
+          )
+          let attemptCursor = await attempts.openCursor()
+          while (attemptCursor) {
+            const value = attemptCursor.value
+            await attemptCursor.update({
+              ...value,
+              target_type: value.target_type ?? 'question',
+              target_id: value.target_id ?? value.question_id,
+            })
+            attemptCursor = await attemptCursor.continue()
+          }
         }
       },
     },
