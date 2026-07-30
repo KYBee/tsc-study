@@ -1,7 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 
 import { useAppDependencies } from '../../app/dependencies'
-import { loadLastLearningLocation } from '../../app/lastLearningLocation'
+import {
+  loadLastLearningLocation,
+  loadLastVisualLearningLocation,
+} from '../../app/lastLearningLocation'
 import { useAsyncData } from '../../app/useAsyncData'
 import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
@@ -15,29 +18,49 @@ export function HomeScreen() {
   const { publicRepository, userRepository } = useAppDependencies()
   const navigate = useNavigate()
   const { data, error, loading } = useAsyncData(async () => {
-    const [parts, questionGroups, reviewStates, answers, drafts, recallAttempts] =
+    const [
+      parts,
+      questionGroups,
+      visualSets,
+      reviewStates,
+      answers,
+      drafts,
+      recallAttempts,
+    ] =
       await Promise.all([
         publicRepository.listParts(),
         Promise.all(
           TEXT_PARTS.map((part) => publicRepository.listQuestionsByPart(part)),
         ),
+        publicRepository.listVisualSetsByPart(2),
         userRepository.listReviewStates(),
         userRepository.listUserAnswers(),
         userRepository.listPracticeDrafts(),
         userRepository.listRecallAttempts(),
       ])
     const questions = questionGroups.flat()
+    const visualQuestions = (
+      await Promise.all(
+        visualSets.map((item) =>
+          publicRepository.listVisualQuestionsBySetId(item.visual_set_id),
+        ),
+      )
+    ).flat()
     return {
       parts,
       questions,
-      reviewStates: reviewStates.filter(
-        (state) => state.target_type === 'question',
-      ),
+      visualSets,
+      visualQuestions,
+      reviewStates,
       answers,
       drafts,
       recallAttempts,
       lastLocation: loadLastLearningLocation(
         questions.map((question) => question.question_id),
+      ),
+      lastVisualLocation: loadLastVisualLearningLocation(
+        visualSets.map((visualSet) => visualSet.visual_set_id),
+        visualQuestions.map((visualQuestion) => visualQuestion.visual_question_id),
       ),
     }
   }, [publicRepository, userRepository])
@@ -53,10 +76,14 @@ export function HomeScreen() {
   }
 
   const questionIds = new Set(data.questions.map((question) => question.question_id))
-  const textDrafts = data.drafts.filter((draft) => questionIds.has(draft.question_id))
+  const textDrafts = data.drafts.filter(
+    (draft) =>
+      (draft.target_type ?? 'question') === 'question' &&
+      questionIds.has(draft.target_id ?? draft.question_id),
+  )
   const textAnswers = data.answers.filter((answer) => questionIds.has(answer.question_id))
-  const textReviewStates = data.reviewStates.filter((state) =>
-    questionIds.has(state.target_id),
+  const textReviewStates = data.reviewStates.filter(
+    (state) => state.target_type === 'question' && questionIds.has(state.target_id),
   )
   const reviewCounts = {
     none: data.questions.length - textReviewStates.length,
@@ -86,13 +113,26 @@ export function HomeScreen() {
   const completedDraftCount = textDrafts.filter(
     (draft) => draft.completion_status === 'completed',
   ).length
+  const visualQuestionIds = new Set(
+    data.visualQuestions.map((question) => question.visual_question_id),
+  )
+  const visualDrafts = data.drafts.filter(
+    (draft) =>
+      (draft.target_type ?? 'question') === 'visual_question' &&
+      visualQuestionIds.has(draft.target_id ?? draft.question_id),
+  )
+  const visualReviews = data.reviewStates.filter(
+    (state) =>
+      state.target_type === 'visual_question' &&
+      visualQuestionIds.has(state.target_id),
+  )
 
   return (
     <div className="page">
       <header className="hero">
         <p className="eyebrow">TSC STUDY</p>
-        <h1>텍스트 문제 193개를 내 답변으로 연습하세요</h1>
-        <p>Part 1·3·4·5·6 검수 전 문제이며, 입력한 답변만 저장합니다.</p>
+        <h1>텍스트와 그림 문제를 내 답변으로 연습하세요</h1>
+        <p>Part 1~6 검수 전 자료이며, 입력한 답변만 개인 저장합니다.</p>
       </header>
 
       <section className="card" aria-labelledby="progress-heading">
@@ -187,6 +227,56 @@ export function HomeScreen() {
         </div>
         <ul className="card-list" aria-label="Part 목록">
           {data.parts.map((part) => {
+            if (part.part === 2) {
+              const completed = visualDrafts.filter(
+                (draft) => draft.completion_status === 'completed',
+              ).length
+              return (
+                <li key={part.part} className="part-card">
+                  {part.availability === 'available' && import.meta.env.DEV ? (
+                    <Link className="part-card__link" to="/parts/2">
+                      <span className="part-card__number">Part 2</span>
+                      <span className="part-card__body">
+                        <strong>{part.name}</strong>
+                        <small>
+                          {part.available_visual_set_count}세트 ·{' '}
+                          {part.available_visual_question_count}문항 · 작성{' '}
+                          {visualDrafts.length} · 완료 {completed}
+                        </small>
+                        <small>
+                          헷갈림{' '}
+                          {visualReviews.filter((item) => item.learning_status === '헷갈림').length}
+                          {' · '}외움{' '}
+                          {visualReviews.filter((item) => item.learning_status === '외움').length}
+                        </small>
+                        {data.lastVisualLocation && (
+                          <small>
+                            마지막 세트{' '}
+                            {Number(
+                              data.lastVisualLocation.last_visual_set_id.match(/V(\d+)$/)?.[1] ?? 0,
+                            )}
+                            {' · 질문 '}
+                            {Number(
+                              data.lastVisualLocation.last_visual_question_id.match(/Q(\d+)$/)?.[1] ?? 0,
+                            )}
+                          </small>
+                        )}
+                      </span>
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : (
+                    <div className="part-card__disabled" aria-disabled="true">
+                      <span className="part-card__number">Part 2</span>
+                      <span className="part-card__body">
+                        <strong>{part.name}</strong>
+                        <small>로컬 그림 학습 전용</small>
+                      </span>
+                      <span className="coming-soon">권리 검수 중</span>
+                    </div>
+                  )}
+                </li>
+              )
+            }
             const partQuestionIds = new Set(
               data.questions
                 .filter((question) => question.part === part.part)

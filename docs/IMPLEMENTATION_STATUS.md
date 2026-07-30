@@ -2,7 +2,9 @@
 
 ## 현재 구현 범위
 
-현재 React 앱은 Part 1·3·4·5·6의 검수 전 working 문제 193개를 대상으로 다음 흐름을 제공한다.
+현재 React 앱은 Part 1·3·4·5·6의 검수 전 working 텍스트 문제 193개와
+개발 환경 전용 Part 2 그림 12세트·VisualQuestion 48개를 대상으로 다음
+흐름을 제공한다.
 
 ```text
 HOME
@@ -15,9 +17,18 @@ HOME
 → 사용자 승인 후 교정 완료 답변 저장
 → 파트별 복습·회상 상태 변경
 → 개인 실수와 마지막 학습 위치 확인
+
+HOME
+→ Part 2 그림 세트 12개
+→ 그림과 세부 질문 4개
+→ VisualQuestion 자유 입력 PracticeDraft
+→ 검수 전 원본 추천 답변 비교
+→ 그림 기반 회상·ReviewState
 ```
 
-Part 2·7 시각 화면, 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
+Part 7 시각 화면, 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
+Part 2 이미지 바이트는 권리 검수 전이므로 로컬 개발 서버에서만 제공하고
+production build에는 포함하지 않는다.
 
 ## 앱 개발 fixture
 
@@ -36,6 +47,11 @@ Part 2·7 시각 화면, 실제 AI, 백엔드, 로그인·동기화와 배포는
 | `ModelAnswer` | 0 |
 
 workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 않는다. 강의 자료의 `course_target_context = level_3`도 유지한다. 표현·드릴·인사이트는 Part 공통 보조 자료이며 특정 Question의 정답이 아니다. 기존 6문제 및 Part 4 50문제 fixture도 삭제하지 않았다.
+
+Part 2 fixture ID는 `part2-visual-working-development-fixture-v1`이다.
+VisualSet·VisualAsset·VisualSetAsset이 각 12개, VisualQuestion과 그 대상
+ModelAnswer가 각 48개다. 엄격 근거 Question 연결 18개와 미연결 30개를
+그대로 유지하며 추천 답변은 `review_needed`, `unverified_source`다.
 
 ## 개인 데이터 흐름
 
@@ -56,37 +72,45 @@ workbook과 강의 `PartGuide`를 하나의 검수된 가이드로 병합하지 
 ## IndexedDB
 
 - DB 이름: `tsc-study-part4-fixture-v1` 유지
-- 버전: `3`
+- 버전: `4`
 
-DB 이름에 Part 4가 남아 있지만 기존 개인 데이터 보존을 위해 이번 확장에서
-이름과 버전을 바꾸지 않았다. 모든 store의 `question_id`는 다섯 텍스트
-파트를 처리하며, 이름 변경은 명시적 migration 설계가 필요한 기술 부채다.
+DB 이름에 Part 4가 남아 있지만 기존 개인 데이터 보존을 위해 이름은
+바꾸지 않았다. v4는 `question | visual_question` 대상 인덱스를 additive하게
+추가하며 v3 레코드를 `target_type = question`으로 보존한다. 이름 변경은
+명시적 migration 설계가 필요한 기술 부채다.
 
 | object store | keyPath | 규칙 |
 |---|---|---|
 | `userAnswers` | `user_answer_id` | unique `question_id`, 승인 답변만 upsert |
 | `reviewStates` | `review_state_id` | unique 대상, 사용자가 상태를 선택할 때만 생성 |
 | `corrections` | `correction_id` | 승인 답변의 실제 변경만 저장 |
-| `practiceDrafts` | `practice_draft_id` | unique `question_id`, 빈 원문 금지, 질문당 활성 초안 하나 upsert |
-| `reusablePhrases` | `reusable_phrase_id` | 사용자가 명시적으로 저장한 개인 원문 표현 |
-| `recallAttempts` | `recall_attempt_id` | 암기 모드와 사용자가 선택한 상세 회상 결과 |
+| `practiceDrafts` | `practice_draft_id` | unique target, 빈 원문 금지, Question 또는 VisualQuestion당 활성 초안 하나 upsert |
+| `reusablePhrases` | `reusable_phrase_id` | 사용자가 명시적으로 저장한 개인 원문 표현과 source target |
+| `recallAttempts` | `recall_attempt_id` | 대상별 암기 모드와 사용자가 선택한 상세 회상 결과 |
 
-v2에서 v3로 올릴 때 기존 네 store와 레코드를 유지한 채 재사용 표현과 회상 이력 store만 추가한다. 검수 전용 DB에는 영향을 주지 않는다.
+v2→v3의 기존 store 추가 뒤 v3→v4는 target 필드와 인덱스만 추가한다.
+기존 UserAnswer·Correction·ReviewState·PracticeDraft·ReusablePhrase·
+RecallAttempt를 보존하며 검수 전용 DB에는 영향을 주지 않는다.
 
 ## 구현 화면
 
 - HOME: 193문제와 Part별 초안·완료·복습 상태, 이어서 보기, 랜덤 시작
+- Part 2: 12세트 목록·상태 필터·랜덤, 큰 그림·확대, 48개 세부 질문
+- Part 2 답변·암기: 자유 입력 초안, 접힌 검수 전 추천 답변, 그림+질문·그림·질문 회상
 - Part 1·3·4·5·6: 공통 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤
 - 문제 상세: 이전·다음·랜덤, 병음·한국어 토글, AnswerPoint, 출처 성격이 분리된 공통 강의 자료
 - 답변 작성: Part 4 네 구간 구조화 입력 유지, 다른 Part는 자유 입력 초안·완료 저장
 - 암기 연습: Part 4 전용 네 모드와 다른 Part의 전체·답변·질문 모드
 - 나의 답변: `교정 완료`와 `연습 초안` 분리 및 Part 필터
-- 복습: 상태 없음 포함 193문제, Part·검색·유형·상태 필터, 랜덤
+- 복습: 텍스트 193개와 시각 48개, Part·문제 종류·검색·유형·상태 필터, 랜덤
 - 실수 노트: 승인 저장에서 생성된 개인 Correction만 표시
 
 ## mock 교정과 ModelAnswer
 
-P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 성공 결과를 지원한다. 그 밖의 중국어·한국어·혼합 입력은 원문을 유지한 `unsupported_by_mock`으로 처리한다. `ModelAnswer`는 0개이며 화면에서 `아직 모범답안 없음`을 정상 상태로 표시한다.
+P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 성공 결과를
+지원한다. 텍스트 Question의 `ModelAnswer`는 0개다. Part 2에는 workbook
+원문 추천 답변 48개가 있지만 검수 전 출처 답변으로만 표시하며 내 답변으로
+자동 저장하거나 AI 결과로 취급하지 않는다.
 
 ## 검증
 
@@ -99,7 +123,9 @@ P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 
 - 실제 AI와 자연스럽게·Level 8 확장 결과는 없다.
 - 강의 기반 가이드는 3급 과정 맥락의 기초 전략이며 Level 8 공식 기준이 아니다.
 - 개인 데이터는 현재 브라우저와 origin에 종속된다.
-- 전체 253문제 중 텍스트 193개만 연결했으며 Part 2·7 시각 문제는 연결하지 않았다.
+- 전체 253 Question 중 텍스트 193개와 별도 VisualQuestion 48개를
+  working 학습에 연결했다. Part 7은 연결하지 않았다.
+- Part 2 이미지 권리는 미검수이며 로컬 개발 표시만 허용한다.
 
 ## 다음 추천 작업
 

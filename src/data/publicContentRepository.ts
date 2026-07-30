@@ -8,18 +8,25 @@ import type {
   Question,
   SourceReference,
   SourceReferenceTargetType,
+  VisualAsset,
+  VisualQuestion,
+  VisualSet,
 } from '../domain/entities'
 import type { PublicContentRepository } from '../domain/repositories'
 import type {
   Part4Fixture,
   Part4FullFixture,
+  Part2VisualFixture,
   TextPartsFixture,
 } from '../domain/validation'
-import { loadTextPartsFixture } from './fixtureLoader'
+import {
+  loadPart2VisualFixture,
+  loadTextPartsFixture,
+} from './fixtureLoader'
 
 const PART_CATALOG: ReadonlyArray<Omit<PartCatalogItem, 'available_question_count'>> = [
   { part: 1, name: '자기소개', availability: 'available' },
-  { part: 2, name: '그림 보고 답하기', availability: 'coming_soon' },
+  { part: 2, name: '그림 보고 답하기', availability: 'available' },
   { part: 3, name: '빠르게 반응하기', availability: 'available' },
   { part: 4, name: '일상 화제 설명하기', availability: 'available' },
   { part: 5, name: '의견 제시하기', availability: 'available' },
@@ -38,14 +45,30 @@ const compareStableIds = (left: string, right: string) => {
 
 class FixturePublicContentRepository implements PublicContentRepository {
   private readonly fixture: Part4Fixture | Part4FullFixture | TextPartsFixture
+  private readonly visualFixture?: Part2VisualFixture
 
-  constructor(fixture: Part4Fixture | Part4FullFixture | TextPartsFixture) {
+  constructor(
+    fixture: Part4Fixture | Part4FullFixture | TextPartsFixture,
+    visualFixture?: Part2VisualFixture,
+  ) {
     this.fixture = fixture
+    this.visualFixture = visualFixture
   }
 
   async listParts(): Promise<PartCatalogItem[]> {
     return PART_CATALOG.map((part) => {
       if (part.availability !== 'available') return { ...part }
+      if (part.part === 2) {
+        if (!this.visualFixture) {
+          return { ...part, availability: 'coming_soon' as const }
+        }
+        return {
+          ...part,
+          available_visual_set_count: this.visualFixture.visualSets.length,
+          available_visual_question_count:
+            this.visualFixture.visualQuestions.length,
+        }
+      }
       const availableQuestionCount = this.fixture.questions.filter(
         (question) => question.part === part.part,
       ).length
@@ -95,8 +118,10 @@ class FixturePublicContentRepository implements PublicContentRepository {
   }
 
   async listPartGuides(partNumber: number): Promise<PartGuide[]> {
-    if (!('partGuides' in this.fixture)) return []
-    return this.fixture.partGuides
+    const materialFixture =
+      partNumber === 2 ? this.visualFixture : this.fixture
+    if (!materialFixture || !('partGuides' in materialFixture)) return []
+    return materialFixture.partGuides
       .filter((guide) => guide.part === partNumber)
       .sort((left, right) => compareStableIds(left.part_guide_id, right.part_guide_id))
   }
@@ -104,31 +129,123 @@ class FixturePublicContentRepository implements PublicContentRepository {
   async listLearningExpressionsByPart(
     partNumber: number,
   ): Promise<LearningExpression[]> {
-    if (!('learningExpressions' in this.fixture)) return []
-    return this.fixture.learningExpressions
+    const materialFixture =
+      partNumber === 2 ? this.visualFixture : this.fixture
+    if (!materialFixture || !('learningExpressions' in materialFixture)) {
+      return []
+    }
+    return materialFixture.learningExpressions
       .filter((expression) => expression.part_numbers.includes(partNumber as PartNumber))
       .sort((left, right) => compareStableIds(left.expression_id, right.expression_id))
   }
 
   async listPracticeDrillsByPart(partNumber: number): Promise<PracticeDrill[]> {
-    if (!('practiceDrills' in this.fixture)) return []
-    return this.fixture.practiceDrills
+    const materialFixture =
+      partNumber === 2 ? this.visualFixture : this.fixture
+    if (!materialFixture || !('practiceDrills' in materialFixture)) return []
+    return materialFixture.practiceDrills
       .filter((drill) => drill.part === partNumber)
       .sort((left, right) => compareStableIds(left.drill_id, right.drill_id))
   }
 
   async listCourseInsightsByPart(partNumber: number): Promise<CourseInsight[]> {
-    if (!('courseInsights' in this.fixture)) return []
-    return this.fixture.courseInsights
+    const materialFixture =
+      partNumber === 2 ? this.visualFixture : this.fixture
+    if (!materialFixture || !('courseInsights' in materialFixture)) return []
+    return materialFixture.courseInsights
       .filter((insight) => insight.part_numbers.includes(partNumber as PartNumber))
       .sort((left, right) => compareStableIds(left.insight_id, right.insight_id))
+  }
+
+  async listVisualSetsByPart(partNumber: number): Promise<VisualSet[]> {
+    return (this.visualFixture?.visualSets ?? [])
+      .filter((item) => item.part === partNumber)
+      .sort((left, right) =>
+        compareStableIds(left.visual_set_id, right.visual_set_id),
+      )
+  }
+
+  async getVisualSetById(
+    visualSetId: string,
+  ): Promise<VisualSet | undefined> {
+    return this.visualFixture?.visualSets.find(
+      (item) => item.visual_set_id === visualSetId,
+    )
+  }
+
+  async listVisualAssetsBySetId(
+    visualSetId: string,
+  ): Promise<VisualAsset[]> {
+    if (!this.visualFixture) return []
+    const assetIds = new Set(
+      this.visualFixture.visualSetAssets
+        .filter((item) => item.visual_set_id === visualSetId)
+        .sort(
+          (left, right) =>
+            left.sequence - right.sequence ||
+            compareStableIds(
+              left.visual_set_asset_id,
+              right.visual_set_asset_id,
+            ),
+        )
+        .map((item) => item.visual_asset_id),
+    )
+    return this.visualFixture.visualAssets.filter((item) =>
+      assetIds.has(item.visual_asset_id),
+    )
+  }
+
+  async getVisualAssetById(
+    visualAssetId: string,
+  ): Promise<VisualAsset | undefined> {
+    return this.visualFixture?.visualAssets.find(
+      (item) => item.visual_asset_id === visualAssetId,
+    )
+  }
+
+  async listVisualQuestionsBySetId(
+    visualSetId: string,
+  ): Promise<VisualQuestion[]> {
+    return (this.visualFixture?.visualQuestions ?? [])
+      .filter((item) => item.visual_set_id === visualSetId)
+      .sort(
+        (left, right) =>
+          left.item_number - right.item_number ||
+          compareStableIds(
+            left.visual_question_id,
+            right.visual_question_id,
+          ),
+      )
+  }
+
+  async getVisualQuestionById(
+    visualQuestionId: string,
+  ): Promise<VisualQuestion | undefined> {
+    return this.visualFixture?.visualQuestions.find(
+      (item) => item.visual_question_id === visualQuestionId,
+    )
+  }
+
+  async listModelAnswersByVisualQuestionId(
+    visualQuestionId: string,
+  ) {
+    return (this.visualFixture?.modelAnswers ?? [])
+      .filter(
+        (item) =>
+          item.answer_target_type === 'visual_question' &&
+          item.answer_target_id === visualQuestionId,
+      )
+      .sort((left, right) => compareStableIds(left.answer_id, right.answer_id))
   }
 
   async listSourceReferencesForTarget(
     targetType: SourceReferenceTargetType,
     targetId: string,
   ): Promise<SourceReference[]> {
-    return this.fixture.sourceReferences
+    return [
+      ...this.fixture.sourceReferences,
+      ...(this.visualFixture?.sourceReferences ?? []),
+    ]
       .filter(
         (reference) =>
           reference.target_type === targetType && reference.target_id === targetId,
@@ -139,12 +256,18 @@ class FixturePublicContentRepository implements PublicContentRepository {
   }
 }
 
-export const createPublicContentRepository = (
-  fixture:
+export function createPublicContentRepository(
+  fixture?:
     | Part4Fixture
     | Part4FullFixture
-    | TextPartsFixture = loadTextPartsFixture(),
-): PublicContentRepository => new FixturePublicContentRepository(fixture)
+    | TextPartsFixture,
+  visualFixture?: Part2VisualFixture,
+): PublicContentRepository {
+  return new FixturePublicContentRepository(
+    fixture ?? loadTextPartsFixture(),
+    visualFixture ?? (fixture === undefined ? loadPart2VisualFixture() : undefined),
+  )
+}
 
 export const isPartNumber = (value: number): value is PartNumber =>
   Number.isInteger(value) && value >= 1 && value <= 7

@@ -65,6 +65,16 @@ v1.1은 `other-output`의 3급 목표 강의 분석을 working 데이터로 반�
 동일한 canonical 엔터티 계약으로 읽는다. Part 4만 선택적 구조화
 PracticeDraft를 사용하고 다른 Part는 자유 입력 필드만 사용한다. 이 런타임
 선택은 스키마의 Question 의미나 reviewed 승격 상태를 변경하지 않는다.
+
+Part 2 로컬 working fixture는 `VisualSet`·`VisualAsset`·
+`VisualSetAsset` 각 12개, `VisualQuestion`과 그 대상의 검수 전
+`ModelAnswer` 각 48개를 제공한다. canonical Question 연결 18개와 미연결
+30개 모두 `visual_question_id`로 직접 학습할 수 있다. 개인
+`PracticeDraft`, `ReviewState`, `RecallAttempt`는
+`target_type = question | visual_question`과 안정적인 `target_id`를
+사용한다. 이미지 바이트는 권리 검수 전 로컬 개발 자산이며 공용 JSON이나
+production build에 포함하지 않는다.
+
 | 검수 운영 | `Part4ReviewDecision` | 필드별 사람 판단과 원문 해시만 별도 IndexedDB·내보내기 JSON에 보존한다. 공용 콘텐츠나 개인 학습 기록과 섞지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.

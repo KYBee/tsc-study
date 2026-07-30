@@ -77,6 +77,26 @@ python3 scripts/build_text_parts_app_fixture.py --validate-only
 RecallAttempt·ReviewState는 개인 IndexedDB에만 저장하며 working 또는
 reviewed 공용 JSON으로 되돌려 쓰지 않는다.
 
+## Part 2 로컬 시각 앱 working fixture
+
+`scripts/build_part2_visual_app_fixture.py`는 `full-import-v1`과
+`course-import-v1`에서 Part 2 VisualSet·VisualAsset·VisualSetAsset
+각 12개, VisualQuestion·검수 전 출처 ModelAnswer 각 48개와 Part 공통
+자료를 결정적으로 선별한다.
+
+```sh
+python3 scripts/build_full_workbook_import.py --extract-assets
+python3 scripts/build_part2_visual_app_fixture.py
+python3 scripts/build_part2_visual_app_fixture.py --validate-only
+```
+
+이미지 바이트는 Git ignore된 `data/working/generated-assets/full-import-v1/`
+경로에만 두며 reviewed·public 자산으로 승격하지 않는다. 앱은 development
+서버에서 등록 asset ID와 SHA-256이 일치할 때만 읽고 production build에는
+포함하지 않는다. 개인 PracticeDraft·ReviewState·RecallAttempt는
+`visual_question` target으로 IndexedDB에 저장하며 working 공용 JSON을
+수정하지 않는다.
+
 ## Part 4 사람 검수와 부분 승격
 
 Part 4 검수 입력은 `scripts/build_part4_review_fixture.py`가 working 앱 fixture와 review queue에서 결정적으로 만든다. 원문은 수정하지 않고 Question·AnswerPoint 해시와 일곱 필수 검수 영역을 보존한다.

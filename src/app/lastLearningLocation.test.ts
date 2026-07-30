@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest'
 
 import {
   clearLastLearningLocation,
+  loadLastVisualLearningLocation,
   loadLastLearningLocation,
+  saveLastVisualLearningLocation,
   saveLastLearningLocation,
 } from './lastLearningLocation'
 
@@ -49,5 +51,42 @@ describe('last learning location', () => {
       last_question_id: 'P1-004',
       updated_at: '2026-07-28T10:00:00.000Z',
     })
+  })
+
+  it('stores a registered VisualQuestion separately from the text location', () => {
+    const values = new Map<string, string>()
+    const storage = {
+      getItem: (key: string) => values.get(key) ?? null,
+      setItem: (key: string, value: string) => values.set(key, value),
+      removeItem: (key: string) => values.delete(key),
+    } as unknown as Storage
+
+    saveLastVisualLearningLocation(
+      {
+        last_visual_set_id: 'vs-P2-V01',
+        last_visual_question_id: 'vq-P2-V01-Q1',
+      },
+      storage,
+      () => '2026-07-30T10:00:00.000Z',
+    )
+
+    expect(
+      loadLastVisualLearningLocation(
+        ['vs-P2-V01'],
+        ['vq-P2-V01-Q1'],
+        storage,
+      ),
+    ).toEqual({
+      last_visual_set_id: 'vs-P2-V01',
+      last_visual_question_id: 'vq-P2-V01-Q1',
+      updated_at: '2026-07-30T10:00:00.000Z',
+    })
+    expect(
+      loadLastVisualLearningLocation(
+        ['vs-P2-V02'],
+        ['vq-P2-V01-Q1'],
+        storage,
+      ),
+    ).toBeUndefined()
   })
 })

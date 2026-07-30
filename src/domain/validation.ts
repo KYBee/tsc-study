@@ -11,6 +11,10 @@ import type {
   Source,
   SourceReference,
   SourceReferenceTargetType,
+  VisualAsset,
+  VisualQuestion,
+  VisualSet,
+  VisualSetAsset,
 } from './entities'
 
 const identifierSchema = z.string().min(1)
@@ -270,6 +274,75 @@ export const courseInsightSchema = z
     course_target_context: courseTargetContextSchema,
     evidence_kind: evidenceKindSchema,
     confidence_or_status: z.enum(['raw', 'review_needed', 'draft', 'reviewed']),
+    source_reference_ids: z.array(identifierSchema).optional(),
+    notes: optionalTextSchema,
+  })
+  .strict()
+
+export const visualAssetSchema = z
+  .object({
+    visual_asset_id: identifierSchema,
+    source_id: identifierSchema,
+    source_locator: z.string().min(1),
+    repository_path: z
+      .string()
+      .regex(
+        /^data\/working\/generated-assets\/full-import-v1\/[^/]+\.(?:png|jpe?g|gif)$/i,
+      ),
+    media_type: z.enum(['image/png', 'image/jpeg', 'image/gif']),
+    file_size: z.number().int().positive(),
+    sha256: z.string().regex(/^[a-f0-9]{64}$/),
+    width: z.number().int().positive().optional(),
+    height: z.number().int().positive().optional(),
+    rights_status: z.enum([
+      'review_needed',
+      'private_use',
+      'public_allowed',
+      'restricted',
+    ]),
+    asset_status: z.enum(['raw', 'review_needed', 'reviewed']),
+    notes: optionalTextSchema,
+  })
+  .strict()
+
+export const visualSetSchema = z
+  .object({
+    visual_set_id: identifierSchema,
+    part: partSchema,
+    set_type: z.enum([
+      'four_question_image',
+      'story_image',
+      'official_sample',
+      'other',
+    ]),
+    set_status: z.enum(['raw', 'review_needed', 'reviewed']),
+    source_reference_ids: z.array(identifierSchema).optional(),
+    notes: optionalTextSchema,
+  })
+  .strict()
+
+export const visualSetAssetSchema = z
+  .object({
+    visual_set_asset_id: identifierSchema,
+    visual_set_id: identifierSchema,
+    visual_asset_id: identifierSchema,
+    sequence: z.number().int().positive(),
+    role: optionalTextSchema,
+    mapping_status: z.enum(['raw', 'review_needed', 'verified']),
+    notes: optionalTextSchema,
+  })
+  .strict()
+
+export const visualQuestionSchema = z
+  .object({
+    visual_question_id: identifierSchema,
+    visual_set_id: identifierSchema,
+    item_number: z.number().int().positive(),
+    question_id: optionalTextSchema,
+    question_zh: optionalTextSchema,
+    question_pinyin: optionalTextSchema,
+    question_ko: optionalTextSchema,
+    visual_question_status: z.enum(['raw', 'normalized', 'verified']),
     source_reference_ids: z.array(identifierSchema).optional(),
     notes: optionalTextSchema,
   })
@@ -535,6 +608,96 @@ export interface TextPartsFixture {
   practiceDrills: PracticeDrill[]
   courseInsights: CourseInsight[]
   manifest: TextPartsFixtureManifest
+}
+
+const PART2_VISUAL_FIXTURE_DATASET_ID =
+  'part2-visual-working-development-fixture-v1' as const
+
+const part2VisualManifestSchema = z
+  .object({
+    dataset_id: z.literal(PART2_VISUAL_FIXTURE_DATASET_ID),
+    dataset_status: z.literal('development_fixture'),
+    schema_version: z.literal('data-schema-v1.1-working'),
+    inputs: z
+      .object({
+        full_import_manifest: z
+          .object({ path: z.string().min(1), sha256: sha256Schema })
+          .strict(),
+        course_import_manifest: z
+          .object({ path: z.string().min(1), sha256: sha256Schema })
+          .strict(),
+      })
+      .strict(),
+    script_sha256: sha256Schema,
+    generated_files: z.record(z.string(), sha256Schema),
+    counts: z.record(z.string(), z.number().int().nonnegative()),
+    ids: z.record(z.string(), z.array(identifierSchema)),
+    visual_question_links: z
+      .object({ linked: z.literal(18), unlinked: z.literal(30) })
+      .strict(),
+    validation: z
+      .object({
+        part: z.literal(2),
+        official_sample_excluded: z.literal(true),
+        rights_status_preserved: z.literal(true),
+        public_allowed: z.literal(false),
+        asset_bytes_embedded: z.literal(false),
+        working_status_preserved: z.literal(true),
+      })
+      .strict(),
+    manifest_hash_policy: z.string().min(1),
+  })
+  .strict()
+
+const part2VisualFixtureSchema = z
+  .object({
+    visualSets: z.array(visualSetSchema),
+    visualAssets: z.array(visualAssetSchema),
+    visualSetAssets: z.array(visualSetAssetSchema),
+    visualQuestions: z.array(visualQuestionSchema),
+    modelAnswers: z.array(modelAnswerSchema),
+    sources: z.array(sourceSchema),
+    sourceReferences: z.array(sourceReferenceSchema),
+    partGuides: z.array(partGuideSchema),
+    learningExpressions: z.array(learningExpressionSchema),
+    practiceDrills: z.array(practiceDrillSchema),
+    courseInsights: z.array(courseInsightSchema),
+    manifest: part2VisualManifestSchema,
+  })
+  .strict()
+
+export type Part2VisualFixtureManifest = z.infer<
+  typeof part2VisualManifestSchema
+>
+
+export interface Part2VisualFixtureInput {
+  visualSets: unknown
+  visualAssets: unknown
+  visualSetAssets: unknown
+  visualQuestions: unknown
+  modelAnswers: unknown
+  sources: unknown
+  sourceReferences: unknown
+  partGuides: unknown
+  learningExpressions: unknown
+  practiceDrills: unknown
+  courseInsights: unknown
+  manifest: unknown
+}
+
+export interface Part2VisualFixture {
+  visualSets: VisualSet[]
+  visualAssets: VisualAsset[]
+  visualSetAssets: VisualSetAsset[]
+  visualQuestions: VisualQuestion[]
+  modelAnswers: ModelAnswer[]
+  sources: Source[]
+  sourceReferences: SourceReference[]
+  partGuides: PartGuide[]
+  learningExpressions: LearningExpression[]
+  practiceDrills: PracticeDrill[]
+  courseInsights: CourseInsight[]
+  manifest: Part2VisualFixtureManifest
 }
 
 export class FixtureValidationError extends Error {
@@ -1160,5 +1323,189 @@ export const parseTextPartsFixture = (
     )
   }
 
+  return fixture
+}
+
+export const parsePart2VisualFixture = (
+  input: Part2VisualFixtureInput,
+): Part2VisualFixture => {
+  const parsed = part2VisualFixtureSchema.safeParse(input)
+  if (!parsed.success) {
+    throw new FixtureValidationError(formatIssues(parsed.error), {
+      cause: parsed.error,
+    })
+  }
+
+  const fixture = parsed.data as Part2VisualFixture
+  const ids = {
+    visual_set: fixture.visualSets.map((item) => item.visual_set_id),
+    visual_asset: fixture.visualAssets.map((item) => item.visual_asset_id),
+    visual_set_asset: fixture.visualSetAssets.map(
+      (item) => item.visual_set_asset_id,
+    ),
+    visual_question: fixture.visualQuestions.map(
+      (item) => item.visual_question_id,
+    ),
+    model_answer: fixture.modelAnswers.map((item) => item.answer_id),
+    source: fixture.sources.map((item) => item.source_id),
+    source_reference: fixture.sourceReferences.map(
+      (item) => item.source_reference_id,
+    ),
+    part_guide: fixture.partGuides.map((item) => item.part_guide_id),
+    learning_expression: fixture.learningExpressions.map(
+      (item) => item.expression_id,
+    ),
+    practice_drill: fixture.practiceDrills.map((item) => item.drill_id),
+    course_insight: fixture.courseInsights.map((item) => item.insight_id),
+  }
+  for (const [label, values] of Object.entries(ids)) {
+    ensureUniqueIds(values, label)
+  }
+
+  ensureExpectedValues(
+    ids.visual_set,
+    Array.from(
+      { length: 12 },
+      (_, index) => `vs-P2-V${String(index + 1).padStart(2, '0')}`,
+    ),
+    'Part 2 VisualSet IDs',
+  )
+  if (
+    fixture.visualSets.some(
+      (item) =>
+        item.part !== 2 ||
+        item.set_type !== 'four_question_image' ||
+        item.set_status !== 'raw',
+    )
+  ) {
+    throw new FixtureValidationError(
+      'VisualSet: only the 12 raw Part 2 image sets are allowed',
+    )
+  }
+  if (
+    fixture.visualAssets.length !== 12 ||
+    fixture.visualAssets.some(
+      (item) =>
+        item.rights_status !== 'review_needed' ||
+        item.asset_status !== 'raw',
+    )
+  ) {
+    throw new FixtureValidationError(
+      'VisualAsset rights: all 12 assets must remain raw and review_needed; public use is prohibited',
+    )
+  }
+  if (
+    fixture.visualSetAssets.length !== 12 ||
+    fixture.visualQuestions.length !== 48 ||
+    fixture.modelAnswers.length !== 48
+  ) {
+    throw new FixtureValidationError(
+      'Part 2 fixture requires 12 links, 48 VisualQuestions, and 48 ModelAnswers',
+    )
+  }
+
+  const visualSetIds = new Set(ids.visual_set)
+  const visualAssetIds = new Set(ids.visual_asset)
+  const visualQuestionIds = new Set(ids.visual_question)
+  for (const link of fixture.visualSetAssets) {
+    if (
+      !visualSetIds.has(link.visual_set_id) ||
+      !visualAssetIds.has(link.visual_asset_id)
+    ) {
+      throw new FixtureValidationError(
+        `VisualSetAsset ${link.visual_set_asset_id}: unknown target`,
+      )
+    }
+  }
+  for (const question of fixture.visualQuestions) {
+    if (!visualSetIds.has(question.visual_set_id)) {
+      throw new FixtureValidationError(
+        `VisualQuestion ${question.visual_question_id}: unknown VisualSet`,
+      )
+    }
+  }
+  if (
+    fixture.visualQuestions.filter((item) => item.question_id).length !== 18
+  ) {
+    throw new FixtureValidationError(
+      'VisualQuestion: explicit canonical link count must remain 18',
+    )
+  }
+  for (const answer of fixture.modelAnswers) {
+    if (
+      answer.answer_target_type !== 'visual_question' ||
+      !visualQuestionIds.has(answer.answer_target_id) ||
+      answer.answer_status !== 'review_needed' ||
+      answer.provenance_kind !== 'unverified_source'
+    ) {
+      throw new FixtureValidationError(
+        `ModelAnswer ${answer.answer_id}: invalid VisualQuestion target or source status`,
+      )
+    }
+  }
+
+  ensureExpectedValues(
+    ids.part_guide,
+    ['part-guide-02', 'part-guide-workbook-02'],
+    'Part 2 PartGuide IDs',
+  )
+  const courseGuide = fixture.partGuides.find(
+    (item) => item.part_guide_id === 'part-guide-02',
+  )
+  if (
+    courseGuide?.course_target_context !== 'level_3' ||
+    fixture.learningExpressions.length !== 6 ||
+    fixture.practiceDrills.length !== 1 ||
+    fixture.courseInsights.length !== 4
+  ) {
+    throw new FixtureValidationError(
+      'Part 2 common course material contract changed',
+    )
+  }
+
+  const sourceIds = new Set(ids.source)
+  for (const asset of fixture.visualAssets) {
+    if (!sourceIds.has(asset.source_id)) {
+      throw new FixtureValidationError(
+        `VisualAsset ${asset.visual_asset_id}: unknown Source`,
+      )
+    }
+  }
+  const targetIds: Partial<
+    Record<SourceReferenceTargetType, Set<string>>
+  > = {
+    visual_set: visualSetIds,
+    visual_question: visualQuestionIds,
+    model_answer: new Set(ids.model_answer),
+    part_guide: new Set(ids.part_guide),
+    learning_expression: new Set(ids.learning_expression),
+    practice_drill: new Set(ids.practice_drill),
+    course_insight: new Set(ids.course_insight),
+  }
+  for (const reference of fixture.sourceReferences) {
+    const targets = targetIds[reference.target_type]
+    if (
+      !sourceIds.has(reference.source_id) ||
+      !targets?.has(reference.target_id)
+    ) {
+      throw new FixtureValidationError(
+        `SourceReference ${reference.source_reference_id}: unknown fixture target`,
+      )
+    }
+  }
+
+  const countKeys = Object.keys(ids) as Array<keyof typeof ids>
+  for (const key of countKeys) {
+    if (fixture.manifest.counts[key] !== ids[key].length) {
+      throw new FixtureValidationError(
+        `manifest.counts.${key}: expected ${ids[key].length}`,
+      )
+    }
+    ensureExactIds(
+      ids[key],
+      fixture.manifest.ids[key] ?? [],
+      `manifest.ids.${key}`,
+    )
+  }
   return fixture
 }

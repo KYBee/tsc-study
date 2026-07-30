@@ -1194,6 +1194,123 @@
   overflow-wrap: anywhere;
 }
 
+.visual-set-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.visual-set-card {
+  min-width: 0;
+}
+
+.visual-set-card > a {
+  display: grid;
+  min-width: 0;
+  gap: 0.65rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.visual-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) * 0.75);
+  background: var(--secondary-background);
+  object-fit: contain;
+}
+
+.visual-image--thumbnail {
+  aspect-ratio: 4 / 3;
+  max-height: 12rem;
+}
+
+.visual-image-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.visual-asset-missing {
+  display: grid;
+  min-height: 10rem;
+  place-content: center;
+  gap: 0.65rem;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  color: var(--secondary-text);
+  background: var(--secondary-background);
+  text-align: center;
+}
+
+.visual-asset-missing code {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.visual-set-main {
+  overflow: hidden;
+}
+
+.visual-lightbox {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  overflow: auto;
+  padding: max(1rem, env(safe-area-inset-top))
+    max(1rem, env(safe-area-inset-right))
+    max(1rem, env(safe-area-inset-bottom))
+    max(1rem, env(safe-area-inset-left));
+  background: rgb(16 20 28 / 92%);
+  place-items: start center;
+}
+
+.visual-lightbox__content {
+  display: grid;
+  width: min(100%, 64rem);
+  gap: 1rem;
+}
+
+.visual-lightbox__content > button {
+  justify-self: end;
+}
+
+.visual-lightbox__content img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: var(--radius);
+  object-fit: contain;
+}
+
+.source-answer {
+  overflow: hidden;
+}
+
+.source-answer > summary {
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.supporting-text {
+  color: var(--secondary-text);
+  font-size: 0.9rem;
+}
+
 .bottom-navigation {
   position: fixed;
   z-index: 20;

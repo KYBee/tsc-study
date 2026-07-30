@@ -485,7 +485,9 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 |---|---|---|---|---|
 | `practice_draft_id` | `Identifier` | 필수 | 연습 초안 식별자 | `pd-P4-006` |
 | `learner_ref` | `Identifier` | 조건부 | 개인 데이터 소유자 식별자 | `local-user` |
-| `question_id` | `Reference<Question>` | 필수 | 초안 대상 질문 | `P4-006` |
+| `question_id` | `Identifier` | 호환 | 기존 레코드·질의 호환용 대상 ID. 새 레코드는 `target_id`와 같은 값 | `P4-006` |
+| `target_type` | `Enum` | 필수 | `question`, `visual_question` | `visual_question` |
+| `target_id` | `Identifier` | 필수 | 실제 초안 대상의 안정적인 ID | `vq-P2-V01-Q1` |
 | `input_language` | `Enum` | 필수 | `ko`, `zh`, `mixed` | `mixed` |
 | `original_input` | `Text` | 조건부 | 사용자가 작성한 원문. 키워드 설계만 저장한 동안은 빈 값 가능 | `我喜欢在家运动。` |
 | `planning_keywords` | `Part4PlanningKeywords` | 선택 | 직접 답변·이유·경험/예시·마무리에 사용자가 직접 입력한 키워드 | `reasons: ["편리함"]` |
@@ -499,7 +501,10 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 | `created_at` | `DateTime` | 필수 | 최초 저장 시각 | `2026-07-28T10:00:00+09:00` |
 | `updated_at` | `DateTime` | 필수 | 마지막 명시적 저장 시각 | `2026-07-28T10:05:00+09:00` |
 
-질문당 활성 초안 하나를 upsert할 수 있다. `PracticeDraft`에는 교정 중국어·병음·한국어와 수정 내역을 넣지 않고 개인 `Correction`도 생성하지 않는다. `UserAnswer`가 생겨도 자동 삭제하지 않으며 둘은 동시에 존재할 수 있다.
+Question 또는 VisualQuestion당 활성 초안 하나를 upsert할 수 있다.
+`PracticeDraft`에는 교정 중국어·병음·한국어와 수정 내역을 넣지 않고 개인
+`Correction`도 생성하지 않는다. `UserAnswer`가 생겨도 자동 삭제하지
+않으며 둘은 동시에 존재할 수 있다.
 
 Part 1·3·4·5·6의 `question_id`를 동일하게 지원한다. Part 4의
 `planning_keywords`와 `structured_answer`는 선택적 확장 필드이며 다른
@@ -513,11 +518,22 @@ Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full
 
 사용자가 직접 작성한 원문 중 명시적으로 재사용 저장한 개인 표현이다. 공용 `LearningExpression`과 분리하며 자동 번역·요약·문장 분해를 하지 않는다.
 
-필드는 `reusable_phrase_id`, `text`, `language`, `phrase_type`, `source_kind = user_created`, `source_question_id`, `created_at`, `updated_at`이다.
+필드는 `reusable_phrase_id`, `text`, `language`, `phrase_type`,
+`source_kind = user_created`, 호환용 `source_question_id`, 선택적인
+`source_target_type = question | visual_question`, `source_target_id`,
+`created_at`, `updated_at`이다.
 
 ### `RecallAttempt`
 
-저장된 연습 답변을 보지 않고 말한 뒤 사용자가 직접 남기는 회상 이력이다. 필드는 `recall_attempt_id`, `question_id`, 선택적인 `practice_draft_id` 또는 `user_answer_id`, `recall_mode`, `result`, `attempted_at`이다. `recall_mode`는 `full`, `answer_only`, `chinese_only`, `keywords_only`, `question_only`, 결과는 `could_not_say`, `used_keywords`, `almost`, `memorized`를 사용한다. `keywords_only`는 실제 `planning_keywords`가 있는 구조화 초안에서만 표시하고, 다른 Part는 전체·답변·질문 모드를 사용한다.
+저장된 연습 답변을 보지 않고 말한 뒤 사용자가 직접 남기는 회상 이력이다.
+필드는 `recall_attempt_id`, 호환용 `question_id`,
+`target_type = question | visual_question`, `target_id`, 선택적인
+`practice_draft_id` 또는 `user_answer_id`, `recall_mode`, `result`,
+`attempted_at`이다. `recall_mode`는 `full`, `answer_only`,
+`chinese_only`, `keywords_only`, `question_only`, Part 2의
+`visual_question`, `visual_only`를 사용한다. 결과는 `could_not_say`,
+`used_keywords`, `almost`, `memorized`다. `keywords_only`는 실제
+`planning_keywords`가 있는 구조화 초안에서만 표시한다.
 
 ### `UserAnswer`
 
@@ -547,7 +563,7 @@ Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full
 |---|---|---|---|---|
 | `review_state_id` | `Identifier` | 필수 | 복습 상태 식별자 | `rs-0001` |
 | `learner_ref` | `Identifier` | 조건부 | 개인 데이터 소유자 식별자 | `local-user` |
-| `target_type` | `Enum` | 필수 | `question`, `user_answer`, `correction` | `question` |
+| `target_type` | `Enum` | 필수 | `question`, `visual_question`, `user_answer`, `correction` | `visual_question` |
 | `target_id` | `Identifier` | 필수 | 복습 대상 식별자 | `P4-001` |
 | `learning_status` | `Enum` | 필수 | `못 외움`, `헷갈림`, `외움` | `못 외움` |
 | `last_reviewed_at` | `DateTime` | 선택 | 마지막 복습 시각 | `2026-07-24T22:00:00+09:00` |
@@ -593,9 +609,9 @@ Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full
 | `Question` N ↔ N `VisualSet` | `QuestionVisualSet`으로 연결하며 추측한 관계는 만들지 않는다. |
 | `VisualQuestion` 1 → 0..N `ModelAnswer` | `answer_target_type = visual_question`인 경우이며 출처 답변이 여러 개일 수 있다. |
 | `VisualSet` 1 → 0..N `StoryGuide` | 한 그림 세트에 스토리 가이드가 없거나 여러 개일 수 있다. |
-| `Question` 1 → 0..1 활성 `PracticeDraft` | 초기 MVP에서 질문별 활성 연습 초안 하나를 개인 IndexedDB에 upsert한다. |
-| `Question` 1 → N `ReusablePhrase` | 사용자가 명시적으로 저장한 원문 표현이며 공용 표현과 분리한다. |
-| `Question` 1 → N `RecallAttempt` | 암기 모드와 상세 회상 결과 이력이다. |
+| `Question` 또는 `VisualQuestion` 1 → 0..1 활성 `PracticeDraft` | target type과 ID별 활성 연습 초안 하나를 개인 IndexedDB에 upsert한다. |
+| `Question` 또는 `VisualQuestion` 1 → N `ReusablePhrase` | 사용자가 명시적으로 저장한 원문 표현이며 source target과 공용 표현을 분리한다. |
+| `Question` 또는 `VisualQuestion` 1 → N `RecallAttempt` | 대상별 암기 모드와 상세 회상 결과 이력이다. |
 | `Question` 1 → 0..1 활성 `Part4ReviewDecision` | 한 검수 dataset에서 Question당 활성 결정 하나를 별도 검수 IndexedDB에 저장한다. |
 | `Question` 1 → N `UserAnswer` | 같은 질문에 사용자가 승인한 여러 답변을 저장할 수 있다. |
 | `UserAnswer` 1 → 0..N `Correction` | 한 사용자 답변에서 여러 개인 오류가 나올 수 있다. |
