@@ -1,17 +1,14 @@
 import type { VisualAsset } from '../domain/entities'
 
-const PART2_ASSET_ID = /^va-P2-V(?:0[1-9]|1[0-2])-01$/
+import { createLocalVisualAssetUrl } from './localVisualAssetUrl'
 
 export function createPart2LocalAssetUrl(
   asset: VisualAsset,
   development: boolean,
 ): string | undefined {
-  if (
-    !development ||
-    asset.rights_status !== 'review_needed' ||
-    !PART2_ASSET_ID.test(asset.visual_asset_id)
-  ) {
+  if (!asset.visual_asset_id.startsWith('va-P2-')) {
     return undefined
   }
-  return `/__local-part2-assets/${encodeURIComponent(asset.visual_asset_id)}`
+  const url = createLocalVisualAssetUrl(asset, development)
+  return url?.replace('/__local-visual-assets/', '/__local-part2-assets/')
 }

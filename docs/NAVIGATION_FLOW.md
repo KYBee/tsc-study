@@ -287,7 +287,7 @@ HOME
 ├→ Part 4 (50)
 ├→ Part 5 (36)
 ├→ Part 6 (19)
-└→ Part 7: 그림 문제 준비 중
+└→ Part 7 (개발 환경 로컬 스토리 그림 12세트)
 
 텍스트 Part 목록
 → 검색·유형·복습 상태·작성 상태 필터
@@ -305,8 +305,10 @@ HOME
 
 Part 4 키워드 모드는 planning_keywords가 있을 때만 사용한다. Part 2는
 별도 세트→VisualQuestion→자유 입력→출처 답변 비교→그림 기반 회상
-경로를 사용한다. 이미지 바이트는 development에서만 읽고 production은
-비활성화한다. Part 7은 시각 관계 검수와 별도 UX 전까지 라우팅하지 않는다.
+경로를 사용한다. Part 7은 Question 연결 없이
+VisualSet→StoryGuide 참고→내 이야기 설계·작성→그림 기반 회상 경로를
+사용한다. 이미지 바이트는 development에서만 읽고 production은
+비활성화한다.
 
 ## 13. Part 4 로컬 데이터 검수
 
@@ -330,3 +332,31 @@ Part 4 키워드 모드는 planning_keywords가 있을 때만 사용한다. Part
 ```
 
 이 흐름은 일반 학습 하단 메뉴, PracticeDraft, UserAnswer, Correction, ReviewState와 분리한다. 화면 진입만으로 승인하지 않으며 reviewed 데이터는 아직 학습 앱 기본 source로 전환하지 않는다.
+
+## 14. Part 7 로컬 스토리 그림 학습
+
+```text
+HOME
+→ Part 7 스토리 그림 12세트
+→ 작성·복습 상태 필터 또는 랜덤·이어보기
+→ VisualSet 상세
+├→ 큰 그림·확대
+├→ Part 7 공통 안내
+├→ 원본 StoryGuide 참고
+└→ 확정 Question 연결 없음 안내
+
+내 이야기 만들기
+→ 키워드 직접 입력
+→ 순서 포인트 추가·수정·삭제·이동
+→ 전체 답변 직접 입력
+→ 명시적 초안 저장 또는 작성 완료
+→ 그림/내 포인트/공통 안내 조합 회상
+→ 내 답변 공개
+→ RecallAttempt + 매핑된 ReviewState
+→ 나의 답변 또는 복습
+```
+
+StoryGuide 참고는 미리보기→사용자 확인→편집 상태 복사 순서이며 자동
+저장하지 않는다. 숫자 접미사 후보 12개를 경로·Question 문맥에 사용하지
+않는다. 뒤로가기는 VisualSet ID를 보존하고 마지막 세트는 별도 작은 로컬
+설정으로 저장한다.

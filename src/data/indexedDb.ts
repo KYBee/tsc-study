@@ -15,7 +15,7 @@ import type {
 } from './userDataRepository'
 
 export const DEFAULT_USER_DATA_DB_NAME = 'tsc-study-part4-fixture-v1'
-export const USER_DATA_DB_VERSION = 4
+export const USER_DATA_DB_VERSION = 5
 
 export const USER_ANSWERS_STORE = 'userAnswers'
 export const REVIEW_STATES_STORE = 'reviewStates'
@@ -66,7 +66,10 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredPracticeDraft
     indexes: {
       [PRACTICE_DRAFT_QUESTION_INDEX]: string
-      [PRACTICE_DRAFT_TARGET_INDEX]: ['question' | 'visual_question', string]
+      [PRACTICE_DRAFT_TARGET_INDEX]: [
+        'question' | 'visual_question' | 'visual_set',
+        string,
+      ]
     }
   }
   [REUSABLE_PHRASES_STORE]: {
@@ -74,7 +77,10 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredReusablePhrase
     indexes: {
       [REUSABLE_PHRASE_QUESTION_INDEX]: string
-      [REUSABLE_PHRASE_TARGET_INDEX]: ['question' | 'visual_question', string]
+      [REUSABLE_PHRASE_TARGET_INDEX]: [
+        'question' | 'visual_question' | 'visual_set',
+        string,
+      ]
     }
   }
   [RECALL_ATTEMPTS_STORE]: {
@@ -82,7 +88,10 @@ export interface TscStudyUserDataSchema extends DBSchema {
     value: StoredRecallAttempt
     indexes: {
       [RECALL_ATTEMPT_QUESTION_INDEX]: string
-      [RECALL_ATTEMPT_TARGET_INDEX]: ['question' | 'visual_question', string]
+      [RECALL_ATTEMPT_TARGET_INDEX]: [
+        'question' | 'visual_question' | 'visual_set',
+        string,
+      ]
     }
   }
 }
@@ -204,6 +213,11 @@ export function openTscStudyUserDatabase(
             })
             attemptCursor = await attemptCursor.continue()
           }
+        }
+        if (oldVersion < 5) {
+          // v5 widens existing compound-index values to `visual_set`.
+          // IndexedDB indexes are string-based and require no destructive
+          // store/index rebuild, so every v4 record remains byte-for-byte intact.
         }
       },
     },

@@ -14,6 +14,9 @@ import { Part2SetScreen } from '../features/part2/Part2SetScreen'
 import { Part2SetsScreen } from '../features/part2/Part2SetsScreen'
 import { VisualQuestionAnswerScreen } from '../features/part2/VisualQuestionAnswerScreen'
 import { VisualQuestionScreen } from '../features/part2/VisualQuestionScreen'
+import { Part7SetScreen } from '../features/part7/Part7SetScreen'
+import { Part7SetsScreen } from '../features/part7/Part7SetsScreen'
+import { Part7StoryAnswerScreen } from '../features/part7/Part7StoryAnswerScreen'
 
 function VisualQuestionRecallRoute() {
   const { visualQuestionId = '' } = useParams()
@@ -42,6 +45,16 @@ export function AppRouter() {
       <Route
         path="/visual-questions/:visualQuestionId/recall"
         element={<VisualQuestionRecallRoute />}
+      />
+      <Route path="/parts/7" element={<Part7SetsScreen />} />
+      <Route path="/parts/7/sets/:visualSetId" element={<Part7SetScreen />} />
+      <Route
+        path="/parts/7/sets/:visualSetId/answer"
+        element={<Part7StoryAnswerScreen />}
+      />
+      <Route
+        path="/parts/7/sets/:visualSetId/recall"
+        element={<Part7StoryAnswerScreen />}
       />
       <Route path="/parts/:part" element={<PartDetailScreen />} />
       <Route path="/questions/:questionId" element={<QuestionScreen />} />

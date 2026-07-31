@@ -46,7 +46,7 @@ afterEach(async () => {
 })
 
 describe('Part 2 visual learning slice', () => {
-  it('activates Part 2 on HOME while keeping Part 7 unavailable', async () => {
+  it('keeps Part 2 active alongside the separate Part 7 story slice', async () => {
     renderPart2('/')
     const parts = await screen.findByRole('list', { name: 'Part 목록' })
 
@@ -56,8 +56,10 @@ describe('Part 2 visual learning slice', () => {
       }),
     ).toHaveAttribute('href', '/parts/2')
     expect(
-      within(parts).getByText('Part 7').closest('[aria-disabled="true"]'),
-    ).toBeInTheDocument()
+      within(parts).getByRole('link', {
+        name: /Part 7.*스토리 구성하기.*12세트/,
+      }),
+    ).toHaveAttribute('href', '/parts/7')
   })
 
   it('shows twelve sets and four questions per set with local images', async () => {
@@ -93,9 +95,7 @@ describe('Part 2 visual learning slice', () => {
     fireEvent.error(screen.getByRole('img', { name: /세트 1 검수 전 그림/ }))
     expect(screen.getByText('로컬 그림 자산이 준비되지 않았습니다.')).toBeInTheDocument()
     expect(
-      screen.getByText(
-        'python3 scripts/build_full_workbook_import.py --extract-assets',
-      ),
+      screen.getByText('npm run assets:visual-local'),
     ).toBeInTheDocument()
   })
 

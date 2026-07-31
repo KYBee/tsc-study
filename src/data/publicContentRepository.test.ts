@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import {
   loadPart2VisualFixture,
+  loadPart7VisualFixture,
   loadPart4FullFixture,
   loadTextPartsFixture,
 } from './fixtureLoader'
@@ -143,6 +144,44 @@ describe('fixture public content repository', () => {
       availability: 'available',
       available_visual_set_count: 12,
       available_visual_question_count: 48,
+    })
+  })
+
+  it('queries Part 7 by explicit VisualSet and StoryGuide IDs without canonical links', async () => {
+    const repository = createPublicContentRepository(
+      loadTextPartsFixture(),
+      loadPart2VisualFixture(),
+      loadPart7VisualFixture(),
+    )
+
+    await expect(repository.listVisualSetsByPart(7)).resolves.toHaveLength(12)
+    await expect(repository.listVisualAssetsBySetId('vs-P7-V01')).resolves.toEqual([
+      expect.objectContaining({ visual_asset_id: 'va-P7-V01-01' }),
+    ])
+    await expect(repository.getStoryGuideByVisualSetId('vs-P7-V01')).resolves.toEqual(
+      expect.objectContaining({
+        story_guide_id: 'sg-P7-V01-01',
+        question_id: '',
+      }),
+    )
+    await expect(
+      repository.listQuestionVisualLinkCandidatesBySetId('vs-P7-V01'),
+    ).resolves.toEqual([
+      expect.objectContaining({
+        candidate_status: 'candidate',
+        canonical_status: 'not_canonical',
+        review_status: 'review_needed',
+      }),
+    ])
+    await expect(repository.listModelAnswersByVisualSetId('vs-P7-V01')).resolves.toEqual([])
+    await expect(repository.getPart7CommonInstruction()).resolves.toEqual(
+      expect.objectContaining({
+        question_zh: '请根据四幅连续的图片，讲述一个完整的故事。',
+      }),
+    )
+    await expect(repository.getPart(7)).resolves.toMatchObject({
+      availability: 'available',
+      available_visual_set_count: 12,
     })
   })
 })

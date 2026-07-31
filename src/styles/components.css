@@ -1311,6 +1311,44 @@
   font-size: 0.9rem;
 }
 
+.story-guide-panel section + section {
+  margin-top: 1rem;
+}
+
+.story-builder {
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.story-point-list {
+  display: grid;
+  min-width: 0;
+  gap: 0.85rem;
+  padding-left: 1.4rem;
+}
+
+.story-point-list li,
+.story-point-list textarea {
+  min-width: 0;
+}
+
+.story-point-list li::marker {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.recall-stage {
+  display: grid;
+  min-width: 0;
+  gap: 1rem;
+}
+
+.preserve-lines {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
 .bottom-navigation {
   position: fixed;
   z-index: 20;
@@ -1369,6 +1407,16 @@
 }
 
 @media (max-width: 380px) {
+  .section-heading {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .section-heading > :last-child {
+    min-width: 0;
+    flex: 0 1 auto;
+  }
+
   .structure-list,
   .status-button-group,
   .filter-grid,

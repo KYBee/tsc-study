@@ -2,8 +2,9 @@
 
 ## 현재 구현 범위
 
-현재 React 앱은 Part 1·3·4·5·6의 검수 전 working 텍스트 문제 193개와
-개발 환경 전용 Part 2 그림 12세트·VisualQuestion 48개를 대상으로 다음
+현재 React 앱은 Part 1·3·4·5·6의 검수 전 working 텍스트 문제 193개,
+개발 환경 전용 Part 2 그림 12세트·VisualQuestion 48개와 Part 7 스토리
+그림 12세트를 대상으로 다음
 흐름을 제공한다.
 
 ```text
@@ -24,10 +25,16 @@ HOME
 → VisualQuestion 자유 입력 PracticeDraft
 → 검수 전 원본 추천 답변 비교
 → 그림 기반 회상·ReviewState
+
+HOME
+→ Part 7 스토리 그림 12세트
+→ VisualSet과 원본 StoryGuide
+→ 내 키워드·순서 포인트·전체 이야기 PracticeDraft
+→ 그림·내 포인트 기반 회상·ReviewState
 ```
 
-Part 7 시각 화면, 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
-Part 2 이미지 바이트는 권리 검수 전이므로 로컬 개발 서버에서만 제공하고
+실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
+Part 2·7 이미지 바이트는 권리 검수 전이므로 로컬 개발 서버에서만 제공하고
 production build에는 포함하지 않는다.
 
 ## 앱 개발 fixture
@@ -53,6 +60,11 @@ VisualSet·VisualAsset·VisualSetAsset이 각 12개, VisualQuestion과 그 대�
 ModelAnswer가 각 48개다. 엄격 근거 Question 연결 18개와 미연결 30개를
 그대로 유지하며 추천 답변은 `review_needed`, `unverified_source`다.
 
+Part 7 fixture ID는 `part7-visual-working-development-fixture-v1`이다.
+VisualSet·VisualAsset·VisualSetAsset·StoryGuide와 Part 7 Question이 각
+12개다. 확정 QuestionVisualSet과 ModelAnswer는 0개다. 숫자 접미사 기반
+후보 12개는 `candidate`, `review_needed`, `not_canonical`로만 보존한다.
+
 ## 개인 데이터 흐름
 
 ```text
@@ -72,11 +84,12 @@ ModelAnswer가 각 48개다. 엄격 근거 Question 연결 18개와 미연결 30
 ## IndexedDB
 
 - DB 이름: `tsc-study-part4-fixture-v1` 유지
-- 버전: `4`
+- 버전: `5`
 
 DB 이름에 Part 4가 남아 있지만 기존 개인 데이터 보존을 위해 이름은
 바꾸지 않았다. v4는 `question | visual_question` 대상 인덱스를 additive하게
-추가하며 v3 레코드를 `target_type = question`으로 보존한다. 이름 변경은
+추가하며 v3 레코드를 `target_type = question`으로 보존한다. v5는 store나
+인덱스를 다시 만들지 않고 `visual_set` target을 허용한다. 이름 변경은
 명시적 migration 설계가 필요한 기술 부채다.
 
 | object store | keyPath | 규칙 |
@@ -84,11 +97,12 @@ DB 이름에 Part 4가 남아 있지만 기존 개인 데이터 보존을 위해
 | `userAnswers` | `user_answer_id` | unique `question_id`, 승인 답변만 upsert |
 | `reviewStates` | `review_state_id` | unique 대상, 사용자가 상태를 선택할 때만 생성 |
 | `corrections` | `correction_id` | 승인 답변의 실제 변경만 저장 |
-| `practiceDrafts` | `practice_draft_id` | unique target, 빈 원문 금지, Question 또는 VisualQuestion당 활성 초안 하나 upsert |
+| `practiceDrafts` | `practice_draft_id` | unique target, 빈 개인 내용 금지, Question·VisualQuestion·VisualSet당 활성 초안 하나 upsert |
 | `reusablePhrases` | `reusable_phrase_id` | 사용자가 명시적으로 저장한 개인 원문 표현과 source target |
 | `recallAttempts` | `recall_attempt_id` | 대상별 암기 모드와 사용자가 선택한 상세 회상 결과 |
 
 v2→v3의 기존 store 추가 뒤 v3→v4는 target 필드와 인덱스만 추가한다.
+v4→v5는 다형 target 값만 넓히는 비파괴 migration이다.
 기존 UserAnswer·Correction·ReviewState·PracticeDraft·ReusablePhrase·
 RecallAttempt를 보존하며 검수 전용 DB에는 영향을 주지 않는다.
 
@@ -97,12 +111,14 @@ RecallAttempt를 보존하며 검수 전용 DB에는 영향을 주지 않는다.
 - HOME: 193문제와 Part별 초안·완료·복습 상태, 이어서 보기, 랜덤 시작
 - Part 2: 12세트 목록·상태 필터·랜덤, 큰 그림·확대, 48개 세부 질문
 - Part 2 답변·암기: 자유 입력 초안, 접힌 검수 전 추천 답변, 그림+질문·그림·질문 회상
+- Part 7: 12세트 목록·상태 필터·랜덤, 큰 그림·확대, StoryGuide와 공통 지시문 경계
+- Part 7 답변·암기: 내 키워드·순서 포인트·전체 답변, 그림·포인트 조합 회상
 - Part 1·3·4·5·6: 공통 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤
 - 문제 상세: 이전·다음·랜덤, 병음·한국어 토글, AnswerPoint, 출처 성격이 분리된 공통 강의 자료
 - 답변 작성: Part 4 네 구간 구조화 입력 유지, 다른 Part는 자유 입력 초안·완료 저장
 - 암기 연습: Part 4 전용 네 모드와 다른 Part의 전체·답변·질문 모드
 - 나의 답변: `교정 완료`와 `연습 초안` 분리 및 Part 필터
-- 복습: 텍스트 193개와 시각 48개, Part·문제 종류·검색·유형·상태 필터, 랜덤
+- 복습: 텍스트 193개, Part 2 시각 48개와 Part 7 세트 12개, Part·종류·검색·유형·상태 필터, 랜덤
 - 실수 노트: 승인 저장에서 생성된 개인 Correction만 표시
 
 ## mock 교정과 ModelAnswer
@@ -114,7 +130,13 @@ P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 
 
 ## 검증
 
-완료 전 전체 fixture 생성·검증, Python unittest, IndexedDB migration 테스트, Vitest, typecheck, lint, production build, `npm run check:data`, `npm run check`와 320px 실제 브라우저 흐름을 실행한다. 최종 명령별 수와 결과는 [PART4_FULL_WORKING_SLICE.md](PART4_FULL_WORKING_SLICE.md)에 기록한다.
+전체 fixture 생성·검증, Python unittest, IndexedDB migration 테스트,
+Vitest 143개, typecheck, lint, production build, `npm run check:data`와
+`npm run check`를 통과했다. 320px 실제 브라우저에서 Part 7 이야기
+작성·복원·완료·회상·나의 답변·복습, Part 2와 텍스트 파트 회귀를
+확인했고 console 오류와 가로 오버플로는 0건이었다. Part 7의 상세 결과는
+[PART7_STORY_VISUAL_APP_SLICE.md](PART7_STORY_VISUAL_APP_SLICE.md)에
+기록한다.
 
 ## 알려진 제한
 
@@ -124,8 +146,10 @@ P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 
 - 강의 기반 가이드는 3급 과정 맥락의 기초 전략이며 Level 8 공식 기준이 아니다.
 - 개인 데이터는 현재 브라우저와 origin에 종속된다.
 - 전체 253 Question 중 텍스트 193개와 별도 VisualQuestion 48개를
-  working 학습에 연결했다. Part 7은 연결하지 않았다.
-- Part 2 이미지 권리는 미검수이며 로컬 개발 표시만 허용한다.
+  working 학습에 연결했다. Part 7은 Question 연결 없이 VisualSet 12개를
+  직접 학습 대상으로 연결했다.
+- Part 2·7 이미지 권리는 미검수이며 로컬 개발 표시만 허용한다.
+- Part 7 번호 후보 12건은 실제 QuestionVisualSet 관계가 아니다.
 
 ## 다음 추천 작업
 
@@ -133,7 +157,8 @@ P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 
 2. 내보낸 결정을 검토한 뒤 승격 CLI로 승인 항목만 reviewed JSON에 반영한다.
 3. reviewed 부분 데이터의 앱 연결 정책을 별도 결정한다.
 4. 실제 AI 공급자와 비밀키를 보호할 서버 경계를 승인 후 결정한다.
-5. 다음 Part는 데이터 검수와 화면별 계약을 확인한 뒤 선택한다.
+5. Part 7 번호 후보 12건과 Part 2·7 이미지 공개 권리를 사람이
+   검수하고, 승인 결과와 reviewed 앱 연결 정책을 별도 결정한다.
 
 ## Part 4 로컬 검수 도구
 

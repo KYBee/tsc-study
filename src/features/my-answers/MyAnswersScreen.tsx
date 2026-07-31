@@ -8,6 +8,7 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
+import { LocalVisualAssetImage } from '../../components/LocalVisualAssetImage'
 import { StatusBadge } from '../../components/StatusBadge'
 import { getDraftFullText } from '../answer/part4AnswerDraft'
 import { Part2VisualImage } from '../part2/Part2VisualImage'
@@ -59,9 +60,14 @@ export function MyAnswersScreen() {
           targetType === 'visual_question'
             ? await publicRepository.getVisualQuestionById(targetId)
             : undefined
-        const visualSet = visualQuestion
-          ? await publicRepository.getVisualSetById(visualQuestion.visual_set_id)
-          : undefined
+        const visualSet =
+          targetType === 'visual_set'
+            ? await publicRepository.getVisualSetById(targetId)
+            : visualQuestion
+              ? await publicRepository.getVisualSetById(
+                  visualQuestion.visual_set_id,
+                )
+              : undefined
         const visualAssets = visualSet
           ? await publicRepository.listVisualAssetsBySetId(visualSet.visual_set_id)
           : []
@@ -129,7 +135,12 @@ export function MyAnswersScreen() {
     targetType,
     reviewState,
   }) => {
-    const part = targetType === 'visual_question' ? 2 : question?.part
+    const part =
+      targetType === 'visual_question'
+        ? 2
+        : targetType === 'visual_set'
+          ? 7
+          : question?.part
     if (partFilter !== 'all' && part !== Number(partFilter)) return false
     if (draftFilter === 'all') return true
     if (draftFilter === 'in_progress') return draft.completion_status !== 'completed'
@@ -181,7 +192,7 @@ export function MyAnswersScreen() {
         파트 필터
         <select value={partFilter} onChange={(event) => setPartFilter(event.target.value)}>
           <option value="all">전체 학습 파트</option>
-          {[1, 2, 3, 4, 5, 6].map((part) => (
+          {[1, 2, 3, 4, 5, 6, 7].map((part) => (
             <option key={part} value={part}>Part {part}</option>
           ))}
         </select>
@@ -304,6 +315,7 @@ export function MyAnswersScreen() {
               reviewState,
             }) => {
               const isVisualQuestion = targetType === 'visual_question'
+              const isStorySet = targetType === 'visual_set'
               const setNumber = visualSet
                 ? Number(visualSet.visual_set_id.match(/V(\d+)$/)?.[1] ?? 0)
                 : 0
@@ -312,24 +324,32 @@ export function MyAnswersScreen() {
                   (attempt.target_type ?? 'question') === targetType &&
                   (attempt.target_id ?? attempt.question_id) === targetId,
               )
-              const editPath = isVisualQuestion
-                ? `/visual-questions/${targetId}/answer`
-                : `/questions/${targetId}/answer`
-              const recallPath = isVisualQuestion
-                ? `/visual-questions/${targetId}/recall`
-                : `/questions/${targetId}/answer?step=recall`
+              const editPath = isStorySet
+                ? `/parts/7/sets/${targetId}/answer`
+                : isVisualQuestion
+                  ? `/visual-questions/${targetId}/answer`
+                  : `/questions/${targetId}/answer`
+              const recallPath = isStorySet
+                ? `/parts/7/sets/${targetId}/recall`
+                : isVisualQuestion
+                  ? `/visual-questions/${targetId}/recall`
+                  : `/questions/${targetId}/answer?step=recall`
 
               return (
               <li key={draft.practice_draft_id} className="card answer-card">
                 <div className="section-heading">
                   <div>
                     <p className="eyebrow">
-                      {isVisualQuestion
+                      {isStorySet
+                        ? `Part 7 · 스토리 그림 세트 ${setNumber}`
+                        : isVisualQuestion
                         ? `Part 2 · 세트 ${setNumber} · 질문 ${visualQuestion?.item_number ?? ''}`
                         : `Part ${question?.part ?? 4} · ${targetId}`}
                     </p>
                     <h2>
-                      {isVisualQuestion
+                      {isStorySet
+                        ? '내 스토리 답변'
+                        : isVisualQuestion
                         ? visualQuestion?.question_zh || '그림 세부 질문'
                         : question?.question_type || '문제 유형 미분류'}
                     </h2>
@@ -358,6 +378,14 @@ export function MyAnswersScreen() {
                     )}
                   </>
                 )}
+                {isStorySet && (
+                  <LocalVisualAssetImage
+                    asset={visualAsset}
+                    partNumber={7}
+                    setNumber={setNumber}
+                    thumbnail
+                  />
+                )}
                 <div className="draft-preview">
                   <span className="language-label">
                     원본 입력 · {INPUT_LANGUAGE_LABELS[draft.input_language]}
@@ -371,6 +399,18 @@ export function MyAnswersScreen() {
                       키워드:{' '}
                       {Object.values(draft.planning_keywords).flat().join(' · ') || '없음'}
                     </p>
+                  )}
+                  {draft.story_keywords && draft.story_keywords.length > 0 && (
+                    <p className="keyword-line">
+                      내 핵심 키워드: {draft.story_keywords.join(' · ')}
+                    </p>
+                  )}
+                  {draft.story_points && draft.story_points.length > 0 && (
+                    <ol>
+                      {draft.story_points.map((point) => (
+                        <li key={point.point_id}>{point.text}</li>
+                      ))}
+                    </ol>
                   )}
                   {latestAttempt && (
                     <small>

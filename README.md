@@ -41,6 +41,14 @@ VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48�
 PracticeDraft·RecallAttempt·ReviewState는 `visual_question`을 대상으로
 저장하고 원본 추천 답변을 내 답변이나 공식 정답으로 자동 저장하지 않는다.
 
+[Part 7 스토리 그림 로컬 학습 slice](docs/PART7_STORY_VISUAL_APP_SLICE.md)는
+VisualSet·VisualAsset·VisualSetAsset·StoryGuide 각 12개를 개발 환경에
+연결한다. 확정 QuestionVisualSet은 0개이며 번호 기반 후보 12개를 실제
+관계로 승격하지 않는다. StoryGuide는 완성 답변이 아닌 참고 흐름이고,
+사용자는 `visual_set` 대상 PracticeDraft에 키워드·순서 포인트·전체 답변을
+직접 저장해 그림 기반 회상을 연습한다. Part 7 이미지도 Git과 production
+build에서 제외한다.
+
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
 Part 4 학습은 [답변 만들기·회상 흐름](docs/PART4_ANSWER_BUILD_AND_RECALL_UX.md)을 제공한다. 질문을 이해한 뒤 네 구간의 키워드와 문장을 직접 작성하고, 저장 답변을 전체·중국어·키워드·질문만 보기로 암기한다. 앱은 답변이나 병음을 생성하지 않으며 상세 회상 결과만 개인 IndexedDB에 기록한다.
@@ -57,8 +65,9 @@ Node.js와 npm이 준비된 환경에서 다음 명령을 사용한다.
 
 ```sh
 npm install
-npm run assets:part2-local
+npm run assets:visual-local
 npm run fixture:part2-visual
+npm run fixture:part7-visual
 npm run fixture:text-parts
 npm run fixture:part4-full
 npm run fixture:part4-review
@@ -66,7 +75,8 @@ npm run dev
 ```
 
 텍스트 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`, Part 2
-시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`에 생성된다.
+시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`, Part 7
+스토리 fixture는 `data/working/app-fixtures/part7-visual-v1/`에 생성된다.
 모두 검수 완료 또는 배포용 데이터가 아니다. 로컬 이미지 바이트는
 `data/working/generated-assets/full-import-v1/`에만 있으며 Git에
 포함되지 않는다. 기존 6문제 및 Part 4 50문제 fixture도 계속 보존하며
@@ -78,6 +88,8 @@ npm run dev
 npm run validate:fixtures
 npm run validate:part2-visual
 npm run test:part2-visual
+npm run validate:part7-visual
+npm run test:part7-visual
 npm run validate:text-parts
 npm run test:text-parts
 npm run validate:part4-full
@@ -90,6 +102,7 @@ npm run lint
 npm run test:run
 npm run build
 npm run validate:part2-assets
+npm run validate:part7-assets
 npm run check
 npm run check:data
 ```
@@ -105,19 +118,24 @@ npm run check:data
 - `/visual-questions/:visualQuestionId`: 그림 세부 질문
 - `/visual-questions/:visualQuestionId/answer`: Part 2 자유 입력·비교
 - `/visual-questions/:visualQuestionId/recall`: 그림 기반 회상
+- `/parts/7`: 개발 환경의 Part 7 스토리 그림 12세트
+- `/parts/7/sets/:visualSetId`: 그림·StoryGuide·연결 상태와 내 학습 상태
+- `/parts/7/sets/:visualSetId/answer`: 내 이야기 키워드·포인트·전체 답변
+- `/parts/7/sets/:visualSetId/recall`: 그림·내 포인트 기반 회상
 - `/questions/:questionId`: 텍스트 문제
 - `/questions/:questionId/answer`: 답변 작성
 - `/questions/:questionId/correction`: mock 교정 결과
 - `/my-answers`: 교정 완료 답변과 연습 초안
-- `/review`: 텍스트 193개와 Part 2 시각 질문 48개의 필터 복습
+- `/review`: 텍스트 193개, Part 2 시각 질문 48개와 Part 7 스토리 12세트의 필터 복습
 - `/mistakes`: 저장된 개인 실수
 - `/data-review/part4`: 개발 환경의 로컬 Part 4 데이터 검수
 
 실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용
 mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다.
-Part 1·2·3·5·6은 사용자의 자유 입력을 원문 그대로 PracticeDraft에
+Part 1·2·3·5·6·7은 사용자의 직접 입력을 원문 그대로 PracticeDraft에
 저장하며 UserAnswer로 자동 승인하지 않는다. Part 2 추천 답변은
-`review_needed` 출처 자료로만 접어 표시한다. Part 7, 백엔드,
+`review_needed` 출처 자료로만 접어 표시한다. Part 7 StoryGuide는
+ModelAnswer가 아니며 자동 답변으로 저장하지 않는다. 백엔드,
 로그인·동기화, reviewed 전체 데이터 연결과 배포는 아직 구현하지 않았다.
 
 ## 저장소 구조
@@ -130,7 +148,7 @@ Part 1·2·3·5·6은 사용자의 자유 입력을 원문 그대로 PracticeDra
 │   ├── raw/         # 내용과 원래 파일명을 유지하는 원본 입력 자료
 │   ├── working/     # 추출·정규화·검수 중 자료
 │   └── reviewed/    # 필수 항목과 출처를 검수한 자료
-├── src/              # 텍스트 193문제 + 로컬 Part 2 시각 48문항 React 앱
+├── src/              # 텍스트 193문제 + 로컬 Part 2/7 시각 학습 React 앱
 ├── public/           # 정적 공개 파일 위치
 ├── package.json      # npm 실행 명령과 의존성
 └── sources/         # 출처 자료의 보관 및 메타데이터 지침
@@ -140,7 +158,7 @@ Part 1·2·3·5·6은 사용자의 자유 입력을 원문 그대로 PracticeDra
 
 ## 다음 작업 순서
 
-1. [구현 상태](docs/IMPLEMENTATION_STATUS.md), [전체 텍스트 파트 앱 slice](docs/TEXT_PARTS_APP_SLICE.md)와 [Part 4 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)의 제한을 검토한다.
+1. [구현 상태](docs/IMPLEMENTATION_STATUS.md), [Part 7 스토리 그림 slice](docs/PART7_STORY_VISUAL_APP_SLICE.md)와 [Part 4 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)의 제한을 검토한다.
 2. `/data-review/part4`에서 실제 50문제를 사람이 확인하고 결정 JSON을 내보낸다.
 3. 내보낸 결정 파일을 별도 검토한 뒤 `promote_part4_reviewed_data.py`로 승인 항목만 승격한다.
 4. `full-import-v1`의 나머지 검수 큐와 `course-import-v1`의 근거·충돌 항목을 사람 검수한다.

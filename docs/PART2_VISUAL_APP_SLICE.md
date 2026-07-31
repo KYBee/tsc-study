@@ -40,8 +40,9 @@ python3 scripts/build_full_workbook_import.py --extract-assets
 
 - Part 2 이미지 12개 모두 `rights_status = review_needed`다.
 - `public_allowed`는 false로 유지한다.
-- 개발 서버는 fixture에 등록된 정확한 asset ID만
-  `/__local-part2-assets/<visual_asset_id>`로 제공한다.
+- 개발 서버는 Part 2·7 fixture에 등록된 정확한 asset ID만
+  `/__local-visual-assets/<visual_asset_id>`로 제공한다. 기존
+  `/__local-part2-assets/<visual_asset_id>`는 Part 2 ID에 한해 호환한다.
 - 절대경로, `..`, 허용 루트 밖 경로, 미등록 ID, 지원하지 않는 확장자와
   MIME, SHA-256 불일치를 거부한다.
 - 이 Vite 미들웨어는 `serve`에만 적용된다. production build에는 이미지
@@ -63,7 +64,7 @@ HOME
 ```
 
 - 홈은 개발 환경에서 Part 2를 활성화하고 12세트·48문항과 개인 상태를
-  표시한다. Part 7은 계속 준비 중이다.
+  표시한다. Part 7도 별도 VisualSet 중심 slice로 활성화한다.
 - 세트 목록은 미작성·작성 중·완료·헷갈림·외움과 결과 내 랜덤을 제공한다.
 - 세트 상세는 원본 비율의 큰 그림, 단순 확대, 질문 네 개와 세트 이동을
   제공한다.
@@ -97,6 +98,9 @@ v3→v4 migration은 기존 `question_id`를 `target_type = question`과 같은
 주지 않는다. Part 2에서는 교정 공급자가 없으므로 `UserAnswer`와
 `Correction`을 만들지 않는다.
 
+후속 v4→v5는 기존 store와 index를 유지하면서 `visual_set` target을
+허용한다. 이 변경은 Part 2의 `visual_question` 레코드를 수정하지 않는다.
+
 ## 암기와 복습
 
 저장된 개인 `PracticeDraft`만 암기 대상으로 사용한다.
@@ -129,8 +133,10 @@ v3→v4 migration은 기존 `question_id`를 `target_type = question`과 같은
 - 실제 AI, 자동 번역·병음·이미지 분석은 없다.
 - `ModelAnswer`는 추천 출처 답변이며 공식 정답이 아니다.
 - 이미지 공개·배포는 차단되어 있고 로컬 개발 환경에서만 볼 수 있다.
-- Part 7은 구현하지 않았다.
+- Part 7은 후속 `part7-visual-working-development-fixture-v1`과 공용
+  이미지 미들웨어로 구현했다. Part 2 데이터·추천 답변 계약은 변경하지
+  않았다.
 
-다음 권장 작업은 Part 2 질문·추천 답변·이미지 권리의 사람 검수다. 이후
-Part 7은 공통 지시문과 `StoryGuide`를 `ModelAnswer`와 분리하고, 검증된
-`QuestionVisualSet` 관계만 사용하는 별도 로컬 slice로 구현한다.
+다음 권장 작업은 Part 2 질문·추천 답변·이미지 권리의 사람 검수다. Part 7
+구현 경계는 [PART7_STORY_VISUAL_APP_SLICE.md](PART7_STORY_VISUAL_APP_SLICE.md)를
+따른다.

@@ -134,7 +134,8 @@ migration을 적용한다. DB 이름에 Part 4가 남아 있는 것은 기존 �
 - ModelAnswer와 실제 AI가 없다.
 - Part 2 시각 화면은 별도 로컬 working slice로 후속 구현했다. 이미지
   권리·질문·추천 답변 사람 검수와 공개 배포는 여전히 완료되지 않았다.
-- Part 7 시각 화면은 없다.
+- Part 7은 후속 로컬 VisualSet 중심 스토리 slice로 구현했다. 확정
+  QuestionVisualSet은 없으며 이 텍스트 fixture에는 계속 포함하지 않는다.
 - Part 1·3·5·6의 파트별 구조화 답변 UX는 실제 사용 후 결정한다.
 - 실제 사용자 답변을 사용해 개인 경험·키워드 뱅크를 설계하되 자동 생성은
   하지 않는다.
@@ -143,3 +144,6 @@ migration을 적용한다. DB 이름에 Part 4가 남아 있는 것은 기존 �
 Part 2 후속 구현의 데이터·권리·화면 경계는
 [PART2_VISUAL_APP_SLICE.md](PART2_VISUAL_APP_SLICE.md)를 따른다. 이
 변경은 텍스트 193개 fixture나 Part 4 전용 구조화 UX를 대체하지 않는다.
+Part 7 후속 구현은
+[PART7_STORY_VISUAL_APP_SLICE.md](PART7_STORY_VISUAL_APP_SLICE.md)를
+따르며 Question 12개를 텍스트 문제로 자동 결합하지 않는다.

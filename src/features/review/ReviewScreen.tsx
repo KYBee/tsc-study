@@ -7,6 +7,7 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
+import { LocalVisualAssetImage } from '../../components/LocalVisualAssetImage'
 import { StatusBadge } from '../../components/StatusBadge'
 import type {
   LearningTargetType,
@@ -27,7 +28,7 @@ const REVIEW_STATUSES: ReviewState['learning_status'][] = [
   '외움',
 ]
 
-type ReviewItemKind = 'text' | 'visual'
+type ReviewItemKind = 'text' | 'visual' | 'story'
 
 interface ReviewItem {
   kind: ReviewItemKind
@@ -113,7 +114,9 @@ export function ReviewScreen() {
       })),
     )
 
-    const visualSets = await publicRepository.listVisualSetsByPart(2)
+    const visualSets = import.meta.env.DEV
+      ? await publicRepository.listVisualSetsByPart(2)
+      : []
     const visualItems = (
       await Promise.all(
         visualSets.map(async (visualSet) => {
@@ -157,7 +160,45 @@ export function ReviewScreen() {
       )
     ).flat()
 
-    return [...textItems, ...visualItems]
+    const [storySets, storyInstruction] = import.meta.env.DEV
+      ? await Promise.all([
+          publicRepository.listVisualSetsByPart(7),
+          publicRepository.getPart7CommonInstruction(),
+        ])
+      : [[], undefined]
+    const storyItems: ReviewItem[] = await Promise.all(
+      storySets.map(async (visualSet) => {
+        const visualAssets = await publicRepository.listVisualAssetsBySetId(
+          visualSet.visual_set_id,
+        )
+        const setNumber = Number(
+          visualSet.visual_set_id.match(/V(\d+)$/)?.[1] ?? 0,
+        )
+        return {
+          kind: 'story',
+          targetType: 'visual_set',
+          targetId: visualSet.visual_set_id,
+          part: 7,
+          itemType: '스토리 그림',
+          zh: storyInstruction?.question_zh ?? '',
+          pinyin: storyInstruction?.question_pinyin,
+          detailPath: `/parts/7/sets/${visualSet.visual_set_id}`,
+          practiceDraft: await userRepository.getPracticeDraftByTarget(
+            'visual_set',
+            visualSet.visual_set_id,
+          ),
+          modelAnswers: [],
+          reviewState: await userRepository.getReviewState(
+            'visual_set',
+            visualSet.visual_set_id,
+          ),
+          visualAsset: visualAssets[0],
+          setNumber,
+        }
+      }),
+    )
+
+    return [...textItems, ...visualItems, ...storyItems]
   }, [publicRepository, userRepository])
 
   const questionTypes = useMemo(
@@ -245,7 +286,7 @@ export function ReviewScreen() {
             }}
           >
             <option value="all">전체 학습 파트</option>
-            {[1, 2, 3, 4, 5, 6].map((part) => (
+            {[1, 2, 3, 4, 5, 6, 7].map((part) => (
               <option key={part} value={part}>Part {part}</option>
             ))}
           </select>
@@ -261,7 +302,8 @@ export function ReviewScreen() {
           >
             <option value="all">전체</option>
             <option value="text">텍스트 문제</option>
-            <option value="visual">그림 문제</option>
+            <option value="visual">짧은 그림 질문</option>
+            <option value="story">스토리 그림</option>
           </select>
         </label>
         <label>
@@ -431,7 +473,9 @@ export function ReviewScreen() {
         <div className="section-heading">
           <div>
             <p className="eyebrow">
-              {current.kind === 'visual'
+              {current.kind === 'story'
+                ? `Part 7 · 스토리 그림 세트 ${current.setNumber}`
+                : current.kind === 'visual'
                 ? `Part 2 · 세트 ${current.setNumber} · 질문 ${current.visualQuestion?.item_number}`
                 : `Part ${current.part} · ${current.targetId} · ${current.itemType}`}
             </p>
@@ -446,6 +490,13 @@ export function ReviewScreen() {
         {current.kind === 'visual' && (
           <Part2VisualImage
             asset={current.visualAsset}
+            setNumber={current.setNumber ?? 0}
+          />
+        )}
+        {current.kind === 'story' && (
+          <LocalVisualAssetImage
+            asset={current.visualAsset}
+            partNumber={7}
             setNumber={current.setNumber ?? 0}
           />
         )}
@@ -494,6 +545,11 @@ export function ReviewScreen() {
             {current.kind === 'visual' && (
               <p className="supporting-text">
                 원본 추천 답변은 문제 상세에서 참고할 수 있으며 내 암기 답변으로 자동 사용하지 않습니다.
+              </p>
+            )}
+            {current.kind === 'story' && (
+              <p className="supporting-text">
+                원본 이야기 흐름 참고는 완성 답변이 아니며 내 암기 답변으로 자동 사용하지 않습니다.
               </p>
             )}
           </div>

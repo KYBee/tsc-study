@@ -1,0 +1,46 @@
+[
+  {
+    "source_id": "src-001",
+    "title": "TSC 파트별 문제은행 그림 포함",
+    "source_type": "excel",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_파트별_문제은행_그림포함.xlsx",
+    "file_ref": "data/raw/TSC_파트별_문제은행_그림포함.xlsx",
+    "claimed_original_names": [],
+    "sha256": "a150fd8a732d6ce2a309a6d5a41feb3788bb5b7b03142472d0d9fdf1fae1f37f",
+    "acquired_date": "",
+    "rights_status": "review_needed",
+    "source_status": "raw",
+    "notes": "공식·강의·응시후기·자체 연습 자료가 혼합된 원본 workbook. 내부 출처 이름·URL과 이미지 공개 가능 여부는 검수되지 않았다."
+  },
+  {
+    "source_id": "src-course-analysis-integrated",
+    "title": "TSC 1~7강 전체 통합분석",
+    "source_type": "course_analysis",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_1-7강_전체통합분석.md",
+    "file_ref": "other-output/TSC_1-7강_전체통합분석.md",
+    "claimed_original_names": [
+      "01강 / P01",
+      "01강 / V01a",
+      "02강 / V02a",
+      "02강 / V02b",
+      "03강 / V03",
+      "04강 / V04c",
+      "05강 / V05",
+      "06강 / V06",
+      "07강 / V07",
+      "05강 / D05",
+      "02강 / P02",
+      "04강 / P04",
+      "04강 / V04b"
+    ],
+    "sha256": "fe4373f12bd198d9eccbb05ff3eaf50045a1ef735e2976d92af72040805bcb9e",
+    "rights_status": "review_needed",
+    "source_status": "review_needed",
+    "evidence_kind": "analyst_synthesis",
+    "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  }
+]

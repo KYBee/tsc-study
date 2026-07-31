@@ -6,8 +6,10 @@ import type {
   PartGuide,
   PracticeDrill,
   Question,
+  QuestionVisualLinkCandidate,
   SourceReference,
   SourceReferenceTargetType,
+  StoryGuide,
   VisualAsset,
   VisualQuestion,
   VisualSet,
@@ -17,10 +19,12 @@ import type {
   Part4Fixture,
   Part4FullFixture,
   Part2VisualFixture,
+  Part7VisualFixture,
   TextPartsFixture,
 } from '../domain/validation'
 import {
   loadPart2VisualFixture,
+  loadPart7VisualFixture,
   loadTextPartsFixture,
 } from './fixtureLoader'
 
@@ -31,7 +35,7 @@ const PART_CATALOG: ReadonlyArray<Omit<PartCatalogItem, 'available_question_coun
   { part: 4, name: '일상 화제 설명하기', availability: 'available' },
   { part: 5, name: '의견 제시하기', availability: 'available' },
   { part: 6, name: '상황 대응하기', availability: 'available' },
-  { part: 7, name: '스토리 구성하기', availability: 'coming_soon' },
+  { part: 7, name: '스토리 구성하기', availability: 'available' },
 ]
 
 const compareStableIds = (left: string, right: string) => {
@@ -46,27 +50,34 @@ const compareStableIds = (left: string, right: string) => {
 class FixturePublicContentRepository implements PublicContentRepository {
   private readonly fixture: Part4Fixture | Part4FullFixture | TextPartsFixture
   private readonly visualFixture?: Part2VisualFixture
+  private readonly storyFixture?: Part7VisualFixture
 
   constructor(
     fixture: Part4Fixture | Part4FullFixture | TextPartsFixture,
     visualFixture?: Part2VisualFixture,
+    storyFixture?: Part7VisualFixture,
   ) {
     this.fixture = fixture
     this.visualFixture = visualFixture
+    this.storyFixture = storyFixture
   }
 
   async listParts(): Promise<PartCatalogItem[]> {
     return PART_CATALOG.map((part) => {
       if (part.availability !== 'available') return { ...part }
-      if (part.part === 2) {
-        if (!this.visualFixture) {
+      if (part.part === 2 || part.part === 7) {
+        const visualMaterial =
+          part.part === 2 ? this.visualFixture : this.storyFixture
+        if (!visualMaterial) {
           return { ...part, availability: 'coming_soon' as const }
         }
         return {
           ...part,
-          available_visual_set_count: this.visualFixture.visualSets.length,
+          available_visual_set_count: visualMaterial.visualSets.length,
           available_visual_question_count:
-            this.visualFixture.visualQuestions.length,
+            'visualQuestions' in visualMaterial
+              ? visualMaterial.visualQuestions.length
+              : undefined,
         }
       }
       const availableQuestionCount = this.fixture.questions.filter(
@@ -119,7 +130,11 @@ class FixturePublicContentRepository implements PublicContentRepository {
 
   async listPartGuides(partNumber: number): Promise<PartGuide[]> {
     const materialFixture =
-      partNumber === 2 ? this.visualFixture : this.fixture
+      partNumber === 2
+        ? this.visualFixture
+        : partNumber === 7
+          ? this.storyFixture
+          : this.fixture
     if (!materialFixture || !('partGuides' in materialFixture)) return []
     return materialFixture.partGuides
       .filter((guide) => guide.part === partNumber)
@@ -130,7 +145,11 @@ class FixturePublicContentRepository implements PublicContentRepository {
     partNumber: number,
   ): Promise<LearningExpression[]> {
     const materialFixture =
-      partNumber === 2 ? this.visualFixture : this.fixture
+      partNumber === 2
+        ? this.visualFixture
+        : partNumber === 7
+          ? this.storyFixture
+          : this.fixture
     if (!materialFixture || !('learningExpressions' in materialFixture)) {
       return []
     }
@@ -141,7 +160,11 @@ class FixturePublicContentRepository implements PublicContentRepository {
 
   async listPracticeDrillsByPart(partNumber: number): Promise<PracticeDrill[]> {
     const materialFixture =
-      partNumber === 2 ? this.visualFixture : this.fixture
+      partNumber === 2
+        ? this.visualFixture
+        : partNumber === 7
+          ? this.storyFixture
+          : this.fixture
     if (!materialFixture || !('practiceDrills' in materialFixture)) return []
     return materialFixture.practiceDrills
       .filter((drill) => drill.part === partNumber)
@@ -150,7 +173,11 @@ class FixturePublicContentRepository implements PublicContentRepository {
 
   async listCourseInsightsByPart(partNumber: number): Promise<CourseInsight[]> {
     const materialFixture =
-      partNumber === 2 ? this.visualFixture : this.fixture
+      partNumber === 2
+        ? this.visualFixture
+        : partNumber === 7
+          ? this.storyFixture
+          : this.fixture
     if (!materialFixture || !('courseInsights' in materialFixture)) return []
     return materialFixture.courseInsights
       .filter((insight) => insight.part_numbers.includes(partNumber as PartNumber))
@@ -158,7 +185,9 @@ class FixturePublicContentRepository implements PublicContentRepository {
   }
 
   async listVisualSetsByPart(partNumber: number): Promise<VisualSet[]> {
-    return (this.visualFixture?.visualSets ?? [])
+    const visualMaterial =
+      partNumber === 2 ? this.visualFixture : partNumber === 7 ? this.storyFixture : undefined
+    return (visualMaterial?.visualSets ?? [])
       .filter((item) => item.part === partNumber)
       .sort((left, right) =>
         compareStableIds(left.visual_set_id, right.visual_set_id),
@@ -168,17 +197,19 @@ class FixturePublicContentRepository implements PublicContentRepository {
   async getVisualSetById(
     visualSetId: string,
   ): Promise<VisualSet | undefined> {
-    return this.visualFixture?.visualSets.find(
-      (item) => item.visual_set_id === visualSetId,
-    )
+    return [...(this.visualFixture?.visualSets ?? []), ...(this.storyFixture?.visualSets ?? [])]
+      .find((item) => item.visual_set_id === visualSetId)
   }
 
   async listVisualAssetsBySetId(
     visualSetId: string,
   ): Promise<VisualAsset[]> {
-    if (!this.visualFixture) return []
+    const visualMaterial = visualSetId.startsWith('vs-P7-')
+      ? this.storyFixture
+      : this.visualFixture
+    if (!visualMaterial) return []
     const assetIds = new Set(
-      this.visualFixture.visualSetAssets
+      visualMaterial.visualSetAssets
         .filter((item) => item.visual_set_id === visualSetId)
         .sort(
           (left, right) =>
@@ -190,7 +221,7 @@ class FixturePublicContentRepository implements PublicContentRepository {
         )
         .map((item) => item.visual_asset_id),
     )
-    return this.visualFixture.visualAssets.filter((item) =>
+    return visualMaterial.visualAssets.filter((item) =>
       assetIds.has(item.visual_asset_id),
     )
   }
@@ -198,9 +229,10 @@ class FixturePublicContentRepository implements PublicContentRepository {
   async getVisualAssetById(
     visualAssetId: string,
   ): Promise<VisualAsset | undefined> {
-    return this.visualFixture?.visualAssets.find(
-      (item) => item.visual_asset_id === visualAssetId,
-    )
+    return [
+      ...(this.visualFixture?.visualAssets ?? []),
+      ...(this.storyFixture?.visualAssets ?? []),
+    ].find((item) => item.visual_asset_id === visualAssetId)
   }
 
   async listVisualQuestionsBySetId(
@@ -238,6 +270,50 @@ class FixturePublicContentRepository implements PublicContentRepository {
       .sort((left, right) => compareStableIds(left.answer_id, right.answer_id))
   }
 
+  async getStoryGuideByVisualSetId(
+    visualSetId: string,
+  ): Promise<StoryGuide | undefined> {
+    return this.storyFixture?.storyGuides.find(
+      (item) => item.visual_set_id === visualSetId,
+    )
+  }
+
+  async listQuestionVisualLinkCandidatesBySetId(
+    visualSetId: string,
+  ): Promise<QuestionVisualLinkCandidate[]> {
+    return (this.storyFixture?.questionVisualLinkCandidates ?? [])
+      .filter((item) => item.source_entity_id === visualSetId)
+      .sort((left, right) => compareStableIds(left.candidate_id, right.candidate_id))
+  }
+
+  async listModelAnswersByVisualSetId(
+    visualSetId: string,
+  ) {
+    if (
+      !this.storyFixture?.visualSets.some(
+        (item) => item.visual_set_id === visualSetId,
+      )
+    ) {
+      return []
+    }
+    return this.storyFixture?.modelAnswers ?? []
+  }
+
+  async getPart7CommonInstruction(): Promise<Question | undefined> {
+    const questions = this.storyFixture?.questions ?? []
+    if (questions.length !== 12) return undefined
+    const first = questions[0]
+    // Only the Chinese instruction and pinyin are common across all 12 rows.
+    // Korean text describes each candidate story and cannot be attached to a
+    // VisualSet while QuestionVisualSet remains unverified.
+    const fields = ['question_zh', 'question_pinyin'] as const
+    return fields.every((field) =>
+      questions.every((item) => item[field] === first[field]),
+    )
+      ? first
+      : undefined
+  }
+
   async listSourceReferencesForTarget(
     targetType: SourceReferenceTargetType,
     targetId: string,
@@ -245,6 +321,7 @@ class FixturePublicContentRepository implements PublicContentRepository {
     return [
       ...this.fixture.sourceReferences,
       ...(this.visualFixture?.sourceReferences ?? []),
+      ...(this.storyFixture?.sourceReferences ?? []),
     ]
       .filter(
         (reference) =>
@@ -262,10 +339,12 @@ export function createPublicContentRepository(
     | Part4FullFixture
     | TextPartsFixture,
   visualFixture?: Part2VisualFixture,
+  storyFixture?: Part7VisualFixture,
 ): PublicContentRepository {
   return new FixturePublicContentRepository(
     fixture ?? loadTextPartsFixture(),
     visualFixture ?? (fixture === undefined ? loadPart2VisualFixture() : undefined),
+    storyFixture ?? (fixture === undefined ? loadPart7VisualFixture() : undefined),
   )
 }
 

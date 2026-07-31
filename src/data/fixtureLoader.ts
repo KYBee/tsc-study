@@ -36,12 +36,28 @@ import part2VisualAssets from '../../data/working/app-fixtures/part2-visual-v1/v
 import part2VisualQuestions from '../../data/working/app-fixtures/part2-visual-v1/visual-questions.json'
 import part2VisualSetAssets from '../../data/working/app-fixtures/part2-visual-v1/visual-set-assets.json'
 import part2VisualSets from '../../data/working/app-fixtures/part2-visual-v1/visual-sets.json'
+import part7CourseInsights from '../../data/working/app-fixtures/part7-visual-v1/course-insights.json'
+import part7LearningExpressions from '../../data/working/app-fixtures/part7-visual-v1/learning-expressions.json'
+import part7Manifest from '../../data/working/app-fixtures/part7-visual-v1/manifest.json'
+import part7ModelAnswers from '../../data/working/app-fixtures/part7-visual-v1/model-answers.json'
+import part7PartGuides from '../../data/working/app-fixtures/part7-visual-v1/part-guides.json'
+import part7PracticeDrills from '../../data/working/app-fixtures/part7-visual-v1/practice-drills.json'
+import part7Questions from '../../data/working/app-fixtures/part7-visual-v1/questions.json'
+import part7QuestionVisualLinkCandidates from '../../data/working/app-fixtures/part7-visual-v1/question-visual-link-candidates.json'
+import part7SourceReferences from '../../data/working/app-fixtures/part7-visual-v1/source-references.json'
+import part7Sources from '../../data/working/app-fixtures/part7-visual-v1/sources.json'
+import part7StoryGuides from '../../data/working/app-fixtures/part7-visual-v1/story-guides.json'
+import part7VisualAssets from '../../data/working/app-fixtures/part7-visual-v1/visual-assets.json'
+import part7VisualSetAssets from '../../data/working/app-fixtures/part7-visual-v1/visual-set-assets.json'
+import part7VisualSets from '../../data/working/app-fixtures/part7-visual-v1/visual-sets.json'
 import {
   parsePart2VisualFixture,
+  parsePart7VisualFixture,
   parsePart4Fixture,
   parsePart4FullFixture,
   parseTextPartsFixture,
   type Part2VisualFixture,
+  type Part7VisualFixture,
   type Part4Fixture,
   type Part4FullFixture,
   type TextPartsFixture,
@@ -51,6 +67,7 @@ export const PART4_LEGACY_FIXTURE_DATASET_ID = manifest.dataset_id
 export const PART4_FIXTURE_DATASET_ID = fullManifest.dataset_id
 export const TEXT_PARTS_FIXTURE_DATASET_ID = textManifest.dataset_id
 export const PART2_VISUAL_FIXTURE_DATASET_ID = part2Manifest.dataset_id
+export const PART7_VISUAL_FIXTURE_DATASET_ID = part7Manifest.dataset_id
 
 let cachedFixture: Part4Fixture | undefined
 
@@ -123,4 +140,26 @@ export const loadPart2VisualFixture = (): Part2VisualFixture => {
     manifest: part2Manifest,
   })
   return cachedPart2VisualFixture
+}
+
+let cachedPart7VisualFixture: Part7VisualFixture | undefined
+
+export const loadPart7VisualFixture = (): Part7VisualFixture => {
+  cachedPart7VisualFixture ??= parsePart7VisualFixture({
+    visualSets: part7VisualSets,
+    visualAssets: part7VisualAssets,
+    visualSetAssets: part7VisualSetAssets,
+    storyGuides: part7StoryGuides,
+    questions: part7Questions,
+    questionVisualLinkCandidates: part7QuestionVisualLinkCandidates,
+    modelAnswers: part7ModelAnswers,
+    sources: part7Sources,
+    sourceReferences: part7SourceReferences,
+    partGuides: part7PartGuides,
+    learningExpressions: part7LearningExpressions,
+    practiceDrills: part7PracticeDrills,
+    courseInsights: part7CourseInsights,
+    manifest: part7Manifest,
+  })
+  return cachedPart7VisualFixture
 }

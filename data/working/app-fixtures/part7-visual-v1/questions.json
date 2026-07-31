@@ -1,0 +1,134 @@
+[
+  {
+    "question_id": "P7-001",
+    "part": 7,
+    "question_type": "공식 샘플",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "한 여성이 새 원피스를 입어 보고 구매한다. 친구들에게 보여주던 중 음료가 옷에 쏟아지고, 집에서 얼룩을 지우려 한다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-002",
+    "part": 7,
+    "question_type": "운전 사고",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "여자가 운전면허를 딴 뒤 운전하다 사고를 내고 수리비가 많이 든다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-003",
+    "part": 7,
+    "question_type": "수박 사건",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "엄마가 이웃에게 귤을 받는 동안 수박이 사라진다. 아이를 의심했지만 실제로는 강아지가 먹었다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-004",
+    "part": 7,
+    "question_type": "사과 심부름",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "엄마가 아이에게 사과를 사 오라고 한다. 아이가 돌아오는 길에 게임하다 사과를 두고 온다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-005",
+    "part": 7,
+    "question_type": "휴대전화 분실",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "사람이 택시에서 휴대전화를 잃어버리고 기사에게 연락해 되찾는다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-006",
+    "part": 7,
+    "question_type": "비 오는 날",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "비가 오는 날 한 사람이 우산이 없어 곤란해하고, 친구가 함께 쓰자고 한다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-007",
+    "part": 7,
+    "question_type": "생일 케이크",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "친구들이 몰래 생일 케이크를 준비해 주인공을 놀라게 한다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-008",
+    "part": 7,
+    "question_type": "버스 놓침",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "학생이 늦잠을 자고 버스를 놓쳐 지각한 뒤 선생님께 사과한다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-009",
+    "part": 7,
+    "question_type": "지갑 반환",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "길에서 지갑을 주운 사람이 경찰서에 맡기고 주인이 되찾는다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-010",
+    "part": 7,
+    "question_type": "식당 실수",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "종업원이 주문을 잘못 가져오지만 손님에게 사과하고 새 음식으로 바꿔 준다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-011",
+    "part": 7,
+    "question_type": "여행 짐",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "가족이 여행을 떠나려는데 여권을 집에 두고 와 다시 돌아간다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  },
+  {
+    "question_id": "P7-012",
+    "part": 7,
+    "question_type": "강아지 구조",
+    "question_zh": "请根据四幅连续的图片，讲述一个完整的故事。",
+    "question_pinyin": "qǐng gēn jù sì fú lián xù de tú piàn ， jiǎng shù yí gè wán zhěng de gù shì 。",
+    "question_ko": "아이가 길에서 다친 강아지를 발견해 병원에 데려가고 주인을 찾는다.",
+    "question_status": "raw",
+    "normalization_notes": "",
+    "tags": []
+  }
+]

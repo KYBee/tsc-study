@@ -176,7 +176,14 @@ function validatePracticeDraft(practiceDraft: PracticeDraftInput): void {
   const hasPlanningKeywords = Object.values(
     practiceDraft.planning_keywords ?? {},
   ).some((keywords) => keywords.some((keyword) => keyword.trim()))
-  if (!practiceDraft.original_input.trim() && !hasPlanningKeywords) {
+  const hasStoryContent =
+    practiceDraft.story_keywords?.some((keyword) => keyword.trim()) ||
+    practiceDraft.story_points?.some((point) => point.text.trim())
+  if (
+    !practiceDraft.original_input.trim() &&
+    !hasPlanningKeywords &&
+    !hasStoryContent
+  ) {
     throw new Error('빈 original_input은 저장할 수 없습니다')
   }
   if (practiceDraft.draft_status !== 'draft') {
@@ -521,6 +528,12 @@ export function createUserDataRepository(
       skipped_sections: input.skipped_sections
         ? [...input.skipped_sections]
         : existing?.skipped_sections,
+      story_keywords: input.story_keywords
+        ? [...input.story_keywords]
+        : existing?.story_keywords,
+      story_points: input.story_points
+        ? structuredClone(input.story_points)
+        : existing?.story_points,
       draft_status: 'draft',
       created_at: existing?.created_at ?? input.created_at ?? timestamp,
       updated_at: timestamp,

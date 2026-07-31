@@ -486,13 +486,15 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 | `practice_draft_id` | `Identifier` | 필수 | 연습 초안 식별자 | `pd-P4-006` |
 | `learner_ref` | `Identifier` | 조건부 | 개인 데이터 소유자 식별자 | `local-user` |
 | `question_id` | `Identifier` | 호환 | 기존 레코드·질의 호환용 대상 ID. 새 레코드는 `target_id`와 같은 값 | `P4-006` |
-| `target_type` | `Enum` | 필수 | `question`, `visual_question` | `visual_question` |
-| `target_id` | `Identifier` | 필수 | 실제 초안 대상의 안정적인 ID | `vq-P2-V01-Q1` |
+| `target_type` | `Enum` | 필수 | `question`, `visual_question`, `visual_set` | `visual_set` |
+| `target_id` | `Identifier` | 필수 | 실제 초안 대상의 안정적인 ID | `vs-P7-V01` |
 | `input_language` | `Enum` | 필수 | `ko`, `zh`, `mixed` | `mixed` |
 | `original_input` | `Text` | 조건부 | 사용자가 작성한 원문. 키워드 설계만 저장한 동안은 빈 값 가능 | `我喜欢在家运动。` |
 | `planning_keywords` | `Part4PlanningKeywords` | 선택 | 직접 답변·이유·경험/예시·마무리에 사용자가 직접 입력한 키워드 | `reasons: ["편리함"]` |
 | `structured_answer` | `Part4StructuredAnswer` | 선택 | 네 구간별 사용자 원문. 연결어를 자동 생성하지 않음 | `reasons: "在家运动很方便。"` |
 | `full_text` | `Text` | 선택 | 구조 구간을 사용자 입력 순서대로 합친 값 또는 자유 입력 전체 답변 | `我喜欢在家运动。` |
+| `story_keywords` | `List<Text>` | 선택 | Part 7에서 사용자가 직접 적은 이야기 핵심 키워드 | `["아침", "버스"]` |
+| `story_points` | `List<StoryPoint>` | 선택 | Part 7에서 사용자가 직접 정렬한 `{ point_id, text, order }` | `[{ "point_id": "sp-vs-P7-V01-001", "text": "버스를 탄다", "order": 1 }]` |
 | `completion_status` | `Enum` | 선택 | `in_progress`, `completed` | `completed` |
 | `completed_at` | `DateTime` | 조건부 | 사용자가 완료를 명시적으로 누른 시각 | `2026-07-28T13:00:00+09:00` |
 | `understanding_confirmed` | `Boolean` | 선택 | 사용자가 질문 이해 완료를 명시적으로 확인했는지 | `true` |
@@ -501,7 +503,7 @@ Part 4 working Question 한 건에 대해 사용자가 명시적으로 저장한
 | `created_at` | `DateTime` | 필수 | 최초 저장 시각 | `2026-07-28T10:00:00+09:00` |
 | `updated_at` | `DateTime` | 필수 | 마지막 명시적 저장 시각 | `2026-07-28T10:05:00+09:00` |
 
-Question 또는 VisualQuestion당 활성 초안 하나를 upsert할 수 있다.
+Question, VisualQuestion 또는 VisualSet당 활성 초안 하나를 upsert할 수 있다.
 `PracticeDraft`에는 교정 중국어·병음·한국어와 수정 내역을 넣지 않고 개인
 `Correction`도 생성하지 않는다. `UserAnswer`가 생겨도 자동 삭제하지
 않으며 둘은 동시에 존재할 수 있다.
@@ -512,6 +514,10 @@ Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full
 `completion_status`만으로 유효한 자유 입력 초안이 될 수 있다. fixture
 변경이나 Part 확장을 이유로 기존 개인 초안을 자동 삭제하지 않는다.
 
+Part 7의 `story_keywords`와 `story_points`는 개인 입력이다. 공용
+`StoryGuide`를 자동 복사하거나 저장하지 않으며, 사용자가 미리보기와
+확인을 거쳐 편집 상태에 추가한 뒤 명시적으로 저장해야 한다.
+
 기존 자유 입력 초안에는 구조화 필드가 없어도 유효하며 이 경우 `original_input`을 `full_text`처럼 표시한다. `completed`는 네 구간이 모두 채워졌다는 자동 판정이 아니라 사용자의 명시적 완료 행동이다.
 
 ### `ReusablePhrase`
@@ -520,18 +526,20 @@ Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full
 
 필드는 `reusable_phrase_id`, `text`, `language`, `phrase_type`,
 `source_kind = user_created`, 호환용 `source_question_id`, 선택적인
-`source_target_type = question | visual_question`, `source_target_id`,
+`source_target_type = question | visual_question | visual_set`, `source_target_id`,
 `created_at`, `updated_at`이다.
 
 ### `RecallAttempt`
 
 저장된 연습 답변을 보지 않고 말한 뒤 사용자가 직접 남기는 회상 이력이다.
 필드는 `recall_attempt_id`, 호환용 `question_id`,
-`target_type = question | visual_question`, `target_id`, 선택적인
+`target_type = question | visual_question | visual_set`, `target_id`, 선택적인
 `practice_draft_id` 또는 `user_answer_id`, `recall_mode`, `result`,
 `attempted_at`이다. `recall_mode`는 `full`, `answer_only`,
 `chinese_only`, `keywords_only`, `question_only`, Part 2의
-`visual_question`, `visual_only`를 사용한다. 결과는 `could_not_say`,
+`visual_question`, `visual_only`, Part 7의 `story_full`,
+`story_visual_points`, `story_points_only`, `instruction_visual`,
+`instruction_only`를 사용한다. 결과는 `could_not_say`,
 `used_keywords`, `almost`, `memorized`다. `keywords_only`는 실제
 `planning_keywords`가 있는 구조화 초안에서만 표시한다.
 
@@ -563,7 +571,7 @@ Part에 강제하지 않는다. 다른 텍스트 Part는 `original_input`, `full
 |---|---|---|---|---|
 | `review_state_id` | `Identifier` | 필수 | 복습 상태 식별자 | `rs-0001` |
 | `learner_ref` | `Identifier` | 조건부 | 개인 데이터 소유자 식별자 | `local-user` |
-| `target_type` | `Enum` | 필수 | `question`, `visual_question`, `user_answer`, `correction` | `visual_question` |
+| `target_type` | `Enum` | 필수 | `question`, `visual_question`, `visual_set`, `user_answer`, `correction` | `visual_set` |
 | `target_id` | `Identifier` | 필수 | 복습 대상 식별자 | `P4-001` |
 | `learning_status` | `Enum` | 필수 | `못 외움`, `헷갈림`, `외움` | `못 외움` |
 | `last_reviewed_at` | `DateTime` | 선택 | 마지막 복습 시각 | `2026-07-24T22:00:00+09:00` |

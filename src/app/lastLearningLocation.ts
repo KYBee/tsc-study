@@ -4,6 +4,8 @@ import type { PartNumber } from '../domain/entities'
 const STORAGE_KEY = `tsc-study:${PART4_FIXTURE_DATASET_ID}:last-learning-location`
 const VISUAL_STORAGE_KEY =
   `tsc-study:${PART4_FIXTURE_DATASET_ID}:last-visual-learning-location`
+const STORY_STORAGE_KEY =
+  `tsc-study:${PART4_FIXTURE_DATASET_ID}:last-story-learning-location`
 
 export interface LastLearningLocation {
   last_part: PartNumber
@@ -14,6 +16,11 @@ export interface LastLearningLocation {
 export interface LastVisualLearningLocation {
   last_visual_set_id: string
   last_visual_question_id: string
+  updated_at: string
+}
+
+export interface LastStoryLearningLocation {
+  last_visual_set_id: string
   updated_at: string
 }
 
@@ -89,6 +96,37 @@ export function loadLastVisualLearningLocation(
       return undefined
     }
     return value as LastVisualLearningLocation
+  } catch {
+    return undefined
+  }
+}
+
+export function saveLastStoryLearningLocation(
+  value: Pick<LastStoryLearningLocation, 'last_visual_set_id'>,
+  storage: Storage = defaultStorage(),
+  now: () => string = () => new Date().toISOString(),
+): LastStoryLearningLocation {
+  const stored: LastStoryLearningLocation = { ...value, updated_at: now() }
+  storage.setItem(STORY_STORAGE_KEY, JSON.stringify(stored))
+  return stored
+}
+
+export function loadLastStoryLearningLocation(
+  validVisualSetIds: readonly string[],
+  storage: Storage = defaultStorage(),
+): LastStoryLearningLocation | undefined {
+  const raw = storage.getItem(STORY_STORAGE_KEY)
+  if (!raw) return undefined
+  try {
+    const value = JSON.parse(raw) as Partial<LastStoryLearningLocation>
+    if (
+      typeof value.last_visual_set_id !== 'string' ||
+      typeof value.updated_at !== 'string' ||
+      !validVisualSetIds.includes(value.last_visual_set_id)
+    ) {
+      return undefined
+    }
+    return value as LastStoryLearningLocation
   } catch {
     return undefined
   }

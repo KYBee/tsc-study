@@ -415,6 +415,192 @@ describe('UserDataRepository structured learning records', () => {
       repository.getReviewState('visual_question', targetId),
     ).resolves.toMatchObject({ learning_status: '헷갈림' })
   })
+
+  it('stores a learner-authored Part 7 story against a VisualSet target', async () => {
+    const repository = createRepository()
+    const targetId = 'vs-P7-V01'
+    const draft = await repository.upsertPracticeDraft({
+      practice_draft_id: `pd-${targetId}`,
+      question_id: targetId,
+      target_type: 'visual_set',
+      target_id: targetId,
+      input_language: 'mixed',
+      original_input: '친구를 만나서 같이 공원에 갔다.',
+      story_keywords: ['친구', '공원'],
+      story_points: [
+        { point_id: 'sp-v01-001', text: '친구를 만난다', order: 1 },
+        { point_id: 'sp-v01-002', text: '공원에 간다', order: 2 },
+      ],
+      full_text: '친구를 만나서 같이 공원에 갔다.',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    await expect(
+      repository.getPracticeDraftByTarget('visual_set', targetId),
+    ).resolves.toEqual(draft)
+    expect(draft.story_keywords).toEqual(['친구', '공원'])
+    expect(draft.story_points?.map((point) => point.order)).toEqual([1, 2])
+
+    await repository.upsertReusablePhrase({
+      reusable_phrase_id: `rp-${targetId}-001`,
+      text: '친구를 만난다',
+      language: 'ko',
+      phrase_type: 'other',
+      source_kind: 'user_created',
+      source_question_id: targetId,
+      source_target_type: 'visual_set',
+      source_target_id: targetId,
+    })
+    await repository.addRecallAttempt({
+      recall_attempt_id: `ra-${targetId}-001`,
+      question_id: targetId,
+      target_type: 'visual_set',
+      target_id: targetId,
+      practice_draft_id: draft.practice_draft_id,
+      recall_mode: 'story_points_only',
+      result: 'used_keywords',
+    })
+    await repository.upsertReviewState({
+      review_state_id: `rs-visual-set-${targetId}`,
+      target_type: 'visual_set',
+      target_id: targetId,
+      learning_status: '헷갈림',
+    })
+
+    await expect(
+      repository.listRecallAttemptsByTarget('visual_set', targetId),
+    ).resolves.toMatchObject([{ recall_mode: 'story_points_only' }])
+    await expect(
+      repository.getReviewState('visual_set', targetId),
+    ).resolves.toMatchObject({ learning_status: '헷갈림' })
+  })
+})
+
+describe('IndexedDB v4 to v5 migration', () => {
+  it('adds VisualSet target support without deleting any existing v4 record', async () => {
+    const databaseName = `tsc-study-user-data-v5-migration-${databaseSequence++}`
+    const legacy = await openDB(databaseName, 4, {
+      upgrade(database) {
+        const userAnswers = database.createObjectStore(USER_ANSWERS_STORE, {
+          keyPath: 'user_answer_id',
+        })
+        userAnswers.createIndex(USER_ANSWER_QUESTION_INDEX, 'question_id', {
+          unique: true,
+        })
+        const reviewStates = database.createObjectStore(REVIEW_STATES_STORE, {
+          keyPath: 'review_state_id',
+        })
+        reviewStates.createIndex(
+          REVIEW_STATE_TARGET_INDEX,
+          ['target_type', 'target_id'],
+          { unique: true },
+        )
+        reviewStates.createIndex(REVIEW_STATE_TARGET_ID_INDEX, 'target_id')
+        const corrections = database.createObjectStore(CORRECTIONS_STORE, {
+          keyPath: 'correction_id',
+        })
+        corrections.createIndex(CORRECTION_USER_ANSWER_INDEX, 'user_answer_id')
+        const drafts = database.createObjectStore(PRACTICE_DRAFTS_STORE, {
+          keyPath: 'practice_draft_id',
+        })
+        drafts.createIndex(PRACTICE_DRAFT_QUESTION_INDEX, 'question_id', {
+          unique: true,
+        })
+        drafts.createIndex(
+          PRACTICE_DRAFT_TARGET_INDEX,
+          ['target_type', 'target_id'],
+          { unique: true },
+        )
+        const phrases = database.createObjectStore(REUSABLE_PHRASES_STORE, {
+          keyPath: 'reusable_phrase_id',
+        })
+        phrases.createIndex('by-question-id', 'source_question_id')
+        phrases.createIndex(
+          REUSABLE_PHRASE_TARGET_INDEX,
+          ['source_target_type', 'source_target_id'],
+        )
+        const attempts = database.createObjectStore(RECALL_ATTEMPTS_STORE, {
+          keyPath: 'recall_attempt_id',
+        })
+        attempts.createIndex('by-question-id', 'question_id')
+        attempts.createIndex(
+          RECALL_ATTEMPT_TARGET_INDEX,
+          ['target_type', 'target_id'],
+        )
+      },
+    })
+    await legacy.put(PRACTICE_DRAFTS_STORE, {
+      ...makePracticeDraft(),
+      target_type: 'question',
+      target_id: 'P4-001',
+      created_at: '2026-07-30T09:00:00.000Z',
+      updated_at: '2026-07-30T09:00:00.000Z',
+    })
+    await legacy.put(REUSABLE_PHRASES_STORE, {
+      reusable_phrase_id: 'rp-v4-001',
+      text: '他在跑步。',
+      language: 'zh',
+      phrase_type: 'other',
+      source_kind: 'user_created',
+      source_question_id: 'vq-P2-V01-Q1',
+      source_target_type: 'visual_question',
+      source_target_id: 'vq-P2-V01-Q1',
+      created_at: '2026-07-30T09:00:00.000Z',
+      updated_at: '2026-07-30T09:00:00.000Z',
+    })
+    await legacy.put(RECALL_ATTEMPTS_STORE, {
+      recall_attempt_id: 'ra-v4-001',
+      question_id: 'vq-P2-V01-Q1',
+      target_type: 'visual_question',
+      target_id: 'vq-P2-V01-Q1',
+      practice_draft_id: 'pd-v4-001',
+      recall_mode: 'visual_only',
+      result: 'almost',
+      attempted_at: '2026-07-30T09:00:00.000Z',
+    })
+    await legacy.put(USER_ANSWERS_STORE, {
+      ...makeUserAnswer({ created_at: '2026-07-30T09:00:00.000Z' }),
+      updated_at: '2026-07-30T09:00:00.000Z',
+    })
+    await legacy.put(REVIEW_STATES_STORE, {
+      ...makeReviewState({ last_reviewed_at: '2026-07-30T09:00:00.000Z' }),
+      review_count: 1,
+    })
+    await legacy.put(CORRECTIONS_STORE, {
+      ...makeCorrection({ user_answer_id: 'ua-P4-006' }),
+      user_answer_id: 'ua-P4-006',
+      created_at: '2026-07-30T09:00:00.000Z',
+    })
+    legacy.close()
+
+    const repository = createUserDataRepository({ databaseName })
+    openedRepositories.push(repository)
+
+    await expect(repository.listPracticeDrafts()).resolves.toHaveLength(1)
+    await expect(repository.listReusablePhrases()).resolves.toHaveLength(1)
+    await expect(repository.listRecallAttempts()).resolves.toHaveLength(1)
+    await expect(repository.listUserAnswers()).resolves.toHaveLength(1)
+    await expect(repository.listReviewStates()).resolves.toHaveLength(1)
+    await expect(repository.listPersonalCorrections()).resolves.toHaveLength(1)
+    await repository.upsertPracticeDraft({
+      practice_draft_id: 'pd-vs-P7-V01',
+      question_id: 'vs-P7-V01',
+      target_type: 'visual_set',
+      target_id: 'vs-P7-V01',
+      input_language: 'ko',
+      original_input: '내 이야기',
+      story_keywords: ['이야기'],
+      story_points: [{ point_id: 'sp-001', text: '시작', order: 1 }],
+      draft_status: 'draft',
+    })
+    await expect(
+      repository.getPracticeDraftByTarget('visual_set', 'vs-P7-V01'),
+    ).resolves.toMatchObject({ story_keywords: ['이야기'] })
+
+    const migrated = await openDB(databaseName, USER_DATA_DB_VERSION)
+    expect(migrated.version).toBe(5)
+    migrated.close()
+  })
 })
 
 describe('IndexedDB v3 to v4 migration', () => {

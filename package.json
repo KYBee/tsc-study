@@ -26,8 +26,13 @@
     "fixture:part2-visual": "python3 scripts/build_part2_visual_app_fixture.py",
     "validate:part2-visual": "python3 scripts/build_part2_visual_app_fixture.py --validate-only",
     "test:part2-visual": "python3 -m unittest scripts.tests.test_build_part2_visual_app_fixture -v",
-    "assets:part2-local": "python3 scripts/build_full_workbook_import.py --extract-assets",
+    "fixture:part7-visual": "python3 scripts/build_part7_visual_app_fixture.py",
+    "validate:part7-visual": "python3 scripts/build_part7_visual_app_fixture.py --validate-only",
+    "test:part7-visual": "python3 -m unittest scripts.tests.test_build_part7_visual_app_fixture -v",
+    "assets:visual-local": "python3 scripts/build_full_workbook_import.py --extract-assets",
+    "assets:part2-local": "npm run assets:visual-local",
     "validate:part2-assets": "python3 scripts/validate_part2_local_assets.py",
+    "validate:part7-assets": "python3 scripts/validate_part7_local_assets.py",
     "dataset:course": "python3 scripts/build_course_working_import.py",
     "validate:course-dataset": "python3 scripts/build_course_working_import.py --validate-only",
     "test:course-dataset": "python3 -m unittest scripts.tests.test_build_course_working_import -v",
@@ -35,7 +40,7 @@
     "validate:full-dataset": "python3 scripts/build_full_workbook_import.py --validate-only",
     "test:full-dataset": "python3 -m unittest scripts.tests.test_build_full_workbook_import -v",
     "check:data": "npm run validate:course-dataset && npm run test:course-dataset && npm run validate:full-dataset && npm run test:full-dataset",
-    "check": "npm run fixture:part2-visual && npm run validate:part2-visual && npm run test:part2-visual && npm run fixture:text-parts && npm run validate:text-parts && npm run test:text-parts && npm run fixture:part4-full && npm run validate:part4-full && npm run test:part4-full && npm run fixture:part4-review && npm run validate:part4-review && npm run test:part4-review && npm run test:part4-promotion && npm run fixture:part4 && npm run validate:fixtures && npm run typecheck && npm run lint && npm run test:run && npm run build && npm run validate:part2-assets"
+    "check": "npm run fixture:part2-visual && npm run validate:part2-visual && npm run test:part2-visual && npm run fixture:part7-visual && npm run validate:part7-visual && npm run test:part7-visual && npm run fixture:text-parts && npm run validate:text-parts && npm run test:text-parts && npm run fixture:part4-full && npm run validate:part4-full && npm run test:part4-full && npm run fixture:part4-review && npm run validate:part4-review && npm run test:part4-review && npm run test:part4-promotion && npm run fixture:part4 && npm run validate:fixtures && npm run typecheck && npm run lint && npm run test:run && npm run build && npm run validate:part2-assets && npm run validate:part7-assets"
   },
   "dependencies": {
     "idb": "^8.0.3",

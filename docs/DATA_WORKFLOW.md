@@ -97,6 +97,20 @@ python3 scripts/build_part2_visual_app_fixture.py --validate-only
 `visual_question` target으로 IndexedDB에 저장하며 working 공용 JSON을
 수정하지 않는다.
 
+Part 7 로컬 앱 fixture는 같은 이미지 추출 경계를 재사용한다.
+
+```sh
+python3 scripts/build_part7_visual_app_fixture.py
+python3 scripts/build_part7_visual_app_fixture.py --validate-only
+```
+
+Part 7은 VisualSet·VisualAsset·VisualSetAsset·StoryGuide 각 12개와
+Question 12개를 보존하되 확정 QuestionVisualSet 0개, 검수 후보 12개,
+ModelAnswer 0개를 유지한다. 후보는 canonical 관계로 승격하지 않는다.
+개인 키워드·이야기 포인트·전체 답변은 `visual_set` target IndexedDB에만
+저장하고 StoryGuide나 working JSON을 수정하지 않는다. Part 2·7 이미지
+24개는 공용 개발 서버 allowlist로만 제공하며 production에서 비활성이다.
+
 ## Part 4 사람 검수와 부분 승격
 
 Part 4 검수 입력은 `scripts/build_part4_review_fixture.py`가 working 앱 fixture와 review queue에서 결정적으로 만든다. 원문은 수정하지 않고 Question·AnswerPoint 해시와 일곱 필수 검수 영역을 보존한다.

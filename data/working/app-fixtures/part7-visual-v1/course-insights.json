@@ -1,0 +1,18 @@
+[
+  {
+    "insight_id": "ci-course-part6-7-gap",
+    "part_numbers": [
+      6,
+      7
+    ],
+    "insight_type": "scope_limitation",
+    "content_ko": "Part 6과 Part 7은 현재 과정에서 상세 답변 훈련 근거가 부족하다.",
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "confidence_or_status": "review_needed",
+    "source_reference_ids": [
+      "sr-ci-course-part6-7-gap-01"
+    ],
+    "notes": "working 분석 항목이며 공식 시험 규칙이나 reviewed 콘텐츠가 아니다."
+  }
+]

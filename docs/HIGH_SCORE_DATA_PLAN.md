@@ -66,9 +66,9 @@
 | 항목 | 내용 |
 |---|---|
 | 필요한 데이터 | Part 6 상황·역할·대안 구조와 교정 사례, Part 7 VisualSet·VisualAsset·StoryGuide·별도 ModelAnswer |
-| 기존에 있는 데이터 | Part 6 시간·구성 언급, `full-import-v1`의 Part 7 VisualSet·VisualAsset·StoryGuide 각 12개와 접미사 검토 후보 12개 |
+| 기존에 있는 데이터 | Part 6 시간·구성 언급, `full-import-v1`의 Part 7 VisualSet·VisualAsset·StoryGuide 각 12개와 접미사 검토 후보 12개, VisualSet 중심 로컬 이야기 설계·회상 화면 |
 | 부족한 데이터 | 상세 강의와 충분한 문제·답변, 시각 자산 25개의 권리, 명시적인 Part 7 Question-VisualSet 연결 |
-| 앱에서 사용할 화면 | Part 6 상황 대응 화면, Part 7 스토리 전용 화면 |
+| 앱에서 사용할 화면 | Part 6 상황 대응 화면, 구현된 Part 7 스토리 전용 화면과 향후 reviewed 연결 상태 |
 | 구현 우선순위 | `P1` — 현재 강의의 가장 큰 내용 공백 |
 | 검수 조건 | Part 7 StoryGuide를 ModelAnswer로 변환하지 않음, 행 순서로 연결하지 않음, 권리를 VisualAsset 단위로 확인 |
 

@@ -90,6 +90,12 @@ Part 2 추천 답변은 workbook에 있던 세 언어 원문을 그대로 보존
 
 Part 7의 추천 이야기 흐름은 완성 중국어 답변이 아니므로 `ModelAnswer`로 변환하지 않았다. `P7-001`과 `P7-V01`처럼 숫자 접미사가 대응해도 명시적인 연결 근거가 없으므로 실제 관계를 만들지 않았다. 같은 공통 `question_zh`를 사용하는 12개 Question도 병합하지 않았다.
 
+후속 로컬 앱 구현도 이 반입 사실을 바꾸지 않는다. Part 7은 VisualSet을
+직접 학습 대상으로 사용하고 접미사 후보 12개를 `not_canonical`
+검수 큐로 유지한다. 구현 계약은
+[PART7_STORY_VISUAL_APP_SLICE.md](PART7_STORY_VISUAL_APP_SLICE.md)를
+참고한다.
+
 ## 이미지와 권리
 
 workbook 내부 이미지 25개의 원본 바이트 메타데이터를 기록했다.

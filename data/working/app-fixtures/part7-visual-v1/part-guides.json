@@ -1,0 +1,54 @@
+[
+  {
+    "part_guide_id": "part-guide-07",
+    "part": 7,
+    "goal": "그림 순서와 마지막 반전을 확인한다.",
+    "preparation_tips": [
+      "그림 순서와 마지막 반전을 확인한다."
+    ],
+    "response_structure": [],
+    "response_seconds": 90,
+    "key_expressions": [],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "level_3",
+    "evidence_kind": "analyst_synthesis",
+    "source_reference_ids": [
+      "sr-part-guide-07-01"
+    ],
+    "guide_status": "draft",
+    "notes": "근거 부족: 예고 수준 자료만 있으며 완전한 90초 템플릿은 없다.",
+    "preparation_seconds": 30
+  },
+  {
+    "part_guide_id": "part-guide-workbook-07",
+    "part": 7,
+    "goal": "4장 연결, 사건과 결말",
+    "preparation_tips": [
+      "4컷을 30초 동안 정리 → 인물·배경 → 사건 → 문제 → 해결·결말 순서로 90초 말하기"
+    ],
+    "response_structure": [],
+    "key_expressions": [
+      {
+        "zh": "一开始 / 后来 / 没想到 / 于是 / 最后",
+        "pinyin": "",
+        "ko": ""
+      }
+    ],
+    "key_expression_ids": [],
+    "representative_question_ids": [],
+    "frequent_correction_ids": [],
+    "representative_drill_ids": [],
+    "course_target_context": "not_specified",
+    "source_reference_ids": [
+      "sr-part-guide-workbook-07-summary-extracted",
+      "sr-part-guide-workbook-07-visual-guidance-extracted"
+    ],
+    "guide_status": "review_needed",
+    "notes": "workbook 원문 기반 source-specific 가이드이며 course-import PartGuide와 병합하지 않음.",
+    "preparation_seconds": 30,
+    "response_seconds": 90
+  }
+]

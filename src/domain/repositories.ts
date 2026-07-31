@@ -7,8 +7,10 @@ import type {
   PartGuide,
   PracticeDrill,
   Question,
+  QuestionVisualLinkCandidate,
   SourceReference,
   SourceReferenceTargetType,
+  StoryGuide,
   VisualAsset,
   VisualQuestion,
   VisualSet,
@@ -36,6 +38,14 @@ export interface PublicContentRepository {
   listModelAnswersByVisualQuestionId(
     visualQuestionId: string,
   ): Promise<ModelAnswer[]>
+  getStoryGuideByVisualSetId(
+    visualSetId: string,
+  ): Promise<StoryGuide | undefined>
+  listQuestionVisualLinkCandidatesBySetId(
+    visualSetId: string,
+  ): Promise<QuestionVisualLinkCandidate[]>
+  listModelAnswersByVisualSetId(visualSetId: string): Promise<ModelAnswer[]>
+  getPart7CommonInstruction(): Promise<Question | undefined>
   listSourceReferencesForTarget(
     targetType: SourceReferenceTargetType,
     targetId: string,

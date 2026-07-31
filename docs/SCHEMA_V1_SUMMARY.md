@@ -75,6 +75,12 @@ Part 2 로컬 working fixture는 `VisualSet`·`VisualAsset`·
 사용한다. 이미지 바이트는 권리 검수 전 로컬 개발 자산이며 공용 JSON이나
 production build에 포함하지 않는다.
 
+Part 7 working fixture는 VisualSet·VisualAsset·VisualSetAsset·StoryGuide
+각 12개를 제공한다. QuestionVisualSet은 0개이고 접미사 후보 12개는
+비canonical 검수 큐다. Part 7 개인 기록은 기존 target에 `visual_set`을
+additive하게 추가하며 StoryGuide를 PracticeDraft나 ModelAnswer로 자동
+변환하지 않는다.
+
 | 검수 운영 | `Part4ReviewDecision` | 필드별 사람 판단과 원문 해시만 별도 IndexedDB·내보내기 JSON에 보존한다. 공용 콘텐츠나 개인 학습 기록과 섞지 않는다. |
 
 `ReviewState`만 개인 학습 상태를 관리한다. `Question`, `Correction`, `ModelAnswer`에 사용자별 `못 외움`, `헷갈림`, `외움`을 저장하지 않는다.
@@ -130,6 +136,12 @@ Question
 
 Part 7의 실질적 학습 맥락은 `Question + VisualSet + StoryGuide` 조합일 수 있다. 같은 공통 지시문이나 행 순서만으로 `QuestionVisualSet`을 만들지 않는다.
 
+현재 로컬 Part 7 working slice에는 확정 `QuestionVisualSet`이 0개다.
+숫자 접미사 후보 12개는 canonical 관계가 아니라 사람 검수 큐다. 따라서
+앱은 `VisualSet`을 직접 학습 대상으로 사용하고, 동일한 Part 7 Question
+문구는 공통 지시문으로만 표시한다. StoryGuide는 VisualSet과의 원본
+명시 관계만 사용하며 ModelAnswer로 변환하지 않는다.
+
 ### 개인 학습
 
 ```text
@@ -137,9 +149,13 @@ Question
 → UserAnswer
 → Correction
 
-Question / UserAnswer / Correction
+Question / VisualQuestion / VisualSet / UserAnswer / Correction
 → ReviewState
 ```
+
+개인 `PracticeDraft`, `RecallAttempt`, `ReusablePhrase` source도
+`question | visual_question | visual_set` 다형 대상을 지원한다.
+Part 7의 개인 story keyword와 순서 point는 공용 StoryGuide와 분리한다.
 
 ## 출처 추적 구조
 

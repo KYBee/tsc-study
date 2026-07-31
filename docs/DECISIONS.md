@@ -96,6 +96,9 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-026` | Part 2 로컬 시각 working fixture | `part2-visual-working-development-fixture-v1`의 VisualSet·VisualAsset·VisualSetAsset 각 12개와 VisualQuestion·검수 전 출처 ModelAnswer 각 48개를 텍스트 fixture와 병행 로드한다. 엄격 연결 18개와 미연결 30개를 그대로 유지하고 Part 7·공식 샘플은 제외한다. | Part 2 reviewed 데이터 또는 권리 승인 자산이 준비될 때 |
 | `D-027` | 로컬 이미지 권리 경계 | `rights_status = review_needed` Part 2 바이트는 Git ignore 생성 경로에 두고 Vite `serve` 전용 allowlist 미들웨어로만 제공한다. production build에는 바이트를 넣지 않으며 production 화면에서 Part 2를 비활성화한다. | VisualAsset별 공개 권리 근거가 승인될 때 |
 | `D-028` | 개인 데이터 다형 대상과 IndexedDB v4 | 기존 DB 이름과 모든 레코드를 유지하며 `PracticeDraft`, `ReviewState`, `RecallAttempt`, `ReusablePhrase` source에 `question | visual_question` target을 additive하게 추가한다. v3 레코드는 `question` 대상으로 migration한다. Part 2는 UserAnswer·Correction을 자동 생성하지 않는다. | 실제 시각 문제 교정 공급자 또는 서버 동기화를 설계할 때 |
+| `D-029` | Part 7 VisualSet 중심 working fixture | `part7-visual-working-development-fixture-v1`의 VisualSet·VisualAsset·VisualSetAsset·StoryGuide·Question 각 12개를 병행 로드한다. 확정 QuestionVisualSet과 ModelAnswer는 0개다. 숫자 접미사 후보 12개는 `candidate`, `review_needed`, `not_canonical`로만 보존하고 VisualSet을 직접 학습 대상으로 쓴다. | 후보 관계가 사람 검수로 승인되거나 reviewed Part 7 데이터가 준비될 때 |
+| `D-030` | Part 2·7 공용 로컬 이미지 경계 | 두 fixture의 등록 asset ID 24개만 공용 Vite `serve` 미들웨어로 제공한다. realpath root, 확장자·MIME magic, 크기와 SHA-256을 확인하고 기존 Part 2 URL은 Part 2 ID에 한해 호환한다. 이미지 바이트는 Git·public·production build에서 제외한다. | VisualAsset별 공개 권리 근거와 production 자산 정책이 승인될 때 |
+| `D-031` | VisualSet 개인 데이터와 IndexedDB v5 | 기존 학습 DB 이름, store와 compound index를 유지하면서 `visual_set` target을 additive하게 허용한다. Part 7 PracticeDraft에 사용자 작성 `story_keywords`, 순서 있는 `story_points`, `full_text`를 저장한다. StoryGuide는 자동 복사·저장하지 않고 UserAnswer·Correction을 만들지 않는다. | 서버 동기화, 이야기 답변 교정 또는 데이터 내보내기 정책을 설계할 때 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 

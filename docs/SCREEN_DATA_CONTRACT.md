@@ -108,6 +108,12 @@
 
 검증된 `QuestionVisualSet`이 없으면 Question과 그림을 강제로 합치지 않는다. 명시적으로 연결된 `VisualSet`과 `StoryGuide`는 `연결 검수 중인 시각 연습`으로 각각 볼 수 있지만, 공통 지시문을 결합하거나 하나의 확정 학습 문제처럼 표시하지 않는다. 이 상태의 답변 작성·교정 진입과 승인 저장은 대상 계약이 보완될 때까지 제한 또는 보류한다.
 
+현재 로컬 working 구현은 이 제한 안에서 `VisualSet`을 직접 개인 학습
+대상으로 사용한다. 이는 QuestionVisualSet 확정 관계나 UserAnswer를
+만드는 것이 아니다. 사용자가 직접 쓴 키워드·포인트·전체 답변만
+`target_type = visual_set` PracticeDraft로 저장하며 StoryGuide는 공용
+참고 데이터로 남는다.
+
 ## 6. 답변 작성
 
 | 항목 | 계약 |
@@ -247,7 +253,26 @@ build는 이미지 바이트를 포함하지 않으며 화면도 로컬 학습�
 않는다. ModelAnswer는 내 답변을 덮어쓰거나 UserAnswer로 자동 저장하지
 않는다.
 
-## 12. Part 4 로컬 데이터 검수
+## 12. Part 7 로컬 스토리 학습
+
+| 항목 | 계약 |
+|---|---|
+| 화면 ID | `PART7_SET_LIST`, `PART7_SET`, `PART7_STORY_EDITOR`, `PART7_RECALL` |
+| 화면 목적 | 확정 Question 연결 없이 VisualSet을 직접 보고 내 이야기 순서와 답변을 저장·회상한다. |
+| 읽는 엔터티 | `VisualSet`, `VisualSetAsset`, `VisualAsset`, `StoryGuide`, 공통 안내용 `Question`, 연결 후보, `PartGuide`, 개인 `PracticeDraft`, `RecallAttempt`, `ReviewState`, `ReusablePhrase` |
+| 필수 데이터 | 등록된 set/asset과 명시 StoryGuide 관계, 이미지 메타데이터·권리 상태, StoryGuide 원문. 공통 Question은 12개의 중국어·병음이 일치할 때만 공통 안내로 사용하며 서로 다른 한국어 상황은 붙이지 않음 |
+| 선택 데이터 | Part 공통 자료, 번호 기반 연결 후보, 기존 개인 초안·복습·회상 상태 |
+| 사용자가 생성·수정하는 데이터 | `visual_set` 대상 PracticeDraft의 `story_keywords`, 순서 있는 `story_points`, `full_text`; RecallAttempt·ReviewState와 명시적 ReusablePhrase |
+| 빈 값 처리 | 이미지가 없으면 공용 로컬 추출 명령 안내. 개인 초안이 없으면 이야기 작성 진입. ModelAnswer 0개는 정상 |
+| 검수 상태 처리 | 그림은 권리 검수 전 로컬 전용, StoryGuide는 완성 답변 아님, Question 후보 12개는 확정 관계 아님 |
+| 주요 행동 | 세트 필터·랜덤·이어보기, 이미지 확대, StoryGuide 참고 미리보기·확인, 내 포인트 편집·저장·완료, 내 답변 회상 |
+| 다음 화면 | 홈, Part 7 목록·상세·답변·회상, 나의 답변, 복습 |
+
+production에서는 Part 7 카드와 직접 경로를 비활성화하고 로컬 이미지 URL을
+요청하지 않는다. Part 2와 Part 7 이미지 미들웨어는 공용 allowlist와
+무결성 검증을 사용한다.
+
+## 13. Part 4 로컬 데이터 검수
 
 | 항목 | 계약 |
 |---|---|

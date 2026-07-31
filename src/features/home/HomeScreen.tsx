@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAppDependencies } from '../../app/dependencies'
 import {
   loadLastLearningLocation,
+  loadLastStoryLearningLocation,
   loadLastVisualLearningLocation,
 } from '../../app/lastLearningLocation'
 import { useAsyncData } from '../../app/useAsyncData'
@@ -22,6 +23,7 @@ export function HomeScreen() {
       parts,
       questionGroups,
       visualSets,
+      storySets,
       reviewStates,
       answers,
       drafts,
@@ -33,6 +35,7 @@ export function HomeScreen() {
           TEXT_PARTS.map((part) => publicRepository.listQuestionsByPart(part)),
         ),
         publicRepository.listVisualSetsByPart(2),
+        publicRepository.listVisualSetsByPart(7),
         userRepository.listReviewStates(),
         userRepository.listUserAnswers(),
         userRepository.listPracticeDrafts(),
@@ -50,6 +53,7 @@ export function HomeScreen() {
       parts,
       questions,
       visualSets,
+      storySets,
       visualQuestions,
       reviewStates,
       answers,
@@ -61,6 +65,9 @@ export function HomeScreen() {
       lastVisualLocation: loadLastVisualLearningLocation(
         visualSets.map((visualSet) => visualSet.visual_set_id),
         visualQuestions.map((visualQuestion) => visualQuestion.visual_question_id),
+      ),
+      lastStoryLocation: loadLastStoryLearningLocation(
+        storySets.map((visualSet) => visualSet.visual_set_id),
       ),
     }
   }, [publicRepository, userRepository])
@@ -126,13 +133,25 @@ export function HomeScreen() {
       state.target_type === 'visual_question' &&
       visualQuestionIds.has(state.target_id),
   )
+  const storySetIds = new Set(
+    data.storySets.map((visualSet) => visualSet.visual_set_id),
+  )
+  const storyDrafts = data.drafts.filter(
+    (draft) =>
+      draft.target_type === 'visual_set' &&
+      storySetIds.has(draft.target_id ?? draft.question_id),
+  )
+  const storyReviews = data.reviewStates.filter(
+    (state) =>
+      state.target_type === 'visual_set' && storySetIds.has(state.target_id),
+  )
 
   return (
     <div className="page">
       <header className="hero">
         <p className="eyebrow">TSC STUDY</p>
         <h1>텍스트와 그림 문제를 내 답변으로 연습하세요</h1>
-        <p>Part 1~6 검수 전 자료이며, 입력한 답변만 개인 저장합니다.</p>
+        <p>Part 1~7 검수 전 자료이며, 입력한 답변만 개인 저장합니다.</p>
       </header>
 
       <section className="card" aria-labelledby="progress-heading">
@@ -267,6 +286,51 @@ export function HomeScreen() {
                   ) : (
                     <div className="part-card__disabled" aria-disabled="true">
                       <span className="part-card__number">Part 2</span>
+                      <span className="part-card__body">
+                        <strong>{part.name}</strong>
+                        <small>로컬 그림 학습 전용</small>
+                      </span>
+                      <span className="coming-soon">권리 검수 중</span>
+                    </div>
+                  )}
+                </li>
+              )
+            }
+            if (part.part === 7) {
+              const completed = storyDrafts.filter(
+                (draft) => draft.completion_status === 'completed',
+              ).length
+              return (
+                <li key={part.part} className="part-card">
+                  {part.availability === 'available' && import.meta.env.DEV ? (
+                    <Link className="part-card__link" to="/parts/7">
+                      <span className="part-card__number">Part 7</span>
+                      <span className="part-card__body">
+                        <strong>{part.name}</strong>
+                        <small>
+                          {part.available_visual_set_count}세트 · 작성{' '}
+                          {storyDrafts.length} · 완료 {completed}
+                        </small>
+                        <small>
+                          헷갈림{' '}
+                          {storyReviews.filter((item) => item.learning_status === '헷갈림').length}
+                          {' · '}외움{' '}
+                          {storyReviews.filter((item) => item.learning_status === '외움').length}
+                        </small>
+                        {data.lastStoryLocation && (
+                          <small>
+                            마지막 세트{' '}
+                            {Number(
+                              data.lastStoryLocation.last_visual_set_id.match(/V(\d+)$/)?.[1] ?? 0,
+                            )}
+                          </small>
+                        )}
+                      </span>
+                      <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : (
+                    <div className="part-card__disabled" aria-disabled="true">
+                      <span className="part-card__number">Part 7</span>
                       <span className="part-card__body">
                         <strong>{part.name}</strong>
                         <small>로컬 그림 학습 전용</small>

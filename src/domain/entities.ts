@@ -193,6 +193,22 @@ export interface StoryGuide {
   notes?: string
 }
 
+export interface QuestionVisualLinkCandidate {
+  candidate_id: string
+  candidate_kind: 'part7_suffix'
+  source_entity_type: 'visual_set'
+  source_entity_id: string
+  candidate_question_id: string
+  match_basis: 'numeric_suffix_only'
+  matched_fields: string[]
+  conflicting_fields: string[]
+  confidence: 'low'
+  candidate_status: 'candidate'
+  review_status: 'review_needed'
+  canonical_status: 'not_canonical'
+  notes?: string
+}
+
 export interface Correction {
   correction_id: string
   wrong_zh: string
@@ -316,7 +332,7 @@ export interface PartCatalogItem {
 }
 
 export type InputLanguage = 'ko' | 'zh' | 'mixed'
-export type LearningTargetType = 'question' | 'visual_question'
+export type LearningTargetType = 'question' | 'visual_question' | 'visual_set'
 export type UserAnswerCorrectionMode = 'minimal' | 'easy' | 'natural' | 'level_8_expansion'
 export type Part4AnswerSection =
   | 'direct_answer'
@@ -326,6 +342,12 @@ export type Part4AnswerSection =
 
 export type Part4PlanningKeywords = Record<Part4AnswerSection, string[]>
 export type Part4StructuredAnswer = Record<Part4AnswerSection, string>
+
+export interface StoryPoint {
+  point_id: string
+  text: string
+  order: number
+}
 
 export interface UserAnswer {
   user_answer_id: string
@@ -358,6 +380,8 @@ export interface PracticeDraft {
   completed_at?: string
   understanding_confirmed?: boolean
   skipped_sections?: Part4AnswerSection[]
+  story_keywords?: string[]
+  story_points?: StoryPoint[]
   draft_status: 'draft'
   created_at: string
   updated_at: string
@@ -391,6 +415,11 @@ export type RecallMode =
   | 'question_only'
   | 'visual_question'
   | 'visual_only'
+  | 'story_full'
+  | 'story_visual_points'
+  | 'story_points_only'
+  | 'instruction_visual'
+  | 'instruction_only'
 export type RecallResult =
   | 'could_not_say'
   | 'used_keywords'

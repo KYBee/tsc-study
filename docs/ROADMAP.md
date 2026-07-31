@@ -51,13 +51,18 @@
 - Part 2 VisualSet 12개·VisualQuestion 48개 로컬 working fixture, 세트·질문·초안·출처 답변 비교·회상 흐름 완료
 - Part 2 이미지 12개는 권리 상태를 유지한 개발 서버 전용 경계와 production build 바이트 제외 검증 완료
 - 학습 IndexedDB v4의 Question·VisualQuestion 개인 데이터 대상 일반화와 기존 레코드 보존 migration 완료
+- Part 7 VisualSet·VisualAsset·VisualSetAsset·StoryGuide 각 12개 deterministic 로컬 앱 fixture 완료
+- Part 7 VisualSet 중심 내 이야기 키워드·순서 포인트·전체 답변·회상 흐름 완료
+- Part 7 QuestionVisualSet 확정 관계 0개와 번호 기반 검수 후보 12개 경계 유지
+- Part 2·7 공용 개발 서버 이미지 allowlist와 production 원본 바이트 제외 검증 완료
+- 학습 IndexedDB v5의 `visual_set` 개인 데이터 대상과 기존 v4 레코드 보존 migration 완료
 - 실제 Part 4 사람 검수, 결정 파일 Git 반영과 reviewed 데이터 생성 미완료
 - reviewed 부분 데이터의 학습 앱 연결 미완료
 - 전체 253개 문제의 중국어·병음·한국어·출처 사람 검수와 `reviewed` 승격 미완료
 - 시각 자료 권리, 미연결 VisualQuestion 30건과 Part 7 후보 관계 승인 미완료
-- `full-import-v1` 전체 253 Question의 단일 앱 런타임 연결은 미완료. 현재는 텍스트 193개와 별도 Part 2 VisualQuestion 48개 working fixture를 병행
-- 실제 AI 연결, 개인 데이터 서버 동기화, Part 7 시각 화면과 배포 미완료
-- 새 모범답안 작성, 공용 실수 노트 전체와 Part 7 구현 미완료
+- `full-import-v1` 전체 253 Question의 단일 앱 런타임 연결은 미완료. 현재는 텍스트 193개, 별도 Part 2 VisualQuestion 48개와 Question 연결 없는 Part 7 VisualSet 12개 working fixture를 병행
+- 실제 AI 연결, 개인 데이터 서버 동기화와 배포 미완료
+- 새 모범답안 작성과 공용 실수 노트 전체 미완료
 
 Part 4 수직 기능은 Phase 2~4의 핵심 경계를 raw 표본으로 조기에 검증한 것이며, 검수된 전체 데이터나 각 Phase 완료를 뜻하지 않는다. Phase 1 전체는 계속 진행 중이다.
 
