@@ -28,15 +28,16 @@ fixture ID는 `part2-visual-working-development-fixture-v1`, 경로는
 
 ## 로컬 이미지 추출과 권리 경계
 
-이미지 원본 바이트는 다음 명령으로 workbook에서 그대로 추출한다.
+사용자가 제공한 이름 지정 ZIP을 다음 명령으로 안전하게 푼다.
 
 ```sh
-python3 scripts/build_full_workbook_import.py --extract-assets
+python3 scripts/import_named_visual_assets.py
 ```
 
-생성 경로는 `data/working/generated-assets/full-import-v1/`이며 디렉터리
-전체가 Git에서 제외된다. fixture JSON은 base64 바이트가 아닌
-`VisualAsset` 메타데이터만 보존한다.
+압축 원본은 `data/raw/TSC_individual_images_named.zip`, 생성 경로는
+`data/working/app-assets/tsc-individual-images-v1/`이다. 60개 PNG는 재인코딩
+없이 Git에 working 앱 자산으로 보존한다. fixture JSON은 base64가 아니라
+해당 파일의 `VisualAsset` 메타데이터만 보존한다.
 
 - Part 2 이미지 12개 모두 `rights_status = review_needed`다.
 - `public_allowed`는 false로 유지한다.
@@ -45,12 +46,13 @@ python3 scripts/build_full_workbook_import.py --extract-assets
   `/__local-part2-assets/<visual_asset_id>`는 Part 2 ID에 한해 호환한다.
 - 절대경로, `..`, 허용 루트 밖 경로, 미등록 ID, 지원하지 않는 확장자와
   MIME, SHA-256 불일치를 거부한다.
-- 이 Vite 미들웨어는 `serve`에만 적용된다. production build에는 이미지
+- 이 Vite 미들웨어는 `serve`에만 적용된다. Git 보존 여부와 무관하게
+  production build에는 이미지
   바이트가 복사되지 않고 production 화면은 로컬 그림 학습을 비활성화한다.
 - 자산이 없으면 깨진 이미지 대신 추출 명령과 로컬 준비 안내를 표시한다.
 
 `scripts/validate_part2_local_assets.py`는 12개 파일 존재·크기·형식·SHA,
-Git ignore/비추적 상태와 `dist/` 내 원본 이미지 바이트 부재를 검사한다.
+Git ignore 비대상 상태와 `dist/` 내 원본 이미지 바이트 부재를 검사한다.
 
 ## 화면 흐름
 

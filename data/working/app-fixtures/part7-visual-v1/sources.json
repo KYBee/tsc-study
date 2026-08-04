@@ -42,5 +42,20 @@
     "source_status": "review_needed",
     "evidence_kind": "analyst_synthesis",
     "notes": "원본 영상·문서에서 만든 분석 Markdown이다. 주장된 MP4/PDF/DOCX 원본은 현재 저장소에 없음. 자동 전사는 로컬 한국어 모델의 한계가 있으므로 중국어를 검수 완료 데이터로 간주하지 않는다."
+  },
+  {
+    "source_id": "src-user-named-visuals-001",
+    "title": "TSC individual image set",
+    "source_type": "other",
+    "provenance_status": "unverified_source",
+    "creator_or_provider": "",
+    "original_file_name": "TSC_individual_images_named.zip",
+    "file_ref": "data/raw/TSC_individual_images_named.zip",
+    "claimed_original_names": [],
+    "sha256": "49f24443b159fc0ddc7fc339938a4406d77f66c8c82ad1856e4418a924a956e9",
+    "acquired_date": "",
+    "rights_status": "review_needed",
+    "source_status": "raw",
+    "notes": "사용자가 제공한 이름 지정 이미지 묶음. 파일명과 동봉 CSV의 세트·장면 순서는 보존했으나 원출처와 공개 권리는 검증되지 않았다."
   }
 ]

@@ -3,7 +3,8 @@
 이 디렉터리는 원본 workbook의 Part 7 스토리 그림 세트 12개를 로컬 개발
 앱에서 연습하기 위한 deterministic working fixture다.
 
-- VisualSet·VisualAsset·VisualSetAsset·StoryGuide는 각각 12개다.
+- VisualSet과 StoryGuide는 각각 12개다.
+- VisualAsset과 VisualSetAsset은 세트별 4장씩 각각 48개다.
 - Part 7 Question 12개는 공통 지시문 자료로만 보존한다.
 - 숫자 접미사 기반 Question 연결 후보 12개는 `review_needed`인
   `not_canonical` 후보일 뿐 실제 QuestionVisualSet 관계가 아니다.
@@ -12,10 +13,11 @@
 - ModelAnswer를 만들지 않으며 `model-answers.json`은 빈 배열이다.
 - 공식 샘플 이미지와 Part 2 자료는 포함하지 않는다.
 - 이미지 권리는 모두 `review_needed`이며 공개 허용으로 승격하지 않는다.
-- 이미지 바이트는 JSON 또는 Git에 포함하지 않는다.
+- 이름 지정 이미지 묶음의 PNG 바이트는 working 앱 자산으로 Git에 보존하지만
+  production 화면과 build에는 포함하지 않는다.
 
 ```sh
-python3 scripts/build_full_workbook_import.py --extract-assets
+python3 scripts/import_named_visual_assets.py
 python3 scripts/build_part7_visual_app_fixture.py
 python3 scripts/build_part7_visual_app_fixture.py --validate-only
 ```

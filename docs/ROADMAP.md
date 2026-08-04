@@ -51,10 +51,11 @@
 - Part 2 VisualSet 12개·VisualQuestion 48개 로컬 working fixture, 세트·질문·초안·출처 답변 비교·회상 흐름 완료
 - Part 2 이미지 12개는 권리 상태를 유지한 개발 서버 전용 경계와 production build 바이트 제외 검증 완료
 - 학습 IndexedDB v4의 Question·VisualQuestion 개인 데이터 대상 일반화와 기존 레코드 보존 migration 완료
-- Part 7 VisualSet·VisualAsset·VisualSetAsset·StoryGuide 각 12개 deterministic 로컬 앱 fixture 완료
+- Part 7 VisualSet·StoryGuide 각 12개와 VisualAsset·VisualSetAsset 각 48개 deterministic 로컬 앱 fixture 완료
 - Part 7 VisualSet 중심 내 이야기 키워드·순서 포인트·전체 답변·회상 흐름 완료
 - Part 7 QuestionVisualSet 확정 관계 0개와 번호 기반 검수 후보 12개 경계 유지
 - Part 2·7 공용 개발 서버 이미지 allowlist와 production 원본 바이트 제외 검증 완료
+- 사용자 제공 이름 지정 PNG 60장 결정적 반입, Part 2 대표 이미지 12장과 Part 7 세트별 순서 이미지 48장 교체 완료
 - 학습 IndexedDB v5의 `visual_set` 개인 데이터 대상과 기존 v4 레코드 보존 migration 완료
 - 실제 Part 4 사람 검수, 결정 파일 Git 반영과 reviewed 데이터 생성 미완료
 - reviewed 부분 데이터의 학습 앱 연결 미완료

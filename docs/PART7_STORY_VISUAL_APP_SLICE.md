@@ -9,8 +9,8 @@
 | 데이터 | 수 | 학습 앱의 의미 |
 |---|---:|---|
 | `VisualSet` | 12 | 앱의 직접 학습 대상 |
-| `VisualAsset` | 12 | 개발 환경에서만 표시하는 로컬 그림 |
-| `VisualSetAsset` | 12 | 그림 세트와 로컬 asset의 명시 관계 |
+| `VisualAsset` | 48 | 세트별 순서 1~4가 명시된 개발 환경 그림 |
+| `VisualSetAsset` | 48 | 그림 세트와 네 장면의 순서 관계 |
 | `StoryGuide` | 12 | 원본의 이야기 흐름 참고 |
 | Part 7 `Question` | 12 | 특정 세트가 아닌 공통 지시문 자료 |
 | Question 연결 후보 | 12 | 숫자 접미사만 일치하는 검수 큐 |
@@ -44,15 +44,17 @@ StoryGuide는 상황, 추천 이야기 흐름과 원본 연결어를 보존하�
 
 ## 로컬 이미지와 권리 경계
 
-이미지 원본 바이트는 다음 명령으로 workbook에서 그대로 추출한다.
+사용자가 제공한 이름 지정 ZIP을 다음 명령으로 안전하게 푼다.
 
 ```sh
 npm run assets:visual-local
 ```
 
-기존 `npm run assets:part2-local`은 호환 alias로 유지한다. 생성 위치는
-`data/working/generated-assets/full-import-v1/`이고 Git ignore 대상이다.
-Part 7 12개와 Part 2 12개는 ID와 fixture allowlist로 구분한다.
+기존 `npm run assets:part2-local`은 호환 alias로 유지한다. 압축 원본은
+`data/raw/TSC_individual_images_named.zip`, 생성 위치는
+`data/working/app-assets/tsc-individual-images-v1/`이다. Part 7 48개와
+Part 2 12개는 ID와 fixture allowlist로 구분한다. Part 7 파일명의 세트·장면
+번호와 동봉 CSV를 근거로 각 세트의 네 장면을 1→4 순서로 표시한다.
 
 공용 개발 서버 경로는
 `/__local-visual-assets/:visualAssetId`다. 기존 Part 2 전용 경로
@@ -62,8 +64,9 @@ Part 7 12개와 Part 2 12개는 ID와 fixture allowlist로 구분한다.
 미등록 ID를 거부하고 production에는 설치되지 않는다.
 
 모든 asset은 `rights_status = review_needed`이며 `public_allowed`로
-승격하지 않았다. 이미지 바이트를 public, JSON, Git 또는 production
-`dist`에 넣지 않는다. production 홈과 직접 경로에서는 권리 검수 안내와
+승격하지 않았다. 사용자의 명시적 요청에 따라 이미지 바이트는 working
+앱 자산으로 Git에 보존하지만 public, JSON 또는 production `dist`에는
+넣지 않는다. production 홈과 직접 경로에서는 권리 검수 안내와
 함께 Part 7 로컬 학습을 비활성화한다.
 
 ## 화면 흐름
@@ -80,7 +83,8 @@ HOME
 ```
 
 세트 목록은 작성·완료·복습 상태 필터, 랜덤 세트와 마지막 위치를
-제공한다. 세트 상세는 큰 그림·확대, StoryGuide, 공통 지시문, 내 답변 및
+제공한다. 목록 썸네일은 첫 장면을 쓰고, 세트 상세·답변·회상·복습은
+네 장면을 순서대로 제공한다. 세트 상세는 그림 확대, StoryGuide, 공통 지시문, 내 답변 및
 복습 상태와 이전·다음·랜덤 이동을 제공한다. 데이터 연결 상태는 접힌
 개발 정보로만 표시한다.
 
@@ -134,7 +138,7 @@ RecallAttempt에 남긴다. 복습 간격과 다음 날짜는 만들지 않는�
 - Vitest 22개 파일, 143개 테스트 통과: IndexedDB v4→v5와 모든 기존
   target/store 보존, 홈·목록·상세·확대·StoryGuide, 이야기
   편집·저장·복원·회상, 나의 답변·복습, Part 2·텍스트·Part 4 회귀
-- 자산: Part 2/7 각각 12개, SHA·크기·MIME, Git ignore·비추적,
+- 자산: Part 2 12개·Part 7 48개, SHA·크기·MIME, Git ignore 비대상,
   production 원본 바이트 부재
 - typecheck, lint, production build와 `npm run check`, `npm run check:data`
   통과. build에는 기존 단일 번들의 500 kB 초과 경고가 남아 있다.

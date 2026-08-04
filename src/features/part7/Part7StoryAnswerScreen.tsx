@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAppDependencies } from '../../app/dependencies'
 import { saveLastStoryLearningLocation } from '../../app/lastLearningLocation'
 import { useAsyncData } from '../../app/useAsyncData'
-import { LocalVisualAssetImage } from '../../components/LocalVisualAssetImage'
 import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
@@ -21,6 +20,7 @@ import type {
 } from '../../data/userDataRepository'
 import { mapRecallResultToReviewStatus } from '../answer/part4AnswerDraft'
 import { StoryGuidePanel } from './StoryGuidePanel'
+import { Part7VisualGallery } from './Part7VisualGallery'
 
 const INPUT_LANGUAGES: Array<{ value: InputLanguage; label: string }> = [
   { value: 'ko', label: '한국어' },
@@ -52,7 +52,7 @@ export function Part7StoryAnswerScreen() {
     ])
     return {
       visualSet,
-      asset: assets[0],
+      assets,
       guide,
       instruction,
       draft,
@@ -91,7 +91,7 @@ export function Part7StoryAnswerScreen() {
 
 function Part7StoryContent({
   visualSet,
-  asset,
+  assets,
   guide,
   instruction,
   draft: initialDraft,
@@ -102,7 +102,7 @@ function Part7StoryContent({
   visualSet: NonNullable<
     Awaited<ReturnType<ReturnType<typeof useAppDependencies>['publicRepository']['getVisualSetById']>>
   >
-  asset: Awaited<ReturnType<ReturnType<typeof useAppDependencies>['publicRepository']['getVisualAssetById']>>
+  assets: Awaited<ReturnType<ReturnType<typeof useAppDependencies>['publicRepository']['listVisualAssetsBySetId']>>
   guide: Awaited<ReturnType<ReturnType<typeof useAppDependencies>['publicRepository']['getStoryGuideByVisualSetId']>>
   instruction: Awaited<ReturnType<ReturnType<typeof useAppDependencies>['publicRepository']['getPart7CommonInstruction']>>
   draft?: StoredPracticeDraft
@@ -314,9 +314,8 @@ function Part7StoryContent({
       {step === 'write' && (
         <>
           <section className="card">
-            <LocalVisualAssetImage
-              asset={asset}
-              partNumber={7}
+            <Part7VisualGallery
+              assets={assets}
               setNumber={number}
             />
           </section>
@@ -509,9 +508,8 @@ function Part7StoryContent({
             </section>
             <section className="card recall-stage">
               {showImage && (
-                <LocalVisualAssetImage
-                  asset={asset}
-                  partNumber={7}
+                <Part7VisualGallery
+                  assets={assets}
                   setNumber={number}
                 />
               )}

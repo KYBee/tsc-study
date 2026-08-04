@@ -90,10 +90,12 @@ python3 scripts/build_part2_visual_app_fixture.py
 python3 scripts/build_part2_visual_app_fixture.py --validate-only
 ```
 
-이미지 바이트는 Git ignore된 `data/working/generated-assets/full-import-v1/`
-경로에만 두며 reviewed·public 자산으로 승격하지 않는다. 앱은 development
-서버에서 등록 asset ID와 SHA-256이 일치할 때만 읽고 production build에는
-포함하지 않는다. 개인 PracticeDraft·ReviewState·RecallAttempt는
+사용자가 제공한 `data/raw/TSC_individual_images_named.zip`은 원본 바이트를
+보존한다. `scripts/import_named_visual_assets.py`는 명시적 파일명·CSV 매핑을
+검증하고 PNG 60장을 `data/working/app-assets/tsc-individual-images-v1/`에
+결정적으로 푼다. 이 working 앱 자산은 Git에 보존하지만 reviewed·public
+자산으로 승격하지 않는다. 앱은 development 서버에서 등록 asset ID와
+SHA-256이 일치할 때만 읽고 production build에는 포함하지 않는다. 개인 PracticeDraft·ReviewState·RecallAttempt는
 `visual_question` target으로 IndexedDB에 저장하며 working 공용 JSON을
 수정하지 않는다.
 
@@ -104,12 +106,13 @@ python3 scripts/build_part7_visual_app_fixture.py
 python3 scripts/build_part7_visual_app_fixture.py --validate-only
 ```
 
-Part 7은 VisualSet·VisualAsset·VisualSetAsset·StoryGuide 각 12개와
-Question 12개를 보존하되 확정 QuestionVisualSet 0개, 검수 후보 12개,
+Part 7은 VisualSet·StoryGuide·Question 각 12개와 VisualAsset·
+VisualSetAsset 각 48개(세트별 장면 4개)를 보존하되 확정 QuestionVisualSet
+0개, 검수 후보 12개,
 ModelAnswer 0개를 유지한다. 후보는 canonical 관계로 승격하지 않는다.
 개인 키워드·이야기 포인트·전체 답변은 `visual_set` target IndexedDB에만
 저장하고 StoryGuide나 working JSON을 수정하지 않는다. Part 2·7 이미지
-24개는 공용 개발 서버 allowlist로만 제공하며 production에서 비활성이다.
+60개는 공용 개발 서버 allowlist로만 제공하며 production에서 비활성이다.
 
 ## Part 4 사람 검수와 부분 승격
 

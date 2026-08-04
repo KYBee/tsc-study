@@ -1,6 +1,6 @@
 import type { VisualAsset } from '../domain/entities'
 
-const LOCAL_ASSET_ID = /^va-P(?:2|7)-V(?:0[1-9]|1[0-2])-01$/
+const LOCAL_ASSET_ID = /^(?:va-P2-V(?:0[1-9]|1[0-2])-01|va-P7-V(?:0[1-9]|1[0-2])-0[1-4])$/
 
 export function createLocalVisualAssetUrl(
   asset: VisualAsset,

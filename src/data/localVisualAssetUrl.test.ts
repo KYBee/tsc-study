@@ -19,6 +19,7 @@ describe('createLocalVisualAssetUrl', () => {
   it.each([
     ['va-P2-V01-01', '/__local-visual-assets/va-P2-V01-01'],
     ['va-P7-V12-01', '/__local-visual-assets/va-P7-V12-01'],
+    ['va-P7-V12-04', '/__local-visual-assets/va-P7-V12-04'],
   ])('allows registered Part 2 and 7 IDs in development', (visualAssetId, url) => {
     expect(
       createLocalVisualAssetUrl(

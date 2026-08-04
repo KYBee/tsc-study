@@ -97,7 +97,7 @@ export function VisualQuestionScreen() {
         <h1>세부 질문 {data.question.item_number}</h1>
       </header>
       <aside className="notice">
-        원본 workbook에서 추출한 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
+        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
       </aside>
       <section className="card">
         <Part2VisualImage asset={data.asset} setNumber={number} expandable />

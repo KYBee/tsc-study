@@ -155,9 +155,13 @@ describe('fixture public content repository', () => {
     )
 
     await expect(repository.listVisualSetsByPart(7)).resolves.toHaveLength(12)
-    await expect(repository.listVisualAssetsBySetId('vs-P7-V01')).resolves.toEqual([
-      expect.objectContaining({ visual_asset_id: 'va-P7-V01-01' }),
-    ])
+    await expect(repository.listVisualAssetsBySetId('vs-P7-V01')).resolves.toEqual(
+      [1, 2, 3, 4].map((frame) =>
+        expect.objectContaining({
+          visual_asset_id: `va-P7-V01-${String(frame).padStart(2, '0')}`,
+        }),
+      ),
+    )
     await expect(repository.getStoryGuideByVisualSetId('vs-P7-V01')).resolves.toEqual(
       expect.objectContaining({
         story_guide_id: 'sg-P7-V01-01',

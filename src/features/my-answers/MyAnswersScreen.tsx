@@ -8,10 +8,10 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
-import { LocalVisualAssetImage } from '../../components/LocalVisualAssetImage'
 import { StatusBadge } from '../../components/StatusBadge'
 import { getDraftFullText } from '../answer/part4AnswerDraft'
 import { Part2VisualImage } from '../part2/Part2VisualImage'
+import { Part7VisualGallery } from '../part7/Part7VisualGallery'
 
 type AnswerView = 'approved' | 'drafts'
 type DraftFilter = 'all' | 'in_progress' | 'completed' | 'needs_recall' | 'confused' | 'memorized'
@@ -82,6 +82,7 @@ export function MyAnswersScreen() {
           visualQuestion,
           visualSet,
           visualAsset: visualAssets[0],
+          visualAssets,
           reviewState: await userRepository.getReviewState(targetType, targetId),
         }
       }),
@@ -310,6 +311,7 @@ export function MyAnswersScreen() {
               visualQuestion,
               visualSet,
               visualAsset,
+              visualAssets,
               targetType,
               targetId,
               reviewState,
@@ -379,9 +381,8 @@ export function MyAnswersScreen() {
                   </>
                 )}
                 {isStorySet && (
-                  <LocalVisualAssetImage
-                    asset={visualAsset}
-                    partNumber={7}
+                  <Part7VisualGallery
+                    assets={visualAssets}
                     setNumber={setNumber}
                     thumbnail
                   />

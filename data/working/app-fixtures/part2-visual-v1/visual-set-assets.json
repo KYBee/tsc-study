@@ -6,7 +6,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V02-01",
@@ -15,7 +15,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V03-01",
@@ -24,7 +24,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V04-01",
@@ -33,7 +33,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V05-01",
@@ -42,7 +42,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V06-01",
@@ -51,7 +51,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V07-01",
@@ -60,7 +60,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V08-01",
@@ -69,7 +69,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V09-01",
@@ -78,7 +78,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V10-01",
@@ -87,7 +87,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V11-01",
@@ -96,7 +96,7 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   },
   {
     "visual_set_asset_id": "vsa-P2-V12-01",
@@ -105,6 +105,6 @@
     "sequence": 1,
     "role": "primary",
     "mapping_status": "review_needed",
-    "notes": "worksheet 그림 ID 블록과 바로 다음 행의 OOXML drawing anchor 관계로 연결함."
+    "notes": "사용자 제공 파일명과 동봉 CSV의 명시적 세트·장면 번호로 연결함. 이미지 원출처와 공개 권리는 별도 검수 필요."
   }
 ]

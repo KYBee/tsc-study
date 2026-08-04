@@ -12,6 +12,15 @@ import sys
 import tempfile
 from typing import Any
 
+from named_visual_asset_data import (
+    ASSET_ROOT as SAFE_ASSET_ROOT,
+    NamedAssetDataError,
+    SOURCE_ID as NAMED_ASSET_SOURCE_ID,
+    load_manifest as load_named_asset_manifest,
+    source_record as named_asset_source_record,
+    visual_entities as named_visual_entities,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 FULL_IMPORT = ROOT / "data" / "working" / "full-import-v1"
@@ -36,7 +45,6 @@ OUTPUT_FILES = [
     "manifest.json",
 ]
 GENERATED_FILES = [name for name in OUTPUT_FILES if name != "manifest.json"]
-SAFE_ASSET_ROOT = Path("data/working/generated-assets/full-import-v1")
 SUPPORTED_MEDIA = {
     "image/png": {".png"},
     "image/jpeg": {".jpg", ".jpeg"},
@@ -84,8 +92,6 @@ def stable(records: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
 
 def selected_payloads() -> dict[str, Any]:
     full_sets = read_json(FULL_IMPORT / "visual-sets.json")
-    full_assets = read_json(FULL_IMPORT / "visual-assets.json")
-    full_links = read_json(FULL_IMPORT / "visual-set-assets.json")
     full_questions = read_json(FULL_IMPORT / "visual-questions.json")
     full_answers = read_json(FULL_IMPORT / "model-answers.json")
     full_guides = read_json(FULL_IMPORT / "part-guides.json")
@@ -106,17 +112,7 @@ def selected_payloads() -> dict[str, Any]:
         and item.get("set_type") == "four_question_image"
     ]
     visual_set_ids = {item["visual_set_id"] for item in visual_sets}
-    visual_set_assets = [
-        item for item in full_links if item.get("visual_set_id") in visual_set_ids
-    ]
-    visual_asset_ids = {
-        item["visual_asset_id"] for item in visual_set_assets
-    }
-    visual_assets = [
-        item
-        for item in full_assets
-        if item.get("visual_asset_id") in visual_asset_ids
-    ]
+    visual_assets, visual_set_assets = named_visual_entities(2)
     visual_questions = [
         item
         for item in full_questions
@@ -170,11 +166,14 @@ def selected_payloads() -> dict[str, Any]:
         *(item["source_id"] for item in references),
         *(item["source_id"] for item in visual_assets),
     }
+    named_manifest = load_named_asset_manifest()
     source_by_id = {
         item["source_id"]: item
         for item in full_sources + course_sources
         if item.get("source_id") in source_ids
     }
+    if NAMED_ASSET_SOURCE_ID in source_ids:
+        source_by_id[NAMED_ASSET_SOURCE_ID] = named_asset_source_record(named_manifest)
 
     return {
         "visual-sets.json": stable(visual_sets, "visual_set_id"),
@@ -211,11 +210,11 @@ def build_readme() -> str:
 - ModelAnswer는 `review_needed`/`unverified_source` 상태인 원본 추천
   답변이다. 공식 정답이나 검수 완료 답변이 아니다.
 - 이미지 권리는 모두 `review_needed`이며 공개 허용으로 승격하지 않는다.
-- 이미지 바이트는 JSON 또는 Git에 포함하지 않는다. 로컬에서 아래 명령으로
-  원본 바이트를 준비한다.
+- 이름 지정 이미지 묶음에서 추출한 PNG 바이트는 working 앱 자산으로 Git에
+  보존한다. 공개 권리는 검수되지 않았으므로 production 화면에서는 비활성이다.
 
 ```sh
-python3 scripts/build_full_workbook_import.py --extract-assets
+python3 scripts/import_named_visual_assets.py
 python3 scripts/build_part2_visual_app_fixture.py
 ```
 
@@ -225,8 +224,9 @@ python3 scripts/build_part2_visual_app_fixture.py
 python3 scripts/build_part2_visual_app_fixture.py --validate-only
 ```
 
-이미지는 개발 서버에서만 등록된 asset ID를 통해 제공한다. production
-빌드에는 이미지 바이트가 포함되지 않으며 권리 검수 전에는 배포할 수 없다.
+이미지는 개발 서버에서만 등록된 asset ID를 통해 제공한다. 저장소에 보존된
+원본 PNG 바이트는 production build에 포함되지 않으며 권리 검수 전에는
+화면에서 공개하지 않는다.
 """
 
 
@@ -392,6 +392,14 @@ def build_file_bytes() -> dict[str, bytes]:
                 "path": relative_path(COURSE_IMPORT / "manifest.json"),
                 "sha256": sha256_file(COURSE_IMPORT / "manifest.json"),
             },
+            "named_visual_asset_manifest": {
+                "path": relative_path(
+                    ROOT / SAFE_ASSET_ROOT / "manifest.json"
+                ),
+                "sha256": sha256_file(
+                    ROOT / SAFE_ASSET_ROOT / "manifest.json"
+                ),
+            },
         },
         "script_sha256": sha256_file(Path(__file__)),
         "generated_files": {
@@ -499,7 +507,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.validate_only
             else build_fixture(args.output_dir)
         )
-    except (FixtureError, OSError) as cause:
+    except (FixtureError, NamedAssetDataError, OSError) as cause:
         print(f"error: {cause}", file=sys.stderr)
         return 1
     action = "Validated" if args.validate_only else "Built"

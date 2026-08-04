@@ -36,18 +36,21 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 [Part 2 로컬 시각 학습 slice](docs/PART2_VISUAL_APP_SLICE.md)는
 VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48개를
-개발 환경에 연결한다. 이미지 12개는 Git에서 제외된 로컬 생성 경로에서만
-개발 서버가 제공하며 production build에는 포함하지 않는다. Part 2의
+개발 환경에 연결한다. 사용자가 제공한 이름 지정 이미지 묶음의 Part 2
+이미지 12개는 working 앱 자산으로 Git에 보존하고 개발 서버에서만
+제공하며 production build에는 포함하지 않는다. Part 2의
 PracticeDraft·RecallAttempt·ReviewState는 `visual_question`을 대상으로
 저장하고 원본 추천 답변을 내 답변이나 공식 정답으로 자동 저장하지 않는다.
 
 [Part 7 스토리 그림 로컬 학습 slice](docs/PART7_STORY_VISUAL_APP_SLICE.md)는
-VisualSet·VisualAsset·VisualSetAsset·StoryGuide 각 12개를 개발 환경에
-연결한다. 확정 QuestionVisualSet은 0개이며 번호 기반 후보 12개를 실제
+VisualSet·StoryGuide 각 12개와 세트별 순서가 명시된 이미지 4장씩,
+VisualAsset·VisualSetAsset 각 48개를 개발 환경에 연결한다. 확정
+QuestionVisualSet은 0개이며 번호 기반 후보 12개를 실제
 관계로 승격하지 않는다. StoryGuide는 완성 답변이 아닌 참고 흐름이고,
 사용자는 `visual_set` 대상 PracticeDraft에 키워드·순서 포인트·전체 답변을
-직접 저장해 그림 기반 회상을 연습한다. Part 7 이미지도 Git과 production
-build에서 제외한다.
+직접 저장해 그림 기반 회상을 연습한다. Part 7 이미지 바이트는 Git의
+working 자산으로 보존하지만 production build와 production 화면에서는
+계속 제외한다.
 
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
@@ -77,15 +80,21 @@ npm run dev
 텍스트 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`, Part 2
 시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`, Part 7
 스토리 fixture는 `data/working/app-fixtures/part7-visual-v1/`에 생성된다.
-모두 검수 완료 또는 배포용 데이터가 아니다. 로컬 이미지 바이트는
-`data/working/generated-assets/full-import-v1/`에만 있으며 Git에
-포함되지 않는다. 기존 6문제 및 Part 4 50문제 fixture도 계속 보존하며
+모두 검수 완료 또는 배포용 데이터가 아니다. 이름 지정 압축 원본은
+`data/raw/TSC_individual_images_named.zip`, 압축을 바이트 변경 없이 푼
+이미지 60장은 `data/working/app-assets/tsc-individual-images-v1/`에 있다.
+이 working 자산은 Git에 보존하지만 공개 권리는 `review_needed`이고
+production build에는 포함하지 않는다. 기존 workbook 생성 이미지는 별도
+`data/working/generated-assets/full-import-v1/` 경계에 유지한다. 기존 6문제
+및 Part 4 50문제 fixture도 계속 보존하며
 원본 working 데이터·CSV·Excel은 수정하지 않는다.
 
 주요 검증 명령은 다음과 같다.
 
 ```sh
 npm run validate:fixtures
+npm run validate:named-visual-assets
+npm run test:named-visual-assets
 npm run validate:part2-visual
 npm run test:part2-visual
 npm run validate:part7-visual

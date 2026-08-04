@@ -43,8 +43,16 @@ describe('parsePart7VisualFixture', () => {
     const fixture = parsePart7VisualFixture(makeInput())
 
     expect(fixture.visualSets).toHaveLength(12)
-    expect(fixture.visualAssets).toHaveLength(12)
-    expect(fixture.visualSetAssets).toHaveLength(12)
+    expect(fixture.visualAssets).toHaveLength(48)
+    expect(fixture.visualSetAssets).toHaveLength(48)
+    for (const visualSet of fixture.visualSets) {
+      expect(
+        fixture.visualSetAssets
+          .filter((item) => item.visual_set_id === visualSet.visual_set_id)
+          .sort((left, right) => left.sequence - right.sequence)
+          .map((item) => item.sequence),
+      ).toEqual([1, 2, 3, 4])
+    }
     expect(fixture.storyGuides).toHaveLength(12)
     expect(fixture.questions).toHaveLength(12)
     expect(fixture.questionVisualLinkCandidates).toHaveLength(12)

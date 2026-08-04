@@ -4,13 +4,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useAppDependencies } from '../../app/dependencies'
 import { saveLastStoryLearningLocation } from '../../app/lastLearningLocation'
 import { useAsyncData } from '../../app/useAsyncData'
-import { LocalVisualAssetImage } from '../../components/LocalVisualAssetImage'
 import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
 import type { ReviewState } from '../../domain/entities'
 import { StoryGuidePanel } from './StoryGuidePanel'
+import { Part7VisualGallery } from './Part7VisualGallery'
 
 const setNumber = (visualSetId: string) =>
   Number(visualSetId.match(/V(\d+)$/)?.[1] ?? 0)
@@ -41,7 +41,7 @@ export function Part7SetScreen() {
     return {
       visualSet,
       sets,
-      asset: assets[0],
+      assets,
       guide,
       draft,
       review,
@@ -102,12 +102,11 @@ export function Part7SetScreen() {
         <h1>Part 7 스토리 그림 세트 {number}</h1>
       </header>
       <aside className="notice">
-        원본 workbook에서 추출한 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
+        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
       </aside>
       <section className="card visual-set-main">
-        <LocalVisualAssetImage
-          asset={data.asset}
-          partNumber={7}
+        <Part7VisualGallery
+          assets={data.assets}
           setNumber={number}
           expandable
         />

@@ -190,6 +190,9 @@ MVP의 물리 데이터 단계와 저장 경계는 [DATA_FORMAT_DECISION.md](DAT
 - 원본 이미지를 가공했다면 원본과 파생 이미지를 구분하고 파생 근거를 남긴다.
 - 현재 표본에서 추출한 이미지의 `rights_status`는 `review_needed`다.
 - `source_id`와 `source_locator`는 이미지 바이트의 실제 컨테이너와 위치를 가리킨다. 원본 내부의 출처 주장은 `VisualSet` 등에 연결된 `SourceReference`로 관리한다.
+- 사용자 제공 이름 지정 ZIP은 별도 `Source`로 관리하며 working 앱 자산의
+  `repository_path`는 `data/working/app-assets/tsc-individual-images-v1/`
+  아래만 허용한다. Git 보존은 공개 허가를 뜻하지 않는다.
 
 ### `VisualSet`
 
@@ -218,7 +221,9 @@ MVP의 물리 데이터 단계와 저장 경계는 [DATA_FORMAT_DECISION.md](DAT
 | `mapping_status` | `Enum` | 필수 | `raw`, `review_needed`, `verified` | `review_needed` |
 | `notes` | `Text` | 선택 | anchor와 세트 연결 근거 | `명시적 그림 ID 확인` |
 
-현재 세트당 이미지가 한 개여도 향후 여러 이미지가 연결되거나 같은 이미지가 여러 세트에서 사용될 수 있도록 N:M 구조를 사용한다.
+Part 2는 현재 세트당 대표 이미지 한 장, Part 7은 파일명에 명시된 순서대로
+세트당 연속 장면 네 장을 연결한다. 같은 이미지가 여러 세트에서 사용될 수
+있는 일반 계약은 N:M 구조로 유지한다.
 
 ### `QuestionVisualSet`
 

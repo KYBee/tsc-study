@@ -7,7 +7,6 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LanguageBlock } from '../../components/LanguageBlock'
 import { LoadingState } from '../../components/LoadingState'
-import { LocalVisualAssetImage } from '../../components/LocalVisualAssetImage'
 import { StatusBadge } from '../../components/StatusBadge'
 import type {
   LearningTargetType,
@@ -20,6 +19,7 @@ import type {
   VisualQuestion,
 } from '../../domain/entities'
 import { Part2VisualImage } from '../part2/Part2VisualImage'
+import { Part7VisualGallery } from '../part7/Part7VisualGallery'
 import type { ReviewFilter } from '../part/questionFilters'
 
 const REVIEW_STATUSES: ReviewState['learning_status'][] = [
@@ -46,6 +46,7 @@ interface ReviewItem {
   reviewState?: ReviewState
   visualQuestion?: VisualQuestion
   visualAsset?: VisualAsset
+  visualAssets?: VisualAsset[]
   setNumber?: number
 }
 
@@ -193,6 +194,7 @@ export function ReviewScreen() {
             visualSet.visual_set_id,
           ),
           visualAsset: visualAssets[0],
+          visualAssets,
           setNumber,
         }
       }),
@@ -494,10 +496,10 @@ export function ReviewScreen() {
           />
         )}
         {current.kind === 'story' && (
-          <LocalVisualAssetImage
-            asset={current.visualAsset}
-            partNumber={7}
+          <Part7VisualGallery
+            assets={current.visualAssets ?? []}
             setNumber={current.setNumber ?? 0}
+            thumbnail
           />
         )}
         <LanguageBlock

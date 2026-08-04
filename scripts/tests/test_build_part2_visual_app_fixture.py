@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "scripts" / "build_part2_visual_app_fixture.py"
 FULL_IMPORT = ROOT / "data" / "working" / "full-import-v1"
 COURSE_IMPORT = ROOT / "data" / "working" / "course-import-v1"
-LOCAL_ASSETS = ROOT / "data" / "working" / "generated-assets" / "full-import-v1"
 TEXT_FIXTURE = ROOT / "data" / "working" / "app-fixtures" / "text-parts-v1"
 JSON_FILES = [
     "visual-sets.json",
@@ -213,8 +212,9 @@ class Part2VisualAppFixtureTests(unittest.TestCase):
         self.assertEqual(len(self.payloads["practice-drills.json"]), 1)
         self.assertEqual(len(self.payloads["course-insights.json"]), 4)
 
-    def test_local_asset_bytes_match_metadata_and_are_git_ignored(self) -> None:
+    def test_local_asset_bytes_match_metadata_and_are_git_ready(self) -> None:
         for item in self.payloads["visual-assets.json"]:
+            relative = Path(item["repository_path"])
             local_path = ROOT / item["repository_path"]
             self.assertTrue(local_path.is_file(), local_path)
             self.assertEqual(sha256(local_path), item["sha256"])
@@ -223,15 +223,8 @@ class Part2VisualAppFixtureTests(unittest.TestCase):
                 cwd=ROOT,
                 check=False,
             )
-            self.assertEqual(ignored.returncode, 0)
-            tracked = subprocess.run(
-                ["git", "ls-files", "--error-unmatch", str(local_path)],
-                cwd=ROOT,
-                text=True,
-                capture_output=True,
-                check=False,
-            )
-            self.assertNotEqual(tracked.returncode, 0)
+            self.assertNotEqual(ignored.returncode, 0)
+            self.assertEqual(relative.parent.as_posix(), "data/working/app-assets/tsc-individual-images-v1")
 
     def test_manifest_is_deterministic_and_complete(self) -> None:
         manifest = self.payloads["manifest.json"]

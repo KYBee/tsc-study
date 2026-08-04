@@ -120,7 +120,7 @@ export function Part7SetsScreen() {
         <p>스토리 그림 12세트 · 내 이야기 순서를 직접 만들고 연습합니다.</p>
       </header>
       <aside className="notice">
-        원본 workbook에서 추출한 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
+        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
       </aside>
       <section className="card compact-filter">
         <label>

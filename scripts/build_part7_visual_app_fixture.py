@@ -12,6 +12,15 @@ import sys
 import tempfile
 from typing import Any
 
+from named_visual_asset_data import (
+    ASSET_ROOT as SAFE_ASSET_ROOT,
+    NamedAssetDataError,
+    SOURCE_ID as NAMED_ASSET_SOURCE_ID,
+    load_manifest as load_named_asset_manifest,
+    source_record as named_asset_source_record,
+    visual_entities as named_visual_entities,
+)
+
 
 ROOT = Path(__file__).resolve().parents[1]
 FULL_IMPORT = ROOT / "data" / "working" / "full-import-v1"
@@ -38,7 +47,6 @@ OUTPUT_FILES = [
     "manifest.json",
 ]
 GENERATED_FILES = [name for name in OUTPUT_FILES if name != "manifest.json"]
-SAFE_ASSET_ROOT = Path("data/working/generated-assets/full-import-v1")
 SUPPORTED_MEDIA = {
     "image/png": {".png"},
     "image/jpeg": {".jpg", ".jpeg"},
@@ -90,8 +98,6 @@ def stable(records: list[dict[str, Any]], key: str) -> list[dict[str, Any]]:
 
 def selected_payloads() -> dict[str, Any]:
     full_sets = read_json(FULL_IMPORT / "visual-sets.json")
-    full_assets = read_json(FULL_IMPORT / "visual-assets.json")
-    full_links = read_json(FULL_IMPORT / "visual-set-assets.json")
     full_guides = read_json(FULL_IMPORT / "story-guides.json")
     full_questions = read_json(FULL_IMPORT / "questions.json")
     full_candidates = read_json(FULL_IMPORT / "workbook-link-candidates.json")
@@ -112,17 +118,7 @@ def selected_payloads() -> dict[str, Any]:
         if item.get("part") == 7 and item.get("set_type") == "story_image"
     ]
     visual_set_ids = {item["visual_set_id"] for item in visual_sets}
-    visual_set_assets = [
-        item for item in full_links if item.get("visual_set_id") in visual_set_ids
-    ]
-    visual_asset_ids = {
-        item["visual_asset_id"] for item in visual_set_assets
-    }
-    visual_assets = [
-        item
-        for item in full_assets
-        if item.get("visual_asset_id") in visual_asset_ids
-    ]
+    visual_assets, visual_set_assets = named_visual_entities(7)
     story_guides = [
         item
         for item in full_guides
@@ -177,11 +173,14 @@ def selected_payloads() -> dict[str, Any]:
         *(item["source_id"] for item in references),
         *(item["source_id"] for item in visual_assets),
     }
+    named_manifest = load_named_asset_manifest()
     source_by_id = {
         item["source_id"]: item
         for item in full_sources + course_sources
         if item.get("source_id") in source_ids
     }
+    if NAMED_ASSET_SOURCE_ID in source_ids:
+        source_by_id[NAMED_ASSET_SOURCE_ID] = named_asset_source_record(named_manifest)
 
     return {
         "visual-sets.json": stable(visual_sets, "visual_set_id"),
@@ -212,7 +211,8 @@ def build_readme() -> str:
 이 디렉터리는 원본 workbook의 Part 7 스토리 그림 세트 12개를 로컬 개발
 앱에서 연습하기 위한 deterministic working fixture다.
 
-- VisualSet·VisualAsset·VisualSetAsset·StoryGuide는 각각 12개다.
+- VisualSet과 StoryGuide는 각각 12개다.
+- VisualAsset과 VisualSetAsset은 세트별 4장씩 각각 48개다.
 - Part 7 Question 12개는 공통 지시문 자료로만 보존한다.
 - 숫자 접미사 기반 Question 연결 후보 12개는 `review_needed`인
   `not_canonical` 후보일 뿐 실제 QuestionVisualSet 관계가 아니다.
@@ -221,10 +221,11 @@ def build_readme() -> str:
 - ModelAnswer를 만들지 않으며 `model-answers.json`은 빈 배열이다.
 - 공식 샘플 이미지와 Part 2 자료는 포함하지 않는다.
 - 이미지 권리는 모두 `review_needed`이며 공개 허용으로 승격하지 않는다.
-- 이미지 바이트는 JSON 또는 Git에 포함하지 않는다.
+- 이름 지정 이미지 묶음의 PNG 바이트는 working 앱 자산으로 Git에 보존하지만
+  production 화면과 build에는 포함하지 않는다.
 
 ```sh
-python3 scripts/build_full_workbook_import.py --extract-assets
+python3 scripts/import_named_visual_assets.py
 python3 scripts/build_part7_visual_app_fixture.py
 python3 scripts/build_part7_visual_app_fixture.py --validate-only
 ```
@@ -290,8 +291,8 @@ def validate_payloads(payloads: dict[str, Any]) -> None:
     if any(item.get("part") != 7 for item in payloads["questions.json"]):
         raise FixtureError("Question: only Part 7 records are allowed")
     if (
-        len(ids["visual_asset"]) != 12
-        or len(ids["visual_set_asset"]) != 12
+        len(ids["visual_asset"]) != 48
+        or len(ids["visual_set_asset"]) != 48
         or len(ids["story_guide"]) != 12
         or len(ids["question_visual_link_candidate"]) != 12
         or ids["model_answer"]
@@ -307,6 +308,20 @@ def validate_payloads(payloads: dict[str, Any]) -> None:
             or item["visual_asset_id"] not in assets
         ):
             raise FixtureError("VisualSetAsset: broken reference")
+    for set_number in range(1, 13):
+        visual_set_id = f"vs-P7-V{set_number:02d}"
+        links = sorted(
+            (
+                item
+                for item in payloads["visual-set-assets.json"]
+                if item["visual_set_id"] == visual_set_id
+            ),
+            key=lambda item: item["sequence"],
+        )
+        if [item["sequence"] for item in links] != [1, 2, 3, 4]:
+            raise FixtureError(
+                f"VisualSetAsset: {visual_set_id} must preserve frames 1..4"
+            )
     for item in payloads["story-guides.json"]:
         if (
             item["visual_set_id"] not in sets
@@ -400,6 +415,14 @@ def build_file_bytes() -> dict[str, bytes]:
             "course_import_manifest": {
                 "path": relative_path(COURSE_IMPORT / "manifest.json"),
                 "sha256": sha256_file(COURSE_IMPORT / "manifest.json"),
+            },
+            "named_visual_asset_manifest": {
+                "path": relative_path(
+                    ROOT / SAFE_ASSET_ROOT / "manifest.json"
+                ),
+                "sha256": sha256_file(
+                    ROOT / SAFE_ASSET_ROOT / "manifest.json"
+                ),
             },
         },
         "script_sha256": sha256_file(Path(__file__)),
@@ -513,7 +536,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.validate_only
             else build_fixture(args.output_dir)
         )
-    except (FixtureError, OSError) as cause:
+    except (FixtureError, NamedAssetDataError, OSError) as cause:
         print(f"error: {cause}", file=sys.stderr)
         return 1
     action = "Validated" if args.validate_only else "Built"

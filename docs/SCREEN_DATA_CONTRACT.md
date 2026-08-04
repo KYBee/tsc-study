@@ -260,12 +260,12 @@ build는 이미지 바이트를 포함하지 않으며 화면도 로컬 학습�
 | 화면 ID | `PART7_SET_LIST`, `PART7_SET`, `PART7_STORY_EDITOR`, `PART7_RECALL` |
 | 화면 목적 | 확정 Question 연결 없이 VisualSet을 직접 보고 내 이야기 순서와 답변을 저장·회상한다. |
 | 읽는 엔터티 | `VisualSet`, `VisualSetAsset`, `VisualAsset`, `StoryGuide`, 공통 안내용 `Question`, 연결 후보, `PartGuide`, 개인 `PracticeDraft`, `RecallAttempt`, `ReviewState`, `ReusablePhrase` |
-| 필수 데이터 | 등록된 set/asset과 명시 StoryGuide 관계, 이미지 메타데이터·권리 상태, StoryGuide 원문. 공통 Question은 12개의 중국어·병음이 일치할 때만 공통 안내로 사용하며 서로 다른 한국어 상황은 붙이지 않음 |
+| 필수 데이터 | 등록된 set/asset과 명시 StoryGuide 관계, 세트마다 `VisualSetAsset.sequence = 1..4`인 네 이미지의 메타데이터·권리 상태, StoryGuide 원문. 공통 Question은 12개의 중국어·병음이 일치할 때만 공통 안내로 사용하며 서로 다른 한국어 상황은 붙이지 않음 |
 | 선택 데이터 | Part 공통 자료, 번호 기반 연결 후보, 기존 개인 초안·복습·회상 상태 |
 | 사용자가 생성·수정하는 데이터 | `visual_set` 대상 PracticeDraft의 `story_keywords`, 순서 있는 `story_points`, `full_text`; RecallAttempt·ReviewState와 명시적 ReusablePhrase |
 | 빈 값 처리 | 이미지가 없으면 공용 로컬 추출 명령 안내. 개인 초안이 없으면 이야기 작성 진입. ModelAnswer 0개는 정상 |
 | 검수 상태 처리 | 그림은 권리 검수 전 로컬 전용, StoryGuide는 완성 답변 아님, Question 후보 12개는 확정 관계 아님 |
-| 주요 행동 | 세트 필터·랜덤·이어보기, 이미지 확대, StoryGuide 참고 미리보기·확인, 내 포인트 편집·저장·완료, 내 답변 회상 |
+| 주요 행동 | 세트 필터·랜덤·이어보기, 네 장면 순서 확인·개별 확대, StoryGuide 참고 미리보기·확인, 내 포인트 편집·저장·완료, 내 답변 회상 |
 | 다음 화면 | 홈, Part 7 목록·상세·답변·회상, 나의 답변, 복습 |
 
 production에서는 Part 7 카드와 직접 경로를 비활성화하고 로컬 이미지 URL을

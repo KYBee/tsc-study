@@ -18,7 +18,7 @@ interface AssetRecord {
 
 const ROUTE_PREFIX = '/__local-visual-assets/'
 const LEGACY_PART2_PREFIX = '/__local-part2-assets/'
-const SAFE_ROOT = resolve('data/working/generated-assets/full-import-v1')
+const SAFE_ROOT = resolve('data/working/app-assets/tsc-individual-images-v1')
 const FIXTURE_PATHS = [
   resolve(
     'data/working/app-fixtures/part2-visual-v1/visual-assets.json',
@@ -27,7 +27,7 @@ const FIXTURE_PATHS = [
     'data/working/app-fixtures/part7-visual-v1/visual-assets.json',
   ),
 ]
-const ASSET_ID = /^va-P(?:2|7)-V(?:0[1-9]|1[0-2])-01$/
+const ASSET_ID = /^(?:va-P2-V(?:0[1-9]|1[0-2])-01|va-P7-V(?:0[1-9]|1[0-2])-0[1-4])$/
 const EXTENSIONS: Record<AssetRecord['media_type'], ReadonlySet<string>> = {
   'image/png': new Set(['.png']),
   'image/jpeg': new Set(['.jpg', '.jpeg']),
@@ -72,8 +72,8 @@ export function createLocalVisualAssetAllowlist(): Map<
       allowlist.set(record.visual_asset_id, { ...record, absolutePath })
     }
   }
-  if (allowlist.size !== 24) {
-    throw new Error('Local visual asset allowlist must contain exactly 24 assets')
+  if (allowlist.size !== 60) {
+    throw new Error('Local visual asset allowlist must contain exactly 60 assets')
   }
   return allowlist
 }

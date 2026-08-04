@@ -34,8 +34,9 @@ HOME
 ```
 
 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
-Part 2·7 이미지 바이트는 권리 검수 전이므로 로컬 개발 서버에서만 제공하고
-production build에는 포함하지 않는다.
+Part 2 12장과 Part 7 48장의 이름 지정 working 이미지 바이트는 Git에
+보존하되 권리 검수 전이므로 로컬 개발 서버에서만 제공하고 production
+build에는 포함하지 않는다.
 
 ## 앱 개발 fixture
 
@@ -61,8 +62,9 @@ ModelAnswer가 각 48개다. 엄격 근거 Question 연결 18개와 미연결 30
 그대로 유지하며 추천 답변은 `review_needed`, `unverified_source`다.
 
 Part 7 fixture ID는 `part7-visual-working-development-fixture-v1`이다.
-VisualSet·VisualAsset·VisualSetAsset·StoryGuide와 Part 7 Question이 각
-12개다. 확정 QuestionVisualSet과 ModelAnswer는 0개다. 숫자 접미사 기반
+VisualSet·StoryGuide·Part 7 Question은 각 12개이고, 세트별 네 장면을
+보존하는 VisualAsset·VisualSetAsset은 각 48개다. 확정 QuestionVisualSet과
+ModelAnswer는 0개다. 숫자 접미사 기반
 후보 12개는 `candidate`, `review_needed`, `not_canonical`로만 보존한다.
 
 ## 개인 데이터 흐름

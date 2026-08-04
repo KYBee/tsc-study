@@ -85,8 +85,8 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
 
     def test_exact_part7_story_entities_are_selected(self) -> None:
         self.assertEqual(len(self.payloads["visual-sets.json"]), 12)
-        self.assertEqual(len(self.payloads["visual-assets.json"]), 12)
-        self.assertEqual(len(self.payloads["visual-set-assets.json"]), 12)
+        self.assertEqual(len(self.payloads["visual-assets.json"]), 48)
+        self.assertEqual(len(self.payloads["visual-set-assets.json"]), 48)
         self.assertEqual(len(self.payloads["story-guides.json"]), 12)
         self.assertEqual(len(self.payloads["questions.json"]), 12)
         self.assertEqual(self.payloads["model-answers.json"], [])
@@ -163,7 +163,7 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
             item["story_guide_id"] for item in self.payloads["story-guides.json"]
         }
         links = self.payloads["visual-set-assets.json"]
-        self.assertEqual(len({item["visual_set_asset_id"] for item in links}), 12)
+        self.assertEqual(len({item["visual_set_asset_id"] for item in links}), 48)
         self.assertTrue(
             all(
                 item["visual_set_id"] in sets
@@ -200,7 +200,15 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
 
     def test_assets_keep_local_only_rights_and_bytes(self) -> None:
         assets = self.payloads["visual-assets.json"]
-        self.assertEqual(len({item["sha256"] for item in assets}), 12)
+        links = self.payloads["visual-set-assets.json"]
+        self.assertEqual(len({item["sha256"] for item in assets}), 48)
+        for set_number in range(1, 13):
+            visual_set_id = f"vs-P7-V{set_number:02d}"
+            selected = sorted(
+                (item for item in links if item["visual_set_id"] == visual_set_id),
+                key=lambda item: item["sequence"],
+            )
+            self.assertEqual([item["sequence"] for item in selected], [1, 2, 3, 4])
         for item in assets:
             self.assertEqual(item["rights_status"], "review_needed")
             self.assertNotEqual(item["rights_status"], "public_allowed")
@@ -212,7 +220,7 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
             self.assertTrue(local_path.is_file(), local_path)
             self.assertEqual(sha256(local_path), item["sha256"])
             self.assertEqual(local_path.stat().st_size, item["file_size"])
-            self.assertEqual(
+            self.assertNotEqual(
                 subprocess.run(
                     ["git", "check-ignore", "-q", str(local_path)],
                     cwd=ROOT,
@@ -220,14 +228,9 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
                 ).returncode,
                 0,
             )
-            self.assertNotEqual(
-                subprocess.run(
-                    ["git", "ls-files", "--error-unmatch", str(local_path)],
-                    cwd=ROOT,
-                    capture_output=True,
-                    check=False,
-                ).returncode,
-                0,
+            self.assertEqual(
+                relative.parent.as_posix(),
+                "data/working/app-assets/tsc-individual-images-v1",
             )
 
     def test_part7_common_material_preserves_course_limits(self) -> None:
@@ -254,6 +257,8 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
             "part7-visual-working-development-fixture-v1",
         )
         self.assertEqual(manifest["counts"]["visual_set"], 12)
+        self.assertEqual(manifest["counts"]["visual_asset"], 48)
+        self.assertEqual(manifest["counts"]["visual_set_asset"], 48)
         self.assertEqual(manifest["counts"]["story_guide"], 12)
         self.assertEqual(manifest["counts"]["question"], 12)
         self.assertEqual(manifest["counts"]["model_answer"], 0)

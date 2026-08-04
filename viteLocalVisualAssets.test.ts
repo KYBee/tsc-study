@@ -8,9 +8,18 @@ import {
 describe('local visual asset boundary', () => {
   it('allows exactly the registered Part 2 and Part 7 asset IDs', () => {
     const allowlist = createLocalVisualAssetAllowlist()
-    expect(allowlist.size).toBe(24)
+    expect(allowlist.size).toBe(60)
     expect([...allowlist.keys()].filter((id) => id.startsWith('va-P2-'))).toHaveLength(12)
-    expect([...allowlist.keys()].filter((id) => id.startsWith('va-P7-'))).toHaveLength(12)
+    expect([...allowlist.keys()].filter((id) => id.startsWith('va-P7-'))).toHaveLength(48)
+  })
+
+  it('allows every explicitly registered Part 7 story frame', () => {
+    expect(
+      routeLocalVisualAssetId('/__local-visual-assets/va-P7-V01-04'),
+    ).toBe('va-P7-V01-04')
+    expect(
+      routeLocalVisualAssetId('/__local-visual-assets/va-P2-V01-02'),
+    ).toBe('')
   })
 
   it('keeps the legacy endpoint Part 2-only', () => {

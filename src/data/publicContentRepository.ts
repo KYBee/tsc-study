@@ -208,22 +208,21 @@ class FixturePublicContentRepository implements PublicContentRepository {
       ? this.storyFixture
       : this.visualFixture
     if (!visualMaterial) return []
-    const assetIds = new Set(
-      visualMaterial.visualSetAssets
-        .filter((item) => item.visual_set_id === visualSetId)
-        .sort(
-          (left, right) =>
-            left.sequence - right.sequence ||
-            compareStableIds(
-              left.visual_set_asset_id,
-              right.visual_set_asset_id,
-            ),
-        )
-        .map((item) => item.visual_asset_id),
+    const assetsById = new Map(
+      visualMaterial.visualAssets.map((item) => [item.visual_asset_id, item]),
     )
-    return visualMaterial.visualAssets.filter((item) =>
-      assetIds.has(item.visual_asset_id),
-    )
+    return visualMaterial.visualSetAssets
+      .filter((item) => item.visual_set_id === visualSetId)
+      .sort(
+        (left, right) =>
+          left.sequence - right.sequence ||
+          compareStableIds(
+            left.visual_set_asset_id,
+            right.visual_set_asset_id,
+          ),
+      )
+      .map((item) => assetsById.get(item.visual_asset_id))
+      .filter((item): item is VisualAsset => item !== undefined)
   }
 
   async getVisualAssetById(

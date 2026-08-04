@@ -7,6 +7,7 @@ interface LocalVisualAssetImageProps {
   asset?: VisualAsset
   partNumber: Extract<PartNumber, 2 | 7>
   setNumber: number
+  frameNumber?: number
   thumbnail?: boolean
   expandable?: boolean
 }
@@ -15,6 +16,7 @@ export function LocalVisualAssetImage({
   asset,
   partNumber,
   setNumber,
+  frameNumber,
   thumbnail = false,
   expandable = false,
 }: LocalVisualAssetImageProps) {
@@ -24,6 +26,7 @@ export function LocalVisualAssetImage({
     ? createLocalVisualAssetUrl(asset, import.meta.env.DEV)
     : undefined
   const unavailable = !source || failed
+  const frameLabel = frameNumber ? ` 장면 ${frameNumber}` : ''
 
   if (unavailable) {
     return (
@@ -41,7 +44,7 @@ export function LocalVisualAssetImage({
     <img
       className={thumbnail ? 'visual-image visual-image--thumbnail' : 'visual-image'}
       src={source}
-      alt={`Part ${partNumber} 세트 ${setNumber} 검수 전 그림`}
+      alt={`Part ${partNumber} 세트 ${setNumber} 검수 전 그림${frameLabel}`}
       width={asset?.width}
       height={asset?.height}
       loading={thumbnail ? 'lazy' : 'eager'}
@@ -55,7 +58,7 @@ export function LocalVisualAssetImage({
         <button
           className="visual-image-button"
           type="button"
-          aria-label={`세트 ${setNumber} 그림 확대`}
+          aria-label={`세트 ${setNumber} 그림${frameLabel} 확대`}
           onClick={() => setExpanded(true)}
         >
           {image}
@@ -78,7 +81,7 @@ export function LocalVisualAssetImage({
             </button>
             <img
               src={source}
-              alt={`Part ${partNumber} 세트 ${setNumber} 검수 전 그림 확대`}
+              alt={`Part ${partNumber} 세트 ${setNumber} 검수 전 그림${frameLabel} 확대`}
               width={asset?.width}
               height={asset?.height}
             />

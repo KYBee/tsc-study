@@ -72,11 +72,12 @@ Part 2 로컬 working fixture는 `VisualSet`·`VisualAsset`·
 30개 모두 `visual_question_id`로 직접 학습할 수 있다. 개인
 `PracticeDraft`, `ReviewState`, `RecallAttempt`는
 `target_type = question | visual_question`과 안정적인 `target_id`를
-사용한다. 이미지 바이트는 권리 검수 전 로컬 개발 자산이며 공용 JSON이나
-production build에 포함하지 않는다.
+사용한다. 이미지 바이트는 권리 검수 전 working 앱 자산이며 공용 JSON이나
+production build에 포함하지 않는다. 사용자 요청에 따라 Git에는 보존하되
+이 저장 정책은 공개 권리 승격을 뜻하지 않는다.
 
-Part 7 working fixture는 VisualSet·VisualAsset·VisualSetAsset·StoryGuide
-각 12개를 제공한다. QuestionVisualSet은 0개이고 접미사 후보 12개는
+Part 7 working fixture는 VisualSet·StoryGuide 각 12개와 세트별 네 장면의
+VisualAsset·VisualSetAsset 각 48개를 제공한다. QuestionVisualSet은 0개이고 접미사 후보 12개는
 비canonical 검수 큐다. Part 7 개인 기록은 기존 target에 `visual_set`을
 additive하게 추가하며 StoryGuide를 PracticeDraft나 ModelAnswer로 자동
 변환하지 않는다.
@@ -141,6 +142,8 @@ Part 7의 실질적 학습 맥락은 `Question + VisualSet + StoryGuide` 조합�
 앱은 `VisualSet`을 직접 학습 대상으로 사용하고, 동일한 Part 7 Question
 문구는 공통 지시문으로만 표시한다. StoryGuide는 VisualSet과의 원본
 명시 관계만 사용하며 ModelAnswer로 변환하지 않는다.
+네 장면의 순서는 사용자 제공 파일명·CSV에서 명시된 1~4를
+`VisualSetAsset.sequence`로 보존하며 Question 연결 근거로 사용하지 않는다.
 
 ### 개인 학습
 
@@ -197,6 +200,7 @@ Part 7의 개인 story keyword와 순서 point는 공용 StoryGuide와 분리한
 - `VisualSetAsset`은 한 세트에 여러 이미지가 있거나 이미지가 재사용되는 경우를 허용한다.
 - 질문과 그림의 연결은 `QuestionVisualSet`에서 명시적 ID나 검증 가능한 근거로만 만든다.
 - 권리 상태는 `VisualAsset.rights_status`에서 관리한다. 현재 추출 이미지의 값은 `review_needed`이며 공개 허용을 뜻하지 않는다.
+- tracked working 이미지도 production 자산이나 `public_allowed`로 간주하지 않는다.
 
 ## MVP 구현 기준과 아직 결정하지 않은 사항
 

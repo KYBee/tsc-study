@@ -289,7 +289,7 @@ export const visualAssetSchema = z
     repository_path: z
       .string()
       .regex(
-        /^data\/working\/generated-assets\/full-import-v1\/[^/]+\.(?:png|jpe?g|gif)$/i,
+        /^data\/working\/(?:generated-assets\/full-import-v1|app-assets\/tsc-individual-images-v1)\/[^/]+\.(?:png|jpe?g|gif)$/i,
       ),
     media_type: z.enum(['image/png', 'image/jpeg', 'image/gif']),
     file_size: z.number().int().positive(),
@@ -661,6 +661,9 @@ const part2VisualManifestSchema = z
         course_import_manifest: z
           .object({ path: z.string().min(1), sha256: sha256Schema })
           .strict(),
+        named_visual_asset_manifest: z
+          .object({ path: z.string().min(1), sha256: sha256Schema })
+          .strict(),
       })
       .strict(),
     script_sha256: sha256Schema,
@@ -749,6 +752,9 @@ const part7VisualManifestSchema = z
           .object({ path: z.string().min(1), sha256: sha256Schema })
           .strict(),
         course_import_manifest: z
+          .object({ path: z.string().min(1), sha256: sha256Schema })
+          .strict(),
+        named_visual_asset_manifest: z
           .object({ path: z.string().min(1), sha256: sha256Schema })
           .strict(),
       })
@@ -1710,7 +1716,7 @@ export const parsePart7VisualFixture = (
     )
   }
   if (
-    fixture.visualAssets.length !== 12 ||
+    fixture.visualAssets.length !== 48 ||
     fixture.visualAssets.some(
       (item) =>
         item.rights_status !== 'review_needed' ||
@@ -1718,17 +1724,17 @@ export const parsePart7VisualFixture = (
     )
   ) {
     throw new FixtureValidationError(
-      'VisualAsset rights: Part 7 assets must remain raw and review_needed; public use is prohibited',
+      'VisualAsset rights: all 48 Part 7 assets must remain raw and review_needed; public use is prohibited',
     )
   }
   if (
-    fixture.visualSetAssets.length !== 12 ||
+    fixture.visualSetAssets.length !== 48 ||
     fixture.storyGuides.length !== 12 ||
     fixture.questions.length !== 12 ||
     fixture.questionVisualLinkCandidates.length !== 12
   ) {
     throw new FixtureValidationError(
-      'Part 7 fixture requires 12 sets, links, StoryGuides, Questions, and candidates',
+      'Part 7 fixture requires 48 ordered asset links and 12 sets, StoryGuides, Questions, and candidates',
     )
   }
   if (fixture.modelAnswers.length !== 0) {
@@ -1747,6 +1753,19 @@ export const parsePart7VisualFixture = (
     ) {
       throw new FixtureValidationError(
         `VisualSetAsset ${link.visual_set_asset_id}: unknown target`,
+      )
+    }
+  }
+  for (const visualSetId of visualSetIds) {
+    const orderedLinks = fixture.visualSetAssets
+      .filter((item) => item.visual_set_id === visualSetId)
+      .sort((left, right) => left.sequence - right.sequence)
+    if (
+      orderedLinks.length !== 4 ||
+      orderedLinks.some((item, index) => item.sequence !== index + 1)
+    ) {
+      throw new FixtureValidationError(
+        `VisualSetAsset ${visualSetId}: exactly four ordered story frames are required`,
       )
     }
   }

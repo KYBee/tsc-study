@@ -79,8 +79,8 @@ describe('Part 7 story visual learning slice', () => {
       await screen.findByRole('heading', { name: 'Part 7 스토리 그림 세트 1' }),
     ).toBeInTheDocument()
     expect(
-      screen.getByRole('img', { name: 'Part 7 세트 1 검수 전 그림' }),
-    ).toBeInTheDocument()
+      screen.getAllByRole('img', { name: /Part 7 세트 1 검수 전 그림 장면 [1-4]/ }),
+    ).toHaveLength(4)
     expect(screen.getByText('Part 7 공통 안내')).toBeInTheDocument()
     expect(screen.getByText('请根据四幅连续的图片，讲述一个完整的故事。')).toBeInTheDocument()
 
@@ -104,13 +104,13 @@ describe('Part 7 story visual learning slice', () => {
     renderPart7('/parts/7/sets/vs-P7-V01')
 
     await user.click(
-      await screen.findByRole('button', { name: '세트 1 그림 확대' }),
+      await screen.findByRole('button', { name: '세트 1 그림 장면 1 확대' }),
     )
     expect(screen.getByRole('dialog', { name: '그림 확대 보기' })).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: '확대 닫기' }))
 
     fireEvent.error(
-      screen.getByRole('img', { name: 'Part 7 세트 1 검수 전 그림' }),
+      screen.getByRole('img', { name: 'Part 7 세트 1 검수 전 그림 장면 1' }),
     )
     expect(screen.getByText('로컬 그림 자산이 준비되지 않았습니다.')).toBeInTheDocument()
     expect(screen.getByText('npm run assets:visual-local')).toBeInTheDocument()
@@ -125,6 +125,9 @@ describe('Part 7 story visual learning slice', () => {
     expect(
       await screen.findByRole('heading', { name: '내 이야기 만들기' }),
     ).toBeInTheDocument()
+    expect(
+      screen.getAllByRole('img', { name: /Part 7 세트 1 검수 전 그림 장면 [1-4]/ }),
+    ).toHaveLength(4)
     await user.type(screen.getByLabelText('이야기 핵심 키워드'), '아침\n버스')
     await user.type(screen.getByLabelText('새 이야기 포인트'), '아침에 일어난다')
     await user.click(screen.getByRole('button', { name: '포인트 추가' }))
@@ -202,6 +205,9 @@ describe('Part 7 story visual learning slice', () => {
     await user.click(screen.getByRole('button', { name: '답변 작성 완료' }))
     await user.click(await screen.findByRole('button', { name: '암기 시작' }))
     await user.click(screen.getByRole('radio', { name: '그림만' }))
+    expect(
+      screen.getAllByRole('img', { name: /Part 7 세트 1 검수 전 그림 장면 [1-4]/ }),
+    ).toHaveLength(4)
     await user.click(screen.getByRole('button', { name: '내 답변 보기' }))
     await user.click(
       screen.getByRole('button', { name: '이야기 순서를 보고 말함' }),
@@ -235,7 +241,7 @@ describe('Part 7 story visual learning slice', () => {
     await user.selectOptions(screen.getByLabelText('문제 종류'), 'story')
     expect(screen.getByText('현재 결과 12개')).toBeInTheDocument()
     expect(
-      screen.getByRole('img', { name: 'Part 7 세트 1 검수 전 그림' }),
-    ).toBeInTheDocument()
+      screen.getAllByRole('img', { name: /Part 7 세트 1 검수 전 그림 장면 [1-4]/ }),
+    ).toHaveLength(4)
   })
 })
