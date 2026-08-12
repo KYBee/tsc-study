@@ -84,9 +84,20 @@ class NamedVisualAssetImportTests(unittest.TestCase):
                 "part2-12_cafe_menu_balloons_umbrella_rain.png",
             ],
         )
+        replaced_part2_images = {
+            "part2-1_park_running_bench_cat_clock.png",
+            "part2-8_library_reading_scale_swim_ring.png",
+            "part2-11_clothes_rack_pants_shoes_scarf.png",
+            "part2-12_cafe_menu_balloons_umbrella_rain.png",
+        }
         for item in assets:
             image = self.output / item["filename"]
-            self.assertEqual((item["width"], item["height"]), (538, 444))
+            expected_dimensions = (
+                (1448, 1086)
+                if item["filename"] in replaced_part2_images
+                else (538, 444)
+            )
+            self.assertEqual((item["width"], item["height"]), expected_dimensions)
             self.assertEqual(item["media_type"], "image/png")
             self.assertEqual(sha256(image), item["sha256"])
             self.assertEqual(image.stat().st_size, item["file_size"])
@@ -147,6 +158,30 @@ class NamedVisualAssetImportTests(unittest.TestCase):
 
         self.assertEqual(result.returncode, 1)
         self.assertIn("--archive is required when importing", result.stderr)
+
+    def test_replaced_part2_images_have_current_descriptions(self) -> None:
+        manifest = json.loads((TRACKED_ASSETS / "manifest.json").read_text())
+        descriptions = {
+            item["filename"]: item["korean_description"]
+            for item in manifest["assets"]
+        }
+
+        self.assertEqual(
+            descriptions["part2-1_park_running_bench_cat_clock.png"],
+            "공원에서 달리는 남자, 벤치에 앉은 여자, 벤치 아래 고양이, 7시 30분 시계",
+        )
+        self.assertEqual(
+            descriptions["part2-8_library_reading_scale_swim_ring.png"],
+            "도서관에서 책과 신문 읽기, 주방에서 요리와 설거지",
+        )
+        self.assertEqual(
+            descriptions["part2-11_clothes_rack_pants_shoes_scarf.png"],
+            "모자를 쓴 남자, 우산을 든 여자, 바지 두 벌, 신발 한 켤레",
+        )
+        self.assertEqual(
+            descriptions["part2-12_cafe_menu_balloons_umbrella_rain.png"],
+            "커피 4위안과 케이크 8위안, 사과 두 개, 젖은 우산",
+        )
 
 
 if __name__ == "__main__":

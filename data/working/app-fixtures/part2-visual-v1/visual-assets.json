@@ -5,13 +5,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-1_park_running_bench_cat_clock.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-1_park_running_bench_cat_clock.png",
     "media_type": "image/png",
-    "file_size": 365090,
-    "sha256": "36d7248b8c30d888ca572c7d2ecef6cae028015dfcb49b80aca02e316a346260",
-    "width": 538,
-    "height": 444,
+    "file_size": 2250645,
+    "sha256": "99317b0c9939470fd700fa8670ce0c3fbc550b61ee188cec7edda01f5ff73004",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 공원에서 달리는 남자, 벤치의 여자, 고양이, 시계; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 공원에서 달리는 남자, 벤치에 앉은 여자, 벤치 아래 고양이, 7시 30분 시계; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V02-01",
@@ -103,13 +103,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-8_library_reading_scale_swim_ring.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-8_library_reading_scale_swim_ring.png",
     "media_type": "image/png",
-    "file_size": 334436,
-    "sha256": "b8b5cef512462e55235944ca3a7d1084d3f79233a4664d9e523b70dbf97b8906",
-    "width": 538,
-    "height": 444,
+    "file_size": 2117936,
+    "sha256": "0b41a3337280b5fae9d6a1c9df590727c7c0f6d0f451866a873e4b2fb89fc2a3",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 도서관에서 책/신문 읽기, 체중계, 튜브; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 도서관에서 책과 신문 읽기, 주방에서 요리와 설거지; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V09-01",
@@ -145,13 +145,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-11_clothes_rack_pants_shoes_scarf.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-11_clothes_rack_pants_shoes_scarf.png",
     "media_type": "image/png",
-    "file_size": 316014,
-    "sha256": "6bd6dbe215035d6ecfd1f431888a2f6722b34eac523fb4212e564a866922f03b",
-    "width": 538,
-    "height": 444,
+    "file_size": 1872432,
+    "sha256": "fa2926d1d6826bf5844eca8e219fdcaf41452ae766bdd9661bae122306dff363",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 옷걸이의 바지, 신발, 목도리한 아이들; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 모자를 쓴 남자, 우산을 든 여자, 바지 두 벌, 신발 한 켤레; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V12-01",
@@ -159,12 +159,12 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-12_cafe_menu_balloons_umbrella_rain.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-12_cafe_menu_balloons_umbrella_rain.png",
     "media_type": "image/png",
-    "file_size": 314582,
-    "sha256": "ca76033d6cfbf98f7172474cbf817c85a22bfd00cb3236ed04f0e20c7a114124",
-    "width": 538,
-    "height": 444,
+    "file_size": 2344464,
+    "sha256": "9491193340c944e5344fd57ced0da5f57d56cd03cdb77953becc9c531b17c3c6",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 카페 메뉴판, 풍선, 우산, 빗방울; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 커피 4위안과 케이크 8위안, 사과 두 개, 젖은 우산; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
   }
 ]

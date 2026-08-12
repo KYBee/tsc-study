@@ -134,9 +134,9 @@
     "original_file_name": "manifest.json",
     "file_ref": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
     "claimed_original_names": [
-      "TSC_individual_images_named.zip"
+      "TSC_named_visual_assets_current_v2.zip"
     ],
-    "sha256": "795794cd098cc6ebef8d5b510c2b91f394b446e6a8f9c880bddd0e375d86079e",
+    "sha256": "78c84b1130b16d1591d888f794eafd56104d3970d73f3c9287f224f272820ea0",
     "acquired_date": "",
     "rights_status": "review_needed",
     "source_status": "raw",

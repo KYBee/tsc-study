@@ -1,12 +1,12 @@
 {
   "dataset_id": "tsc-individual-images-v1",
   "dataset_status": "working",
-  "source_archive_original_name": "TSC_individual_images_named.zip",
-  "source_archive_sha256": "49f24443b159fc0ddc7fc339938a4406d77f66c8c82ad1856e4418a924a956e9",
-  "source_archive_size": 21549390,
+  "source_archive_original_name": "TSC_named_visual_assets_current_v2.zip",
+  "source_archive_sha256": "b00e96ef1fa655a4c12c2cbc3e9e817b595359610fd64d11d6aaac3ebf6de39f",
+  "source_archive_size": 28748783,
   "source_metadata_sha256": {
     "README.txt": "0a6d98622f428d0721c43d41414a98d0971c5a6b0f27549b552e25c879fc6062",
-    "image_name_list.csv": "8639599cc5d76c738192af9a0ccdc0e4af6b0b8205ff721cf2242ca906515211"
+    "image_name_list.csv": "d4394b5935b3f20013345a38c84f6f9b4fb218d12731a701d47092612c9fcd5e"
   },
   "counts": {
     "total": 60,
@@ -19,12 +19,12 @@
       "part": 2,
       "set_number": 1,
       "frame_number": 1,
-      "korean_description": "공원에서 달리는 남자, 벤치의 여자, 고양이, 시계",
+      "korean_description": "공원에서 달리는 남자, 벤치에 앉은 여자, 벤치 아래 고양이, 7시 30분 시계",
       "media_type": "image/png",
-      "file_size": 365090,
-      "sha256": "36d7248b8c30d888ca572c7d2ecef6cae028015dfcb49b80aca02e316a346260",
-      "width": 538,
-      "height": 444
+      "file_size": 2250645,
+      "sha256": "99317b0c9939470fd700fa8670ce0c3fbc550b61ee188cec7edda01f5ff73004",
+      "width": 1448,
+      "height": 1086
     },
     {
       "filename": "part2-2_weather_rainy_8c_vs_sunny.png",
@@ -103,12 +103,12 @@
       "part": 2,
       "set_number": 8,
       "frame_number": 1,
-      "korean_description": "도서관에서 책/신문 읽기, 체중계, 튜브",
+      "korean_description": "도서관에서 책과 신문 읽기, 주방에서 요리와 설거지",
       "media_type": "image/png",
-      "file_size": 334436,
-      "sha256": "b8b5cef512462e55235944ca3a7d1084d3f79233a4664d9e523b70dbf97b8906",
-      "width": 538,
-      "height": 444
+      "file_size": 2117936,
+      "sha256": "0b41a3337280b5fae9d6a1c9df590727c7c0f6d0f451866a873e4b2fb89fc2a3",
+      "width": 1448,
+      "height": 1086
     },
     {
       "filename": "part2-9_bus5211_room103_hospital503_clock.png",
@@ -139,24 +139,24 @@
       "part": 2,
       "set_number": 11,
       "frame_number": 1,
-      "korean_description": "옷걸이의 바지, 신발, 목도리한 아이들",
+      "korean_description": "모자를 쓴 남자, 우산을 든 여자, 바지 두 벌, 신발 한 켤레",
       "media_type": "image/png",
-      "file_size": 316014,
-      "sha256": "6bd6dbe215035d6ecfd1f431888a2f6722b34eac523fb4212e564a866922f03b",
-      "width": 538,
-      "height": 444
+      "file_size": 1872432,
+      "sha256": "fa2926d1d6826bf5844eca8e219fdcaf41452ae766bdd9661bae122306dff363",
+      "width": 1448,
+      "height": 1086
     },
     {
       "filename": "part2-12_cafe_menu_balloons_umbrella_rain.png",
       "part": 2,
       "set_number": 12,
       "frame_number": 1,
-      "korean_description": "카페 메뉴판, 풍선, 우산, 빗방울",
+      "korean_description": "커피 4위안과 케이크 8위안, 사과 두 개, 젖은 우산",
       "media_type": "image/png",
-      "file_size": 314582,
-      "sha256": "ca76033d6cfbf98f7172474cbf817c85a22bfd00cb3236ed04f0e20c7a114124",
-      "width": 538,
-      "height": 444
+      "file_size": 2344464,
+      "sha256": "9491193340c944e5344fd57ced0da5f57d56cd03cdb77953becc9c531b17c3c6",
+      "width": 1448,
+      "height": 1086
     },
     {
       "filename": "part7-1-1_buy_new_pink_dress.png",
@@ -738,18 +738,18 @@
   "generated_files": {
     "README.md": "7919f69efd15d256d523c1b28ee8db80c653b01bc5eec328cf6b1505c3ff4679",
     "README.txt": "0a6d98622f428d0721c43d41414a98d0971c5a6b0f27549b552e25c879fc6062",
-    "image_name_list.csv": "fcde668ca785102bd28b053b2a21b6a13e8f64a2613489dcd9d2debb28c19ec9",
+    "image_name_list.csv": "d4394b5935b3f20013345a38c84f6f9b4fb218d12731a701d47092612c9fcd5e",
     "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png": "c8c1708c6b34dc2e0ad85dd245a5d2b780fd70801cba636b72ce5d44c7824918",
-    "part2-11_clothes_rack_pants_shoes_scarf.png": "6bd6dbe215035d6ecfd1f431888a2f6722b34eac523fb4212e564a866922f03b",
-    "part2-12_cafe_menu_balloons_umbrella_rain.png": "ca76033d6cfbf98f7172474cbf817c85a22bfd00cb3236ed04f0e20c7a114124",
-    "part2-1_park_running_bench_cat_clock.png": "36d7248b8c30d888ca572c7d2ecef6cae028015dfcb49b80aca02e316a346260",
+    "part2-11_clothes_rack_pants_shoes_scarf.png": "fa2926d1d6826bf5844eca8e219fdcaf41452ae766bdd9661bae122306dff363",
+    "part2-12_cafe_menu_balloons_umbrella_rain.png": "9491193340c944e5344fd57ced0da5f57d56cd03cdb77953becc9c531b17c3c6",
+    "part2-1_park_running_bench_cat_clock.png": "99317b0c9939470fd700fa8670ce0c3fbc550b61ee188cec7edda01f5ff73004",
     "part2-2_weather_rainy_8c_vs_sunny.png": "a590b7999c85b2c8ff88ec6ef4650bc0e0b8d35d5ed4d67a409e0065765623a5",
     "part2-3_fruit_market_scale_2kg_grapes_5yuan.png": "c00cd891e262fa9e5a9f97f00f11c6c5928c36d96b39a54fc12fcf0bc566ffe3",
     "part2-4_bakery_bread_magazine_watch_prices.png": "bcee8f3d81949ad3ccea7be974d7eef4fea11957214f8f2033bdfc973f2d44b3",
     "part2-5_city_bus_subway_hospital_school_home.png": "37853faa341b17dd0ae3a47a77ce975c7992f58dc5a60f47c58019f04fc77841",
     "part2-6_room_window_cat_apple_book_flower_slippers.png": "b678de9c8daa6d265b8a8a3e80836fdd0eb667201f9e2c875a15e4549161ab54",
     "part2-7_copy_machine_papers_room503_clock.png": "064bd7755406b3dbed631556bff318ccb3f12d41851baf46c8f91a9ac5b10e3c",
-    "part2-8_library_reading_scale_swim_ring.png": "b8b5cef512462e55235944ca3a7d1084d3f79233a4664d9e523b70dbf97b8906",
+    "part2-8_library_reading_scale_swim_ring.png": "0b41a3337280b5fae9d6a1c9df590727c7c0f6d0f451866a873e4b2fb89fc2a3",
     "part2-9_bus5211_room103_hospital503_clock.png": "613bcc1b63e7a170f1ee5db8e330b0e9b99800f5b3b45ed6b3879b5b4dc5e287",
     "part7-1-1_buy_new_pink_dress.png": "2cf6ca5c8677431d4f5f6599e53f47df00cf7e0b3ebed04dcf8e628585ba71bb",
     "part7-1-2_show_new_dress_to_friend.png": "1420bd636c4be6830a2d3d4c250f47c8fb76b26a58a33ed1f2865425848f542f",

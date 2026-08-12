@@ -45,7 +45,7 @@ def source_record(manifest: dict[str, Any]) -> dict[str, Any]:
         "creator_or_provider": "",
         "original_file_name": "manifest.json",
         "file_ref": (ASSET_ROOT / "manifest.json").as_posix(),
-        "claimed_original_names": ["TSC_individual_images_named.zip"],
+        "claimed_original_names": [manifest["source_archive_original_name"]],
         "sha256": hashlib.sha256(MANIFEST_PATH.read_bytes()).hexdigest(),
         "acquired_date": "",
         "rights_status": "review_needed",

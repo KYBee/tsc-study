@@ -113,6 +113,13 @@ class Part2VisualAppFixtureTests(unittest.TestCase):
             source["file_ref"],
             "data/working/app-assets/tsc-individual-images-v1/manifest.json",
         )
+        named_asset_manifest = json.loads(
+            (ROOT / source["file_ref"]).read_text(encoding="utf-8")
+        )
+        self.assertEqual(
+            source["claimed_original_names"],
+            [named_asset_manifest["source_archive_original_name"]],
+        )
 
     def test_all_visual_questions_work_without_forcing_canonical_links(self) -> None:
         questions = self.payloads["visual-questions.json"]
