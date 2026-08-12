@@ -61,13 +61,17 @@ Part 2 12개는 ID와 fixture allowlist로 구분한다. Part 7 파일명의 세
 `/__local-part2-assets/:visualAssetId`는 Part 2 ID에 한해 유지한다.
 미들웨어는 등록 ID, 경로 정규화, realpath root, 확장자·MIME magic,
 파일 크기와 SHA-256을 확인한다. 절대경로·상위 경로·symlink 이탈과
-미등록 ID를 거부하고 production에는 설치되지 않는다.
+미등록 ID를 거부한다.
 
 모든 asset은 `rights_status = review_needed`이며 `public_allowed`로
 승격하지 않았다. 사용자의 명시적 요청에 따라 이미지 바이트는 working
-앱 자산으로 Git에 보존하지만 public, JSON 또는 production `dist`에는
-넣지 않는다. production 홈과 직접 경로에서는 권리 검수 안내와
-함께 Part 7 로컬 학습을 비활성화한다.
+앱 자산으로 Git에 보존하지만 public이나 JSON에는 넣지 않는다. 기본
+production build는 이미지 바이트를 제외하고 Part 7 그림 학습을
+비활성화한다. 운영자가 build 시
+`VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true`를 정확히 설정한 경우에만 Part 2
+12장과 Part 7 48장, 총 60개 allowlist를 realpath·PNG MIME·크기·SHA-256·
+치수 검증 후 `BASE_URL` 아래에 emit한다. 이 deployment opt-in은 공개 권리
+승인이나 metadata 상태 변경이 아니다.
 
 ## 화면 흐름
 
@@ -145,8 +149,9 @@ RecallAttempt에 남긴다. 복습 간격과 다음 날짜는 만들지 않는�
 - 실제 320px 브라우저에서 홈→목록→상세·확대→StoryGuide→이야기
   편집·재정렬·저장·새로고침 복원→완료→그림만 회상→결과 저장→
   나의 답변→복습을 확인했다. 가로 오버플로와 console 오류는 0건이다.
-- production preview에서 Part 7 홈 카드와 직접 경로가 권리 안내와 함께
-  비활성이고 로컬 asset 요청이 발생하지 않음을 확인했다.
+- 기본 production preview에서는 Part 7 홈 카드와 직접 경로가 비활성이고
+  asset 요청이 발생하지 않는다. opt-in preview에서는 emitted asset URL로
+  네 장면을 표시한다.
 
 ## 알려진 제한과 다음 조건
 

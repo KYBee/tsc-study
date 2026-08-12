@@ -1,6 +1,9 @@
 import { useState } from 'react'
 
-import { createLocalVisualAssetUrl } from '../data/localVisualAssetUrl'
+import {
+  createRuntimeVisualAssetUrl,
+  REVIEW_VISUAL_ASSETS_ENABLED,
+} from '../data/localVisualAssetUrl'
 import type { PartNumber, VisualAsset } from '../domain/entities'
 
 interface LocalVisualAssetImageProps {
@@ -22,19 +25,25 @@ export function LocalVisualAssetImage({
 }: LocalVisualAssetImageProps) {
   const [failed, setFailed] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const source = asset
-    ? createLocalVisualAssetUrl(asset, import.meta.env.DEV)
-    : undefined
+  const source = asset ? createRuntimeVisualAssetUrl(asset) : undefined
   const unavailable = !source || failed
   const frameLabel = frameNumber ? ` 장면 ${frameNumber}` : ''
 
   if (unavailable) {
     return (
       <div className="visual-asset-missing" role="status">
-        <strong>로컬 그림 자산이 준비되지 않았습니다.</strong>
-        <code>npm run assets:visual-local</code>
-        {!import.meta.env.DEV && (
-          <small>권리 검수 전 그림은 production에서 표시하지 않습니다.</small>
+        <strong>
+          {source
+            ? import.meta.env.DEV
+              ? '로컬 그림 자산이 준비되지 않았습니다.'
+              : '그림 자산을 불러오지 못했습니다.'
+            : REVIEW_VISUAL_ASSETS_ENABLED
+              ? '로컬 그림 자산이 준비되지 않았습니다.'
+              : '이 이미지 학습 자료는 현재 이 배포 환경에서 활성화되어 있지 않습니다.'}
+        </strong>
+        {import.meta.env.DEV && <code>npm run assets:visual-local</code>}
+        {!REVIEW_VISUAL_ASSETS_ENABLED && (
+          <small>권리 검수 전 그림은 운영자의 명시적 설정이 있을 때만 포함됩니다.</small>
         )}
       </div>
     )

@@ -113,7 +113,10 @@ VisualSetAsset 각 48개(세트별 장면 4개)를 보존하되 확정 QuestionV
 ModelAnswer 0개를 유지한다. 후보는 canonical 관계로 승격하지 않는다.
 개인 키워드·이야기 포인트·전체 답변은 `visual_set` target IndexedDB에만
 저장하고 StoryGuide나 working JSON을 수정하지 않는다. Part 2·7 이미지
-60개는 공용 개발 서버 allowlist로만 제공하며 production에서 비활성이다.
+60개는 개발 서버의 공용 allowlist로 제공한다. 기본 production build에서는
+비활성이고, 운영자가 `VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true`로 명시한
+build에서만 동일 allowlist와 무결성 검증 후 emit한다. 이는 권리 승인이나
+working metadata 변경이 아니다.
 
 ## Part 4 사람 검수와 부분 승격
 

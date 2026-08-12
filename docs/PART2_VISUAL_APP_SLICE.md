@@ -47,9 +47,16 @@ npm run assets:visual-local
   `/__local-part2-assets/<visual_asset_id>`는 Part 2 ID에 한해 호환한다.
 - 절대경로, `..`, 허용 루트 밖 경로, 미등록 ID, 지원하지 않는 확장자와
   MIME, SHA-256 불일치를 거부한다.
-- 이 Vite 미들웨어는 `serve`에만 적용된다. Git 보존 여부와 무관하게
-  production build에는 이미지
-  바이트가 복사되지 않고 production 화면은 로컬 그림 학습을 비활성화한다.
+- Vite 개발 서버는 기존 검증 라우트를 사용한다. production build는
+  기본적으로 이미지 바이트를 포함하지 않고 그림 학습을 비활성화한다.
+- 운영자가 `VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true`를 명시하면 Part 2
+  12장과 Part 7 48장, 총 60개 allowlist를 다시 검증해
+  `tsc-visual-assets/<asset-id>.png`로 emit한다. `BASE_URL`을 사용하므로
+  sub-path deployment에서도 동작한다.
+- production emit 전 등록 ID, realpath root, PNG MIME·확장자·signature,
+  크기, SHA-256, width/height를 확인하고 불일치 시 build를 실패시킨다.
+- opt-in은 배포 운영 선택이며 권리 승인이나 `review_needed`,
+  `public_allowed = false` metadata 변경이 아니다.
 - 자산이 없으면 깨진 이미지 대신 추출 명령과 로컬 준비 안내를 표시한다.
 
 `scripts/validate_part2_local_assets.py`는 12개 파일 존재·크기·형식·SHA,
@@ -127,15 +134,16 @@ v3→v4 migration은 기존 `question_id`를 `target_type = question`과 같은
   확인한다.
 - React 테스트는 홈, 12세트, 48질문, 이미지/실패/확대, 초안, 출처 답변,
   회상, 나의 답변, 복습과 기존 텍스트 흐름 회귀를 확인한다.
-- production build 뒤 로컬 이미지 원본 바이트가 `dist/`에 없음을 별도
-  검증한다.
+- 기본 production build 뒤 원본 바이트가 `dist/`에 없고, opt-in build에는
+  정확히 60개만 emit되는지 별도 검증한다.
 
 ## 알려진 제한과 다음 작업
 
 - 문제·답변·출처와 이미지 권리는 사람 검수 전이다.
 - 실제 AI, 자동 번역·병음·이미지 분석은 없다.
 - `ModelAnswer`는 추천 출처 답변이며 공식 정답이 아니다.
-- 이미지 공개·배포는 차단되어 있고 로컬 개발 환경에서만 볼 수 있다.
+- 이미지 공개 권리는 승인되지 않았다. 기본 production은 차단되며 운영자가
+  명시적으로 opt-in한 deployment에서만 검증된 working 이미지를 볼 수 있다.
 - Part 7은 후속 `part7-visual-working-development-fixture-v1`과 공용
   이미지 미들웨어로 구현했다. Part 2 데이터·추천 답변 계약은 변경하지
   않았다.

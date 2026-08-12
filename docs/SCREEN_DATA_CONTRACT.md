@@ -248,10 +248,11 @@ PartGuide 문구를 자동 폼이나 답변으로 변환하지 않는다.
 | 주요 행동 | 세트 필터·랜덤, 이미지 확대, 질문 이동, 자유 입력 저장·완료, 추천 답변 비교, 내 답변 회상 |
 | 다음 화면 | 홈, 세트 목록·상세, VisualQuestion 상세·답변·회상, 나의 답변, 복습 |
 
-Part 2 이미지는 fixture에 등록된 ID만 개발 서버에서 제공한다. production
-build는 이미지 바이트를 포함하지 않으며 화면도 로컬 학습을 활성화하지
-않는다. ModelAnswer는 내 답변을 덮어쓰거나 UserAnswer로 자동 저장하지
-않는다.
+Part 2 이미지는 fixture에 등록된 ID만 개발 서버 또는 명시적 opt-in
+production build에서 제공한다. 기본 production build는 이미지 바이트를
+포함하지 않으며 그림 학습을 활성화하지 않는다. opt-in build도 동일
+allowlist·무결성 검증을 통과한 Part 2·7 60개만 emit한다. ModelAnswer는 내
+답변을 덮어쓰거나 UserAnswer로 자동 저장하지 않는다.
 
 ## 12. Part 7 로컬 스토리 학습
 
@@ -268,8 +269,9 @@ build는 이미지 바이트를 포함하지 않으며 화면도 로컬 학습�
 | 주요 행동 | 세트 필터·랜덤·이어보기, 네 장면 순서 확인·개별 확대, StoryGuide 참고 미리보기·확인, 내 포인트 편집·저장·완료, 내 답변 회상 |
 | 다음 화면 | 홈, Part 7 목록·상세·답변·회상, 나의 답변, 복습 |
 
-production에서는 Part 7 카드와 직접 경로를 비활성화하고 로컬 이미지 URL을
-요청하지 않는다. Part 2와 Part 7 이미지 미들웨어는 공용 allowlist와
+기본 production에서는 Part 7 카드와 직접 경로를 비활성화하고 이미지 URL을
+요청하지 않는다. 명시적 visual asset opt-in production에서는 emitted URL로
+활성화한다. Part 2와 Part 7 개발 미들웨어와 build emitter는 공용 allowlist와
 무결성 검증을 사용한다.
 
 ## 13. Part 4 로컬 데이터 검수

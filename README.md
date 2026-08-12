@@ -38,7 +38,8 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48개를
 개발 환경에 연결한다. 사용자가 제공한 이름 지정 이미지 묶음의 Part 2
 이미지 12개는 working 앱 자산으로 Git에 보존하고 개발 서버에서만
-제공하며 production build에는 포함하지 않는다. Part 2의
+제공한다. 기본 production build에는 포함하지 않으며, 운영자가 명시적으로
+opt-in한 build에서만 검증된 60개 이미지 묶음의 일부로 제공한다. Part 2의
 PracticeDraft·RecallAttempt·ReviewState는 `visual_question`을 대상으로
 저장하고 원본 추천 답변을 내 답변이나 공식 정답으로 자동 저장하지 않는다.
 
@@ -49,8 +50,8 @@ QuestionVisualSet은 0개이며 번호 기반 후보 12개를 실제
 관계로 승격하지 않는다. StoryGuide는 완성 답변이 아닌 참고 흐름이고,
 사용자는 `visual_set` 대상 PracticeDraft에 키워드·순서 포인트·전체 답변을
 직접 저장해 그림 기반 회상을 연습한다. Part 7 이미지 바이트는 Git의
-working 자산으로 보존하지만 production build와 production 화면에서는
-계속 제외한다.
+working 자산으로 보존한다. 기본 production build에서는 제외하고 명시적
+deployment opt-in 때만 검증 후 포함한다.
 
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
@@ -84,7 +85,20 @@ npm run dev
 검증 후 저장소에서 제거했고, 압축에서 바이트 변경 없이 추출한 이미지 60장은
 `data/working/app-assets/tsc-individual-images-v1/`에 있다.
 이 working 자산은 Git에 보존하지만 공개 권리는 `review_needed`이고
-production build에는 포함하지 않는다. 기존 workbook 생성 이미지는 별도
+`public_allowed = false`다. 기본 production build에는 포함하지 않는다.
+운영자가 다음처럼 정확한 환경변수를 설정한 build에만 Part 2 12장과
+Part 7 48장, 총 60장을 포함한다.
+
+```sh
+VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true npm run build
+```
+
+이 opt-in은 해당 deployment에서 자산 사용을 선택하는 동작일 뿐 이미지
+권리가 공개 사용 가능하다고 승인하거나 metadata를 변경하지 않는다. build는
+등록된 asset ID·허용 경로·PNG MIME·파일 크기·SHA-256·가로세로 크기를
+검증하고 하나라도 다르면 실패한다. flag가 없거나 `true`가 아닌 값이면
+기본 제외 정책이 유지된다. Vite `BASE_URL`을 사용하므로 sub-path
+deployment에서도 emitted URL을 조합한다. 기존 workbook 생성 이미지는 별도
 `data/working/generated-assets/full-import-v1/` 경계에 유지한다. 기존 6문제
 및 Part 4 50문제 fixture도 계속 보존하며
 원본 working 데이터·CSV·Excel은 수정하지 않는다.

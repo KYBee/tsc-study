@@ -3,7 +3,7 @@
 ## 현재 구현 범위
 
 현재 React 앱은 Part 1·3·4·5·6의 검수 전 working 텍스트 문제 193개,
-개발 환경 전용 Part 2 그림 12세트·VisualQuestion 48개와 Part 7 스토리
+Part 2 그림 12세트·VisualQuestion 48개와 Part 7 스토리
 그림 12세트를 대상으로 다음
 흐름을 제공한다.
 
@@ -35,8 +35,11 @@ HOME
 
 실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
 Part 2 12장과 Part 7 48장의 이름 지정 working 이미지 바이트는 Git에
-보존하되 권리 검수 전이므로 로컬 개발 서버에서만 제공하고 production
-build에는 포함하지 않는다.
+보존한다. 권리 상태는 `review_needed`/`public_allowed = false`다. 개발
+서버에서는 검증 라우트로 제공하고 production은 기본 제외한다. 단,
+운영자가 `VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true`를 명시한 build에서는
+동일한 60개 allowlist와 무결성 검증을 통과한 바이트만 제공한다. 이 설정은
+권리 승인으로 간주하지 않는다.
 
 ## 앱 개발 fixture
 
@@ -150,7 +153,8 @@ Vitest 143개, typecheck, lint, production build, `npm run check:data`와
 - 전체 253 Question 중 텍스트 193개와 별도 VisualQuestion 48개를
   working 학습에 연결했다. Part 7은 Question 연결 없이 VisualSet 12개를
   직접 학습 대상으로 연결했다.
-- Part 2·7 이미지 권리는 미검수이며 로컬 개발 표시만 허용한다.
+- Part 2·7 이미지 권리는 미검수다. 기본 production에서는 제외하며,
+  명시적 deployment opt-in에서만 검증된 60개를 표시한다.
 - Part 7 번호 후보 12건은 실제 QuestionVisualSet 관계가 아니다.
 
 ## 다음 추천 작업

@@ -455,9 +455,9 @@
 
 ## 전체 텍스트 Part와 Part 2·7 working 구현 반영
 
-- 홈에서 Part 1~7을 선택한다. Part 2·7은 개발 환경의 로컬 그림
-  학습으로만 활성화하고 production에서는 권리 검수 안내와 함께
-  비활성화한다.
+- 홈에서 Part 1~7을 선택한다. Part 2·7은 개발 환경과 명시적 visual asset
+  opt-in production에서 활성화한다. 기본 production에서는 권리 검수
+  안내와 함께 비활성화한다.
 - 다섯 Part는 공통 목록의 검색, 유형·복습·작성 상태 필터와 결과 내 랜덤
   선택을 사용한다.
 - 공통 상세는 질문, 병음, 한국어, AnswerPoint, 실제 존재하는 출처별

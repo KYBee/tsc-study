@@ -14,6 +14,7 @@ import type {
   RecallResult,
   StoryPoint,
 } from '../../domain/entities'
+import { REVIEW_VISUAL_ASSETS_ENABLED } from '../../data/localVisualAssetUrl'
 import type {
   StoredPracticeDraft,
   UserDataRepository,
@@ -68,12 +69,12 @@ export function Part7StoryAnswerScreen() {
   if (error || !data) {
     return <ErrorState title="스토리 그림을 찾을 수 없습니다" message={visualSetId} />
   }
-  if (!import.meta.env.DEV) {
+  if (!REVIEW_VISUAL_ASSETS_ENABLED) {
     return (
       <div className="page">
         <ErrorState
-          title="로컬 그림 학습 전용 기능입니다"
-          message="그림 공개 권리 검수 전에는 production에서 사용할 수 없습니다."
+          title="그림 학습이 활성화되지 않았습니다"
+          message="이 이미지 학습 자료는 현재 이 배포 환경에서 활성화되어 있지 않습니다."
           action={<Link className="primary-button" to="/">학습 홈</Link>}
         />
       </div>

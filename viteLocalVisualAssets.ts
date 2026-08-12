@@ -8,12 +8,30 @@ import { extname, resolve, sep } from 'node:path'
 
 import type { Plugin } from 'vite'
 
-interface AssetRecord {
+export interface AssetRecord {
   visual_asset_id: string
   repository_path: string
   media_type: 'image/png' | 'image/jpeg' | 'image/gif'
   file_size: number
   sha256: string
+  width: number
+  height: number
+  rights_status: string
+}
+
+export interface AllowlistedVisualAsset extends AssetRecord {
+  absolutePath: string
+}
+
+export interface ProductionVisualAsset {
+  assetId: string
+  fileName: string
+  source: Buffer
+  record: AllowlistedVisualAsset
+}
+
+interface LocalVisualAssetsPluginOptions {
+  productionEnabled?: boolean
 }
 
 const ROUTE_PREFIX = '/__local-visual-assets/'
@@ -42,15 +60,17 @@ const MAGIC: Record<AssetRecord['media_type'], ReadonlyArray<Uint8Array>> = {
   ],
 }
 
+class VisualAssetIntegrityError extends Error {}
+
 function startsWith(bytes: Buffer, signature: Uint8Array): boolean {
   return signature.every((value, index) => bytes[index] === value)
 }
 
 export function createLocalVisualAssetAllowlist(): Map<
   string,
-  AssetRecord & { absolutePath: string }
+  AllowlistedVisualAsset
 > {
-  const allowlist = new Map<string, AssetRecord & { absolutePath: string }>()
+  const allowlist = new Map<string, AllowlistedVisualAsset>()
   for (const fixturePath of FIXTURE_PATHS) {
     const records = JSON.parse(
       readFileSync(fixturePath, 'utf8'),
@@ -60,9 +80,18 @@ export function createLocalVisualAssetAllowlist(): Map<
         throw new Error(`Unsafe local visual asset ID: ${record.visual_asset_id}`)
       }
       const absolutePath = resolve(record.repository_path)
+      const extensions = EXTENSIONS[record.media_type]
       if (
         !absolutePath.startsWith(`${SAFE_ROOT}${sep}`) ||
-        !EXTENSIONS[record.media_type].has(extname(absolutePath).toLowerCase())
+        !extensions?.has(extname(absolutePath).toLowerCase()) ||
+        !Number.isSafeInteger(record.file_size) ||
+        record.file_size <= 0 ||
+        !/^[a-f0-9]{64}$/.test(record.sha256) ||
+        !Number.isSafeInteger(record.width) ||
+        record.width <= 0 ||
+        !Number.isSafeInteger(record.height) ||
+        record.height <= 0 ||
+        record.rights_status !== 'review_needed'
       ) {
         throw new Error(`Unsafe local visual asset path: ${record.repository_path}`)
       }
@@ -76,6 +105,71 @@ export function createLocalVisualAssetAllowlist(): Map<
     throw new Error('Local visual asset allowlist must contain exactly 60 assets')
   }
   return allowlist
+}
+
+function pngDimensions(bytes: Buffer): { width: number; height: number } {
+  const pngSignature = MAGIC['image/png'][0]
+  if (
+    bytes.length < 24 ||
+    !startsWith(bytes, pngSignature) ||
+    bytes.subarray(12, 16).toString('ascii') !== 'IHDR'
+  ) {
+    throw new VisualAssetIntegrityError('Visual asset integrity mismatch: invalid PNG header')
+  }
+  return {
+    width: bytes.readUInt32BE(16),
+    height: bytes.readUInt32BE(20),
+  }
+}
+
+export function readVerifiedVisualAsset(
+  record: AllowlistedVisualAsset,
+  safeRoot = SAFE_ROOT,
+): Buffer {
+  const realRoot = realpathSync(resolve(safeRoot))
+  const realPath = realpathSync(record.absolutePath)
+  if (!realPath.startsWith(`${realRoot}${sep}`)) {
+    throw new Error('Visual asset path is outside the allowlisted root')
+  }
+  if (
+    record.media_type !== 'image/png' ||
+    extname(realPath).toLowerCase() !== '.png'
+  ) {
+    throw new VisualAssetIntegrityError(
+      `Visual asset integrity mismatch: ${record.visual_asset_id}`,
+    )
+  }
+  const bytes = readFileSync(realPath)
+  const stat = statSync(realPath)
+  const actualHash = createHash('sha256').update(bytes).digest('hex')
+  const dimensions = pngDimensions(bytes)
+  if (
+    actualHash !== record.sha256 ||
+    stat.size !== record.file_size ||
+    dimensions.width !== record.width ||
+    dimensions.height !== record.height
+  ) {
+    throw new VisualAssetIntegrityError(
+      `Visual asset integrity mismatch: ${record.visual_asset_id}`,
+    )
+  }
+  return bytes
+}
+
+export function collectProductionVisualAssets(
+  productionEnabled: boolean,
+): ProductionVisualAsset[] {
+  if (!productionEnabled) return []
+  return [...createLocalVisualAssetAllowlist().values()]
+    .sort((left, right) =>
+      left.visual_asset_id.localeCompare(right.visual_asset_id),
+    )
+    .map((record) => ({
+      assetId: record.visual_asset_id,
+      fileName: `tsc-visual-assets/${record.visual_asset_id}.png`,
+      source: readVerifiedVisualAsset(record),
+      record,
+    }))
 }
 
 export function routeLocalVisualAssetId(pathname: string): string | undefined {
@@ -97,10 +191,21 @@ export function routeLocalVisualAssetId(pathname: string): string | undefined {
   return assetId
 }
 
-export function localVisualAssetsPlugin(): Plugin {
+export function localVisualAssetsPlugin(
+  options: LocalVisualAssetsPluginOptions = {},
+): Plugin {
+  const productionEnabled = options.productionEnabled === true
   return {
     name: 'local-visual-assets',
-    apply: 'serve',
+    buildStart() {
+      for (const asset of collectProductionVisualAssets(productionEnabled)) {
+        this.emitFile({
+          type: 'asset',
+          fileName: asset.fileName,
+          source: asset.source,
+        })
+      }
+    },
     configureServer(server) {
       const allowlist = createLocalVisualAssetAllowlist()
       server.middlewares.use((request, response, next) => {
@@ -120,37 +225,21 @@ export function localVisualAssetsPlugin(): Plugin {
           return
         }
         try {
-          const realRoot = realpathSync(SAFE_ROOT)
-          const realPath = realpathSync(record.absolutePath)
-          if (!realPath.startsWith(`${realRoot}${sep}`)) {
-            response.statusCode = 404
-            response.end('Not found')
-            return
-          }
-          const bytes = readFileSync(realPath)
-          const stat = statSync(realPath)
-          const actualHash = createHash('sha256').update(bytes).digest('hex')
-          const validMagic = MAGIC[record.media_type].some((signature) =>
-            startsWith(bytes, signature),
-          )
-          if (
-            actualHash !== record.sha256 ||
-            stat.size !== record.file_size ||
-            !validMagic
-          ) {
-            response.statusCode = 409
-            response.end('Local asset integrity mismatch')
-            return
-          }
+          const bytes = readVerifiedVisualAsset(record)
           response.setHeader('Content-Type', record.media_type)
           response.setHeader('Content-Length', bytes.byteLength)
           response.setHeader('Cache-Control', 'no-store')
           response.setHeader('X-Content-Type-Options', 'nosniff')
           response.statusCode = 200
           response.end(request.method === 'HEAD' ? undefined : bytes)
-        } catch {
-          response.statusCode = 404
-          response.end('Local asset is not prepared')
+        } catch (error) {
+          if (error instanceof VisualAssetIntegrityError) {
+            response.statusCode = 409
+            response.end('Local asset integrity mismatch')
+          } else {
+            response.statusCode = 404
+            response.end('Local asset is not prepared')
+          }
         }
       })
     },

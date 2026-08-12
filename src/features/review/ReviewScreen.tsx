@@ -18,6 +18,7 @@ import type {
   VisualAsset,
   VisualQuestion,
 } from '../../domain/entities'
+import { REVIEW_VISUAL_ASSETS_ENABLED } from '../../data/localVisualAssetUrl'
 import { Part2VisualImage } from '../part2/Part2VisualImage'
 import { Part7VisualGallery } from '../part7/Part7VisualGallery'
 import type { ReviewFilter } from '../part/questionFilters'
@@ -115,7 +116,7 @@ export function ReviewScreen() {
       })),
     )
 
-    const visualSets = import.meta.env.DEV
+    const visualSets = REVIEW_VISUAL_ASSETS_ENABLED
       ? await publicRepository.listVisualSetsByPart(2)
       : []
     const visualItems = (
@@ -161,7 +162,7 @@ export function ReviewScreen() {
       )
     ).flat()
 
-    const [storySets, storyInstruction] = import.meta.env.DEV
+    const [storySets, storyInstruction] = REVIEW_VISUAL_ASSETS_ENABLED
       ? await Promise.all([
           publicRepository.listVisualSetsByPart(7),
           publicRepository.getPart7CommonInstruction(),

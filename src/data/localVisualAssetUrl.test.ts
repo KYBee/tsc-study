@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
 import type { VisualAsset } from '../domain/entities'
-import { createLocalVisualAssetUrl } from './localVisualAssetUrl'
+import {
+  createLocalVisualAssetUrl,
+  createVisualAssetUrl,
+  isReviewVisualAssetsEnabled,
+} from './localVisualAssetUrl'
 
 const base = {
   source_id: 'src-001',
@@ -38,6 +42,53 @@ describe('createLocalVisualAssetUrl', () => {
     ).toBeUndefined()
   })
 
+  it('returns no production URL when the deployment opt-in is disabled', () => {
+    expect(
+      createVisualAssetUrl(
+        { ...base, visual_asset_id: 'va-P2-V01-01' },
+        {
+          development: false,
+          productionEnabled: false,
+          baseUrl: '/',
+        },
+      ),
+    ).toBeUndefined()
+  })
+
+  it('returns an emitted production URL when the deployment opts in', () => {
+    expect(
+      createVisualAssetUrl(
+        { ...base, visual_asset_id: 'va-P7-V01-01' },
+        {
+          development: false,
+          productionEnabled: true,
+          baseUrl: '/',
+        },
+      ),
+    ).toBe('/tsc-visual-assets/va-P7-V01-01.png')
+  })
+
+  it('honors a Vite sub-path base URL in production', () => {
+    expect(
+      createVisualAssetUrl(
+        { ...base, visual_asset_id: 'va-P7-V01-01' },
+        {
+          development: false,
+          productionEnabled: true,
+          baseUrl: '/tsc-study/',
+        },
+      ),
+    ).toBe('/tsc-study/tsc-visual-assets/va-P7-V01-01.png')
+  })
+
+  it('enables review visuals only for development or the exact true flag', () => {
+    expect(isReviewVisualAssetsEnabled(true, undefined)).toBe(true)
+    expect(isReviewVisualAssetsEnabled(false, 'true')).toBe(true)
+    expect(isReviewVisualAssetsEnabled(false, 'TRUE')).toBe(false)
+    expect(isReviewVisualAssetsEnabled(false, '1')).toBe(false)
+    expect(isReviewVisualAssetsEnabled(false, undefined)).toBe(false)
+  })
+
   it.each([
     '../secret',
     'va-P7-V00-01',
@@ -62,6 +113,20 @@ describe('createLocalVisualAssetUrl', () => {
           rights_status: 'public_allowed',
         },
         true,
+      ),
+    ).toBeUndefined()
+    expect(
+      createVisualAssetUrl(
+        {
+          ...base,
+          visual_asset_id: 'va-P7-V01-01',
+          rights_status: 'public_allowed',
+        },
+        {
+          development: false,
+          productionEnabled: true,
+          baseUrl: '/',
+        },
       ),
     ).toBeUndefined()
   })

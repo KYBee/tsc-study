@@ -9,6 +9,7 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LoadingState } from '../../components/LoadingState'
 import { StatusBadge } from '../../components/StatusBadge'
+import { REVIEW_VISUAL_ASSETS_ENABLED } from '../../data/localVisualAssetUrl'
 
 type SetFilter =
   | 'all'
@@ -89,12 +90,12 @@ export function Part7SetsScreen() {
   if (error || !data) {
     return <ErrorState title="Part 7 데이터를 불러오지 못했습니다" message="로컬 학습 자료를 확인해 주세요." />
   }
-  if (!import.meta.env.DEV) {
+  if (!REVIEW_VISUAL_ASSETS_ENABLED) {
     return (
       <div className="page">
         <ErrorState
-          title="로컬 그림 학습 전용 기능입니다"
-          message="그림 공개 권리 검수 전에는 production에서 사용할 수 없습니다."
+          title="그림 학습이 활성화되지 않았습니다"
+          message="이 이미지 학습 자료는 현재 이 배포 환경에서 활성화되어 있지 않습니다."
           action={<Link className="primary-button" to="/">학습 홈</Link>}
         />
       </div>
@@ -120,7 +121,7 @@ export function Part7SetsScreen() {
         <p>스토리 그림 12세트 · 내 이야기 순서를 직접 만들고 연습합니다.</p>
       </header>
       <aside className="notice">
-        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 현재 로컬 학습에서만 사용합니다.
+        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 공개 권리 승인과 별개로 현재 배포 설정에서만 사용합니다.
       </aside>
       <section className="card compact-filter">
         <label>

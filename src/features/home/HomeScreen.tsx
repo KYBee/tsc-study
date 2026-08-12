@@ -11,6 +11,7 @@ import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LoadingState } from '../../components/LoadingState'
 import type { PartNumber } from '../../domain/entities'
+import { REVIEW_VISUAL_ASSETS_ENABLED } from '../../data/localVisualAssetUrl'
 import { pickRandomQuestion } from '../part/questionFilters'
 
 const TEXT_PARTS: PartNumber[] = [1, 3, 4, 5, 6]
@@ -252,7 +253,7 @@ export function HomeScreen() {
               ).length
               return (
                 <li key={part.part} className="part-card">
-                  {part.availability === 'available' && import.meta.env.DEV ? (
+                  {part.availability === 'available' && REVIEW_VISUAL_ASSETS_ENABLED ? (
                     <Link className="part-card__link" to="/parts/2">
                       <span className="part-card__number">Part 2</span>
                       <span className="part-card__body">
@@ -288,7 +289,7 @@ export function HomeScreen() {
                       <span className="part-card__number">Part 2</span>
                       <span className="part-card__body">
                         <strong>{part.name}</strong>
-                        <small>로컬 그림 학습 전용</small>
+                        <small>현재 배포에서 그림 학습 비활성</small>
                       </span>
                       <span className="coming-soon">권리 검수 중</span>
                     </div>
@@ -302,7 +303,7 @@ export function HomeScreen() {
               ).length
               return (
                 <li key={part.part} className="part-card">
-                  {part.availability === 'available' && import.meta.env.DEV ? (
+                  {part.availability === 'available' && REVIEW_VISUAL_ASSETS_ENABLED ? (
                     <Link className="part-card__link" to="/parts/7">
                       <span className="part-card__number">Part 7</span>
                       <span className="part-card__body">
@@ -333,7 +334,7 @@ export function HomeScreen() {
                       <span className="part-card__number">Part 7</span>
                       <span className="part-card__body">
                         <strong>{part.name}</strong>
-                        <small>로컬 그림 학습 전용</small>
+                        <small>현재 배포에서 그림 학습 비활성</small>
                       </span>
                       <span className="coming-soon">권리 검수 중</span>
                     </div>
