@@ -13,23 +13,23 @@
     },
     "named_visual_asset_manifest": {
       "path": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
-      "sha256": "70194553b41be41839a1384ff71cab0ea8f6588778d8103035dfae10501545c5"
+      "sha256": "795794cd098cc6ebef8d5b510c2b91f394b446e6a8f9c880bddd0e375d86079e"
     }
   },
-  "script_sha256": "7ba69090f1eded7898651b58c70af37c13a72dcb71af3f9df9f43df9f639c8b4",
+  "script_sha256": "0ab2f3e31f039884b571bc5f97316f6cb317bdf0dbe22be967dc5de85788e927",
   "generated_files": {
     "visual-sets.json": "ce4fe8aea03f005a4a4e70d661bdd79fdc262a407c7aafa1005dccc35048594b",
-    "visual-assets.json": "d3f0cbf49cc8452bf03c7f45dbe4f39146dfcf12d904297b01c63612a3361bda",
+    "visual-assets.json": "4183ad9dcc22243427654447004e918141c76c630bd2e387e0863f8565a60754",
     "visual-set-assets.json": "d23a531dc2278bc5eddf22b8719e6dd0a1bce1a71e7199d7cbf4ca2c8e1c644e",
     "visual-questions.json": "0034b6143948c466b84340556379a99701a29d43ea31f7e5317579768c6ea908",
     "model-answers.json": "99c6c59cb4a5eb897865282de79535c38d09bbba6ed11b691cca27f7d85b9c9d",
-    "sources.json": "1661b9bc8fcd10fbeb95a526eaf18a3d5372070d9ed7ef5da794477a06e520f5",
+    "sources.json": "86f4e6a12b28160d873fa2d7a355af9f0efe1a4f4477fc06b269c5eed329dbef",
     "source-references.json": "d202e3557cc2147607d76f239011adc948c33fceed8cf75fe8f5cef4a020a0d5",
     "part-guides.json": "4d4a1b658c0bc19ca083dec5d6e0626f0fb2d34dd42d92db9bcc7e04436a2dda",
     "learning-expressions.json": "2926540515b82a905cd7d8b177d5bb16d2610047ff2a38a6b59c7ea92cfb6906",
     "practice-drills.json": "e93d921c824904a28c64a8d37e1d8ef0426c51c82ea63f9223f4f4ea538f2d4e",
     "course-insights.json": "bef61dc491f27ac5e3300d6049b22c609d0e53ced31ac0357e7bcb7a0bb77d82",
-    "README.md": "d2f6405938082ce0101340b7ca62c1434d82bf4e4483d8d41e1d7376b2afbf0e"
+    "README.md": "e96c6c4d515f1a4d5897730d89dbfb9acd72c298e0d00ac406ff0600a34c5920"
   },
   "counts": {
     "visual_set": 12,

@@ -2,7 +2,7 @@
   {
     "visual_asset_id": "va-P2-V01-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-1_park_running_bench_cat_clock.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-1_park_running_bench_cat_clock.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-1_park_running_bench_cat_clock.png",
     "media_type": "image/png",
     "file_size": 365090,
@@ -16,7 +16,7 @@
   {
     "visual_asset_id": "va-P2-V02-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-2_weather_rainy_8c_vs_sunny.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-2_weather_rainy_8c_vs_sunny.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-2_weather_rainy_8c_vs_sunny.png",
     "media_type": "image/png",
     "file_size": 369390,
@@ -30,7 +30,7 @@
   {
     "visual_asset_id": "va-P2-V03-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
     "media_type": "image/png",
     "file_size": 333719,
@@ -44,7 +44,7 @@
   {
     "visual_asset_id": "va-P2-V04-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-4_bakery_bread_magazine_watch_prices.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-4_bakery_bread_magazine_watch_prices.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-4_bakery_bread_magazine_watch_prices.png",
     "media_type": "image/png",
     "file_size": 347217,
@@ -58,7 +58,7 @@
   {
     "visual_asset_id": "va-P2-V05-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-5_city_bus_subway_hospital_school_home.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-5_city_bus_subway_hospital_school_home.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-5_city_bus_subway_hospital_school_home.png",
     "media_type": "image/png",
     "file_size": 352713,
@@ -72,7 +72,7 @@
   {
     "visual_asset_id": "va-P2-V06-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-6_room_window_cat_apple_book_flower_slippers.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-6_room_window_cat_apple_book_flower_slippers.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-6_room_window_cat_apple_book_flower_slippers.png",
     "media_type": "image/png",
     "file_size": 316065,
@@ -86,7 +86,7 @@
   {
     "visual_asset_id": "va-P2-V07-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-7_copy_machine_papers_room503_clock.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-7_copy_machine_papers_room503_clock.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-7_copy_machine_papers_room503_clock.png",
     "media_type": "image/png",
     "file_size": 321380,
@@ -100,7 +100,7 @@
   {
     "visual_asset_id": "va-P2-V08-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-8_library_reading_scale_swim_ring.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-8_library_reading_scale_swim_ring.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-8_library_reading_scale_swim_ring.png",
     "media_type": "image/png",
     "file_size": 334436,
@@ -114,7 +114,7 @@
   {
     "visual_asset_id": "va-P2-V09-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-9_bus5211_room103_hospital503_clock.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-9_bus5211_room103_hospital503_clock.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-9_bus5211_room103_hospital503_clock.png",
     "media_type": "image/png",
     "file_size": 300046,
@@ -128,7 +128,7 @@
   {
     "visual_asset_id": "va-P2-V10-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
     "media_type": "image/png",
     "file_size": 280392,
@@ -142,7 +142,7 @@
   {
     "visual_asset_id": "va-P2-V11-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-11_clothes_rack_pants_shoes_scarf.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-11_clothes_rack_pants_shoes_scarf.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-11_clothes_rack_pants_shoes_scarf.png",
     "media_type": "image/png",
     "file_size": 316014,
@@ -156,7 +156,7 @@
   {
     "visual_asset_id": "va-P2-V12-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part2-12_cafe_menu_balloons_umbrella_rain.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-12_cafe_menu_balloons_umbrella_rain.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-12_cafe_menu_balloons_umbrella_rain.png",
     "media_type": "image/png",
     "file_size": 314582,

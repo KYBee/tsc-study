@@ -80,9 +80,9 @@ npm run dev
 텍스트 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`, Part 2
 시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`, Part 7
 스토리 fixture는 `data/working/app-fixtures/part7-visual-v1/`에 생성된다.
-모두 검수 완료 또는 배포용 데이터가 아니다. 이름 지정 압축 원본은
-`data/raw/TSC_individual_images_named.zip`, 압축을 바이트 변경 없이 푼
-이미지 60장은 `data/working/app-assets/tsc-individual-images-v1/`에 있다.
+모두 검수 완료 또는 배포용 데이터가 아니다. 이름 지정 압축 원본은 추출
+검증 후 저장소에서 제거했고, 압축에서 바이트 변경 없이 추출한 이미지 60장은
+`data/working/app-assets/tsc-individual-images-v1/`에 있다.
 이 working 자산은 Git에 보존하지만 공개 권리는 `review_needed`이고
 production build에는 포함하지 않는다. 기존 workbook 생성 이미지는 별도
 `data/working/generated-assets/full-import-v1/` 경계에 유지한다. 기존 6문제

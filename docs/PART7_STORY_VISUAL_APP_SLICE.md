@@ -44,14 +44,14 @@ StoryGuide는 상황, 추천 이야기 흐름과 원본 연결어를 보존하�
 
 ## 로컬 이미지와 권리 경계
 
-사용자가 제공한 이름 지정 ZIP을 다음 명령으로 안전하게 푼다.
+이미 추출되어 Git에 보존된 이름 지정 자산을 다음 명령으로 검증한다.
 
 ```sh
 npm run assets:visual-local
 ```
 
-기존 `npm run assets:part2-local`은 호환 alias로 유지한다. 압축 원본은
-`data/raw/TSC_individual_images_named.zip`, 생성 위치는
+기존 `npm run assets:part2-local`은 호환 alias로 유지한다. 압축 원본은 추출
+검증 후 저장소에서 제거했고, 생성 위치는
 `data/working/app-assets/tsc-individual-images-v1/`이다. Part 7 48개와
 Part 2 12개는 ID와 fixture allowlist로 구분한다. Part 7 파일명의 세트·장면
 번호와 동봉 CSV를 근거로 각 세트의 네 장면을 1→4 순서로 표시한다.

@@ -214,7 +214,7 @@ def build_readme() -> str:
   보존한다. 공개 권리는 검수되지 않았으므로 production 화면에서는 비활성이다.
 
 ```sh
-python3 scripts/import_named_visual_assets.py
+npm run assets:visual-local
 python3 scripts/build_part2_visual_app_fixture.py
 ```
 

@@ -7,11 +7,14 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import zipfile
 
 
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "scripts" / "import_named_visual_assets.py"
-ARCHIVE = ROOT / "data" / "raw" / "TSC_individual_images_named.zip"
+TRACKED_ASSETS = (
+    ROOT / "data" / "working" / "app-assets" / "tsc-individual-images-v1"
+)
 
 
 def sha256(path: Path) -> str:
@@ -40,13 +43,21 @@ class NamedVisualAssetImportTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary_directory = tempfile.TemporaryDirectory()
         self.output = Path(self.temporary_directory.name) / "assets"
+        self.archive = Path(self.temporary_directory.name) / "named-assets.zip"
+        with zipfile.ZipFile(self.archive, "w", compression=zipfile.ZIP_STORED) as archive:
+            for path in sorted(TRACKED_ASSETS.glob("*.png")):
+                archive.write(path, arcname=path.name)
+            for name in ("README.txt", "image_name_list.csv"):
+                archive.write(TRACKED_ASSETS / name, arcname=name)
 
     def tearDown(self) -> None:
         self.temporary_directory.cleanup()
 
     def test_imports_exact_named_image_contract_without_reencoding(self) -> None:
-        archive_hash = sha256(ARCHIVE)
-        result = run_importer("--output-dir", str(self.output))
+        archive_hash = sha256(self.archive)
+        result = run_importer(
+            "--archive", str(self.archive), "--output-dir", str(self.output)
+        )
         self.assertEqual(result.returncode, 0, result.stderr)
 
         manifest = json.loads((self.output / "manifest.json").read_text())
@@ -81,7 +92,9 @@ class NamedVisualAssetImportTests(unittest.TestCase):
             self.assertEqual(image.stat().st_size, item["file_size"])
 
     def test_part7_frames_are_ordered_one_to_four_for_every_set(self) -> None:
-        result = run_importer("--output-dir", str(self.output))
+        result = run_importer(
+            "--archive", str(self.archive), "--output-dir", str(self.output)
+        )
         self.assertEqual(result.returncode, 0, result.stderr)
         manifest = json.loads((self.output / "manifest.json").read_text())
         assets = manifest["assets"]
@@ -97,10 +110,16 @@ class NamedVisualAssetImportTests(unittest.TestCase):
             )
 
     def test_validate_only_and_repeated_import_are_deterministic(self) -> None:
-        first = run_importer("--output-dir", str(self.output))
+        import_arguments = (
+            "--archive",
+            str(self.archive),
+            "--output-dir",
+            str(self.output),
+        )
+        first = run_importer(*import_arguments)
         self.assertEqual(first.returncode, 0, first.stderr)
         before = tree_hashes(self.output)
-        second = run_importer("--output-dir", str(self.output))
+        second = run_importer(*import_arguments)
         self.assertEqual(second.returncode, 0, second.stderr)
         self.assertEqual(tree_hashes(self.output), before)
         validated = run_importer(
@@ -108,6 +127,26 @@ class NamedVisualAssetImportTests(unittest.TestCase):
         )
         self.assertEqual(validated.returncode, 0, validated.stderr)
         self.assertEqual(tree_hashes(self.output), before)
+
+    def test_validate_only_uses_the_tracked_asset_bundle_without_the_source_zip(self) -> None:
+        missing_archive = Path(self.temporary_directory.name) / "removed-source.zip"
+
+        result = run_importer(
+            "--validate-only",
+            "--archive",
+            str(missing_archive),
+            "--output-dir",
+            str(TRACKED_ASSETS),
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Validated named visual assets", result.stdout)
+
+    def test_import_requires_an_explicit_external_archive(self) -> None:
+        result = run_importer("--output-dir", str(self.output))
+
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("--archive is required when importing", result.stderr)
 
 
 if __name__ == "__main__":

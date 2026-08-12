@@ -13,25 +13,25 @@
     },
     "named_visual_asset_manifest": {
       "path": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
-      "sha256": "70194553b41be41839a1384ff71cab0ea8f6588778d8103035dfae10501545c5"
+      "sha256": "795794cd098cc6ebef8d5b510c2b91f394b446e6a8f9c880bddd0e375d86079e"
     }
   },
-  "script_sha256": "982011967499dcd40e5bc3a2f6c9bebd868e6622a0c4a5fec82510aabcb2099b",
+  "script_sha256": "0d499a6f1c408919e128146d6f717e604d3072d719575c6eb8b905328df10e70",
   "generated_files": {
     "visual-sets.json": "345a99cb89c97e282efd98852e66004319d04c29145a5f95563a3970b4db47d4",
-    "visual-assets.json": "258c725267d610064d8e61bd365be664574cf7dfaa47f22e24e72c702c53006f",
+    "visual-assets.json": "4c027ed41a671b2b477058dd5fca87b09a9a5641e649388c34298350930556d5",
     "visual-set-assets.json": "00b816fd4e482b76e6e0f36f07d9c0e3db89931ec2b34bad9948fef6165057b7",
     "story-guides.json": "32abfa39a76897862ff08ce2fc82363484450ff450fb7e38532f5b3fd93ec7f8",
     "questions.json": "498bc269d123bd235b792f95f8c154a466825833383f067f75b5d6aa43c38f3a",
     "question-visual-link-candidates.json": "d3cebf38ec26a5a2468440392e040ddb6a11b13ebd054cf9a48e55efc084a7b9",
     "model-answers.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-    "sources.json": "c8e9d9d007cec67a0c5638096641fe7c5f8a7f231adbda32a0f042a368155995",
+    "sources.json": "df43e106c50791fbe722eafd3ca7c775429f6fd724d6603505339c7b2615d084",
     "source-references.json": "888d12f5d5862cb657294ff79f64839502e1b84213453f85e3a49729fe6e2d30",
     "part-guides.json": "bf160b331ee446b6427932114b56108e625514603eed60c7d9dafde4d6d6b5f5",
     "learning-expressions.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
     "practice-drills.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
     "course-insights.json": "b0bdd6ff7fa10bc635c85bc313ce52c468447f89a1011efdca6b3a005cd92b2b",
-    "README.md": "1b54d56e4ab1d43b6acb00a805716faa6edda6ff8a9d193899c2363d6fbb586c"
+    "README.md": "bbf5162f7b2e4a827c5fa2c1e35cc9d22cd1a96b7a70a76da529bee3799727ed"
   },
   "counts": {
     "visual_set": 12,

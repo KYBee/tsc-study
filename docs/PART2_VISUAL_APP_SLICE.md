@@ -28,16 +28,17 @@ fixture ID는 `part2-visual-working-development-fixture-v1`, 경로는
 
 ## 로컬 이미지 추출과 권리 경계
 
-사용자가 제공한 이름 지정 ZIP을 다음 명령으로 안전하게 푼다.
+이미 추출되어 Git에 보존된 이름 지정 자산을 다음 명령으로 검증한다.
 
 ```sh
-python3 scripts/import_named_visual_assets.py
+npm run assets:visual-local
 ```
 
-압축 원본은 `data/raw/TSC_individual_images_named.zip`, 생성 경로는
-`data/working/app-assets/tsc-individual-images-v1/`이다. 60개 PNG는 재인코딩
+압축 원본은 추출 검증 후 저장소에서 제거했다. 생성 경로는
+`data/working/app-assets/tsc-individual-images-v1/`이며, 60개 PNG는 재인코딩
 없이 Git에 working 앱 자산으로 보존한다. fixture JSON은 base64가 아니라
-해당 파일의 `VisualAsset` 메타데이터만 보존한다.
+해당 파일의 `VisualAsset` 메타데이터만 보존한다. 외부 원본을 다시 반입할
+때만 importer에 `--archive <path>`를 명시한다.
 
 - Part 2 이미지 12개 모두 `rights_status = review_needed`다.
 - `public_allowed`는 false로 유지한다.

@@ -127,14 +127,16 @@
   },
   {
     "source_id": "src-user-named-visuals-001",
-    "title": "TSC individual image set",
+    "title": "TSC named visual asset manifest",
     "source_type": "other",
     "provenance_status": "unverified_source",
     "creator_or_provider": "",
-    "original_file_name": "TSC_individual_images_named.zip",
-    "file_ref": "data/raw/TSC_individual_images_named.zip",
-    "claimed_original_names": [],
-    "sha256": "49f24443b159fc0ddc7fc339938a4406d77f66c8c82ad1856e4418a924a956e9",
+    "original_file_name": "manifest.json",
+    "file_ref": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
+    "claimed_original_names": [
+      "TSC_individual_images_named.zip"
+    ],
+    "sha256": "795794cd098cc6ebef8d5b510c2b91f394b446e6a8f9c880bddd0e375d86079e",
     "acquired_date": "",
     "rights_status": "review_needed",
     "source_status": "raw",

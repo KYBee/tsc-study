@@ -2,7 +2,7 @@
   {
     "visual_asset_id": "va-P7-V01-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-1-1_buy_new_pink_dress.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-1-1_buy_new_pink_dress.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-1-1_buy_new_pink_dress.png",
     "media_type": "image/png",
     "file_size": 361480,
@@ -16,7 +16,7 @@
   {
     "visual_asset_id": "va-P7-V01-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-1-2_show_new_dress_to_friend.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-1-2_show_new_dress_to_friend.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-1-2_show_new_dress_to_friend.png",
     "media_type": "image/png",
     "file_size": 338554,
@@ -30,7 +30,7 @@
   {
     "visual_asset_id": "va-P7-V01-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-1-3_spill_drink_on_dress.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-1-3_spill_drink_on_dress.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-1-3_spill_drink_on_dress.png",
     "media_type": "image/png",
     "file_size": 333430,
@@ -44,7 +44,7 @@
   {
     "visual_asset_id": "va-P7-V01-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-1-4_wash_stained_dress.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-1-4_wash_stained_dress.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-1-4_wash_stained_dress.png",
     "media_type": "image/png",
     "file_size": 351442,
@@ -58,7 +58,7 @@
   {
     "visual_asset_id": "va-P7-V02-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-2-1_pass_driving_test_get_license.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-2-1_pass_driving_test_get_license.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-2-1_pass_driving_test_get_license.png",
     "media_type": "image/png",
     "file_size": 312725,
@@ -72,7 +72,7 @@
   {
     "visual_asset_id": "va-P7-V02-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-2-2_drive_car_after_getting_license.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-2-2_drive_car_after_getting_license.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-2-2_drive_car_after_getting_license.png",
     "media_type": "image/png",
     "file_size": 348747,
@@ -86,7 +86,7 @@
   {
     "visual_asset_id": "va-P7-V02-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-2-3_car_accident_on_road.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-2-3_car_accident_on_road.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-2-3_car_accident_on_road.png",
     "media_type": "image/png",
     "file_size": 404309,
@@ -100,7 +100,7 @@
   {
     "visual_asset_id": "va-P7-V02-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-2-4_pay_expensive_repair_fee.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-2-4_pay_expensive_repair_fee.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-2-4_pay_expensive_repair_fee.png",
     "media_type": "image/png",
     "file_size": 379542,
@@ -114,7 +114,7 @@
   {
     "visual_asset_id": "va-P7-V03-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-3-1_neighbor_brings_oranges.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-3-1_neighbor_brings_oranges.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-3-1_neighbor_brings_oranges.png",
     "media_type": "image/png",
     "file_size": 372552,
@@ -128,7 +128,7 @@
   {
     "visual_asset_id": "va-P7-V03-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-3-2_watermelon_is_missing.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-3-2_watermelon_is_missing.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-3-2_watermelon_is_missing.png",
     "media_type": "image/png",
     "file_size": 363514,
@@ -142,7 +142,7 @@
   {
     "visual_asset_id": "va-P7-V03-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-3-3_mother_scolds_boy.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-3-3_mother_scolds_boy.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-3-3_mother_scolds_boy.png",
     "media_type": "image/png",
     "file_size": 360104,
@@ -156,7 +156,7 @@
   {
     "visual_asset_id": "va-P7-V03-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-3-4_dog_ate_the_watermelon.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-3-4_dog_ate_the_watermelon.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-3-4_dog_ate_the_watermelon.png",
     "media_type": "image/png",
     "file_size": 370811,
@@ -170,7 +170,7 @@
   {
     "visual_asset_id": "va-P7-V04-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-4-1_mother_gives_money_for_apples.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-4-1_mother_gives_money_for_apples.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-4-1_mother_gives_money_for_apples.png",
     "media_type": "image/png",
     "file_size": 350389,
@@ -184,7 +184,7 @@
   {
     "visual_asset_id": "va-P7-V04-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-4-2_buy_three_apples_at_market.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-4-2_buy_three_apples_at_market.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-4-2_buy_three_apples_at_market.png",
     "media_type": "image/png",
     "file_size": 373857,
@@ -198,7 +198,7 @@
   {
     "visual_asset_id": "va-P7-V04-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-4-3_boy_gets_distracted_by_game.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-4-3_boy_gets_distracted_by_game.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-4-3_boy_gets_distracted_by_game.png",
     "media_type": "image/png",
     "file_size": 396090,
@@ -212,7 +212,7 @@
   {
     "visual_asset_id": "va-P7-V04-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-4-4_leave_apples_on_bench.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-4-4_leave_apples_on_bench.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-4-4_leave_apples_on_bench.png",
     "media_type": "image/png",
     "file_size": 395573,
@@ -226,7 +226,7 @@
   {
     "visual_asset_id": "va-P7-V05-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-5-1_take_a_taxi.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-5-1_take_a_taxi.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-5-1_take_a_taxi.png",
     "media_type": "image/png",
     "file_size": 357263,
@@ -240,7 +240,7 @@
   {
     "visual_asset_id": "va-P7-V05-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-5-2_realize_phone_left_in_taxi.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-5-2_realize_phone_left_in_taxi.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-5-2_realize_phone_left_in_taxi.png",
     "media_type": "image/png",
     "file_size": 381789,
@@ -254,7 +254,7 @@
   {
     "visual_asset_id": "va-P7-V05-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-5-3_call_taxi_driver_about_phone.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-5-3_call_taxi_driver_about_phone.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-5-3_call_taxi_driver_about_phone.png",
     "media_type": "image/png",
     "file_size": 372757,
@@ -268,7 +268,7 @@
   {
     "visual_asset_id": "va-P7-V05-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-5-4_get_phone_back_and_say_thanks.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-5-4_get_phone_back_and_say_thanks.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-5-4_get_phone_back_and_say_thanks.png",
     "media_type": "image/png",
     "file_size": 368450,
@@ -282,7 +282,7 @@
   {
     "visual_asset_id": "va-P7-V06-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-6-1_two_friends_walk_together.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-6-1_two_friends_walk_together.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-6-1_two_friends_walk_together.png",
     "media_type": "image/png",
     "file_size": 379430,
@@ -296,7 +296,7 @@
   {
     "visual_asset_id": "va-P7-V06-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-6-2_suddenly_it_starts_raining.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-6-2_suddenly_it_starts_raining.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-6-2_suddenly_it_starts_raining.png",
     "media_type": "image/png",
     "file_size": 382192,
@@ -310,7 +310,7 @@
   {
     "visual_asset_id": "va-P7-V06-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-6-3_one_friend_has_umbrella.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-6-3_one_friend_has_umbrella.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-6-3_one_friend_has_umbrella.png",
     "media_type": "image/png",
     "file_size": 387578,
@@ -324,7 +324,7 @@
   {
     "visual_asset_id": "va-P7-V06-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-6-4_share_umbrella_and_go_home.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-6-4_share_umbrella_and_go_home.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-6-4_share_umbrella_and_go_home.png",
     "media_type": "image/png",
     "file_size": 375703,
@@ -338,7 +338,7 @@
   {
     "visual_asset_id": "va-P7-V07-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-7-1_prepare_surprise_birthday_party.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-7-1_prepare_surprise_birthday_party.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-7-1_prepare_surprise_birthday_party.png",
     "media_type": "image/png",
     "file_size": 336261,
@@ -352,7 +352,7 @@
   {
     "visual_asset_id": "va-P7-V07-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-7-2_birthday_girl_enters_dark_room.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-7-2_birthday_girl_enters_dark_room.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-7-2_birthday_girl_enters_dark_room.png",
     "media_type": "image/png",
     "file_size": 272696,
@@ -366,7 +366,7 @@
   {
     "visual_asset_id": "va-P7-V07-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-7-3_friends_shout_surprise.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-7-3_friends_shout_surprise.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-7-3_friends_shout_surprise.png",
     "media_type": "image/png",
     "file_size": 365655,
@@ -380,7 +380,7 @@
   {
     "visual_asset_id": "va-P7-V07-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-7-4_enjoy_birthday_party_together.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-7-4_enjoy_birthday_party_together.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-7-4_enjoy_birthday_party_together.png",
     "media_type": "image/png",
     "file_size": 382380,
@@ -394,7 +394,7 @@
   {
     "visual_asset_id": "va-P7-V08-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-8-1_oversleep_in_the_morning.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-8-1_oversleep_in_the_morning.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-8-1_oversleep_in_the_morning.png",
     "media_type": "image/png",
     "file_size": 358777,
@@ -408,7 +408,7 @@
   {
     "visual_asset_id": "va-P7-V08-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-8-2_run_out_of_home_in_hurry.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-8-2_run_out_of_home_in_hurry.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-8-2_run_out_of_home_in_hurry.png",
     "media_type": "image/png",
     "file_size": 365887,
@@ -422,7 +422,7 @@
   {
     "visual_asset_id": "va-P7-V08-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-8-3_miss_the_bus.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-8-3_miss_the_bus.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-8-3_miss_the_bus.png",
     "media_type": "image/png",
     "file_size": 372180,
@@ -436,7 +436,7 @@
   {
     "visual_asset_id": "va-P7-V08-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-8-4_arrive_late_at_school.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-8-4_arrive_late_at_school.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-8-4_arrive_late_at_school.png",
     "media_type": "image/png",
     "file_size": 363532,
@@ -450,7 +450,7 @@
   {
     "visual_asset_id": "va-P7-V09-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-9-1_find_wallet_on_street.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-9-1_find_wallet_on_street.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-9-1_find_wallet_on_street.png",
     "media_type": "image/png",
     "file_size": 377507,
@@ -464,7 +464,7 @@
   {
     "visual_asset_id": "va-P7-V09-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-9-2_pick_up_wallet.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-9-2_pick_up_wallet.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-9-2_pick_up_wallet.png",
     "media_type": "image/png",
     "file_size": 383848,
@@ -478,7 +478,7 @@
   {
     "visual_asset_id": "va-P7-V09-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-9-3_take_wallet_to_police_station.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-9-3_take_wallet_to_police_station.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-9-3_take_wallet_to_police_station.png",
     "media_type": "image/png",
     "file_size": 337005,
@@ -492,7 +492,7 @@
   {
     "visual_asset_id": "va-P7-V09-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-9-4_owner_gets_wallet_back.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-9-4_owner_gets_wallet_back.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-9-4_owner_gets_wallet_back.png",
     "media_type": "image/png",
     "file_size": 325718,
@@ -506,7 +506,7 @@
   {
     "visual_asset_id": "va-P7-V10-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-10-1_order_noodles_at_restaurant.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-10-1_order_noodles_at_restaurant.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-10-1_order_noodles_at_restaurant.png",
     "media_type": "image/png",
     "file_size": 368417,
@@ -520,7 +520,7 @@
   {
     "visual_asset_id": "va-P7-V10-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-10-2_wrong_food_is_served.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-10-2_wrong_food_is_served.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-10-2_wrong_food_is_served.png",
     "media_type": "image/png",
     "file_size": 364249,
@@ -534,7 +534,7 @@
   {
     "visual_asset_id": "va-P7-V10-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-10-3_tell_staff_order_is_wrong.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-10-3_tell_staff_order_is_wrong.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-10-3_tell_staff_order_is_wrong.png",
     "media_type": "image/png",
     "file_size": 370548,
@@ -548,7 +548,7 @@
   {
     "visual_asset_id": "va-P7-V10-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-10-4_receive_correct_bowl_of_noodles.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-10-4_receive_correct_bowl_of_noodles.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-10-4_receive_correct_bowl_of_noodles.png",
     "media_type": "image/png",
     "file_size": 378338,
@@ -562,7 +562,7 @@
   {
     "visual_asset_id": "va-P7-V11-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-11-1_family_prepares_for_trip.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-11-1_family_prepares_for_trip.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-11-1_family_prepares_for_trip.png",
     "media_type": "image/png",
     "file_size": 397844,
@@ -576,7 +576,7 @@
   {
     "visual_asset_id": "va-P7-V11-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-11-2_family_arrives_at_airport.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-11-2_family_arrives_at_airport.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-11-2_family_arrives_at_airport.png",
     "media_type": "image/png",
     "file_size": 382054,
@@ -590,7 +590,7 @@
   {
     "visual_asset_id": "va-P7-V11-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-11-3_discover_passport_left_at_home.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-11-3_discover_passport_left_at_home.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-11-3_discover_passport_left_at_home.png",
     "media_type": "image/png",
     "file_size": 373896,
@@ -604,7 +604,7 @@
   {
     "visual_asset_id": "va-P7-V11-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-11-4_return_home_sadly.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-11-4_return_home_sadly.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-11-4_return_home_sadly.png",
     "media_type": "image/png",
     "file_size": 394235,
@@ -618,7 +618,7 @@
   {
     "visual_asset_id": "va-P7-V12-01",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-12-1_find_injured_dog.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-12-1_find_injured_dog.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-12-1_find_injured_dog.png",
     "media_type": "image/png",
     "file_size": 402659,
@@ -632,7 +632,7 @@
   {
     "visual_asset_id": "va-P7-V12-02",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-12-2_take_dog_to_vet.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-12-2_take_dog_to_vet.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-12-2_take_dog_to_vet.png",
     "media_type": "image/png",
     "file_size": 357105,
@@ -646,7 +646,7 @@
   {
     "visual_asset_id": "va-P7-V12-03",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-12-3_make_lost_dog_poster_and_call_owner.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-12-3_make_lost_dog_poster_and_call_owner.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-12-3_make_lost_dog_poster_and_call_owner.png",
     "media_type": "image/png",
     "file_size": 353975,
@@ -660,7 +660,7 @@
   {
     "visual_asset_id": "va-P7-V12-04",
     "source_id": "src-user-named-visuals-001",
-    "source_locator": "TSC_individual_images_named.zip!/part7-12-4_reunite_dog_with_owner.png",
+    "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-12-4_reunite_dog_with_owner.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-12-4_reunite_dog_with_owner.png",
     "media_type": "image/png",
     "file_size": 380478,

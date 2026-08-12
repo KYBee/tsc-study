@@ -90,12 +90,13 @@ python3 scripts/build_part2_visual_app_fixture.py
 python3 scripts/build_part2_visual_app_fixture.py --validate-only
 ```
 
-사용자가 제공한 `data/raw/TSC_individual_images_named.zip`은 원본 바이트를
-보존한다. `scripts/import_named_visual_assets.py`는 명시적 파일명·CSV 매핑을
-검증하고 PNG 60장을 `data/working/app-assets/tsc-individual-images-v1/`에
-결정적으로 푼다. 이 working 앱 자산은 Git에 보존하지만 reviewed·public
-자산으로 승격하지 않는다. 앱은 development 서버에서 등록 asset ID와
-SHA-256이 일치할 때만 읽고 production build에는 포함하지 않는다. 개인 PracticeDraft·ReviewState·RecallAttempt는
+사용자가 제공한 이름 지정 압축 원본은 추출 검증 후 저장소에서 제거했다.
+`scripts/import_named_visual_assets.py`로 명시적 외부 `--archive`를 다시 반입할
+수 있고, 기본 자산 명령은 이미 추출된 PNG 60장과 파일명·CSV 매핑을
+`data/working/app-assets/tsc-individual-images-v1/`에서 검증한다. 이 working 앱
+자산은 Git에 보존하지만 reviewed·public 자산으로 승격하지 않는다. 앱은
+development 서버에서 등록 asset ID와 SHA-256이 일치할 때만 읽고 production
+build에는 포함하지 않는다. 개인 PracticeDraft·ReviewState·RecallAttempt는
 `visual_question` target으로 IndexedDB에 저장하며 working 공용 JSON을
 수정하지 않는다.
 

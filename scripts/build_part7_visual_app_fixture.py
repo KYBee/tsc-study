@@ -225,7 +225,7 @@ def build_readme() -> str:
   production 화면과 build에는 포함하지 않는다.
 
 ```sh
-python3 scripts/import_named_visual_assets.py
+npm run assets:visual-local
 python3 scripts/build_part7_visual_app_fixture.py
 python3 scripts/build_part7_visual_app_fixture.py --validate-only
 ```

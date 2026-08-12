@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 from typing import Any
@@ -23,8 +24,8 @@ def load_manifest() -> dict[str, Any]:
         manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
     except (FileNotFoundError, json.JSONDecodeError) as cause:
         raise NamedAssetDataError(
-            "named visual assets are not prepared; run "
-            "python3 scripts/import_named_visual_assets.py"
+            "named visual assets are not prepared; restore the tracked asset bundle "
+            "and run npm run assets:visual-local"
         ) from cause
     if (
         manifest.get("dataset_id") != DATASET_ID
@@ -38,14 +39,14 @@ def load_manifest() -> dict[str, Any]:
 def source_record(manifest: dict[str, Any]) -> dict[str, Any]:
     return {
         "source_id": SOURCE_ID,
-        "title": "TSC individual image set",
+        "title": "TSC named visual asset manifest",
         "source_type": "other",
         "provenance_status": "unverified_source",
         "creator_or_provider": "",
-        "original_file_name": "TSC_individual_images_named.zip",
-        "file_ref": "data/raw/TSC_individual_images_named.zip",
-        "claimed_original_names": [],
-        "sha256": manifest["source_archive_sha256"],
+        "original_file_name": "manifest.json",
+        "file_ref": (ASSET_ROOT / "manifest.json").as_posix(),
+        "claimed_original_names": ["TSC_individual_images_named.zip"],
+        "sha256": hashlib.sha256(MANIFEST_PATH.read_bytes()).hexdigest(),
         "acquired_date": "",
         "rights_status": "review_needed",
         "source_status": "raw",
@@ -77,9 +78,7 @@ def visual_entities(part: int) -> tuple[list[dict[str, Any]], list[dict[str, Any
             {
                 "visual_asset_id": visual_asset_id,
                 "source_id": SOURCE_ID,
-                "source_locator": (
-                    "TSC_individual_images_named.zip!/" + item["filename"]
-                ),
+                "source_locator": (ASSET_ROOT / item["filename"]).as_posix(),
                 "repository_path": (ASSET_ROOT / item["filename"]).as_posix(),
                 "media_type": item["media_type"],
                 "file_size": item["file_size"],

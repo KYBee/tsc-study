@@ -102,6 +102,18 @@ class Part2VisualAppFixtureTests(unittest.TestCase):
             )
         )
 
+    def test_named_image_source_points_to_a_tracked_repository_file(self) -> None:
+        source = next(
+            item
+            for item in self.payloads["sources.json"]
+            if item["source_id"] == "src-user-named-visuals-001"
+        )
+        self.assertTrue((ROOT / source["file_ref"]).is_file())
+        self.assertEqual(
+            source["file_ref"],
+            "data/working/app-assets/tsc-individual-images-v1/manifest.json",
+        )
+
     def test_all_visual_questions_work_without_forcing_canonical_links(self) -> None:
         questions = self.payloads["visual-questions.json"]
         self.assertEqual(sum(bool(item.get("question_id")) for item in questions), 18)

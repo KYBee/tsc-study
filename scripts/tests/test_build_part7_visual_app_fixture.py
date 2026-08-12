@@ -106,6 +106,18 @@ class Part7VisualAppFixtureTests(unittest.TestCase):
                 for item in self.payloads["visual-sets.json"]
             )
         )
+
+    def test_named_image_source_points_to_a_tracked_repository_file(self) -> None:
+        source = next(
+            item
+            for item in self.payloads["sources.json"]
+            if item["source_id"] == "src-user-named-visuals-001"
+        )
+        self.assertTrue((ROOT / source["file_ref"]).is_file())
+        self.assertEqual(
+            source["file_ref"],
+            "data/working/app-assets/tsc-individual-images-v1/manifest.json",
+        )
         self.assertFalse(
             any(
                 item["set_type"] == "official_sample"

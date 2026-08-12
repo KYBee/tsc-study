@@ -1,7 +1,7 @@
 {
   "dataset_id": "tsc-individual-images-v1",
   "dataset_status": "working",
-  "source_archive": "data/raw/TSC_individual_images_named.zip",
+  "source_archive_original_name": "TSC_individual_images_named.zip",
   "source_archive_sha256": "49f24443b159fc0ddc7fc339938a4406d77f66c8c82ad1856e4418a924a956e9",
   "source_archive_size": 21549390,
   "source_metadata_sha256": {
@@ -736,7 +736,7 @@
     }
   ],
   "generated_files": {
-    "README.md": "89c3db5b39f893054ea76aff0729f7e6c30caba09edf25d9503c9af4611db221",
+    "README.md": "7919f69efd15d256d523c1b28ee8db80c653b01bc5eec328cf6b1505c3ff4679",
     "README.txt": "0a6d98622f428d0721c43d41414a98d0971c5a6b0f27549b552e25c879fc6062",
     "image_name_list.csv": "fcde668ca785102bd28b053b2a21b6a13e8f64a2613489dcd9d2debb28c19ec9",
     "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png": "c8c1708c6b34dc2e0ad85dd245a5d2b780fd70801cba636b72ce5d44c7824918",
