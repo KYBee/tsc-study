@@ -617,8 +617,13 @@ export function createUserDataRepository(
     if (!input.recall_attempt_id.trim() || !targetId.trim()) {
       throw new Error('회상 기록 ID와 target_id는 필수입니다')
     }
-    if (!input.practice_draft_id && !input.user_answer_id) {
-      throw new Error('회상 기록은 연습 초안 또는 교정 답변을 참조해야 합니다')
+    const hasExplicitTarget = Boolean(
+      input.target_type && input.target_id?.trim(),
+    )
+    if (!input.practice_draft_id && !input.user_answer_id && !hasExplicitTarget) {
+      throw new Error(
+        '회상 기록은 연습 초안, 교정 답변 또는 명시적 학습 대상을 참조해야 합니다',
+      )
     }
     const database = await databasePromise
     const stored: StoredRecallAttempt = {

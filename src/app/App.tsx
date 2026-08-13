@@ -11,6 +11,7 @@ import { createPublicContentRepository } from '../data/publicContentRepository'
 import { createUserDataRepository } from '../data/userDataRepository'
 import { createReviewDecisionRepository } from '../data/reviewDecisionRepository'
 import { MockCorrectionProvider } from '../providers/MockCorrectionProvider'
+import { createBrowserQuestionSpeechPlayer } from '../features/exam/questionSpeech'
 import { ErrorState } from '../components/ErrorState'
 import { AppShell } from './AppShell'
 import {
@@ -78,6 +79,7 @@ function createDefaultDependencies(): AppDependencies {
     publicRepository: createPublicContentRepository(),
     userRepository: createUserDataRepository(),
     correctionProvider: new MockCorrectionProvider(),
+    questionSpeechPlayer: createBrowserQuestionSpeechPlayer(),
     reviewDecisionRepository: createReviewDecisionRepository(),
   }
 }

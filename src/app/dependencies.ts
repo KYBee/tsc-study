@@ -4,11 +4,13 @@ import type { UserDataRepository } from '../data/userDataRepository'
 import type { ReviewDecisionRepository } from '../data/reviewDecisionRepository'
 import type { PublicContentRepository } from '../domain/repositories'
 import type { CorrectionProvider } from '../providers/CorrectionProvider'
+import type { QuestionSpeechPlayer } from '../features/exam/questionSpeech'
 
 export interface AppDependencies {
   publicRepository: PublicContentRepository
   userRepository: UserDataRepository
   correctionProvider: CorrectionProvider
+  questionSpeechPlayer?: QuestionSpeechPlayer
   reviewDecisionRepository?: ReviewDecisionRepository
 }
 

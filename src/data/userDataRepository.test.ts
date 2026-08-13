@@ -356,6 +356,30 @@ describe('UserDataRepository structured learning records', () => {
     ])
   })
 
+  it('stores an exam self-assessment against an explicit target without inventing a draft', async () => {
+    const repository = createRepository()
+    await repository.addRecallAttempt({
+      recall_attempt_id: 'ra-exam-vq-P2-V01-Q1-001',
+      question_id: 'vq-P2-V01-Q1',
+      target_type: 'visual_question',
+      target_id: 'vq-P2-V01-Q1',
+      recall_mode: 'visual_question',
+      result: 'used_keywords',
+    })
+
+    const attempts = await repository.listRecallAttemptsByTarget(
+      'visual_question',
+      'vq-P2-V01-Q1',
+    )
+    expect(attempts).toMatchObject([
+      {
+        target_type: 'visual_question',
+        result: 'used_keywords',
+      },
+    ])
+    expect(attempts[0]).not.toHaveProperty('practice_draft_id')
+  })
+
   it('stores visual-question drafts, phrases, recall attempts, and review state by explicit target', async () => {
     const repository = createRepository()
     const targetId = 'vq-P2-V01-Q1'

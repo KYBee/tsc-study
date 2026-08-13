@@ -1426,6 +1426,30 @@
   background: var(--accent);
 }
 
+.exam-page .visual-set-main {
+  padding: 0.75rem;
+}
+
+.exam-stage {
+  display: grid;
+  min-height: 10rem;
+  place-items: center;
+  text-align: center;
+}
+
+.exam-countdown,
+.exam-phase-label {
+  margin: 0;
+  font-size: clamp(1.4rem, 8vw, 2.5rem);
+  font-weight: 800;
+}
+
+.exam-countdown strong {
+  color: var(--accent);
+  font-size: 1.35em;
+  font-variant-numeric: tabular-nums;
+}
+
 @media (min-width: 640px) {
   .page {
     padding: 1.75rem 1.5rem 2.5rem;
