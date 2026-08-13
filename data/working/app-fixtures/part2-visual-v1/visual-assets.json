@@ -11,7 +11,7 @@
     "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 공원에서 달리는 남자, 벤치에 앉은 여자, 벤치 아래 고양이, 7시 30분 시계; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 공원에서 달리는 남자, 벤치에 앉은 여자, 벤치 아래 고양이, 7시 30분 시계; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V02-01",
@@ -19,13 +19,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-2_weather_rainy_8c_vs_sunny.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-2_weather_rainy_8c_vs_sunny.png",
     "media_type": "image/png",
-    "file_size": 369390,
-    "sha256": "a590b7999c85b2c8ff88ec6ef4650bc0e0b8d35d5ed4d67a409e0065765623a5",
-    "width": 538,
-    "height": 444,
+    "file_size": 2352773,
+    "sha256": "721ccf6f5f14cb4c8e63beda951e3eb9d6650014d8616011de0c8df7364e6425",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 비 오는 8도 날씨와 맑은 날씨 비교; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 비 오는 8도 날씨와 맑은 날씨 비교; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V03-01",
@@ -33,13 +33,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
     "media_type": "image/png",
-    "file_size": 333719,
-    "sha256": "c00cd891e262fa9e5a9f97f00f11c6c5928c36d96b39a54fc12fcf0bc566ffe3",
-    "width": 538,
-    "height": 444,
+    "file_size": 2031392,
+    "sha256": "cde25a5c130a3fdce2e7f4deb6b975ec2f09b54c363a7ccd232424c1213df9e8",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 과일 가게, 2kg 저울, 포도 5위안; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 과일 가게, 2kg 저울, 포도 5위안; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V04-01",
@@ -47,13 +47,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-4_bakery_bread_magazine_watch_prices.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-4_bakery_bread_magazine_watch_prices.png",
     "media_type": "image/png",
-    "file_size": 347217,
-    "sha256": "bcee8f3d81949ad3ccea7be974d7eef4fea11957214f8f2033bdfc973f2d44b3",
-    "width": 538,
-    "height": 444,
+    "file_size": 2196219,
+    "sha256": "922b9f669c33a769c92b8d38eb6fcd8405086b46de7db427e9cc89a4b2c2f968",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 빵집, 잡지, 시계 가격 비교; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 빵집, 잡지, 시계 가격 비교; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V05-01",
@@ -61,13 +61,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-5_city_bus_subway_hospital_school_home.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-5_city_bus_subway_hospital_school_home.png",
     "media_type": "image/png",
-    "file_size": 352713,
-    "sha256": "37853faa341b17dd0ae3a47a77ce975c7992f58dc5a60f47c58019f04fc77841",
-    "width": 538,
-    "height": 444,
+    "file_size": 2234479,
+    "sha256": "8c18ba06e82cf73c5b64999670bc8ff050d337baaefcafb2f95053720bde033d",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 도시 건물, 버스 5211, 지하철 1km, 병원/학교/집; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 도시 건물, 버스 5211, 지하철 1km, 병원/학교/집; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V06-01",
@@ -75,13 +75,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-6_room_window_cat_apple_book_flower_slippers.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-6_room_window_cat_apple_book_flower_slippers.png",
     "media_type": "image/png",
-    "file_size": 316065,
-    "sha256": "b678de9c8daa6d265b8a8a3e80836fdd0eb667201f9e2c875a15e4549161ab54",
-    "width": 538,
-    "height": 444,
+    "file_size": 1779635,
+    "sha256": "6b864045aeb8d246fcbff5ccec2ad0d3edab7bad584d80a55def54d9134fc19c",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 방 안 풍경, 창문 고양이, 사과, 책, 꽃, 슬리퍼; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 방 안 풍경, 창문 고양이, 사과, 책, 꽃, 슬리퍼; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V07-01",
@@ -89,13 +89,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-7_copy_machine_papers_room503_clock.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-7_copy_machine_papers_room503_clock.png",
     "media_type": "image/png",
-    "file_size": 321380,
-    "sha256": "064bd7755406b3dbed631556bff318ccb3f12d41851baf46c8f91a9ac5b10e3c",
-    "width": 538,
-    "height": 444,
+    "file_size": 2018196,
+    "sha256": "8ce1cdf5e50ab4d3c50552f487a9067c0f5c1febbffdc9243c39727aae7ce0fb",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 복사기, 종이 묶음, 503호, 시계; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 복사기, 종이 묶음, 503호, 시계; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V08-01",
@@ -109,7 +109,7 @@
     "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 도서관에서 책과 신문 읽기, 주방에서 요리와 설거지; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 도서관에서 책과 신문 읽기, 주방에서 요리와 설거지; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V09-01",
@@ -117,13 +117,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-9_bus5211_room103_hospital503_clock.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-9_bus5211_room103_hospital503_clock.png",
     "media_type": "image/png",
-    "file_size": 300046,
-    "sha256": "613bcc1b63e7a170f1ee5db8e330b0e9b99800f5b3b45ed6b3879b5b4dc5e287",
-    "width": 538,
-    "height": 444,
+    "file_size": 2085150,
+    "sha256": "fde58b8514ca2170cebf5d140cac615066a452c604aeb4fd701a477a23409241",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 버스 5211, 103호, 병원 503병동, 시계; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 버스 5211, 103호, 병원 503병동, 시계; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V10-01",
@@ -131,13 +131,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
     "media_type": "image/png",
-    "file_size": 280392,
-    "sha256": "c8c1708c6b34dc2e0ad85dd245a5d2b780fd70801cba636b72ce5d44c7824918",
-    "width": 538,
-    "height": 444,
+    "file_size": 1643415,
+    "sha256": "369e857120f4fb1c01150585dbd47574a6b2ccdb9bb9c00eff43a71143879efd",
+    "width": 1448,
+    "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 키 180cm/162cm, 노트북 3kg, 여행가방 15kg; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 키 180cm/162cm, 노트북 3kg, 여행가방 15kg; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V11-01",
@@ -151,7 +151,7 @@
     "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 모자를 쓴 남자, 우산을 든 여자, 바지 두 벌, 신발 한 켤레; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 모자를 쓴 남자, 우산을 든 여자, 바지 두 벌, 신발 한 켤레; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P2-V12-01",
@@ -165,6 +165,6 @@
     "height": 1086,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 커피 4위안과 케이크 8위안, 사과 두 개, 젖은 우산; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 커피 4위안과 케이크 8위안, 사과 두 개, 젖은 우산; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   }
 ]

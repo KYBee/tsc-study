@@ -32,6 +32,23 @@ PART7_NAME = re.compile(
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 MAX_MEMBER_BYTES = 25 * 1024 * 1024
 MAX_TOTAL_BYTES = 100 * 1024 * 1024
+GENERATED_REPLACEMENT_ASSETS = (
+    "part2-2_weather_rainy_8c_vs_sunny.png",
+    "part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
+    "part2-4_bakery_bread_magazine_watch_prices.png",
+    "part2-5_city_bus_subway_hospital_school_home.png",
+    "part2-6_room_window_cat_apple_book_flower_slippers.png",
+    "part2-7_copy_machine_papers_room503_clock.png",
+    "part2-9_bus5211_room103_hospital503_clock.png",
+    "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
+    "part7-2-3_car_accident_on_road.png",
+    "part7-2-4_pay_expensive_repair_fee.png",
+    "part7-3-1_neighbor_brings_oranges.png",
+    "part7-4-3_boy_gets_distracted_by_game.png",
+    "part7-7-1_prepare_surprise_birthday_party.png",
+    "part7-7-4_enjoy_birthday_party_together.png",
+    "part7-8-2_run_out_of_home_in_hurry.png",
+)
 
 
 class ImportError(RuntimeError):
@@ -153,6 +170,11 @@ def read_archive(archive: Path) -> tuple[dict[str, bytes], list[dict[str, Any]]]
                 "sha256": sha256_bytes(value),
                 "width": width,
                 "height": height,
+                "asset_provenance_kind": (
+                    "generated_replacement"
+                    if filename in GENERATED_REPLACEMENT_ASSETS
+                    else "named_bundle_asset"
+                ),
             }
         )
     expected = {
@@ -172,19 +194,22 @@ def read_archive(archive: Path) -> tuple[dict[str, bytes], list[dict[str, Any]]]
 def build_readme() -> bytes:
     return """# TSC named visual assets v1
 
-사용자가 제공한 이름 지정 이미지 묶음의 이미지 60장을 바이트 변경 없이
-안전하게 푼 working 앱 자산이다.
+이름 지정 이미지 묶음과 학습 정합성 검수에서 생성한 교체본을 합친
+working 앱 자산이다. 현재 audited archive의 이미지 60장은 재인코딩 없이
+안전하게 반입한다.
 
 - Part 2: 세트별 대표 그림 1장, 총 12장
 - Part 7: 세트별 이야기 그림 4장, 총 48장
 - 파일명과 `image_name_list.csv`가 제공하는 명시적 세트·순서를 사용한다.
+- `generated_replacement_assets`와 각 asset의 `asset_provenance_kind`로
+  생성 교체본과 기존 묶음 자산을 구분한다.
 - 압축 원본은 추출 검증 후 저장소에서 제거했다. working 사본의 텍스트
   메타데이터만 UTF-8/LF로 결정적으로 정규화했으며 PNG 바이트는 변경하지
   않았다.
 - 이미지의 출처와 공개 권리는 별도로 검증되지 않았으므로 모두
   `review_needed`, `public_allowed = false`로 취급한다.
-- Git에는 로컬 학습을 위한 원본 바이트를 보존하지만 production 화면과
-  build에는 포함하거나 노출하지 않는다.
+- Git에는 학습용 바이트를 보존한다. 기본 production build에서는 제외하며,
+  운영자가 별도 환경변수로 명시적으로 opt-in한 build에만 포함한다.
 
 ```sh
 python3 scripts/import_named_visual_assets.py --archive /path/to/named-assets.zip
@@ -226,6 +251,7 @@ def build_files(archive: Path) -> dict[str, bytes]:
                 name: sha256_bytes(archive_files[name]) for name in sorted(ARCHIVE_METADATA)
             },
             "counts": {"total": 60, "part2": 12, "part7": 48},
+            "generated_replacement_assets": list(GENERATED_REPLACEMENT_ASSETS),
             "assets": assets,
             "generated_files": generated_hashes,
             "validation": {
@@ -259,6 +285,8 @@ def validate_output(output_dir: Path) -> dict[str, int]:
         raise ImportError("asset manifest counts are invalid")
     if not isinstance(assets, list) or len(assets) != 60:
         raise ImportError("asset manifest must contain exactly 60 assets")
+    if manifest.get("generated_replacement_assets") != list(GENERATED_REPLACEMENT_ASSETS):
+        raise ImportError("asset manifest replacement provenance is invalid")
     if not isinstance(generated_files, dict):
         raise ImportError("asset manifest generated_files is invalid")
 
@@ -288,6 +316,13 @@ def validate_output(output_dir: Path) -> dict[str, int]:
         width, height = png_dimensions(value, filename)
         if item.get("media_type") != "image/png":
             raise ImportError(f"asset MIME is invalid: {filename}")
+        expected_provenance = (
+            "generated_replacement"
+            if filename in GENERATED_REPLACEMENT_ASSETS
+            else "named_bundle_asset"
+        )
+        if item.get("asset_provenance_kind") != expected_provenance:
+            raise ImportError(f"asset provenance differs from contract: {filename}")
         if item.get("file_size") != len(value):
             raise ImportError(f"asset size differs from manifest: {filename}")
         if item.get("sha256") != sha256_bytes(value):

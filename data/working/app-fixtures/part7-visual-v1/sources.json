@@ -45,19 +45,19 @@
   },
   {
     "source_id": "src-user-named-visuals-001",
-    "title": "TSC named visual asset manifest",
+    "title": "TSC audited named visual asset manifest",
     "source_type": "other",
     "provenance_status": "unverified_source",
     "creator_or_provider": "",
     "original_file_name": "manifest.json",
     "file_ref": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
     "claimed_original_names": [
-      "TSC_named_visual_assets_current_v2.zip"
+      "TSC_named_visual_assets_audited_v3.zip"
     ],
-    "sha256": "78c84b1130b16d1591d888f794eafd56104d3970d73f3c9287f224f272820ea0",
+    "sha256": "4958ead1d73bc0f8ea68dfbc12456be404156d5156e6d369ae4cacf0e5e5a477",
     "acquired_date": "",
     "rights_status": "review_needed",
     "source_status": "raw",
-    "notes": "사용자가 제공한 이름 지정 이미지 묶음. 파일명과 동봉 CSV의 세트·장면 순서는 보존했으나 원출처와 공개 권리는 검증되지 않았다."
+    "notes": "이름 지정 이미지 묶음과 정합성 검수 생성 교체본을 합친 working 자산. 파일명과 동봉 CSV의 세트·장면 순서는 보존했으나 원출처와 공개 권리는 검증되지 않았다."
   }
 ]

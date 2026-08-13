@@ -13,19 +13,19 @@
     },
     "named_visual_asset_manifest": {
       "path": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
-      "sha256": "78c84b1130b16d1591d888f794eafd56104d3970d73f3c9287f224f272820ea0"
+      "sha256": "4958ead1d73bc0f8ea68dfbc12456be404156d5156e6d369ae4cacf0e5e5a477"
     }
   },
   "script_sha256": "0d499a6f1c408919e128146d6f717e604d3072d719575c6eb8b905328df10e70",
   "generated_files": {
     "visual-sets.json": "345a99cb89c97e282efd98852e66004319d04c29145a5f95563a3970b4db47d4",
-    "visual-assets.json": "4c027ed41a671b2b477058dd5fca87b09a9a5641e649388c34298350930556d5",
+    "visual-assets.json": "2b79ea68b700d922400b46d941b070cb230882feb9c8e608afcdcf7a3d455cc0",
     "visual-set-assets.json": "00b816fd4e482b76e6e0f36f07d9c0e3db89931ec2b34bad9948fef6165057b7",
     "story-guides.json": "32abfa39a76897862ff08ce2fc82363484450ff450fb7e38532f5b3fd93ec7f8",
     "questions.json": "498bc269d123bd235b792f95f8c154a466825833383f067f75b5d6aa43c38f3a",
     "question-visual-link-candidates.json": "d3cebf38ec26a5a2468440392e040ddb6a11b13ebd054cf9a48e55efc084a7b9",
     "model-answers.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-    "sources.json": "5491793a66223ed7d0cbb0a13eda3260921b087177e8d726156d06dfcfb3c13f",
+    "sources.json": "a56659eb6e30a725ad602dd4890451d768ffddf0d95335a99a91abafe1b3f47a",
     "source-references.json": "888d12f5d5862cb657294ff79f64839502e1b84213453f85e3a49729fe6e2d30",
     "part-guides.json": "bf160b331ee446b6427932114b56108e625514603eed60c7d9dafde4d6d6b5f5",
     "learning-expressions.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",

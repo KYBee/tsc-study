@@ -36,9 +36,10 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 [Part 2 로컬 시각 학습 slice](docs/PART2_VISUAL_APP_SLICE.md)는
 VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48개를
-개발 환경에 연결한다. 사용자가 제공한 이름 지정 이미지 묶음의 Part 2
-이미지 12개는 working 앱 자산으로 Git에 보존하고 개발 서버에서만
-제공한다. 기본 production build에는 포함하지 않으며, 운영자가 명시적으로
+개발 환경에 연결한다. [시각 문제 전수검사](docs/PART2_VISUAL_QUESTION_AUDIT.md)로
+질문·답과 그림을 대조하고 12장을 1448×1086로 통일했다. 이미지 12개는
+working 앱 자산으로 Git에 보존한다. 기본 production build에는 포함하지
+않으며, 운영자가 명시적으로
 opt-in한 build에서만 검증된 60개 이미지 묶음의 일부로 제공한다. Part 2의
 PracticeDraft·RecallAttempt·ReviewState는 `visual_question`을 대상으로
 저장하고 원본 추천 답변을 내 답변이나 공식 정답으로 자동 저장하지 않는다.
@@ -52,6 +53,8 @@ QuestionVisualSet은 0개이며 번호 기반 후보 12개를 실제
 직접 저장해 그림 기반 회상을 연습한다. Part 7 이미지 바이트는 Git의
 working 자산으로 보존한다. 기본 production build에서는 제외하고 명시적
 deployment opt-in 때만 검증 후 포함한다.
+[Part 7 이미지-스토리 전수검사](docs/PART7_STORY_VISUAL_AUDIT.md)는 12세트
+48장을 모두 확인하고, 사건·인물 연속성이 부족한 7장만 보강했다.
 
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
@@ -81,8 +84,8 @@ npm run dev
 텍스트 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`, Part 2
 시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`, Part 7
 스토리 fixture는 `data/working/app-fixtures/part7-visual-v1/`에 생성된다.
-모두 검수 완료 또는 배포용 데이터가 아니다. 이름 지정 압축 원본은 추출
-검증 후 저장소에서 제거했고, 압축에서 바이트 변경 없이 추출한 이미지 60장은
+모두 검수 완료 또는 배포용 데이터가 아니다. 현재 audited 이름 지정 archive의
+바이트를 검증한 이미지 60장은
 `data/working/app-assets/tsc-individual-images-v1/`에 있다.
 이 working 자산은 Git에 보존하지만 공개 권리는 `review_needed`이고
 `public_allowed = false`다. 기본 production build에는 포함하지 않는다.
