@@ -153,7 +153,7 @@ RecallAttempt를 보존하며 검수 전용 DB에는 영향을 주지 않는다.
 ## 검증
 
 전체 fixture 생성·검증, Python unittest, IndexedDB migration 테스트,
-Vitest 143개, typecheck, lint, production build, `npm run check:data`와
+Vitest 170개, typecheck, lint, production build, `npm run check:data`와
 `npm run check`를 통과했다. 320px 실제 브라우저에서 Part 7 이야기
 작성·복원·완료·회상·나의 답변·복습, Part 2와 텍스트 파트 회귀를
 확인했고 console 오류와 가로 오버플로는 0건이었다. Part 7의 상세 결과는

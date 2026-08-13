@@ -37,4 +37,3 @@ StoryGuide, Question과 비canonical link candidate는 변경하지 않았다.
 - 교체한 7장은 manifest에서 `generated_replacement`로 구분한다.
 - StoryGuide는 ModelAnswer로 변환하지 않았고 ModelAnswer 수는 0개다.
 - 이미지 권리는 계속 `review_needed`, `public_allowed = false`다.
-

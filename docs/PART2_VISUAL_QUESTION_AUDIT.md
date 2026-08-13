@@ -36,4 +36,3 @@ VisualQuestion 및 ModelAnswer 원문과 다시 대조했다.
   기존 묶음 자산은 `named_bundle_asset`로 구분한다.
 - audited archive 기준 PNG 바이트 보존과 SHA·크기·치수를 검증한다.
 - 생성 교체는 출처 답변이나 이미지 공개 권리를 승인한다는 의미가 아니다.
-
