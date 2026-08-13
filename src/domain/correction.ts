@@ -29,6 +29,7 @@ export interface CorrectionResult {
   structure_segments: StructureSegment[]
   relevance_note: string
   uncertainties: CorrectionUncertainty[]
+  key_expressions?: string[]
   message?: string
 }
 

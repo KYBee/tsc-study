@@ -10,7 +10,7 @@ import { BrowserRouter, MemoryRouter } from 'react-router-dom'
 import { createPublicContentRepository } from '../data/publicContentRepository'
 import { createUserDataRepository } from '../data/userDataRepository'
 import { createReviewDecisionRepository } from '../data/reviewDecisionRepository'
-import { MockCorrectionProvider } from '../providers/MockCorrectionProvider'
+import { createCorrectionProvider } from '../providers/createCorrectionProvider'
 import { createBrowserQuestionSpeechPlayer } from '../features/exam/questionSpeech'
 import { ErrorState } from '../components/ErrorState'
 import { AppShell } from './AppShell'
@@ -78,7 +78,10 @@ function createDefaultDependencies(): AppDependencies {
   return {
     publicRepository: createPublicContentRepository(),
     userRepository: createUserDataRepository(),
-    correctionProvider: new MockCorrectionProvider(),
+    correctionProvider: createCorrectionProvider({
+      VITE_TSC_CORRECTION_API_URL:
+        import.meta.env.VITE_TSC_CORRECTION_API_URL,
+    }),
     questionSpeechPlayer: createBrowserQuestionSpeechPlayer(),
     reviewDecisionRepository: createReviewDecisionRepository(),
   }
