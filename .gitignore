@@ -20,6 +20,7 @@ Thumbs.db
 .cache/
 .tmp/
 tmp/
+.worktrees/
 /other-output/temp.zip
 
 # Node.js and Vite
