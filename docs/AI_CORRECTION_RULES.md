@@ -144,3 +144,19 @@ Wǒ xǐhuan zài jiā yùndòng. Yīnwèi gōngzuò hěn máng, wǒ méiyǒu sh�
 - 질문 또는 Part가 확인되지 않았는데 시험 규칙을 단정하기
 - 병음이나 한국어 뜻이 일부 문장만 반영된 상태로 검수 완료 처리하기
 - 확신할 수 없는 고유명사, 수치, 출처를 추측해 채우기
+
+## 앱의 실제 교정 endpoint 계약
+
+- 앱은 `VITE_TSC_CORRECTION_API_URL`이 설정된 경우에만 same-origin 경로 또는
+  HTTPS endpoint로 기존 `CorrectionRequest` JSON을 전송한다.
+- 한국어 입력은 의미와 개인 경험을 보존한 말하기 쉬운 중국어·전체 병음·한국어
+  의미·핵심 표현을, 중국어 입력은 최소 교정·전체 병음·한국어 뜻·변경 이유를,
+  혼합 입력은 의도를 보존한 구어체 정리를 반환해야 한다.
+- 응답은 `CorrectionProviderResult` discriminated union과 Zod 계약을 통과해야
+  하며 원문의 `original_input`이 요청과 다르면 거부한다.
+- HTTP 오류, timeout, 잘못된 JSON과 schema 불일치는 원문을 포함한 `failure`로
+  바꾸며 PracticeDraft를 삭제하지 않는다.
+- `VITE_*` 환경변수는 browser bundle에 공개되므로 API key나 provider secret을
+  저장하지 않는다. 인증은 endpoint의 same-origin session 또는 서버 측 설정이
+  담당한다.
+- endpoint 미설정 상태에서는 기존 P4-006 deterministic mock만 동작한다.

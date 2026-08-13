@@ -465,6 +465,84 @@ describe('question and answer flow', () => {
     expect(screen.getAllByText('개인 오류')).toHaveLength(2)
   })
 
+  it('makes correction the primary memorization path for a Part 3 draft', async () => {
+    const user = userEvent.setup()
+    const provider: CorrectionProvider = {
+      correct: vi.fn(async (request) => ({
+        status: 'success' as const,
+        original_input: request.original_input,
+        result: {
+          corrected_zh: '我一般周末运动两次。',
+          pinyin: 'Wǒ yìbān zhōumò yùndòng liǎng cì.',
+          ko: '저는 보통 주말에 두 번 운동합니다.',
+          changes: [
+            {
+              before: '两个次',
+              after: '两次',
+              reason: '횟수를 셀 때는 两次라고 합니다.',
+            },
+          ],
+          structure_segments: [],
+          relevance_note: '',
+          uncertainties: [],
+          key_expressions: ['周末运动两次'],
+        },
+      })),
+    }
+    const { userRepository } = renderApp('/questions/P3-001/answer', {
+      correctionProvider: provider,
+    })
+
+    await user.click(await screen.findByRole('radio', { name: '중국어로 작성' }))
+    await user.type(screen.getByLabelText('내 답변'), '我周末两个次运动。')
+    await user.click(screen.getByRole('button', { name: '답변 작성 완료' }))
+    await user.click(await screen.findByRole('button', { name: '교정 후 암기' }))
+
+    expect(await screen.findByText('내가 입력한 답변')).toBeInTheDocument()
+    expect(screen.getByText('我周末两个次运动。', { exact: true })).toBeInTheDocument()
+    expect(screen.getByText('我一般周末运动两次。', { exact: true })).toBeInTheDocument()
+    expect(screen.getByText('周末运动两次')).toBeInTheDocument()
+    await expect(userRepository.listUserAnswers()).resolves.toEqual([])
+  })
+
+  it('preserves a Part 3 original input across correction failure and retry', async () => {
+    const user = userEvent.setup()
+    const correct = vi
+      .fn<CorrectionProvider['correct']>()
+      .mockResolvedValueOnce({
+        status: 'failure',
+        original_input: '주말에는 친구를 만나요.',
+        message: '교정 서버에 연결하지 못했습니다',
+        error_code: 'network_error',
+      })
+      .mockResolvedValueOnce({
+        status: 'success',
+        original_input: '주말에는 친구를 만나요.',
+        result: {
+          corrected_zh: '周末我会见朋友。',
+          pinyin: 'Zhōumò wǒ huì jiàn péngyou.',
+          ko: '주말에는 친구를 만납니다.',
+          changes: [],
+          structure_segments: [],
+          relevance_note: '',
+          uncertainties: [],
+        },
+      })
+    renderApp('/questions/P3-001/answer', {
+      correctionProvider: { correct },
+    })
+
+    await user.type(await screen.findByLabelText('내 답변'), '주말에는 친구를 만나요.')
+    await user.click(screen.getByRole('button', { name: '답변 작성 완료' }))
+    await user.click(await screen.findByRole('button', { name: '교정 후 암기' }))
+
+    expect(await screen.findByText('교정 서버에 연결하지 못했습니다')).toBeInTheDocument()
+    expect(screen.getByText('주말에는 친구를 만나요.', { exact: true })).toBeInTheDocument()
+    await user.click(screen.getByRole('button', { name: '다시 시도' }))
+    expect(await screen.findByText('周末我会见朋友。', { exact: true })).toBeInTheDocument()
+    expect(correct).toHaveBeenCalledTimes(2)
+  })
+
   it('preserves the allowlisted My Answers origin through question and answer routes', async () => {
     const user = userEvent.setup()
     const userRepository = createTestUserRepository()

@@ -23,7 +23,7 @@ describe('correction sessionStorage helper', () => {
 
   it('uses a dataset-scoped key for each question', () => {
     expect(getCorrectionSessionKey('P4-006')).toBe(
-      'tsc-study:part4-fixture:v1:correction-session:P4-006',
+      'tsc-study:text-parts:v2:correction-session:P4-006',
     )
   })
 
@@ -61,5 +61,28 @@ describe('correction sessionStorage helper', () => {
     clearCorrectionSession('P4-001')
 
     expect(loadCorrectionSession('P4-001')).toBeUndefined()
+  })
+
+  it('loads an existing Part 4 v1 session without losing the original input', () => {
+    sessionStorage.setItem(
+      'tsc-study:part4-fixture:v1:correction-session:P4-006',
+      JSON.stringify({
+        schema_version: 1,
+        dataset_id: 'part4-full-working-development-fixture-v2',
+        question_id: 'P4-006',
+        correction_mode: 'minimal',
+        input_language: 'zh',
+        original_input: '기존 입력',
+        provider_result: null,
+        created_at: '2026-07-26T10:00:00.000Z',
+      }),
+    )
+
+    expect(loadCorrectionSession('P4-006')).toMatchObject({
+      schema_version: 2,
+      target_type: 'question',
+      part: 4,
+      original_input: '기존 입력',
+    })
   })
 })

@@ -31,7 +31,9 @@ export function CorrectionResultScreen() {
     const question = await publicRepository.getQuestionById(questionId)
     return {
       question:
-        question && question.part === 4 ? question : undefined,
+        question && [1, 3, 4, 5, 6].includes(question.part)
+          ? question
+          : undefined,
       session: loadCorrectionSession(questionId),
     }
   }, [publicRepository, questionId])
@@ -179,6 +181,11 @@ export function CorrectionResultScreen() {
         <h1>교정 결과</h1>
       </header>
 
+      <section className="card original-input" aria-labelledby="original-answer-heading">
+        <h2 id="original-answer-heading">내가 입력한 답변</h2>
+        <p className="preserve-lines">{session.original_input}</p>
+      </section>
+
       {providerResult.status === 'success' && (
         <>
           <section className="card result-card" aria-labelledby="result-heading">
@@ -251,6 +258,18 @@ export function CorrectionResultScreen() {
               <p>확인이 필요한 불확실성 없음</p>
             )}
           </section>
+
+          {providerResult.result.key_expressions &&
+            providerResult.result.key_expressions.length > 0 && (
+              <section className="card" aria-labelledby="key-expressions-heading">
+                <h2 id="key-expressions-heading">핵심 표현</h2>
+                <ul className="plain-list">
+                  {providerResult.result.key_expressions.map((expression) => (
+                    <li key={expression} lang="zh-CN">{expression}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
         </>
       )}
 
@@ -259,10 +278,6 @@ export function CorrectionResultScreen() {
           <p className="eyebrow">DEVELOPMENT MOCK</p>
           <h2 id="unsupported-heading">{providerResult.message}</h2>
           <p>{providerResult.explanation}</p>
-          <div className="original-input">
-            <span>입력 원문</span>
-            <p>{providerResult.original_input}</p>
-          </div>
         </section>
       )}
 
@@ -291,10 +306,6 @@ export function CorrectionResultScreen() {
               </div>
             }
           />
-          <section className="card original-input" aria-label="보존된 입력 원문">
-            <span>입력 원문</span>
-            <p>{providerResult.original_input}</p>
-          </section>
         </>
       )}
 

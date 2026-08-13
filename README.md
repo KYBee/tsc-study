@@ -138,6 +138,7 @@ npm run check:data
 - `/parts/:part`: Part 1·3·4·5·6 공통 목록·검색·필터·랜덤 선택
 - `/parts/2`: 로컬 Part 2 그림 세트 목록
 - `/parts/2/sets/:visualSetId`: 그림과 세부 질문 4개
+- `/parts/2/sets/:visualSetId/exam`: 그림만 보고 3초 준비·6초 답변을 네 문제 연속 연습
 - `/visual-questions/:visualQuestionId`: 그림 세부 질문
 - `/visual-questions/:visualQuestionId/answer`: Part 2 자유 입력·비교
 - `/visual-questions/:visualQuestionId/recall`: 그림 기반 회상
@@ -146,6 +147,7 @@ npm run check:data
 - `/parts/7/sets/:visualSetId/answer`: 내 이야기 키워드·포인트·전체 답변
 - `/parts/7/sets/:visualSetId/recall`: 그림·내 포인트 기반 회상
 - `/questions/:questionId`: 텍스트 문제
+- `/questions/:questionId/exam`: Part 3 질문 음성·2초 준비·15초 답변 실전 연습
 - `/questions/:questionId/answer`: 답변 작성
 - `/questions/:questionId/correction`: mock 교정 결과
 - `/my-answers`: 교정 완료 답변과 연습 초안
@@ -153,13 +155,17 @@ npm run check:data
 - `/mistakes`: 저장된 개인 실수
 - `/data-review/part4`: 개발 환경의 로컬 Part 4 데이터 검수
 
-실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용
-mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다.
-Part 1·2·3·5·6·7은 사용자의 직접 입력을 원문 그대로 PracticeDraft에
-저장하며 UserAnswer로 자동 승인하지 않는다. Part 2 추천 답변은
+`VITE_TSC_CORRECTION_API_URL`에 최소 교정 JSON 계약을 구현한 same-origin
+경로 또는 HTTPS URL을 설정하면 Part 1·3·4·5·6 답변 교정 요청을 실제로
+전송한다. 설정이 없으면 정확히 지정된 P4-006 중국어 예시만 기존 개발용
+mock이 처리한다. API key와 provider secret은 브라우저에 공개되는 `VITE_*`
+변수에 넣지 않으며 endpoint의 서버 측 환경에서 관리해야 한다. 교정 실패 시
+PracticeDraft와 원문을 유지하고 재시도할 수 있다. 성공 결과도 사용자가
+승인하기 전에는 UserAnswer로 저장하지 않는다. Part 2 추천 답변은
 `review_needed` 출처 자료로만 접어 표시한다. Part 7 StoryGuide는
-ModelAnswer가 아니며 자동 답변으로 저장하지 않는다. 백엔드,
-로그인·동기화, reviewed 전체 데이터 연결과 배포는 아직 구현하지 않았다.
+ModelAnswer가 아니며 자동 답변으로 저장하지 않는다. 이 저장소에는 별도 AI
+백엔드를 추가하지 않았고, 로그인·동기화와 reviewed 전체 데이터 연결도 아직
+구현하지 않았다.
 
 ## 저장소 구조
 

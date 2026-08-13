@@ -200,6 +200,7 @@ export function AnswerEditorScreen() {
         initialPhrases={data.phrases}
         returnTo={returnTo}
         userRepository={userRepository}
+        correctionProvider={correctionProvider}
       />
     )
   }

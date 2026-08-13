@@ -132,6 +132,21 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 
 React Router DOM 7.18.1에는 npm audit가 RSC 모드 관련 high 경고를 보고한다. 현재 앱은 서버·RSC·action을 사용하지 않는 브라우저 Declarative SPA라 해당 실행 경로를 사용하지 않지만, 패치 릴리스가 제공되면 우선 재검토한다. 경고를 숨기기 위해 강제 downgrade하지 않는다.
 
+## D-013: 브라우저 교정 endpoint 경계 (2026-08-13)
+
+- 기존 `CorrectionProvider`를 유지하고, `VITE_TSC_CORRECTION_API_URL`이 있으면
+  Zod 검증을 적용하는 `HttpCorrectionProvider`를 선택한다.
+- endpoint는 same-origin 상대 경로 또는 credential이 없는 HTTPS URL만 허용한다.
+- `VITE_*`에는 공개 가능한 endpoint URL만 두며 API key와 provider secret은
+  넣지 않는다. 저장소에는 별도 AI 백엔드를 추가하지 않는다.
+- endpoint가 없으면 P4-006 deterministic mock을 유지한다.
+- Part 1·3·5·6은 기존 PracticeDraft를 보존하면서 교정 후 암기를 기본 행동으로
+  제공한다. success 결과도 사용자 승인 전에는 UserAnswer로 저장하지 않는다.
+- 실제 공급자·모델과 endpoint 운영 주체는 계속 별도 결정 사항이다.
+
+재검토 조건: 운영 endpoint와 인증 방식이 확정되거나, Part 2·7 target까지
+실제 교정 저장 계약을 확장할 때.
+
 ## 이미 확정된 제품·데이터 원칙
 
 다음은 기술 선택이 아니라 현재 요구사항으로 확정되어 있다.
