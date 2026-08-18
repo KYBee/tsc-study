@@ -80,6 +80,34 @@ describe('Part 2 visual learning slice', () => {
     expect(screen.getByRole('list', { name: '세부 질문 4개' }).children).toHaveLength(4)
   })
 
+  it('stores each set question answer and memorization status independently', async () => {
+    const user = userEvent.setup()
+    const { userRepository } = renderPart2('/parts/2/sets/vs-P2-V01')
+
+    const question1 = await screen.findByRole('article', { name: '질문 1 학습' })
+    const question2 = screen.getByRole('article', { name: '질문 2 학습' })
+    await user.type(within(question1).getByLabelText('질문 1 내 답변'), '他在跑步。')
+    await user.click(within(question1).getByRole('button', { name: '답변 저장' }))
+    await user.type(within(question2).getByLabelText('질문 2 내 답변'), '她坐在长椅上。')
+    await user.click(within(question2).getByRole('button', { name: '답변 저장' }))
+
+    await user.click(within(question1).getByRole('button', { name: '외움' }))
+    await user.click(within(question2).getByRole('button', { name: '못 외움' }))
+
+    await expect(
+      userRepository.getPracticeDraftByTarget('visual_question', 'vq-P2-V01-Q1'),
+    ).resolves.toMatchObject({ original_input: '他在跑步。' })
+    await expect(
+      userRepository.getPracticeDraftByTarget('visual_question', 'vq-P2-V01-Q2'),
+    ).resolves.toMatchObject({ original_input: '她坐在长椅上。' })
+    await expect(
+      userRepository.getReviewState('visual_question', 'vq-P2-V01-Q1'),
+    ).resolves.toMatchObject({ learning_status: '외움' })
+    await expect(
+      userRepository.getReviewState('visual_question', 'vq-P2-V01-Q2'),
+    ).resolves.toMatchObject({ learning_status: '못 외움' })
+  })
+
   it('expands a registered image and gives setup guidance after load failure', async () => {
     const user = userEvent.setup()
     renderPart2('/parts/2/sets/vs-P2-V01')

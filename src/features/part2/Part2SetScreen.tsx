@@ -3,8 +3,9 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useAppDependencies } from '../../app/dependencies'
 import { useAsyncData } from '../../app/useAsyncData'
 import { ErrorState } from '../../components/ErrorState'
+import { LearningStatusButtons } from '../../components/LearningStatusButtons'
 import { LoadingState } from '../../components/LoadingState'
-import { StatusBadge } from '../../components/StatusBadge'
+import { SimpleAnswerEditor } from '../../components/SimpleAnswerEditor'
 import { Part2VisualImage } from './Part2VisualImage'
 
 const setNumber = (visualSetId: string) =>
@@ -42,18 +43,12 @@ export function Part2SetScreen() {
 
   return (
     <div className="page">
-      <header className="page-header">
+      <header className="page-header page-header--compact">
         <Link className="back-link" to="/parts/2">← Part 2 세트 목록</Link>
-        <div className="badge-row">
-          <StatusBadge status="development_fixture" />
-          <StatusBadge status="review_needed" />
-        </div>
-        <p className="eyebrow">{data.visualSet.visual_set_id}</p>
+        <p className="eyebrow">PART 2 · 세트 {number}</p>
         <h1>Part 2 그림 세트 {number}</h1>
+        <p>그림을 보고 질문마다 내 답변을 따로 저장하세요.</p>
       </header>
-      <aside className="notice">
-        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 공개 권리 승인과 별개로 현재 배포 설정에서만 사용합니다.
-      </aside>
       <section className="card visual-set-main">
         <Part2VisualImage asset={data.asset} setNumber={number} expandable />
       </section>
@@ -83,21 +78,48 @@ export function Part2SetScreen() {
                 item.target_id === targetId,
             )
             return (
-              <li key={targetId} className="question-card">
-                <Link to={`/visual-questions/${targetId}`}>
+              <li key={targetId} className="card visual-question-learning-card">
+                <article aria-label={`질문 ${question.item_number} 학습`}>
                   <span className="eyebrow">질문 {question.item_number}</span>
-                  <p lang="zh-CN">{question.question_zh || '중국어 제공되지 않음'}</p>
-                  <p lang="ko">{question.question_ko || '한국어 제공되지 않음'}</p>
-                  <div className="badge-row">
-                    {draft && <StatusBadge status="has_draft" />}
-                    <StatusBadge status={review?.learning_status ?? 'unstarted'} />
+                  <p className="question-card__zh" lang="zh-CN">
+                    {question.question_zh || '중국어 제공되지 않음'}
+                  </p>
+                  <p className="question-card__ko" lang="ko">
+                    {question.question_ko || '한국어 제공되지 않음'}
+                  </p>
+                  <SimpleAnswerEditor
+                    targetType="visual_question"
+                    targetId={targetId}
+                    initialDraft={draft}
+                    userRepository={userRepository}
+                    label={`질문 ${question.item_number} 내 답변`}
+                    rows={3}
+                  />
+                  <div className="inline-learning-status">
+                    <h3>암기 상태</h3>
+                    <LearningStatusButtons
+                      targetType="visual_question"
+                      targetId={targetId}
+                      initialReviewState={review}
+                      userRepository={userRepository}
+                    />
                   </div>
-                </Link>
+                  <Link className="text-link" to={`/visual-questions/${targetId}`}>
+                    질문 자세히 보기
+                  </Link>
+                </article>
               </li>
             )
           })}
         </ul>
       </section>
+      <details className="card details-panel supporting-materials">
+        <summary>추가 학습 자료 보기</summary>
+        <p>
+          이 그림은 현재 배포 설정에서 사용하는 검수 전 학습 자료입니다.
+          출처 답변과 병음은 각 질문의 자세히 보기에서 확인할 수 있습니다.
+        </p>
+      </details>
     </div>
   )
 }
