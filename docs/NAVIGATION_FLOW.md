@@ -360,3 +360,19 @@ StoryGuide 참고는 미리보기→사용자 확인→편집 상태 복사 순�
 저장하지 않는다. 숫자 접미사 후보 12개를 경로·Question 문맥에 사용하지
 않는다. 뒤로가기는 VisualSet ID를 보존하고 마지막 세트는 별도 작은 로컬
 설정으로 저장한다.
+
+## 15. 단순 기본 학습 흐름
+
+```text
+HOME
+→ Part 선택
+→ 문제 또는 그림 세트 선택
+→ 문제 원문 확인
+→ 같은 화면에서 내 답변 저장
+→ 못 외움 또는 외움 선택
+→ 이전·다음 문제
+```
+
+텍스트 Part는 Question 상세에서 `question` 대상 PracticeDraft를 바로 저장한다. Part 2 세트 상세는 네 VisualQuestion 각각에 `visual_question` 대상 PracticeDraft와 ReviewState를 독립적으로 저장한다. Part 7 세트 상세는 네 장면 전체에 대한 `visual_set` 대상 PracticeDraft와 ReviewState를 저장한다. 답변 저장과 암기 상태 저장은 서로 독립적이며 한 행동이 다른 데이터를 자동 변경하지 않는다.
+
+Part 4 구조화 편집, Part 2·3 실전 모드, AI 교정, 상세 회상, 출처 답변과 가이드·근거 정보는 기존 route와 데이터 계약을 유지한다. 일반 학습 화면에서는 보조 행동 또는 기본적으로 닫힌 추가 자료로 이동해 질문과 직접 입력을 가리지 않는다.

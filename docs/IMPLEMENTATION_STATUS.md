@@ -7,6 +7,8 @@ Part 2 그림 12세트·VisualQuestion 48개와 Part 7 스토리
 그림 12세트를 대상으로 다음
 흐름을 제공한다.
 
+일반 학습의 기본 동선은 모든 Part에서 `문제 → 내 답변 → 저장 → 못 외움/외움 → 다음`으로 단순화했다. 텍스트 Question, Part 2의 개별 VisualQuestion, Part 7의 VisualSet은 기존 다형 개인 데이터 대상을 그대로 사용하며 답변 저장과 ReviewState 변경은 독립적이다. 실전 모드·교정·Part 4 구조화 편집·상세 회상·강의 자료·provenance는 삭제하지 않고 보조 화면이나 닫힌 추가 자료로 유지한다.
+
 ```text
 HOME
 → 텍스트 Part 선택
