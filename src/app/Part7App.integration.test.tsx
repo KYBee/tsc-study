@@ -69,6 +69,12 @@ describe('Part 7 story visual learning slice', () => {
     expect(within(setList).getAllByTestId('story-set-id')).toHaveLength(12)
     expect(within(setList).getAllByRole('img')).toHaveLength(12)
     expect(screen.getByText('현재 결과 12개')).toBeInTheDocument()
+    expect(
+      within(setList).getByRole('link', {
+        name: /^스토리 세트 1 · 내 답변: 미작성 · 암기: 미체크 · 공부하기$/,
+      }),
+    ).toBeInTheDocument()
+    expect(screen.queryByText('원본 workbook 기반')).not.toBeInTheDocument()
   })
 
   it('shows the explicit StoryGuide and candidate boundary without an answer claim', async () => {
@@ -97,6 +103,32 @@ describe('Part 7 story visual learning slice', () => {
     await user.click(screen.getByText('데이터 연결 상태'))
     expect(screen.getByText('확정 연결 없음')).toBeInTheDocument()
     expect(screen.getByText(/원본 문제 번호의 연결은 아직 검수되지/)).toBeInTheDocument()
+  })
+
+  it('saves one simple story answer and memorization status for the VisualSet', async () => {
+    const user = userEvent.setup()
+    const { userRepository } = renderPart7('/parts/7/sets/vs-P7-V01')
+
+    const answer = await screen.findByRole('textbox', { name: '내 이야기 답변' })
+    await user.type(answer, '내가 그림을 보고 직접 쓴 이야기')
+    await user.click(screen.getByRole('button', { name: '답변 저장' }))
+
+    await expect(
+      userRepository.getPracticeDraftByTarget('visual_set', 'vs-P7-V01'),
+    ).resolves.toMatchObject({
+      original_input: '내가 그림을 보고 직접 쓴 이야기',
+      completion_status: 'completed',
+    })
+    await expect(userRepository.listReviewStates()).resolves.toEqual([])
+
+    await user.click(screen.getByRole('button', { name: '외움' }))
+    await expect(
+      userRepository.getReviewState('visual_set', 'vs-P7-V01'),
+    ).resolves.toMatchObject({ learning_status: '외움' })
+    expect(screen.getByRole('link', { name: '이야기 구조 연습하기' })).toHaveAttribute(
+      'href',
+      '/parts/7/sets/vs-P7-V01/answer',
+    )
   })
 
   it('expands an image and gives the shared setup command after load failure', async () => {

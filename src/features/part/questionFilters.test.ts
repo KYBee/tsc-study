@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import type { Question } from '../../domain/entities'
 import {
   filterPart4QuestionItems,
+  filterSimpleLearningItems,
   pickRandomQuestion,
   type Part4QuestionListItem,
 } from './questionFilters'
@@ -86,5 +87,33 @@ describe('Part 4 question filters', () => {
     expect(pickRandomQuestion(items, () => 0)?.question.question_id).toBe('P4-001')
     expect(pickRandomQuestion(items, () => 0.99)?.question.question_id).toBe('P4-007')
     expect(pickRandomQuestion([], () => 0.5)).toBeUndefined()
+  })
+
+  it('supports the five simple learning filters without discarding detailed states', () => {
+    const completedDraftItems: Part4QuestionListItem[] = items.map((item) =>
+      item.question.question_id === 'P4-006' && item.practiceDraft
+        ? {
+            ...item,
+            practiceDraft: {
+              ...item.practiceDraft,
+              completion_status: 'completed',
+            },
+          }
+        : item,
+    )
+
+    expect(filterSimpleLearningItems(completedDraftItems, 'all')).toHaveLength(3)
+    expect(filterSimpleLearningItems(completedDraftItems, 'unwritten')).toEqual([
+      completedDraftItems[0],
+    ])
+    expect(filterSimpleLearningItems(completedDraftItems, 'completed')).toEqual([
+      completedDraftItems[1],
+      completedDraftItems[2],
+    ])
+    expect(filterSimpleLearningItems(completedDraftItems, '못 외움')).toEqual([])
+    expect(filterSimpleLearningItems(completedDraftItems, '외움')).toEqual([])
+
+    // 헷갈림은 기존 데이터에서 유지되지만 단순 필터의 두 버튼에는 섞이지 않는다.
+    expect(completedDraftItems[1].reviewState?.learning_status).toBe('헷갈림')
   })
 })

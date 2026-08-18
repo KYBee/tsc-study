@@ -34,6 +34,8 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 [MVP 구현 기준](docs/IMPLEMENTATION_BASELINE.md)에 따라 React + TypeScript + Vite 프로젝트를 초기화했다. 현재 앱은 [전체 텍스트 파트 fixture](docs/TEXT_PARTS_APP_SLICE.md)를 읽어 Part 1·3·4·5·6의 raw working Question 193개와 AnswerPoint 193개를 제공한다. 공통 목록·검색·유형 및 상태 필터·랜덤 문제, 자유 입력 PracticeDraft, 복습·회상과 마지막 학습 위치 흐름을 구현했다. Part 4의 네 구간 답변 만들기와 P4-006 deterministic mock 교정·승인 저장도 그대로 유지한다. 개인 `PracticeDraft`·`ReusablePhrase`·`RecallAttempt`·`UserAnswer`·개인 `Correction`·`ReviewState`는 현재 브라우저 origin의 IndexedDB에 분리해 저장한다.
 
+일반 학습 화면의 기본 순서는 `Part 선택 → 문제 확인 → 내 답변 저장 → 못 외움/외움 → 다음 문제`다. 텍스트 문제는 상세 화면에서 바로 답변을 저장하고, Part 2는 한 세트의 네 VisualQuestion마다 답변과 암기 상태를 따로 저장하며, Part 7은 VisualSet 전체에 하나의 이야기 답변을 저장한다. 기존 실전 모드, 교정, Part 4 구조화 작성, 회상, 가이드와 데이터 근거 정보는 삭제하지 않고 보조 행동 또는 기본적으로 닫힌 추가 자료 영역에 유지한다.
+
 [Part 2 로컬 시각 학습 slice](docs/PART2_VISUAL_APP_SLICE.md)는
 VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48개를
 개발 환경에 연결한다. [시각 문제 전수검사](docs/PART2_VISUAL_QUESTION_AUDIT.md)로

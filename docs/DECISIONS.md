@@ -103,6 +103,7 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-033` | 권리 검수 전 이미지의 production opt-in | 기본 production build에는 Part 2·7 working PNG를 포함하지 않는다. 운영자가 build 시 `VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true`를 정확히 설정한 deployment에만 allowlist 60개를 경로·PNG MIME·크기·SHA-256·치수 검증 후 `BASE_URL/tsc-visual-assets/<asset-id>.png`로 emit한다. 이는 배포 선택일 뿐 권리 승인이 아니며 `rights_status = review_needed`, `public_allowed = false`, `production_enabled = false` metadata를 변경하지 않는다. | 권리 승인 자산을 별도 reviewed/public dataset으로 관리하거나 배포 정책을 철회할 때 |
 | `D-034` | 실전 타이밍과 브라우저 질문 음성 | Part 2는 그림만 노출한 채 3초 준비·질문 1회 재생·6초 답변, Part 3은 질문 1회 재생·2초 준비·15초 답변을 사용한다. `idle/preparing/playing_question/answering/finished` 상태와 cleanup-safe timer/SpeechSynthesis 경계를 공유하며 음성 실패 시 타이머는 계속된다. | 실제 시험 규칙 검수 또는 공식 음원 제공 시 |
 | `D-035` | working 시각 자산 생성 교체 provenance | 질문·답·StoryGuide 원문은 유지하고 Part 2 의미·스타일과 Part 7 사건 연속성에 필요한 그림만 생성 교체한다. importer manifest의 `asset_provenance_kind`와 `generated_replacement_assets`로 교체본을 기존 묶음 자산과 구분하며 audited archive 바이트의 SHA·크기·치수를 검증한다. 권리 상태와 canonical 관계는 승격하지 않는다. | 이미지 원출처·생성물 권리 및 reviewed 시각 데이터 승인 시 |
+| `D-036` | 일반 학습의 단순 기본 동선 | 홈·목록·상세의 기본 우선순위를 `Part → 문제 → 내 답변 저장 → 못 외움/외움 → 다음`으로 둔다. 답변은 기존 `PracticeDraft`, 암기 상태는 기존 `ReviewState`에 대상별로 독립 저장한다. 실전·교정·Part 4 구조화 편집·상세 회상·가이드·provenance는 삭제하지 않고 보조 행동이나 닫힌 상세 영역에 유지한다. | 충분한 개인 답변 데이터가 쌓여 기본 동선에 추천·상세 복습을 통합할 근거가 생길 때 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 
