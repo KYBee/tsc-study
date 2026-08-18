@@ -191,6 +191,64 @@ describe('text Parts navigation', () => {
 })
 
 describe('question and answer flow', () => {
+  it('edits a saved answer inline and stores memorization separately', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertPracticeDraft({
+      practice_draft_id: 'pd-P3-001',
+      question_id: 'P3-001',
+      target_type: 'question',
+      target_id: 'P3-001',
+      input_language: 'ko',
+      original_input: '기존에 저장한 답변',
+      full_text: '기존에 저장한 답변',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    renderApp('/questions/P3-001', { userRepository })
+
+    const editor = await screen.findByLabelText('내 답변')
+    expect(editor).toHaveValue('기존에 저장한 답변')
+    await user.clear(editor)
+    await user.type(editor, '수정한 내 답변')
+    await user.click(screen.getByRole('button', { name: '수정 저장' }))
+
+    expect(await screen.findByText('저장되었습니다.')).toBeInTheDocument()
+    await expect(
+      userRepository.getPracticeDraftByQuestionId('P3-001'),
+    ).resolves.toMatchObject({ original_input: '수정한 내 답변' })
+    await expect(userRepository.listReviewStates()).resolves.toEqual([])
+
+    await user.click(screen.getByRole('button', { name: '못 외움' }))
+    await expect(
+      userRepository.getReviewState('question', 'P3-001'),
+    ).resolves.toMatchObject({ learning_status: '못 외움' })
+    await expect(userRepository.listPracticeDrafts()).resolves.toHaveLength(1)
+
+    expect(screen.getByRole('link', { name: /다음 문제/ })).toHaveAttribute(
+      'href',
+      '/questions/P3-002',
+    )
+    expect(screen.getByRole('link', { name: '실전 모드' })).toHaveAttribute(
+      'href',
+      '/questions/P3-001/exam',
+    )
+  })
+
+  it('uses the approved UserAnswer original input when no draft exists', async () => {
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertUserAnswer(makeSavedAnswer())
+    renderApp('/questions/P4-006', { userRepository })
+
+    expect(await screen.findByLabelText('내 답변')).toHaveValue(EXERCISE_INPUT)
+    expect(
+      screen.getByRole('link', { name: '답변 구조 연습하기' }),
+    ).toHaveAttribute('href', '/questions/P4-006/answer?step=design')
+    expect(screen.getByText('추가 학습 자료 보기').closest('details')).not.toHaveAttribute(
+      'open',
+    )
+  })
+
   it.each([1, 3, 5, 6])(
     'stores and completes a free-input Part %s answer without generating language data',
     async (part) => {
@@ -314,9 +372,9 @@ describe('question and answer flow', () => {
     const user = userEvent.setup()
     const { userRepository } = renderApp('/questions/P4-001')
 
-    expect(await screen.findByText('1단계 · 질문 이해')).toBeInTheDocument()
-    await user.click(screen.getByLabelText('질문을 이해했습니다'))
-    await user.click(screen.getByRole('link', { name: '질문 이해 완료' }))
+    await user.click(
+      await screen.findByRole('link', { name: '답변 구조 연습하기' }),
+    )
 
     expect(await screen.findByRole('heading', { name: '답변 설계' })).toBeInTheDocument()
     await user.type(screen.getByLabelText('직접 답변 키워드'), '가족 여행')
@@ -560,7 +618,9 @@ describe('question and answer flow', () => {
       screen.getByRole('link', { name: '나의 답변' }),
     ).toHaveAttribute('aria-current', 'page')
 
-    await user.click(screen.getByRole('link', { name: '다시 작성' }))
+    await user.click(
+      screen.getByRole('link', { name: '답변 구조 연습하기' }),
+    )
     expect(
       await screen.findByRole('link', { name: '← 문제로 돌아가기' }),
     ).toHaveAttribute('href', '/questions/P4-006')

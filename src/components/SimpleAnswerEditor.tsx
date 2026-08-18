@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 
 import type { InputLanguage, LearningTargetType } from '../domain/entities'
 import type {
@@ -53,6 +53,7 @@ export function SimpleAnswerEditor({
   onSaved,
 }: SimpleAnswerEditorProps) {
   const generatedId = useId()
+  const activeTargetKey = useRef(`${targetType}:${targetId}`)
   const [draft, setDraft] = useState(initialDraft)
   const [input, setInput] = useState(() =>
     getInitialText(initialDraft, fallbackOriginalInput),
@@ -62,6 +63,9 @@ export function SimpleAnswerEditor({
   const [error, setError] = useState('')
 
   useEffect(() => {
+    const nextTargetKey = `${targetType}:${targetId}`
+    if (activeTargetKey.current === nextTargetKey) return
+    activeTargetKey.current = nextTargetKey
     setDraft(initialDraft)
     setInput(getInitialText(initialDraft, fallbackOriginalInput))
     setMessage('')
