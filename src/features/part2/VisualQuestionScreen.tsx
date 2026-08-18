@@ -55,6 +55,12 @@ export function VisualQuestionScreen() {
   }, [data?.visualSet, visualQuestionId])
 
   if (loading) return <LoadingState message="그림 질문을 불러오는 중입니다" />
+  if (
+    data?.question &&
+    data.question.visual_question_id !== visualQuestionId
+  ) {
+    return <LoadingState message="그림 질문을 불러오는 중입니다" />
+  }
   if (error || !data?.visualSet) {
     return <ErrorState title="그림 질문을 찾을 수 없습니다" message={visualQuestionId} />
   }
@@ -90,6 +96,7 @@ export function VisualQuestionScreen() {
       <section className="card primary-learning-action" aria-labelledby="visual-answer-heading">
         <h2 id="visual-answer-heading">내 답변</h2>
         <SimpleAnswerEditor
+          key={`answer-${visualQuestionId}`}
           targetType="visual_question"
           targetId={visualQuestionId}
           initialDraft={data.draft}
@@ -101,6 +108,7 @@ export function VisualQuestionScreen() {
       <section className="card" aria-labelledby="visual-memory-heading">
         <h2 id="visual-memory-heading">암기 상태</h2>
         <LearningStatusButtons
+          key={`review-${visualQuestionId}`}
           targetType="visual_question"
           targetId={visualQuestionId}
           initialReviewState={data.review}

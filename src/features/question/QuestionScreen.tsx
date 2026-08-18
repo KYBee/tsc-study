@@ -45,7 +45,10 @@ export function QuestionScreen() {
   const location = useLocation()
   const { publicRepository, userRepository } = useAppDependencies()
   const [display, setDisplay] = useState(loadDisplayPreferences)
-  const [draftOverride, setDraftOverride] = useState<StoredPracticeDraft>()
+  const [draftOverride, setDraftOverride] = useState<{
+    questionId: string
+    draft: StoredPracticeDraft
+  }>()
   const { data, error, loading } = useAsyncData(async () => {
     const question = await publicRepository.getQuestionById(questionId)
     if (!question || ![1, 3, 4, 5, 6].includes(question.part)) {
@@ -101,10 +104,6 @@ export function QuestionScreen() {
   }, [display])
 
   useEffect(() => {
-    setDraftOverride(undefined)
-  }, [questionId])
-
-  useEffect(() => {
     if (data?.question && data.questions) {
       saveLastLearningLocation({
         last_part: data.question.part,
@@ -121,6 +120,9 @@ export function QuestionScreen() {
         message="개발 데이터를 확인한 뒤 다시 시도해 주세요."
       />
     )
+  }
+  if (data?.question && data.question.question_id !== questionId) {
+    return <LoadingState message="문제를 불러오는 중입니다" />
   }
   if (!data?.question || !data.questions) {
     return (
@@ -154,7 +156,10 @@ export function QuestionScreen() {
     practiceDrills,
     courseInsights,
   } = data
-  const currentDraft = draftOverride ?? data.practiceDraft
+  const currentDraft =
+    draftOverride?.questionId === questionId
+      ? draftOverride.draft
+      : data.practiceDraft
   const returnTo = getSafeReturnPath(
     location.state,
     `/parts/${question.part}` as
@@ -231,7 +236,7 @@ export function QuestionScreen() {
           fallbackOriginalInput={userAnswer?.original_input}
           fallbackInputLanguage={userAnswer?.input_language}
           userRepository={userRepository}
-          onSaved={setDraftOverride}
+          onSaved={(draft) => setDraftOverride({ questionId, draft })}
         />
         <div className="secondary-actions">
           {isPart4 ? (

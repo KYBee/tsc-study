@@ -53,6 +53,9 @@ export function Part7SetScreen() {
   }, [data?.visualSet])
 
   if (loading) return <LoadingState message="스토리 그림을 불러오는 중입니다" />
+  if (data?.visualSet && data.visualSet.visual_set_id !== visualSetId) {
+    return <LoadingState message="스토리 그림을 불러오는 중입니다" />
+  }
   if (error || !data) {
     return <ErrorState title="스토리 그림 세트를 찾을 수 없습니다" message={visualSetId} />
   }
@@ -90,6 +93,7 @@ export function Part7SetScreen() {
       <section className="card primary-learning-action" aria-labelledby="story-answer-heading">
         <h2 id="story-answer-heading">내 이야기 답변</h2>
         <SimpleAnswerEditor
+          key={`answer-${visualSetId}`}
           targetType="visual_set"
           targetId={visualSetId}
           initialDraft={data.draft}
@@ -102,6 +106,7 @@ export function Part7SetScreen() {
       <section className="card" aria-labelledby="story-memory-heading">
         <h2 id="story-memory-heading">암기 상태</h2>
         <LearningStatusButtons
+          key={`review-${visualSetId}`}
           targetType="visual_set"
           targetId={visualSetId}
           initialReviewState={data.review}

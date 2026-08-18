@@ -1,10 +1,11 @@
-import { useEffect, useId, useRef, useState } from 'react'
+import { useId, useState } from 'react'
 
 import type { InputLanguage, LearningTargetType } from '../domain/entities'
 import type {
   StoredPracticeDraft,
   UserDataRepository,
 } from '../data/userDataRepository'
+import { detectInputLanguage } from './simpleAnswerEditorUtils'
 
 interface SimpleAnswerEditorProps {
   targetType: LearningTargetType
@@ -28,18 +29,6 @@ function getInitialText(
     : draft?.original_input ?? fallbackOriginalInput ?? ''
 }
 
-export function detectInputLanguage(
-  text: string,
-  fallback: InputLanguage = 'mixed',
-): InputLanguage {
-  const hasChinese = /[\u3400-\u9fff]/u.test(text)
-  const hasKorean = /[\uac00-\ud7a3]/u.test(text)
-  if (hasChinese && !hasKorean) return 'zh'
-  if (hasKorean && !hasChinese) return 'ko'
-  if (hasChinese && hasKorean) return 'mixed'
-  return fallback
-}
-
 export function SimpleAnswerEditor({
   targetType,
   targetId,
@@ -53,7 +42,6 @@ export function SimpleAnswerEditor({
   onSaved,
 }: SimpleAnswerEditorProps) {
   const generatedId = useId()
-  const activeTargetKey = useRef(`${targetType}:${targetId}`)
   const [draft, setDraft] = useState(initialDraft)
   const [input, setInput] = useState(() =>
     getInitialText(initialDraft, fallbackOriginalInput),
@@ -61,16 +49,6 @@ export function SimpleAnswerEditor({
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-
-  useEffect(() => {
-    const nextTargetKey = `${targetType}:${targetId}`
-    if (activeTargetKey.current === nextTargetKey) return
-    activeTargetKey.current = nextTargetKey
-    setDraft(initialDraft)
-    setInput(getInitialText(initialDraft, fallbackOriginalInput))
-    setMessage('')
-    setError('')
-  }, [fallbackOriginalInput, initialDraft, targetId, targetType])
 
   const save = async () => {
     const text = input.trim()

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import type { LearningTargetType } from '../domain/entities'
 import type {
@@ -27,12 +27,6 @@ export function LearningStatusButtons({
   const [saving, setSaving] = useState(false)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
-
-  useEffect(() => {
-    setReviewState(initialReviewState)
-    setMessage('')
-    setError('')
-  }, [initialReviewState, targetId, targetType])
 
   const save = async (learningStatus: (typeof SIMPLE_STATUSES)[number]) => {
     if (saving) return

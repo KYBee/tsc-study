@@ -29,6 +29,9 @@ export function Part2SetScreen() {
   }, [publicRepository, userRepository, visualSetId])
 
   if (loading) return <LoadingState message="그림 세트를 불러오는 중입니다" />
+  if (data?.visualSet && data.visualSet.visual_set_id !== visualSetId) {
+    return <LoadingState message="그림 세트를 불러오는 중입니다" />
+  }
   if (error || !data) {
     return <ErrorState title="그림 세트를 찾을 수 없습니다" message={visualSetId} />
   }
