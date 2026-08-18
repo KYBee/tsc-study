@@ -69,6 +69,12 @@ describe('Part 7 story visual learning slice', () => {
     expect(within(setList).getAllByTestId('story-set-id')).toHaveLength(12)
     expect(within(setList).getAllByRole('img')).toHaveLength(12)
     expect(screen.getByText('현재 결과 12개')).toBeInTheDocument()
+    expect(
+      within(setList).getByRole('link', {
+        name: /^스토리 세트 1 · 내 답변: 미작성 · 암기: 미체크 · 공부하기$/,
+      }),
+    ).toBeInTheDocument()
+    expect(screen.queryByText('원본 workbook 기반')).not.toBeInTheDocument()
   })
 
   it('shows the explicit StoryGuide and candidate boundary without an answer claim', async () => {

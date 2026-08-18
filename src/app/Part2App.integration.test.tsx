@@ -69,9 +69,12 @@ describe('Part 2 visual learning slice', () => {
     const setList = await screen.findByRole('list', { name: 'Part 2 그림 세트' })
     expect(within(setList).getAllByTestId('visual-set-id')).toHaveLength(12)
     expect(within(setList).getAllByRole('img')).toHaveLength(12)
-    await user.click(
-      within(setList).getByRole('link', { name: /^세트 1 · 질문 4개/ }),
-    )
+    const firstSetLink = within(setList).getByRole('link', {
+      name: /^세트 1 · 질문 4개 · 내 답변 0 \/ 4 · 외움 0 · 공부하기$/,
+    })
+    expect(firstSetLink).toBeInTheDocument()
+    expect(screen.queryByText('원본 workbook 기반')).not.toBeInTheDocument()
+    await user.click(firstSetLink)
 
     expect(
       await screen.findByRole('heading', { name: 'Part 2 그림 세트 1' }),

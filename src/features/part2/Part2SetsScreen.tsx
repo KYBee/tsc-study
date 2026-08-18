@@ -6,11 +6,25 @@ import { useAsyncData } from '../../app/useAsyncData'
 import { EmptyState } from '../../components/EmptyState'
 import { ErrorState } from '../../components/ErrorState'
 import { LoadingState } from '../../components/LoadingState'
-import { StatusBadge } from '../../components/StatusBadge'
 import { REVIEW_VISUAL_ASSETS_ENABLED } from '../../data/localVisualAssetUrl'
 import { Part2VisualImage } from './Part2VisualImage'
 
-type SetFilter = 'all' | 'unwritten' | 'in_progress' | 'completed' | 'confused' | 'memorized'
+type SetFilter =
+  | 'all'
+  | 'unwritten'
+  | 'in_progress'
+  | 'completed'
+  | 'not_memorized'
+  | 'confused'
+  | 'memorized'
+
+const SIMPLE_FILTERS: Array<{ value: SetFilter; label: string }> = [
+  { value: 'all', label: '전체' },
+  { value: 'unwritten', label: '미작성' },
+  { value: 'completed', label: '작성 완료' },
+  { value: 'not_memorized', label: '못 외움' },
+  { value: 'memorized', label: '외움' },
+]
 
 const setNumber = (visualSetId: string) =>
   Number(visualSetId.match(/V(\d+)$/)?.[1] ?? 0)
@@ -66,6 +80,11 @@ export function Part2SetsScreen() {
             (draft) => draft.completion_status === 'completed',
           )
         }
+        if (filter === 'not_memorized') {
+          return item.reviews.some(
+            (review) => review.learning_status === '못 외움',
+          )
+        }
         if (filter === 'confused') {
           return item.reviews.some(
             (review) => review.learning_status === '헷갈림',
@@ -100,31 +119,41 @@ export function Part2SetsScreen() {
 
   return (
     <div className="page">
-      <header className="page-header">
+      <header className="page-header page-header--compact">
         <Link className="back-link" to="/">← 학습 홈</Link>
-        <div className="badge-row">
-          <StatusBadge status="development_fixture" />
-          <StatusBadge status="review_needed" />
-        </div>
         <p className="eyebrow">PART 2</p>
         <h1>그림 보고 답하기</h1>
         <p>그림 세트 12개 · 세부 질문 48개</p>
       </header>
-      <aside className="notice">
-        사용자가 제공한 이름 지정 묶음의 검수 전 그림입니다. 공개 권리 승인과 별개로 현재 배포 설정에서만 사용합니다.
-      </aside>
-      <section className="card compact-filter">
-        <label>
-          세트 상태
-          <select value={filter} onChange={(event) => setFilter(event.target.value as SetFilter)}>
-            <option value="all">전체 세트</option>
-            <option value="unwritten">미작성</option>
-            <option value="in_progress">작성 중</option>
-            <option value="completed">작성 완료</option>
-            <option value="confused">헷갈림</option>
-            <option value="memorized">외움</option>
-          </select>
-        </label>
+      <section className="card filter-panel">
+        <div className="simple-filter-tabs" role="group" aria-label="Part 2 기본 학습 필터">
+          {SIMPLE_FILTERS.map((item) => (
+            <button
+              key={item.value}
+              className="filter-chip"
+              type="button"
+              aria-pressed={filter === item.value}
+              onClick={() => setFilter(item.value)}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <details className="details-panel">
+          <summary>상세 필터</summary>
+          <label className="compact-filter">
+            세트 상태
+            <select value={filter} onChange={(event) => setFilter(event.target.value as SetFilter)}>
+              <option value="all">전체 세트</option>
+              <option value="unwritten">미작성</option>
+              <option value="in_progress">작성 중</option>
+              <option value="completed">작성 완료</option>
+              <option value="not_memorized">못 외움</option>
+              <option value="confused">헷갈림</option>
+              <option value="memorized">외움</option>
+            </select>
+          </label>
+        </details>
         <button className="secondary-button" type="button" disabled={filtered.length === 0} onClick={randomSet}>
           랜덤 세트
         </button>
@@ -135,31 +164,34 @@ export function Part2SetsScreen() {
         <ul className="visual-set-grid" aria-label="Part 2 그림 세트">
           {filtered.map(({ visualSet, asset, questions, drafts, reviews }) => {
             const number = setNumber(visualSet.visual_set_id)
-            const completed = drafts.filter(
-              (item) => item.completion_status === 'completed',
+            const memorized = reviews.filter(
+              (item) => item.learning_status === '외움',
             ).length
             return (
               <li key={visualSet.visual_set_id} className="card visual-set-card">
                 <Link
                   to={`/parts/2/sets/${visualSet.visual_set_id}`}
-                  aria-label={`세트 ${number} · 질문 ${questions.length}개 · 작성 ${drafts.length} · 완료 ${completed}`}
+                  aria-label={`세트 ${number} · 질문 ${questions.length}개 · 내 답변 ${drafts.length} / ${questions.length} · 외움 ${memorized} · 공부하기`}
                 >
                   <span className="eyebrow" data-testid="visual-set-id">
                     {visualSet.visual_set_id}
                   </span>
                   <Part2VisualImage asset={asset} setNumber={number} thumbnail />
                   <strong>그림 세트 {number}</strong>
-                  <small>질문 {questions.length}개 · 작성 {drafts.length} · 완료 {completed}</small>
-                  <small>
-                    헷갈림 {reviews.filter((item) => item.learning_status === '헷갈림').length}
-                    {' · '}외움 {reviews.filter((item) => item.learning_status === '외움').length}
-                  </small>
+                  <small>질문 {questions.length}개</small>
+                  <small>내 답변 {drafts.length} / {questions.length}</small>
+                  <small>외움 {memorized}</small>
+                  <span className="question-card__cta">공부하기</span>
                 </Link>
               </li>
             )
           })}
         </ul>
       )}
+      <details className="card details-panel supporting-materials">
+        <summary>데이터 정보</summary>
+        <p>현재 배포 설정에서 사용하는 검수 전 그림 학습 자료입니다.</p>
+      </details>
     </div>
   )
 }
