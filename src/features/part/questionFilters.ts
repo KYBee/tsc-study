@@ -14,6 +14,12 @@ export interface QuestionListItem {
 
 export type ReviewFilter = 'all' | 'none' | '못 외움' | '헷갈림' | '외움'
 export type WritingFilter = 'all' | 'unwritten' | 'draft' | 'approved'
+export type SimpleLearningFilter =
+  | 'all'
+  | 'unwritten'
+  | 'completed'
+  | '못 외움'
+  | '외움'
 
 export interface QuestionFilters {
   query?: string
@@ -60,6 +66,23 @@ export function filterQuestionItems(
 export type Part4QuestionListItem = QuestionListItem
 export type Part4QuestionFilters = QuestionFilters
 export const filterPart4QuestionItems = filterQuestionItems
+
+export function filterSimpleLearningItems(
+  items: QuestionListItem[],
+  filter: SimpleLearningFilter,
+): QuestionListItem[] {
+  if (filter === 'all') return items
+  if (filter === 'unwritten') {
+    return items.filter(({ practiceDraft, userAnswer }) => !practiceDraft && !userAnswer)
+  }
+  if (filter === 'completed') {
+    return items.filter(
+      ({ practiceDraft, userAnswer }) =>
+        practiceDraft?.completion_status === 'completed' || Boolean(userAnswer),
+    )
+  }
+  return items.filter(({ reviewState }) => reviewState?.learning_status === filter)
+}
 
 export function pickRandomQuestion<T>(
   items: T[],

@@ -91,7 +91,7 @@ describe('text Parts navigation', () => {
     for (const [part, count] of [[1, 4], [3, 84], [4, 50], [5, 36], [6, 19]]) {
       expect(
         within(partList).getByRole('link', {
-          name: new RegExp(`Part ${part}.*${count}개`),
+          name: new RegExp(`Part ${part}.*${count}문제`),
         }),
       ).toHaveAttribute('href', `/parts/${part}`)
     }
@@ -111,6 +111,39 @@ describe('text Parts navigation', () => {
     )
     expect(await screen.findByRole('heading', { name: '일상 화제 설명하기' })).toBeInTheDocument()
     expect(document.querySelector('#main-content')).toHaveFocus()
+  })
+
+  it('keeps HOME focused on Part selection and simple answer progress', async () => {
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertPracticeDraft({
+      practice_draft_id: 'pd-P3-001',
+      question_id: 'P3-001',
+      target_type: 'question',
+      target_id: 'P3-001',
+      input_language: 'zh',
+      original_input: '我周末运动。',
+      full_text: '我周末运动。',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    await userRepository.upsertReviewState({
+      review_state_id: 'rs-question-P3-001',
+      target_type: 'question',
+      target_id: 'P3-001',
+      learning_status: '외움',
+    })
+
+    renderApp('/', { userRepository })
+
+    expect(await screen.findByRole('heading', { name: 'TSC 공부' })).toBeInTheDocument()
+    const partList = screen.getByRole('list', { name: 'Part 목록' })
+    expect(
+      within(partList).getByRole('link', {
+        name: /Part 3.*84문제.*내 답변 1 \/ 84.*외움 1.*공부하기/,
+      }),
+    ).toHaveAttribute('href', '/parts/3')
+    expect(screen.queryByText('텍스트 파트 학습 현황')).not.toBeInTheDocument()
+    expect(screen.queryByText('무엇을 연습할까요?')).not.toBeInTheDocument()
   })
 
   it('shows all fifty canonical Part 4 questions', async () => {
@@ -157,6 +190,51 @@ describe('text Parts navigation', () => {
     expect(screen.getByText('현재 결과 2개')).toBeInTheDocument()
     expect(screen.getByText('P4-006')).toBeInTheDocument()
     expect(screen.getByText('P4-007')).toBeInTheDocument()
+  })
+
+  it('shows the five primary learning filters and simple card states', async () => {
+    const user = userEvent.setup()
+    const userRepository = createTestUserRepository()
+    await userRepository.upsertPracticeDraft({
+      practice_draft_id: 'pd-P4-001',
+      question_id: 'P4-001',
+      target_type: 'question',
+      target_id: 'P4-001',
+      input_language: 'ko',
+      original_input: '완료한 답변',
+      full_text: '완료한 답변',
+      completion_status: 'completed',
+      draft_status: 'draft',
+    })
+    await userRepository.upsertReviewState({
+      review_state_id: 'rs-question-P4-002',
+      target_type: 'question',
+      target_id: 'P4-002',
+      learning_status: '못 외움',
+    })
+    await userRepository.upsertReviewState({
+      review_state_id: 'rs-question-P4-003',
+      target_type: 'question',
+      target_id: 'P4-003',
+      learning_status: '외움',
+    })
+
+    renderApp('/parts/4', { userRepository })
+
+    const filters = await screen.findByRole('group', { name: '기본 학습 필터' })
+    await user.click(within(filters).getByRole('button', { name: '작성 완료' }))
+    expect(screen.getByText('현재 결과 1개')).toBeInTheDocument()
+    expect(screen.getByText('P4-001')).toBeInTheDocument()
+    expect(screen.getByText('내 답변: 작성 완료')).toBeInTheDocument()
+
+    await user.click(within(filters).getByRole('button', { name: '못 외움' }))
+    expect(screen.getByText('P4-002')).toBeInTheDocument()
+    expect(screen.getByText('암기: 못 외움')).toBeInTheDocument()
+
+    await user.click(within(filters).getByRole('button', { name: '외움' }))
+    expect(screen.getByText('P4-003')).toBeInTheDocument()
+    expect(screen.getByText('암기: 외움')).toBeInTheDocument()
+    expect(screen.getByText('상세 필터').closest('details')).not.toHaveAttribute('open')
   })
 
   it('shows a safe error screen for an unknown question ID', async () => {
