@@ -11,7 +11,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 새 분홍 원피스를 산다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 새 분홍 원피스를 산다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V01-02",
@@ -25,7 +25,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 친구에게 새 원피스를 보여준다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 친구에게 새 원피스를 보여준다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V01-03",
@@ -39,7 +39,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 원피스에 음료를 쏟는다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 원피스에 음료를 쏟는다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V01-04",
@@ -53,7 +53,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 더러워진 원피스를 세탁한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 더러워진 원피스를 세탁한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V02-01",
@@ -67,7 +67,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 운전면허 시험에 합격한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 운전면허 시험에 합격한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V02-02",
@@ -81,7 +81,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 면허를 따고 자동차를 운전한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 면허를 따고 자동차를 운전한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V02-03",
@@ -89,13 +89,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-2-3_car_accident_on_road.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-2-3_car_accident_on_road.png",
     "media_type": "image/png",
-    "file_size": 404309,
-    "sha256": "87e95edb18cf39c428249442824a28b955bcee5e9cd1f25a6c5e5f2d6c3fbfb9",
-    "width": 538,
-    "height": 444,
+    "file_size": 2289412,
+    "sha256": "1a5602689016be4a021d56967a309fc637c86a153282229cc0b86bcd7cce2167",
+    "width": 1376,
+    "height": 1143,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 도로에서 교통사고가 난다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 도로에서 교통사고가 난다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V02-04",
@@ -103,13 +103,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-2-4_pay_expensive_repair_fee.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-2-4_pay_expensive_repair_fee.png",
     "media_type": "image/png",
-    "file_size": 379542,
-    "sha256": "f9487c013235f3043a221ce13fa0443de28fb5b0550b1f9b0f9e824f4a26da95",
-    "width": 538,
-    "height": 444,
+    "file_size": 2101998,
+    "sha256": "07c3bb8d13e935ec9fabb33b17f8b2d15dcfa3630cbcb0717e082676a988a77c",
+    "width": 1380,
+    "height": 1140,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 비싼 수리비를 낸다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 비싼 수리비를 낸다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V03-01",
@@ -117,13 +117,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-3-1_neighbor_brings_oranges.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-3-1_neighbor_brings_oranges.png",
     "media_type": "image/png",
-    "file_size": 372552,
-    "sha256": "31df6aa3eba2fe847b3c10fb58be276fb64c676b863b280204534bb38f63fa68",
-    "width": 538,
-    "height": 444,
+    "file_size": 2138044,
+    "sha256": "7945d80146ec5f02c2e4a0c7a2adf550a2649ed5d258c2d313ba7cf69e699fcd",
+    "width": 1380,
+    "height": 1140,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 이웃이 귤 한 상자를 준다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 이웃이 수박 한 통을 준다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V03-02",
@@ -137,7 +137,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 집에 있던 수박이 사라진다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 집에 있던 수박이 사라진다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V03-03",
@@ -151,7 +151,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 엄마가 아이를 의심하고 혼낸다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 엄마가 아이를 의심하고 혼낸다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V03-04",
@@ -165,7 +165,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 사실 강아지가 수박을 먹었다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 사실 강아지가 수박을 먹었다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V04-01",
@@ -179,7 +179,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 사과를 사오라고 돈을 준다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 사과를 사오라고 돈을 준다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V04-02",
@@ -193,7 +193,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 시장/가게에서 사과를 산다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 시장/가게에서 사과를 산다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V04-03",
@@ -201,13 +201,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-4-3_boy_gets_distracted_by_game.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-4-3_boy_gets_distracted_by_game.png",
     "media_type": "image/png",
-    "file_size": 396090,
-    "sha256": "711ef27c2f70c7cc5c652fc01875ab39b8fd30996135a3710b8fefa1aba7331d",
-    "width": 538,
-    "height": 444,
+    "file_size": 2291369,
+    "sha256": "ee893d7c262012773abfaff02952de739a66db92bda10389a5452076b0d6aef6",
+    "width": 1380,
+    "height": 1140,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 가는 길에 게임에 빠진다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 가는 길에 게임에 빠진다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V04-04",
@@ -221,7 +221,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 벤치에 사과를 두고 떠난다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 벤치에 사과를 두고 떠난다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V05-01",
@@ -235,7 +235,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 택시를 탄다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 택시를 탄다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V05-02",
@@ -249,7 +249,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 택시에 휴대전화를 두고 내린 걸 알게 된다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 택시에 휴대전화를 두고 내린 걸 알게 된다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V05-03",
@@ -263,7 +263,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 택시기사에게 휴대전화 분실 연락을 한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 택시기사에게 휴대전화 분실 연락을 한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V05-04",
@@ -277,7 +277,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 휴대전화를 돌려받고 감사한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 휴대전화를 돌려받고 감사한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V06-01",
@@ -291,7 +291,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 두 친구가 함께 걷는다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 두 친구가 함께 걷는다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V06-02",
@@ -305,7 +305,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 갑자기 비가 온다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 갑자기 비가 온다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V06-03",
@@ -319,7 +319,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 한 친구만 우산을 가지고 있다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 한 친구만 우산을 가지고 있다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V06-04",
@@ -333,7 +333,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 우산을 함께 쓰고 돌아간다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 우산을 함께 쓰고 돌아간다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V07-01",
@@ -341,13 +341,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-7-1_prepare_surprise_birthday_party.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-7-1_prepare_surprise_birthday_party.png",
     "media_type": "image/png",
-    "file_size": 336261,
-    "sha256": "f1f56ad8576e34d8da78f8c5f99c0bf3cac918e9ba648be0aab7043f92dec07b",
-    "width": 538,
-    "height": 444,
+    "file_size": 2019734,
+    "sha256": "7194d0a6cf70801113af4029ed21b9a6df98841668bda6ca4a82e21754b5ea54",
+    "width": 1380,
+    "height": 1140,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 깜짝 생일파티를 준비한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 깜짝 생일파티를 준비한다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V07-02",
@@ -361,7 +361,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 주인공이 어두운 방에 들어온다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 주인공이 어두운 방에 들어온다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V07-03",
@@ -375,7 +375,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 친구들이 서프라이즈를 외친다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 친구들이 서프라이즈를 외친다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V07-04",
@@ -383,13 +383,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-7-4_enjoy_birthday_party_together.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-7-4_enjoy_birthday_party_together.png",
     "media_type": "image/png",
-    "file_size": 382380,
-    "sha256": "b30833130f762f27206d0ef35c574fe390951fbc0ae66a098dc13c0bc34f4711",
-    "width": 538,
-    "height": 444,
+    "file_size": 2230787,
+    "sha256": "a4c870b7124cd8e13fae3a398dd6fc18a9c6680f0757e97bd8730e262f83377a",
+    "width": 1376,
+    "height": 1143,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 함께 생일파티를 즐긴다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 함께 생일파티를 즐긴다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V08-01",
@@ -403,7 +403,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 아침에 늦잠을 잔다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 아침에 늦잠을 잔다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V08-02",
@@ -411,13 +411,13 @@
     "source_locator": "data/working/app-assets/tsc-individual-images-v1/part7-8-2_run_out_of_home_in_hurry.png",
     "repository_path": "data/working/app-assets/tsc-individual-images-v1/part7-8-2_run_out_of_home_in_hurry.png",
     "media_type": "image/png",
-    "file_size": 365887,
-    "sha256": "cd8081e42fd7865554eb3946c2f5187cfa45094e16095da945968d9587dbe12a",
-    "width": 538,
-    "height": 444,
+    "file_size": 2251901,
+    "sha256": "ecf41fcc246d3284143ad137bf43fe00e12a6b6688f5f75dc4f116f43edbb924",
+    "width": 1381,
+    "height": 1139,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 급하게 집에서 뛰어나간다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 급하게 집에서 뛰어나간다; asset provenance: generated_replacement; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V08-03",
@@ -431,7 +431,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 버스를 놓친다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 버스를 놓친다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V08-04",
@@ -445,7 +445,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 학교에 지각한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 학교에 지각한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V09-01",
@@ -459,7 +459,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 길에서 지갑을 발견한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 길에서 지갑을 발견한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V09-02",
@@ -473,7 +473,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 지갑을 줍는다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 지갑을 줍는다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V09-03",
@@ -487,7 +487,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 지갑을 경찰서에 맡긴다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 지갑을 경찰서에 맡긴다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V09-04",
@@ -501,7 +501,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 주인이 지갑을 되찾고 감사한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 주인이 지갑을 되찾고 감사한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V10-01",
@@ -515,7 +515,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 식당에서 국수를 주문한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 식당에서 국수를 주문한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V10-02",
@@ -529,7 +529,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 주문과 다른 음식이 나온다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 주문과 다른 음식이 나온다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V10-03",
@@ -543,7 +543,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 직원에게 잘못 나왔다고 말한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 직원에게 잘못 나왔다고 말한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V10-04",
@@ -557,7 +557,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 제대로 된 국수를 다시 받는다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 제대로 된 국수를 다시 받는다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V11-01",
@@ -571,7 +571,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 가족이 여행 준비를 한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 가족이 여행 준비를 한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V11-02",
@@ -585,7 +585,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 가족이 공항에 도착한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 가족이 공항에 도착한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V11-03",
@@ -599,7 +599,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 여권을 집에 두고 온 것을 발견한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 여권을 집에 두고 온 것을 발견한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V11-04",
@@ -613,7 +613,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 결국 다시 집으로 돌아간다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 결국 다시 집으로 돌아간다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V12-01",
@@ -627,7 +627,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 길에서 다친 강아지를 발견한다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 길에서 다친 강아지를 발견한다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V12-02",
@@ -641,7 +641,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 강아지를 동물병원에 데려간다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 강아지를 동물병원에 데려간다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V12-03",
@@ -655,7 +655,7 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 전단지와 전화로 주인을 찾는다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 전단지와 전화로 주인을 찾는다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   },
   {
     "visual_asset_id": "va-P7-V12-04",
@@ -669,6 +669,6 @@
     "height": 444,
     "rights_status": "review_needed",
     "asset_status": "raw",
-    "notes": "동봉 CSV 설명: 강아지가 주인과 다시 만난다; 파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; 원출처·공개 권리 미검수"
+    "notes": "동봉 CSV 설명: 강아지가 주인과 다시 만난다; asset provenance: named_bundle_asset; 파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; 원출처·공개 권리 미검수"
   }
 ]

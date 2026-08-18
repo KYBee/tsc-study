@@ -101,6 +101,8 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | `D-031` | VisualSet 개인 데이터와 IndexedDB v5 | 기존 학습 DB 이름, store와 compound index를 유지하면서 `visual_set` target을 additive하게 허용한다. Part 7 PracticeDraft에 사용자 작성 `story_keywords`, 순서 있는 `story_points`, `full_text`를 저장한다. StoryGuide는 자동 복사·저장하지 않고 UserAnswer·Correction을 만들지 않는다. | 서버 동기화, 이야기 답변 교정 또는 데이터 내보내기 정책을 설계할 때 |
 | `D-032` | 사용자 제공 이름 지정 시각 자산 | 안전한 deterministic importer로 Part 2 12장·Part 7 48장을 `data/working/app-assets/tsc-individual-images-v1/`에 재인코딩 없이 반입했다. 명시적 파일명·CSV의 Part 7 장면 1~4 순서를 사용하며 60개 ID만 개발 서버 allowlist로 제공한다. 압축 원본은 추출 검증 후 사용자 요청에 따라 저장소에서 제거하고 working PNG만 Git에 보존한다. `rights_status = review_needed`, `public_allowed = false`를 유지한다. production 제공 정책은 후속 `D-033`으로 갱신했다. | 이미지 원출처·공개 권리가 사람 검수로 승인될 때 |
 | `D-033` | 권리 검수 전 이미지의 production opt-in | 기본 production build에는 Part 2·7 working PNG를 포함하지 않는다. 운영자가 build 시 `VITE_ENABLE_TSC_REVIEW_VISUAL_ASSETS=true`를 정확히 설정한 deployment에만 allowlist 60개를 경로·PNG MIME·크기·SHA-256·치수 검증 후 `BASE_URL/tsc-visual-assets/<asset-id>.png`로 emit한다. 이는 배포 선택일 뿐 권리 승인이 아니며 `rights_status = review_needed`, `public_allowed = false`, `production_enabled = false` metadata를 변경하지 않는다. | 권리 승인 자산을 별도 reviewed/public dataset으로 관리하거나 배포 정책을 철회할 때 |
+| `D-034` | 실전 타이밍과 브라우저 질문 음성 | Part 2는 그림만 노출한 채 3초 준비·질문 1회 재생·6초 답변, Part 3은 질문 1회 재생·2초 준비·15초 답변을 사용한다. `idle/preparing/playing_question/answering/finished` 상태와 cleanup-safe timer/SpeechSynthesis 경계를 공유하며 음성 실패 시 타이머는 계속된다. | 실제 시험 규칙 검수 또는 공식 음원 제공 시 |
+| `D-035` | working 시각 자산 생성 교체 provenance | 질문·답·StoryGuide 원문은 유지하고 Part 2 의미·스타일과 Part 7 사건 연속성에 필요한 그림만 생성 교체한다. importer manifest의 `asset_provenance_kind`와 `generated_replacement_assets`로 교체본을 기존 묶음 자산과 구분하며 audited archive 바이트의 SHA·크기·치수를 검증한다. 권리 상태와 canonical 관계는 승격하지 않는다. | 이미지 원출처·생성물 권리 및 reviewed 시각 데이터 승인 시 |
 
 설치되어 `package-lock.json`에 고정된 직접 의존성은 다음과 같다.
 
@@ -131,6 +133,21 @@ TSC 1~7강 분석 자료의 대표 근거를 working 데이터로 구조화하�
 | 보조 | `globals` | 17.7.0 |
 
 React Router DOM 7.18.1에는 npm audit가 RSC 모드 관련 high 경고를 보고한다. 현재 앱은 서버·RSC·action을 사용하지 않는 브라우저 Declarative SPA라 해당 실행 경로를 사용하지 않지만, 패치 릴리스가 제공되면 우선 재검토한다. 경고를 숨기기 위해 강제 downgrade하지 않는다.
+
+## D-013: 브라우저 교정 endpoint 경계 (2026-08-13)
+
+- 기존 `CorrectionProvider`를 유지하고, `VITE_TSC_CORRECTION_API_URL`이 있으면
+  Zod 검증을 적용하는 `HttpCorrectionProvider`를 선택한다.
+- endpoint는 same-origin 상대 경로 또는 credential이 없는 HTTPS URL만 허용한다.
+- `VITE_*`에는 공개 가능한 endpoint URL만 두며 API key와 provider secret은
+  넣지 않는다. 저장소에는 별도 AI 백엔드를 추가하지 않는다.
+- endpoint가 없으면 P4-006 deterministic mock을 유지한다.
+- Part 1·3·5·6은 기존 PracticeDraft를 보존하면서 교정 후 암기를 기본 행동으로
+  제공한다. success 결과도 사용자 승인 전에는 UserAnswer로 저장하지 않는다.
+- 실제 공급자·모델과 endpoint 운영 주체는 계속 별도 결정 사항이다.
+
+재검토 조건: 운영 endpoint와 인증 방식이 확정되거나, Part 2·7 target까지
+실제 교정 저장 계약을 확장할 때.
 
 ## 이미 확정된 제품·데이터 원칙
 

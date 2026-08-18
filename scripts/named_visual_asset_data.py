@@ -39,7 +39,7 @@ def load_manifest() -> dict[str, Any]:
 def source_record(manifest: dict[str, Any]) -> dict[str, Any]:
     return {
         "source_id": SOURCE_ID,
-        "title": "TSC named visual asset manifest",
+        "title": "TSC audited named visual asset manifest",
         "source_type": "other",
         "provenance_status": "unverified_source",
         "creator_or_provider": "",
@@ -51,8 +51,9 @@ def source_record(manifest: dict[str, Any]) -> dict[str, Any]:
         "rights_status": "review_needed",
         "source_status": "raw",
         "notes": (
-            "사용자가 제공한 이름 지정 이미지 묶음. 파일명과 동봉 CSV의 "
-            "세트·장면 순서는 보존했으나 원출처와 공개 권리는 검증되지 않았다."
+            "이름 지정 이미지 묶음과 정합성 검수 생성 교체본을 합친 working 자산. "
+            "파일명과 동봉 CSV의 세트·장면 순서는 보존했으나 원출처와 공개 권리는 "
+            "검증되지 않았다."
         ),
     }
 
@@ -89,7 +90,8 @@ def visual_entities(part: int) -> tuple[list[dict[str, Any]], list[dict[str, Any
                 "asset_status": "raw",
                 "notes": (
                     f"동봉 CSV 설명: {item['korean_description']}; "
-                    "파일명에 명시된 세트·장면 순서 사용; 원본 PNG 바이트 미변경; "
+                    f"asset provenance: {item['asset_provenance_kind']}; "
+                    "파일명에 명시된 세트·장면 순서 사용; audited archive PNG 바이트 보존; "
                     "원출처·공개 권리 미검수"
                 ),
             }

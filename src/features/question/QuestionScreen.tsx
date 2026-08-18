@@ -389,13 +389,23 @@ export function QuestionScreen() {
           </Link>
         </section>
       ) : (
-        <Link
-          className="primary-button full-width"
-          to={`/questions/${question.question_id}/answer`}
-          state={navigationState}
-        >
-          내 답변 작성
-        </Link>
+        <div className="button-row">
+          <Link
+            className="primary-button"
+            to={`/questions/${question.question_id}/answer`}
+            state={navigationState}
+          >
+            내 답변 작성
+          </Link>
+          {question.part === 3 && (
+            <Link
+              className="secondary-button"
+              to={`/questions/${question.question_id}/exam`}
+            >
+              실전 모드 시작
+            </Link>
+          )}
+        </div>
       )}
 
       {practiceDrills.length > 0 && <details className="card guide-details">

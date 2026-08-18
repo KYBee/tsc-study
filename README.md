@@ -36,9 +36,10 @@ TSC 중국어 말하기 시험에서 실수를 줄이고, 파트별 답변 구�
 
 [Part 2 로컬 시각 학습 slice](docs/PART2_VISUAL_APP_SLICE.md)는
 VisualSet 12개·VisualQuestion 48개와 원본의 검수 전 추천 답변 48개를
-개발 환경에 연결한다. 사용자가 제공한 이름 지정 이미지 묶음의 Part 2
-이미지 12개는 working 앱 자산으로 Git에 보존하고 개발 서버에서만
-제공한다. 기본 production build에는 포함하지 않으며, 운영자가 명시적으로
+개발 환경에 연결한다. [시각 문제 전수검사](docs/PART2_VISUAL_QUESTION_AUDIT.md)로
+질문·답과 그림을 대조하고 12장을 1448×1086로 통일했다. 이미지 12개는
+working 앱 자산으로 Git에 보존한다. 기본 production build에는 포함하지
+않으며, 운영자가 명시적으로
 opt-in한 build에서만 검증된 60개 이미지 묶음의 일부로 제공한다. Part 2의
 PracticeDraft·RecallAttempt·ReviewState는 `visual_question`을 대상으로
 저장하고 원본 추천 답변을 내 답변이나 공식 정답으로 자동 저장하지 않는다.
@@ -52,6 +53,8 @@ QuestionVisualSet은 0개이며 번호 기반 후보 12개를 실제
 직접 저장해 그림 기반 회상을 연습한다. Part 7 이미지 바이트는 Git의
 working 자산으로 보존한다. 기본 production build에서는 제외하고 명시적
 deployment opt-in 때만 검증 후 포함한다.
+[Part 7 이미지-스토리 전수검사](docs/PART7_STORY_VISUAL_AUDIT.md)는 12세트
+48장을 모두 확인하고, 사건·인물 연속성이 부족한 7장만 보강했다.
 
 Part 4 50문제를 사람이 필드별로 확인할 수 있는 [로컬 검수 워크플로](docs/PART4_REVIEW_WORKFLOW.md)도 구현했다. 검수 결정은 별도 IndexedDB에 저장하고 JSON으로 내보내거나 가져올 수 있으며, CLI는 사용자가 완전히 승인하고 현재 원문 해시와 일치하는 항목만 reviewed JSON으로 승격한다. 실제 사람 검수·결정 파일·reviewed 데이터는 아직 없고 학습 앱은 계속 working fixture를 사용한다.
 
@@ -81,8 +84,8 @@ npm run dev
 텍스트 앱 fixture는 `data/working/app-fixtures/text-parts-v1/`, Part 2
 시각 fixture는 `data/working/app-fixtures/part2-visual-v1/`, Part 7
 스토리 fixture는 `data/working/app-fixtures/part7-visual-v1/`에 생성된다.
-모두 검수 완료 또는 배포용 데이터가 아니다. 이름 지정 압축 원본은 추출
-검증 후 저장소에서 제거했고, 압축에서 바이트 변경 없이 추출한 이미지 60장은
+모두 검수 완료 또는 배포용 데이터가 아니다. 현재 audited 이름 지정 archive의
+바이트를 검증한 이미지 60장은
 `data/working/app-assets/tsc-individual-images-v1/`에 있다.
 이 working 자산은 Git에 보존하지만 공개 권리는 `review_needed`이고
 `public_allowed = false`다. 기본 production build에는 포함하지 않는다.
@@ -138,6 +141,7 @@ npm run check:data
 - `/parts/:part`: Part 1·3·4·5·6 공통 목록·검색·필터·랜덤 선택
 - `/parts/2`: 로컬 Part 2 그림 세트 목록
 - `/parts/2/sets/:visualSetId`: 그림과 세부 질문 4개
+- `/parts/2/sets/:visualSetId/exam`: 그림만 보고 3초 준비·6초 답변을 네 문제 연속 연습
 - `/visual-questions/:visualQuestionId`: 그림 세부 질문
 - `/visual-questions/:visualQuestionId/answer`: Part 2 자유 입력·비교
 - `/visual-questions/:visualQuestionId/recall`: 그림 기반 회상
@@ -146,6 +150,7 @@ npm run check:data
 - `/parts/7/sets/:visualSetId/answer`: 내 이야기 키워드·포인트·전체 답변
 - `/parts/7/sets/:visualSetId/recall`: 그림·내 포인트 기반 회상
 - `/questions/:questionId`: 텍스트 문제
+- `/questions/:questionId/exam`: Part 3 질문 음성·2초 준비·15초 답변 실전 연습
 - `/questions/:questionId/answer`: 답변 작성
 - `/questions/:questionId/correction`: mock 교정 결과
 - `/my-answers`: 교정 완료 답변과 연습 초안
@@ -153,13 +158,17 @@ npm run check:data
 - `/mistakes`: 저장된 개인 실수
 - `/data-review/part4`: 개발 환경의 로컬 Part 4 데이터 검수
 
-실제 AI는 연결하지 않았다. 정확히 지정된 P4-006 중국어 예시만 개발용
-mock이 처리하며, 그 밖의 입력에는 번역이나 교정 결과를 꾸며내지 않는다.
-Part 1·2·3·5·6·7은 사용자의 직접 입력을 원문 그대로 PracticeDraft에
-저장하며 UserAnswer로 자동 승인하지 않는다. Part 2 추천 답변은
+`VITE_TSC_CORRECTION_API_URL`에 최소 교정 JSON 계약을 구현한 same-origin
+경로 또는 HTTPS URL을 설정하면 Part 1·3·4·5·6 답변 교정 요청을 실제로
+전송한다. 설정이 없으면 정확히 지정된 P4-006 중국어 예시만 기존 개발용
+mock이 처리한다. API key와 provider secret은 브라우저에 공개되는 `VITE_*`
+변수에 넣지 않으며 endpoint의 서버 측 환경에서 관리해야 한다. 교정 실패 시
+PracticeDraft와 원문을 유지하고 재시도할 수 있다. 성공 결과도 사용자가
+승인하기 전에는 UserAnswer로 저장하지 않는다. Part 2 추천 답변은
 `review_needed` 출처 자료로만 접어 표시한다. Part 7 StoryGuide는
-ModelAnswer가 아니며 자동 답변으로 저장하지 않는다. 백엔드,
-로그인·동기화, reviewed 전체 데이터 연결과 배포는 아직 구현하지 않았다.
+ModelAnswer가 아니며 자동 답변으로 저장하지 않는다. 이 저장소에는 별도 AI
+백엔드를 추가하지 않았고, 로그인·동기화와 reviewed 전체 데이터 연결도 아직
+구현하지 않았다.
 
 ## 저장소 구조
 

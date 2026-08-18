@@ -1,18 +1,35 @@
 {
   "dataset_id": "tsc-individual-images-v1",
   "dataset_status": "working",
-  "source_archive_original_name": "TSC_named_visual_assets_current_v2.zip",
-  "source_archive_sha256": "b00e96ef1fa655a4c12c2cbc3e9e817b595359610fd64d11d6aaac3ebf6de39f",
-  "source_archive_size": 28748783,
+  "source_archive_original_name": "TSC_named_visual_assets_audited_v3.zip",
+  "source_archive_sha256": "1b0e1ad6a6ca6359cb62edcc495a8bb9e707c21d995c046288b2298fcf8717db",
+  "source_archive_size": 55211354,
   "source_metadata_sha256": {
-    "README.txt": "0a6d98622f428d0721c43d41414a98d0971c5a6b0f27549b552e25c879fc6062",
-    "image_name_list.csv": "d4394b5935b3f20013345a38c84f6f9b4fb218d12731a701d47092612c9fcd5e"
+    "README.txt": "2c481acdfef7f9b2c030c00fc348e1a73280663559a6234681c7d5c0f92902e0",
+    "image_name_list.csv": "7e3aeae31c2ee070addad9c97dd17dc3d74914877d0a06c72bf37a756c0d00ba"
   },
   "counts": {
     "total": 60,
     "part2": 12,
     "part7": 48
   },
+  "generated_replacement_assets": [
+    "part2-2_weather_rainy_8c_vs_sunny.png",
+    "part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
+    "part2-4_bakery_bread_magazine_watch_prices.png",
+    "part2-5_city_bus_subway_hospital_school_home.png",
+    "part2-6_room_window_cat_apple_book_flower_slippers.png",
+    "part2-7_copy_machine_papers_room503_clock.png",
+    "part2-9_bus5211_room103_hospital503_clock.png",
+    "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
+    "part7-2-3_car_accident_on_road.png",
+    "part7-2-4_pay_expensive_repair_fee.png",
+    "part7-3-1_neighbor_brings_oranges.png",
+    "part7-4-3_boy_gets_distracted_by_game.png",
+    "part7-7-1_prepare_surprise_birthday_party.png",
+    "part7-7-4_enjoy_birthday_party_together.png",
+    "part7-8-2_run_out_of_home_in_hurry.png"
+  ],
   "assets": [
     {
       "filename": "part2-1_park_running_bench_cat_clock.png",
@@ -24,7 +41,8 @@
       "file_size": 2250645,
       "sha256": "99317b0c9939470fd700fa8670ce0c3fbc550b61ee188cec7edda01f5ff73004",
       "width": 1448,
-      "height": 1086
+      "height": 1086,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part2-2_weather_rainy_8c_vs_sunny.png",
@@ -33,10 +51,11 @@
       "frame_number": 1,
       "korean_description": "비 오는 8도 날씨와 맑은 날씨 비교",
       "media_type": "image/png",
-      "file_size": 369390,
-      "sha256": "a590b7999c85b2c8ff88ec6ef4650bc0e0b8d35d5ed4d67a409e0065765623a5",
-      "width": 538,
-      "height": 444
+      "file_size": 2352773,
+      "sha256": "721ccf6f5f14cb4c8e63beda951e3eb9d6650014d8616011de0c8df7364e6425",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
@@ -45,10 +64,11 @@
       "frame_number": 1,
       "korean_description": "과일 가게, 2kg 저울, 포도 5위안",
       "media_type": "image/png",
-      "file_size": 333719,
-      "sha256": "c00cd891e262fa9e5a9f97f00f11c6c5928c36d96b39a54fc12fcf0bc566ffe3",
-      "width": 538,
-      "height": 444
+      "file_size": 2031392,
+      "sha256": "cde25a5c130a3fdce2e7f4deb6b975ec2f09b54c363a7ccd232424c1213df9e8",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-4_bakery_bread_magazine_watch_prices.png",
@@ -57,10 +77,11 @@
       "frame_number": 1,
       "korean_description": "빵집, 잡지, 시계 가격 비교",
       "media_type": "image/png",
-      "file_size": 347217,
-      "sha256": "bcee8f3d81949ad3ccea7be974d7eef4fea11957214f8f2033bdfc973f2d44b3",
-      "width": 538,
-      "height": 444
+      "file_size": 2196219,
+      "sha256": "922b9f669c33a769c92b8d38eb6fcd8405086b46de7db427e9cc89a4b2c2f968",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-5_city_bus_subway_hospital_school_home.png",
@@ -69,10 +90,11 @@
       "frame_number": 1,
       "korean_description": "도시 건물, 버스 5211, 지하철 1km, 병원/학교/집",
       "media_type": "image/png",
-      "file_size": 352713,
-      "sha256": "37853faa341b17dd0ae3a47a77ce975c7992f58dc5a60f47c58019f04fc77841",
-      "width": 538,
-      "height": 444
+      "file_size": 2234479,
+      "sha256": "8c18ba06e82cf73c5b64999670bc8ff050d337baaefcafb2f95053720bde033d",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-6_room_window_cat_apple_book_flower_slippers.png",
@@ -81,10 +103,11 @@
       "frame_number": 1,
       "korean_description": "방 안 풍경, 창문 고양이, 사과, 책, 꽃, 슬리퍼",
       "media_type": "image/png",
-      "file_size": 316065,
-      "sha256": "b678de9c8daa6d265b8a8a3e80836fdd0eb667201f9e2c875a15e4549161ab54",
-      "width": 538,
-      "height": 444
+      "file_size": 1779635,
+      "sha256": "6b864045aeb8d246fcbff5ccec2ad0d3edab7bad584d80a55def54d9134fc19c",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-7_copy_machine_papers_room503_clock.png",
@@ -93,10 +116,11 @@
       "frame_number": 1,
       "korean_description": "복사기, 종이 묶음, 503호, 시계",
       "media_type": "image/png",
-      "file_size": 321380,
-      "sha256": "064bd7755406b3dbed631556bff318ccb3f12d41851baf46c8f91a9ac5b10e3c",
-      "width": 538,
-      "height": 444
+      "file_size": 2018196,
+      "sha256": "8ce1cdf5e50ab4d3c50552f487a9067c0f5c1febbffdc9243c39727aae7ce0fb",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-8_library_reading_scale_swim_ring.png",
@@ -108,7 +132,8 @@
       "file_size": 2117936,
       "sha256": "0b41a3337280b5fae9d6a1c9df590727c7c0f6d0f451866a873e4b2fb89fc2a3",
       "width": 1448,
-      "height": 1086
+      "height": 1086,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part2-9_bus5211_room103_hospital503_clock.png",
@@ -117,10 +142,11 @@
       "frame_number": 1,
       "korean_description": "버스 5211, 103호, 병원 503병동, 시계",
       "media_type": "image/png",
-      "file_size": 300046,
-      "sha256": "613bcc1b63e7a170f1ee5db8e330b0e9b99800f5b3b45ed6b3879b5b4dc5e287",
-      "width": 538,
-      "height": 444
+      "file_size": 2085150,
+      "sha256": "fde58b8514ca2170cebf5d140cac615066a452c604aeb4fd701a477a23409241",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
@@ -129,10 +155,11 @@
       "frame_number": 1,
       "korean_description": "키 180cm/162cm, 노트북 3kg, 여행가방 15kg",
       "media_type": "image/png",
-      "file_size": 280392,
-      "sha256": "c8c1708c6b34dc2e0ad85dd245a5d2b780fd70801cba636b72ce5d44c7824918",
-      "width": 538,
-      "height": 444
+      "file_size": 1643415,
+      "sha256": "369e857120f4fb1c01150585dbd47574a6b2ccdb9bb9c00eff43a71143879efd",
+      "width": 1448,
+      "height": 1086,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part2-11_clothes_rack_pants_shoes_scarf.png",
@@ -144,7 +171,8 @@
       "file_size": 1872432,
       "sha256": "fa2926d1d6826bf5844eca8e219fdcaf41452ae766bdd9661bae122306dff363",
       "width": 1448,
-      "height": 1086
+      "height": 1086,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part2-12_cafe_menu_balloons_umbrella_rain.png",
@@ -156,7 +184,8 @@
       "file_size": 2344464,
       "sha256": "9491193340c944e5344fd57ced0da5f57d56cd03cdb77953becc9c531b17c3c6",
       "width": 1448,
-      "height": 1086
+      "height": 1086,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-1-1_buy_new_pink_dress.png",
@@ -168,7 +197,8 @@
       "file_size": 361480,
       "sha256": "2cf6ca5c8677431d4f5f6599e53f47df00cf7e0b3ebed04dcf8e628585ba71bb",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-1-2_show_new_dress_to_friend.png",
@@ -180,7 +210,8 @@
       "file_size": 338554,
       "sha256": "1420bd636c4be6830a2d3d4c250f47c8fb76b26a58a33ed1f2865425848f542f",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-1-3_spill_drink_on_dress.png",
@@ -192,7 +223,8 @@
       "file_size": 333430,
       "sha256": "3cca6a3e5854a67749e81e07e40b923470755382ea03e84f5aa15e5205a7170e",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-1-4_wash_stained_dress.png",
@@ -204,7 +236,8 @@
       "file_size": 351442,
       "sha256": "9a50ae8520305e065c857365c572a734c8ab0eaf3182942a21d936b2751ed2d2",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-2-1_pass_driving_test_get_license.png",
@@ -216,7 +249,8 @@
       "file_size": 312725,
       "sha256": "342f8648df8ec902288654017032ea1880c92b297fd88066bf9086fe682cdc78",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-2-2_drive_car_after_getting_license.png",
@@ -228,7 +262,8 @@
       "file_size": 348747,
       "sha256": "43daed2082db07c6ca9927d005115445e2a2fd40897cc597f23d1852abffa868",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-2-3_car_accident_on_road.png",
@@ -237,10 +272,11 @@
       "frame_number": 3,
       "korean_description": "도로에서 교통사고가 난다",
       "media_type": "image/png",
-      "file_size": 404309,
-      "sha256": "87e95edb18cf39c428249442824a28b955bcee5e9cd1f25a6c5e5f2d6c3fbfb9",
-      "width": 538,
-      "height": 444
+      "file_size": 2289412,
+      "sha256": "1a5602689016be4a021d56967a309fc637c86a153282229cc0b86bcd7cce2167",
+      "width": 1376,
+      "height": 1143,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-2-4_pay_expensive_repair_fee.png",
@@ -249,22 +285,24 @@
       "frame_number": 4,
       "korean_description": "비싼 수리비를 낸다",
       "media_type": "image/png",
-      "file_size": 379542,
-      "sha256": "f9487c013235f3043a221ce13fa0443de28fb5b0550b1f9b0f9e824f4a26da95",
-      "width": 538,
-      "height": 444
+      "file_size": 2101998,
+      "sha256": "07c3bb8d13e935ec9fabb33b17f8b2d15dcfa3630cbcb0717e082676a988a77c",
+      "width": 1380,
+      "height": 1140,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-3-1_neighbor_brings_oranges.png",
       "part": 7,
       "set_number": 3,
       "frame_number": 1,
-      "korean_description": "이웃이 귤 한 상자를 준다",
+      "korean_description": "이웃이 수박 한 통을 준다",
       "media_type": "image/png",
-      "file_size": 372552,
-      "sha256": "31df6aa3eba2fe847b3c10fb58be276fb64c676b863b280204534bb38f63fa68",
-      "width": 538,
-      "height": 444
+      "file_size": 2138044,
+      "sha256": "7945d80146ec5f02c2e4a0c7a2adf550a2649ed5d258c2d313ba7cf69e699fcd",
+      "width": 1380,
+      "height": 1140,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-3-2_watermelon_is_missing.png",
@@ -276,7 +314,8 @@
       "file_size": 363514,
       "sha256": "56cdfaff01de01ed84a34c1fb3d91fa517c4f3ef57329b2b5a93017086185243",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-3-3_mother_scolds_boy.png",
@@ -288,7 +327,8 @@
       "file_size": 360104,
       "sha256": "82f9b128d11de47fe1b3a82daa62aabc4005dd2b973f53cfcec5c6222502017a",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-3-4_dog_ate_the_watermelon.png",
@@ -300,7 +340,8 @@
       "file_size": 370811,
       "sha256": "1b88e8e61c8b77c0394c42b919f2d4b85603d7102ae838968a7ea7dd9d2bc9c4",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-4-1_mother_gives_money_for_apples.png",
@@ -312,7 +353,8 @@
       "file_size": 350389,
       "sha256": "218f335d6969114bd73e9969bb909fb60a98a12b840aede2c1d455003a47bcdb",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-4-2_buy_three_apples_at_market.png",
@@ -324,7 +366,8 @@
       "file_size": 373857,
       "sha256": "4b5c8a17ab795c52c166c08e4b178f304d253b07b455f9a3fae0564c9c02ec5d",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-4-3_boy_gets_distracted_by_game.png",
@@ -333,10 +376,11 @@
       "frame_number": 3,
       "korean_description": "가는 길에 게임에 빠진다",
       "media_type": "image/png",
-      "file_size": 396090,
-      "sha256": "711ef27c2f70c7cc5c652fc01875ab39b8fd30996135a3710b8fefa1aba7331d",
-      "width": 538,
-      "height": 444
+      "file_size": 2291369,
+      "sha256": "ee893d7c262012773abfaff02952de739a66db92bda10389a5452076b0d6aef6",
+      "width": 1380,
+      "height": 1140,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-4-4_leave_apples_on_bench.png",
@@ -348,7 +392,8 @@
       "file_size": 395573,
       "sha256": "7a189030472c84458e1fb387b8b17165d66a2636ca1caae6fb9aa92bc1cecfdb",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-5-1_take_a_taxi.png",
@@ -360,7 +405,8 @@
       "file_size": 357263,
       "sha256": "cb6d150d9ad5ee2b53c175d5c74c344d9ee38721c01f63b11d391cf689907b7e",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-5-2_realize_phone_left_in_taxi.png",
@@ -372,7 +418,8 @@
       "file_size": 381789,
       "sha256": "39097d22a04177bdbd1d4060ab73d73634d61fa7285854ea755bf361b69a2f7e",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-5-3_call_taxi_driver_about_phone.png",
@@ -384,7 +431,8 @@
       "file_size": 372757,
       "sha256": "90633402eef2043db24e796b82ac902f25cf3aec556738619333419f8f27caab",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-5-4_get_phone_back_and_say_thanks.png",
@@ -396,7 +444,8 @@
       "file_size": 368450,
       "sha256": "e3e14f8594126e53937c693a253d02169a2a4ec28609e3ed7ab74ef82214ced4",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-6-1_two_friends_walk_together.png",
@@ -408,7 +457,8 @@
       "file_size": 379430,
       "sha256": "860a43ffe539f948bc810fb908d3f32530620872100dfb5ba540b1c4ea6ebfb7",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-6-2_suddenly_it_starts_raining.png",
@@ -420,7 +470,8 @@
       "file_size": 382192,
       "sha256": "05c380b30de3ffe736406fed94086cb2a9692b9ca2209222436fe5e18b890bb4",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-6-3_one_friend_has_umbrella.png",
@@ -432,7 +483,8 @@
       "file_size": 387578,
       "sha256": "63d37f2376bb55b49b192b909afe12e65d81b8d60282259b1051f91efbb7b75a",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-6-4_share_umbrella_and_go_home.png",
@@ -444,7 +496,8 @@
       "file_size": 375703,
       "sha256": "8fcfb0dde2fa86a4ac09d87b8925366303773dea9415463395207a68695b091f",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-7-1_prepare_surprise_birthday_party.png",
@@ -453,10 +506,11 @@
       "frame_number": 1,
       "korean_description": "깜짝 생일파티를 준비한다",
       "media_type": "image/png",
-      "file_size": 336261,
-      "sha256": "f1f56ad8576e34d8da78f8c5f99c0bf3cac918e9ba648be0aab7043f92dec07b",
-      "width": 538,
-      "height": 444
+      "file_size": 2019734,
+      "sha256": "7194d0a6cf70801113af4029ed21b9a6df98841668bda6ca4a82e21754b5ea54",
+      "width": 1380,
+      "height": 1140,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-7-2_birthday_girl_enters_dark_room.png",
@@ -468,7 +522,8 @@
       "file_size": 272696,
       "sha256": "17f188891d415dc796d58b277792ccb371ad9d62272c05936ca44c0614952f6f",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-7-3_friends_shout_surprise.png",
@@ -480,7 +535,8 @@
       "file_size": 365655,
       "sha256": "cd74f2b86be9c8eb980116b507c606e8cf0a892f640f49d167556d3dd1eb95c3",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-7-4_enjoy_birthday_party_together.png",
@@ -489,10 +545,11 @@
       "frame_number": 4,
       "korean_description": "함께 생일파티를 즐긴다",
       "media_type": "image/png",
-      "file_size": 382380,
-      "sha256": "b30833130f762f27206d0ef35c574fe390951fbc0ae66a098dc13c0bc34f4711",
-      "width": 538,
-      "height": 444
+      "file_size": 2230787,
+      "sha256": "a4c870b7124cd8e13fae3a398dd6fc18a9c6680f0757e97bd8730e262f83377a",
+      "width": 1376,
+      "height": 1143,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-8-1_oversleep_in_the_morning.png",
@@ -504,7 +561,8 @@
       "file_size": 358777,
       "sha256": "8dc6b66dbf2757d918225bc9a406a9c79107fd0ff8e3fe8e31e79ca7e7a541f2",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-8-2_run_out_of_home_in_hurry.png",
@@ -513,10 +571,11 @@
       "frame_number": 2,
       "korean_description": "급하게 집에서 뛰어나간다",
       "media_type": "image/png",
-      "file_size": 365887,
-      "sha256": "cd8081e42fd7865554eb3946c2f5187cfa45094e16095da945968d9587dbe12a",
-      "width": 538,
-      "height": 444
+      "file_size": 2251901,
+      "sha256": "ecf41fcc246d3284143ad137bf43fe00e12a6b6688f5f75dc4f116f43edbb924",
+      "width": 1381,
+      "height": 1139,
+      "asset_provenance_kind": "generated_replacement"
     },
     {
       "filename": "part7-8-3_miss_the_bus.png",
@@ -528,7 +587,8 @@
       "file_size": 372180,
       "sha256": "6b311ccfe25ee9e72f3a574e2332e82afb3b05f04c7336b378806a3d26e22fd0",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-8-4_arrive_late_at_school.png",
@@ -540,7 +600,8 @@
       "file_size": 363532,
       "sha256": "dfeed782482733fb251d90a1b9b6d2556b89bcef50da1b84dff7d47668dd1b08",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-9-1_find_wallet_on_street.png",
@@ -552,7 +613,8 @@
       "file_size": 377507,
       "sha256": "3247f3af32e856c1636aae09483e018be7d287fa1bdcfa0a83ed7cd1aa94cef3",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-9-2_pick_up_wallet.png",
@@ -564,7 +626,8 @@
       "file_size": 383848,
       "sha256": "3f007d577ec0b058daeb8f0bf1cee6d0e48c84f6665ddd3c94a226ef9f0b6b53",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-9-3_take_wallet_to_police_station.png",
@@ -576,7 +639,8 @@
       "file_size": 337005,
       "sha256": "084b62339c0b10a07f2ba457b85609b85f081125de872b9eb35681f3fdb5904d",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-9-4_owner_gets_wallet_back.png",
@@ -588,7 +652,8 @@
       "file_size": 325718,
       "sha256": "d72a10d7318f2042a43f2f042d064583e3a3fb4c0b4c7c5006e7c0264e85a7da",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-10-1_order_noodles_at_restaurant.png",
@@ -600,7 +665,8 @@
       "file_size": 368417,
       "sha256": "2fb2b1dd1c77480ea7227958b6702aa948f520f51730c3aac9a8e6de10c6d668",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-10-2_wrong_food_is_served.png",
@@ -612,7 +678,8 @@
       "file_size": 364249,
       "sha256": "8ed6a1b885bb463a29beaacb63edea64e63648b68bef6f35e9eed7808ac6e849",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-10-3_tell_staff_order_is_wrong.png",
@@ -624,7 +691,8 @@
       "file_size": 370548,
       "sha256": "76253f80c3b103c90f736e0e12ff3b093fab03b360c9fa810783dc1f6c0562ef",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-10-4_receive_correct_bowl_of_noodles.png",
@@ -636,7 +704,8 @@
       "file_size": 378338,
       "sha256": "44efa922790a9afc1e96f40616437ca94747fa60fae4f3dd5fe1033fffbc702c",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-11-1_family_prepares_for_trip.png",
@@ -648,7 +717,8 @@
       "file_size": 397844,
       "sha256": "32e30445ddd413f830569c42e40571528941e819e064779b27629e0331304a08",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-11-2_family_arrives_at_airport.png",
@@ -660,7 +730,8 @@
       "file_size": 382054,
       "sha256": "81e933168379a49820ece23eea14bf7ed2b261918ad13bc74bcab539466d7f6d",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-11-3_discover_passport_left_at_home.png",
@@ -672,7 +743,8 @@
       "file_size": 373896,
       "sha256": "81ac55d14d5df704237b68d1606dd88b49cead7fa8c8c39203aee09bfbf26514",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-11-4_return_home_sadly.png",
@@ -684,7 +756,8 @@
       "file_size": 394235,
       "sha256": "ecd3c333c201a022713f77ba1a193df642d6892c17673a38e962613ca3e70c19",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-12-1_find_injured_dog.png",
@@ -696,7 +769,8 @@
       "file_size": 402659,
       "sha256": "d7ac22cbea0604728695934b22d951780b970d7fe574068ecc2995382f19c7b6",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-12-2_take_dog_to_vet.png",
@@ -708,7 +782,8 @@
       "file_size": 357105,
       "sha256": "5ebc8e2bc45e2eacf0412e5700d06091326517c99eabfc40ed1c8696198f8177",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-12-3_make_lost_dog_poster_and_call_owner.png",
@@ -720,7 +795,8 @@
       "file_size": 353975,
       "sha256": "7ff8eef148ae30549c610bc1fba0357b417f7d5e837cf808ae1530f6aa384c8f",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     },
     {
       "filename": "part7-12-4_reunite_dog_with_owner.png",
@@ -732,25 +808,26 @@
       "file_size": 380478,
       "sha256": "035a2042161d9b032ead8f91e4f90e0a47d0f0905c2d176529038b9a7cfecccf",
       "width": 538,
-      "height": 444
+      "height": 444,
+      "asset_provenance_kind": "named_bundle_asset"
     }
   ],
   "generated_files": {
-    "README.md": "7919f69efd15d256d523c1b28ee8db80c653b01bc5eec328cf6b1505c3ff4679",
-    "README.txt": "0a6d98622f428d0721c43d41414a98d0971c5a6b0f27549b552e25c879fc6062",
-    "image_name_list.csv": "d4394b5935b3f20013345a38c84f6f9b4fb218d12731a701d47092612c9fcd5e",
-    "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png": "c8c1708c6b34dc2e0ad85dd245a5d2b780fd70801cba636b72ce5d44c7824918",
+    "README.md": "dceead313de8bde31db41e0eb8b010320214a6e6714316d9c05fbba03da4379e",
+    "README.txt": "2c481acdfef7f9b2c030c00fc348e1a73280663559a6234681c7d5c0f92902e0",
+    "image_name_list.csv": "7e3aeae31c2ee070addad9c97dd17dc3d74914877d0a06c72bf37a756c0d00ba",
+    "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png": "369e857120f4fb1c01150585dbd47574a6b2ccdb9bb9c00eff43a71143879efd",
     "part2-11_clothes_rack_pants_shoes_scarf.png": "fa2926d1d6826bf5844eca8e219fdcaf41452ae766bdd9661bae122306dff363",
     "part2-12_cafe_menu_balloons_umbrella_rain.png": "9491193340c944e5344fd57ced0da5f57d56cd03cdb77953becc9c531b17c3c6",
     "part2-1_park_running_bench_cat_clock.png": "99317b0c9939470fd700fa8670ce0c3fbc550b61ee188cec7edda01f5ff73004",
-    "part2-2_weather_rainy_8c_vs_sunny.png": "a590b7999c85b2c8ff88ec6ef4650bc0e0b8d35d5ed4d67a409e0065765623a5",
-    "part2-3_fruit_market_scale_2kg_grapes_5yuan.png": "c00cd891e262fa9e5a9f97f00f11c6c5928c36d96b39a54fc12fcf0bc566ffe3",
-    "part2-4_bakery_bread_magazine_watch_prices.png": "bcee8f3d81949ad3ccea7be974d7eef4fea11957214f8f2033bdfc973f2d44b3",
-    "part2-5_city_bus_subway_hospital_school_home.png": "37853faa341b17dd0ae3a47a77ce975c7992f58dc5a60f47c58019f04fc77841",
-    "part2-6_room_window_cat_apple_book_flower_slippers.png": "b678de9c8daa6d265b8a8a3e80836fdd0eb667201f9e2c875a15e4549161ab54",
-    "part2-7_copy_machine_papers_room503_clock.png": "064bd7755406b3dbed631556bff318ccb3f12d41851baf46c8f91a9ac5b10e3c",
+    "part2-2_weather_rainy_8c_vs_sunny.png": "721ccf6f5f14cb4c8e63beda951e3eb9d6650014d8616011de0c8df7364e6425",
+    "part2-3_fruit_market_scale_2kg_grapes_5yuan.png": "cde25a5c130a3fdce2e7f4deb6b975ec2f09b54c363a7ccd232424c1213df9e8",
+    "part2-4_bakery_bread_magazine_watch_prices.png": "922b9f669c33a769c92b8d38eb6fcd8405086b46de7db427e9cc89a4b2c2f968",
+    "part2-5_city_bus_subway_hospital_school_home.png": "8c18ba06e82cf73c5b64999670bc8ff050d337baaefcafb2f95053720bde033d",
+    "part2-6_room_window_cat_apple_book_flower_slippers.png": "6b864045aeb8d246fcbff5ccec2ad0d3edab7bad584d80a55def54d9134fc19c",
+    "part2-7_copy_machine_papers_room503_clock.png": "8ce1cdf5e50ab4d3c50552f487a9067c0f5c1febbffdc9243c39727aae7ce0fb",
     "part2-8_library_reading_scale_swim_ring.png": "0b41a3337280b5fae9d6a1c9df590727c7c0f6d0f451866a873e4b2fb89fc2a3",
-    "part2-9_bus5211_room103_hospital503_clock.png": "613bcc1b63e7a170f1ee5db8e330b0e9b99800f5b3b45ed6b3879b5b4dc5e287",
+    "part2-9_bus5211_room103_hospital503_clock.png": "fde58b8514ca2170cebf5d140cac615066a452c604aeb4fd701a477a23409241",
     "part7-1-1_buy_new_pink_dress.png": "2cf6ca5c8677431d4f5f6599e53f47df00cf7e0b3ebed04dcf8e628585ba71bb",
     "part7-1-2_show_new_dress_to_friend.png": "1420bd636c4be6830a2d3d4c250f47c8fb76b26a58a33ed1f2865425848f542f",
     "part7-1-3_spill_drink_on_dress.png": "3cca6a3e5854a67749e81e07e40b923470755382ea03e84f5aa15e5205a7170e",
@@ -769,15 +846,15 @@
     "part7-12-4_reunite_dog_with_owner.png": "035a2042161d9b032ead8f91e4f90e0a47d0f0905c2d176529038b9a7cfecccf",
     "part7-2-1_pass_driving_test_get_license.png": "342f8648df8ec902288654017032ea1880c92b297fd88066bf9086fe682cdc78",
     "part7-2-2_drive_car_after_getting_license.png": "43daed2082db07c6ca9927d005115445e2a2fd40897cc597f23d1852abffa868",
-    "part7-2-3_car_accident_on_road.png": "87e95edb18cf39c428249442824a28b955bcee5e9cd1f25a6c5e5f2d6c3fbfb9",
-    "part7-2-4_pay_expensive_repair_fee.png": "f9487c013235f3043a221ce13fa0443de28fb5b0550b1f9b0f9e824f4a26da95",
-    "part7-3-1_neighbor_brings_oranges.png": "31df6aa3eba2fe847b3c10fb58be276fb64c676b863b280204534bb38f63fa68",
+    "part7-2-3_car_accident_on_road.png": "1a5602689016be4a021d56967a309fc637c86a153282229cc0b86bcd7cce2167",
+    "part7-2-4_pay_expensive_repair_fee.png": "07c3bb8d13e935ec9fabb33b17f8b2d15dcfa3630cbcb0717e082676a988a77c",
+    "part7-3-1_neighbor_brings_oranges.png": "7945d80146ec5f02c2e4a0c7a2adf550a2649ed5d258c2d313ba7cf69e699fcd",
     "part7-3-2_watermelon_is_missing.png": "56cdfaff01de01ed84a34c1fb3d91fa517c4f3ef57329b2b5a93017086185243",
     "part7-3-3_mother_scolds_boy.png": "82f9b128d11de47fe1b3a82daa62aabc4005dd2b973f53cfcec5c6222502017a",
     "part7-3-4_dog_ate_the_watermelon.png": "1b88e8e61c8b77c0394c42b919f2d4b85603d7102ae838968a7ea7dd9d2bc9c4",
     "part7-4-1_mother_gives_money_for_apples.png": "218f335d6969114bd73e9969bb909fb60a98a12b840aede2c1d455003a47bcdb",
     "part7-4-2_buy_three_apples_at_market.png": "4b5c8a17ab795c52c166c08e4b178f304d253b07b455f9a3fae0564c9c02ec5d",
-    "part7-4-3_boy_gets_distracted_by_game.png": "711ef27c2f70c7cc5c652fc01875ab39b8fd30996135a3710b8fefa1aba7331d",
+    "part7-4-3_boy_gets_distracted_by_game.png": "ee893d7c262012773abfaff02952de739a66db92bda10389a5452076b0d6aef6",
     "part7-4-4_leave_apples_on_bench.png": "7a189030472c84458e1fb387b8b17165d66a2636ca1caae6fb9aa92bc1cecfdb",
     "part7-5-1_take_a_taxi.png": "cb6d150d9ad5ee2b53c175d5c74c344d9ee38721c01f63b11d391cf689907b7e",
     "part7-5-2_realize_phone_left_in_taxi.png": "39097d22a04177bdbd1d4060ab73d73634d61fa7285854ea755bf361b69a2f7e",
@@ -787,12 +864,12 @@
     "part7-6-2_suddenly_it_starts_raining.png": "05c380b30de3ffe736406fed94086cb2a9692b9ca2209222436fe5e18b890bb4",
     "part7-6-3_one_friend_has_umbrella.png": "63d37f2376bb55b49b192b909afe12e65d81b8d60282259b1051f91efbb7b75a",
     "part7-6-4_share_umbrella_and_go_home.png": "8fcfb0dde2fa86a4ac09d87b8925366303773dea9415463395207a68695b091f",
-    "part7-7-1_prepare_surprise_birthday_party.png": "f1f56ad8576e34d8da78f8c5f99c0bf3cac918e9ba648be0aab7043f92dec07b",
+    "part7-7-1_prepare_surprise_birthday_party.png": "7194d0a6cf70801113af4029ed21b9a6df98841668bda6ca4a82e21754b5ea54",
     "part7-7-2_birthday_girl_enters_dark_room.png": "17f188891d415dc796d58b277792ccb371ad9d62272c05936ca44c0614952f6f",
     "part7-7-3_friends_shout_surprise.png": "cd74f2b86be9c8eb980116b507c606e8cf0a892f640f49d167556d3dd1eb95c3",
-    "part7-7-4_enjoy_birthday_party_together.png": "b30833130f762f27206d0ef35c574fe390951fbc0ae66a098dc13c0bc34f4711",
+    "part7-7-4_enjoy_birthday_party_together.png": "a4c870b7124cd8e13fae3a398dd6fc18a9c6680f0757e97bd8730e262f83377a",
     "part7-8-1_oversleep_in_the_morning.png": "8dc6b66dbf2757d918225bc9a406a9c79107fd0ff8e3fe8e31e79ca7e7a541f2",
-    "part7-8-2_run_out_of_home_in_hurry.png": "cd8081e42fd7865554eb3946c2f5187cfa45094e16095da945968d9587dbe12a",
+    "part7-8-2_run_out_of_home_in_hurry.png": "ecf41fcc246d3284143ad137bf43fe00e12a6b6688f5f75dc4f116f43edbb924",
     "part7-8-3_miss_the_bus.png": "6b311ccfe25ee9e72f3a574e2332e82afb3b05f04c7336b378806a3d26e22fd0",
     "part7-8-4_arrive_late_at_school.png": "dfeed782482733fb251d90a1b9b6d2556b89bcef50da1b84dff7d47668dd1b08",
     "part7-9-1_find_wallet_on_street.png": "3247f3af32e856c1636aae09483e018be7d287fa1bdcfa0a83ed7cd1aa94cef3",

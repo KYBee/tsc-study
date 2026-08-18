@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { createNavigationContext, type SafeReturnPath } from '../../app/navigationContext'
 import { EmptyState } from '../../components/EmptyState'
@@ -17,6 +17,11 @@ import type {
   UserDataRepository,
 } from '../../data/userDataRepository'
 import { mapRecallResultToReviewStatus } from './part4AnswerDraft'
+import type { CorrectionProvider } from '../../providers/CorrectionProvider'
+import {
+  createCorrectionSession,
+  saveCorrectionSession,
+} from './correctionSession'
 
 const INPUT_LANGUAGE_OPTIONS: Array<{ value: InputLanguage; label: string }> = [
   { value: 'ko', label: '한국어로 작성' },
@@ -43,6 +48,7 @@ interface GenericAnswerEditorContentProps {
   initialPhrases: StoredReusablePhrase[]
   returnTo: SafeReturnPath
   userRepository: UserDataRepository
+  correctionProvider: CorrectionProvider
 }
 
 export function GenericAnswerEditorContent({
@@ -51,7 +57,9 @@ export function GenericAnswerEditorContent({
   initialPhrases,
   returnTo,
   userRepository,
+  correctionProvider,
 }: GenericAnswerEditorContentProps) {
+  const navigate = useNavigate()
   const [searchParams, setSearchParams] = useSearchParams()
   const [draft, setDraft] = useState(initialDraft)
   const [input, setInput] = useState(
@@ -66,6 +74,7 @@ export function GenericAnswerEditorContent({
   )
   const [answerRevealed, setAnswerRevealed] = useState(false)
   const [saving, setSaving] = useState(false)
+  const [correcting, setCorrecting] = useState(false)
   const [message, setMessage] = useState('')
   const [formError, setFormError] = useState('')
   const step = searchParams.get('step') === 'recall'
@@ -163,6 +172,46 @@ export function GenericAnswerEditorContent({
       last_reviewed_at: timestamp,
     })
     setMessage('회상 결과와 복습 상태를 저장했습니다')
+  }
+
+  const requestCorrection = async () => {
+    const originalInput = draft?.original_input ?? input.trim()
+    if (!originalInput || correcting) return
+    setCorrecting(true)
+    setFormError('')
+    const baseSession = createCorrectionSession({
+      question_id: question.question_id,
+      correction_mode: 'minimal',
+      input_language: draft?.input_language ?? inputLanguage,
+      original_input: originalInput,
+      provider_result: null,
+    })
+    saveCorrectionSession(baseSession)
+    try {
+      const providerResult = await correctionProvider.correct({
+        question_id: question.question_id,
+        part: question.part,
+        question_zh: question.question_zh,
+        input_language: draft?.input_language ?? inputLanguage,
+        original_input: originalInput,
+        correction_mode: 'minimal',
+      })
+      saveCorrectionSession({ ...baseSession, provider_result: providerResult })
+    } catch (cause: unknown) {
+      console.error(cause)
+      saveCorrectionSession({
+        ...baseSession,
+        provider_result: {
+          status: 'failure',
+          original_input: originalInput,
+          message: '교정 요청을 처리하지 못했습니다',
+          error_code: 'provider_exception',
+        },
+      })
+    }
+    navigate(`/questions/${question.question_id}/correction`, {
+      state: navigationState,
+    })
   }
 
   return (
@@ -295,8 +344,16 @@ export function GenericAnswerEditorContent({
             <button className="secondary-button" type="button" onClick={() => moveTo('write')}>
               답변 수정
             </button>
-            <button className="primary-button" type="button" onClick={() => moveTo('recall')}>
-              암기 시작
+            <button
+              className="primary-button"
+              type="button"
+              disabled={correcting}
+              onClick={() => void requestCorrection()}
+            >
+              {correcting ? '교정 요청 중…' : '교정 후 암기'}
+            </button>
+            <button className="secondary-button" type="button" onClick={() => moveTo('recall')}>
+              교정 없이 암기
             </button>
             <Link className="secondary-button" to={`/parts/${question.part}`}>
               목록으로

@@ -13,17 +13,17 @@
     },
     "named_visual_asset_manifest": {
       "path": "data/working/app-assets/tsc-individual-images-v1/manifest.json",
-      "sha256": "78c84b1130b16d1591d888f794eafd56104d3970d73f3c9287f224f272820ea0"
+      "sha256": "4958ead1d73bc0f8ea68dfbc12456be404156d5156e6d369ae4cacf0e5e5a477"
     }
   },
   "script_sha256": "0ab2f3e31f039884b571bc5f97316f6cb317bdf0dbe22be967dc5de85788e927",
   "generated_files": {
     "visual-sets.json": "ce4fe8aea03f005a4a4e70d661bdd79fdc262a407c7aafa1005dccc35048594b",
-    "visual-assets.json": "10c58e3c9f389ec3fb578b585384d5a939e6aa97c30d26300c6e314d5c5427b9",
+    "visual-assets.json": "3240a020986bcdb9c9b28ddfbdce3348e55efec86e50891d254d8a104d055ccf",
     "visual-set-assets.json": "d23a531dc2278bc5eddf22b8719e6dd0a1bce1a71e7199d7cbf4ca2c8e1c644e",
     "visual-questions.json": "0034b6143948c466b84340556379a99701a29d43ea31f7e5317579768c6ea908",
     "model-answers.json": "99c6c59cb4a5eb897865282de79535c38d09bbba6ed11b691cca27f7d85b9c9d",
-    "sources.json": "d5c09bf2917f411515b1d91bf973f142a1392e2283c2a500567032fe4198e75a",
+    "sources.json": "c8defa17da4ebdda14a5cb943766cf00dfe080b9f53346561a54ebaaea5ba8af",
     "source-references.json": "d202e3557cc2147607d76f239011adc948c33fceed8cf75fe8f5cef4a020a0d5",
     "part-guides.json": "4d4a1b658c0bc19ca083dec5d6e0626f0fb2d34dd42d92db9bcc7e04436a2dda",
     "learning-expressions.json": "2926540515b82a905cd7d8b177d5bb16d2610047ff2a38a6b59c7ea92cfb6906",

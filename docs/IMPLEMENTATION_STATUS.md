@@ -14,7 +14,7 @@ HOME
 → 문제 상세와 공통 강의 자료
 → Part 1·3·5·6 자유 입력 또는 Part 4 구조화 입력
 → PracticeDraft 저장·완료
-→ 지원되는 경우 deterministic mock 교정
+→ 설정된 경우 HTTP 최소 교정, 아니면 deterministic mock 교정
 → 사용자 승인 후 교정 완료 답변 저장
 → 파트별 복습·회상 상태 변경
 → 개인 실수와 마지막 학습 위치 확인
@@ -26,6 +26,17 @@ HOME
 → 검수 전 원본 추천 답변 비교
 → 그림 기반 회상·ReviewState
 
+Part 2 실전 모드
+→ 그림만 표시·3초 준비
+→ 중국어 질문 음성 1회
+→ 6초 답변·자동 종료
+→ 종료 후 질문·추천 답변 확인과 자가 회상 평가
+
+Part 3 실전 모드
+→ 중국어 질문 음성 1회
+→ 2초 준비·15초 답변·자동 종료
+→ 종료 후 질문 확인과 자가 회상 평가
+
 HOME
 → Part 7 스토리 그림 12세트
 → VisualSet과 원본 StoryGuide
@@ -33,7 +44,9 @@ HOME
 → 그림·내 포인트 기반 회상·ReviewState
 ```
 
-실제 AI, 백엔드, 로그인·동기화와 배포는 구현하지 않았다.
+실제 교정 endpoint를 연결할 수 있는 검증형 HTTP provider는 구현했지만,
+저장소 내부 AI 백엔드와 공급자·모델·API key는 구현하지 않았다. 로그인·동기화와
+배포도 구현하지 않았다.
 Part 2 12장과 Part 7 48장의 이름 지정 working 이미지 바이트는 Git에
 보존한다. 권리 상태는 `review_needed`/`public_allowed = false`다. 개발
 서버에서는 검증 라우트로 제공하고 production은 기본 제외한다. 단,
@@ -114,11 +127,11 @@ RecallAttempt를 보존하며 검수 전용 DB에는 영향을 주지 않는다.
 ## 구현 화면
 
 - HOME: 193문제와 Part별 초안·완료·복습 상태, 이어서 보기, 랜덤 시작
-- Part 2: 12세트 목록·상태 필터·랜덤, 큰 그림·확대, 48개 세부 질문
+- Part 2: 12세트 목록·상태 필터·랜덤, 큰 그림·확대, 48개 세부 질문, 3초/6초 네 문제 연속 실전 모드
 - Part 2 답변·암기: 자유 입력 초안, 접힌 검수 전 추천 답변, 그림+질문·그림·질문 회상
 - Part 7: 12세트 목록·상태 필터·랜덤, 큰 그림·확대, StoryGuide와 공통 지시문 경계
 - Part 7 답변·암기: 내 키워드·순서 포인트·전체 답변, 그림·포인트 조합 회상
-- Part 1·3·4·5·6: 공통 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤
+- Part 1·3·4·5·6: 공통 검색, 유형·복습·작성 상태 필터, 결과 내 랜덤; Part 3 2초/15초 실전 모드
 - 문제 상세: 이전·다음·랜덤, 병음·한국어 토글, AnswerPoint, 출처 성격이 분리된 공통 강의 자료
 - 답변 작성: Part 4 네 구간 구조화 입력 유지, 다른 Part는 자유 입력 초안·완료 저장
 - 암기 연습: Part 4 전용 네 모드와 다른 Part의 전체·답변·질문 모드
@@ -126,17 +139,21 @@ RecallAttempt를 보존하며 검수 전용 DB에는 영향을 주지 않는다.
 - 복습: 텍스트 193개, Part 2 시각 48개와 Part 7 세트 12개, Part·종류·검색·유형·상태 필터, 랜덤
 - 실수 노트: 승인 저장에서 생성된 개인 Correction만 표시
 
-## mock 교정과 ModelAnswer
+## 교정 provider와 ModelAnswer
 
-P4-006의 문서화된 중국어 입력과 이미 교정된 입력만 완전한 성공 결과를
-지원한다. 텍스트 Question의 `ModelAnswer`는 0개다. Part 2에는 workbook
+`VITE_TSC_CORRECTION_API_URL`에 same-origin 경로 또는 HTTPS endpoint를
+설정하면 Part 1·3·4·5·6의 한국어·중국어·혼합 입력을 최소 교정 계약으로
+요청한다. timeout·HTTP·schema 오류에서도 원문과 PracticeDraft를 보존하며
+재시도할 수 있다. endpoint가 없을 때는 P4-006의 문서화된 중국어 입력과 이미
+교정된 입력만 deterministic mock 성공을 지원한다. 텍스트 Question의
+`ModelAnswer`는 0개다. Part 2에는 workbook
 원문 추천 답변 48개가 있지만 검수 전 출처 답변으로만 표시하며 내 답변으로
 자동 저장하거나 AI 결과로 취급하지 않는다.
 
 ## 검증
 
 전체 fixture 생성·검증, Python unittest, IndexedDB migration 테스트,
-Vitest 143개, typecheck, lint, production build, `npm run check:data`와
+Vitest 170개, typecheck, lint, production build, `npm run check:data`와
 `npm run check`를 통과했다. 320px 실제 브라우저에서 Part 7 이야기
 작성·복원·완료·회상·나의 답변·복습, Part 2와 텍스트 파트 회귀를
 확인했고 console 오류와 가로 오버플로는 0건이었다. Part 7의 상세 결과는
@@ -147,7 +164,7 @@ Vitest 143개, typecheck, lint, production build, `npm run check:data`와
 
 - 50문제는 모두 raw/review_needed working 데이터이며 사람 검수 전이다.
 - 중국어·병음·한국어를 수정하지 않았고 `ModelAnswer`를 만들지 않았다.
-- 실제 AI와 자연스럽게·Level 8 확장 결과는 없다.
+- 저장소 내부 AI 백엔드, 확정 공급자·모델과 자연스럽게·Level 8 확장 결과는 없다.
 - 강의 기반 가이드는 3급 과정 맥락의 기초 전략이며 Level 8 공식 기준이 아니다.
 - 개인 데이터는 현재 브라우저와 origin에 종속된다.
 - 전체 253 Question 중 텍스트 193개와 별도 VisualQuestion 48개를

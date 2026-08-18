@@ -56,6 +56,10 @@
 - Part 7 QuestionVisualSet 확정 관계 0개와 번호 기반 검수 후보 12개 경계 유지
 - Part 2·7 공용 개발 서버 이미지 allowlist와 production 원본 바이트 제외 검증 완료
 - 사용자 제공 이름 지정 PNG 60장 결정적 반입, Part 2 대표 이미지 12장과 Part 7 세트별 순서 이미지 48장 교체 완료
+- Part 2 질문·답 48건과 그림 12장 전수검사, 12장 1448×1086 통일 완료
+- Part 7 StoryGuide 12세트·48장 전수검사와 사건·인물 연속성 7장 보강 완료
+- Part 2 3초/6초 네 문제 연속 실전 모드와 Part 3 2초/15초 실전 모드 완료
+- 환경변수로 선택하는 검증형 HTTP 최소 교정 provider와 실패 시 원문 보존 완료
 - 학습 IndexedDB v5의 `visual_set` 개인 데이터 대상과 기존 v4 레코드 보존 migration 완료
 - 실제 Part 4 사람 검수, 결정 파일 Git 반영과 reviewed 데이터 생성 미완료
 - reviewed 부분 데이터의 학습 앱 연결 미완료

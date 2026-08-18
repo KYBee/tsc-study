@@ -84,23 +84,44 @@ class NamedVisualAssetImportTests(unittest.TestCase):
                 "part2-12_cafe_menu_balloons_umbrella_rain.png",
             ],
         )
-        replaced_part2_images = {
-            "part2-1_park_running_bench_cat_clock.png",
-            "part2-8_library_reading_scale_swim_ring.png",
-            "part2-11_clothes_rack_pants_shoes_scarf.png",
-            "part2-12_cafe_menu_balloons_umbrella_rain.png",
-        }
         for item in assets:
             image = self.output / item["filename"]
             expected_dimensions = (
-                (1448, 1086)
-                if item["filename"] in replaced_part2_images
-                else (538, 444)
+                (1448, 1086) if item["part"] == 2 else (item["width"], item["height"])
             )
             self.assertEqual((item["width"], item["height"]), expected_dimensions)
             self.assertEqual(item["media_type"], "image/png")
             self.assertEqual(sha256(image), item["sha256"])
             self.assertEqual(image.stat().st_size, item["file_size"])
+
+        self.assertEqual(
+            manifest["generated_replacement_assets"],
+            [
+                "part2-2_weather_rainy_8c_vs_sunny.png",
+                "part2-3_fruit_market_scale_2kg_grapes_5yuan.png",
+                "part2-4_bakery_bread_magazine_watch_prices.png",
+                "part2-5_city_bus_subway_hospital_school_home.png",
+                "part2-6_room_window_cat_apple_book_flower_slippers.png",
+                "part2-7_copy_machine_papers_room503_clock.png",
+                "part2-9_bus5211_room103_hospital503_clock.png",
+                "part2-10_height_180_162_laptop_3kg_suitcase_15kg.png",
+                "part7-2-3_car_accident_on_road.png",
+                "part7-2-4_pay_expensive_repair_fee.png",
+                "part7-3-1_neighbor_brings_oranges.png",
+                "part7-4-3_boy_gets_distracted_by_game.png",
+                "part7-7-1_prepare_surprise_birthday_party.png",
+                "part7-7-4_enjoy_birthday_party_together.png",
+                "part7-8-2_run_out_of_home_in_hurry.png",
+            ],
+        )
+        replacement_names = set(manifest["generated_replacement_assets"])
+        for item in assets:
+            expected_origin = (
+                "generated_replacement"
+                if item["filename"] in replacement_names
+                else "named_bundle_asset"
+            )
+            self.assertEqual(item["asset_provenance_kind"], expected_origin)
 
     def test_part7_frames_are_ordered_one_to_four_for_every_set(self) -> None:
         result = run_importer(

@@ -57,6 +57,11 @@ export function Part2SetScreen() {
       <section className="card visual-set-main">
         <Part2VisualImage asset={data.asset} setNumber={number} expandable />
       </section>
+      <div className="button-row">
+        <Link className="primary-button" to={`/parts/2/sets/${visualSetId}/exam`}>
+          4문제 실전 연습
+        </Link>
+      </div>
       <nav className="question-navigation" aria-label="그림 세트 이동">
         {previous ? <Link className="secondary-button" to={`/parts/2/sets/${previous.visual_set_id}`}>이전 세트</Link> : <span />}
         <button className="secondary-button" type="button" onClick={randomSet}>랜덤 세트</button>
